@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build To Gh Branch
 
 on:
   push:
@@ -10,29 +10,24 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # 拉取代码
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 设置 Node.js 环境
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: npm
 
-      # 安装依赖（npm ci 要求严格匹配锁文件，如果不确定锁文件状态，用 npm install 更稳）
       - name: Install dependencies
         run: npm install
 
-      # 构建 VitePress
       - name: Build VitePress site
         run: npm run docs:build
 
-      # 部署到 gh-pages 分支
-      - name: Deploy to GitHub Pages
+      - name: Build to GitHub Pages Branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
