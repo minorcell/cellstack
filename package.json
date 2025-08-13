@@ -6,12 +6,22 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "seo:check": "node scripts/seo-check.js",
+    "seo:validate": "npm run seo:check && echo '✅ SEO验证通过'",
+    "seo:report": "npm run docs:build && echo '📊 访问 https://stack.mcell.top 并在控制台运行 window.CellStackSEO.generateReport()'",
+    "sitemap:update": "./scripts/update-sitemap.sh",
+    "build:seo": "npm run seo:check && npm run docs:build && echo '🚀 SEO优化构建完成'"
   },
-  "keywords": ["vitepress", "learning", "knowledge-base"],
+  "keywords": [
+    "vitepress",
+    "learning",
+    "knowledge-base"
+  ],
   "author": "learner",
   "license": "MIT",
   "devDependencies": {
+    "terser": "^5.43.1",
     "vitepress": "^1.0.0"
   }
 }
