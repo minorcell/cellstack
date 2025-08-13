@@ -1,1 +1,0 @@
-import{v as e,c as t,o as l,ae as o}from"./chunks/framework.CpZEK8A6.js";const _=JSON.parse('{"title":"博客","description":"","frontmatter":{},"headers":[],"relativePath":"blog/index.md","filePath":"blog/index.md"}'),r={name:"blog/index.md"},d=Object.assign(r,{setup(n){return e(()=>{}),(s,a)=>(l(),t("div",null,a[0]||(a[0]=[o("",4)])))}});export{_ as __pageData,d as default};
