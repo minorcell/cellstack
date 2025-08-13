@@ -1,0 +1,104 @@
+{
+  "name": "CellStack - 工程师技术笔记",
+  "short_name": "CellStack",
+  "description": "专业的全栈工程师技术笔记分享平台，涵盖前端开发、后端架构、DevOps运维、AI工程实践",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#8b7355",
+  "orientation": "portrait-primary",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "categories": [
+    "education",
+    "productivity",
+    "developer",
+    "reference",
+    "technology"
+  ],
+  "keywords": [
+    "前端开发",
+    "后端开发",
+    "全栈工程师",
+    "DevOps",
+    "AI工程",
+    "技术笔记",
+    "编程教程",
+    "最佳实践",
+    "项目实战"
+  ],
+  "icons": [
+    {
+      "src": "/logo-simple.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-simple.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo-simple.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo-simple.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-simple.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "语言基础",
+      "short_name": "语言基础",
+      "description": "学习编程语言基础知识",
+      "url": "/language-basics/",
+      "icons": [
+        {
+          "src": "/logo-simple.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "工程实践",
+      "short_name": "工程实践",
+      "description": "探索工程实践和最佳实践",
+      "url": "/engineering-practice/",
+      "icons": [
+        {
+          "src": "/logo-simple.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "技术博客",
+      "short_name": "博客",
+      "description": "阅读最新技术博客文章",
+      "url": "/blog/",
+      "icons": [
+        {
+          "src": "/logo-simple.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "scope": "/",
+  "prefer_related_applications": false,
+  "iarc_rating_id": "",
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百度站长平台验证 - CellStack</title>
+    <meta name="baidu-site-verification" content="YOUR_BAIDU_VERIFICATION_CODE_HERE" />
+    <meta name="description" content="百度站长平台验证页面 - CellStack工程师技术笔记">
+
+    <!-- 重定向到首页 -->
+    <meta http-equiv="refresh" content="3;url=https://stack.mcell.top/">
+
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #faf9f7;
+            color: #2c2c2c;
+            text-align: center;
+            padding: 2rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(139, 115, 85, 0.08);
+            border: 1px solid #e8e5e0;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #b59f82, #8b7355);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+        }
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px solid #d4c4a8;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+        h1 {
+            color: #8b7355;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .verification-info {
+            background: linear-gradient(135deg, #f5f4f2, #faf9f7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #8b7355;
+            text-align: left;
+        }
+        .verification-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #8b7355;
+            font-size: 1.1rem;
+        }
+        .verification-info p {
+            margin: 0.5rem 0;
+            color: #525252;
+        }
+        .redirect-notice {
+            font-size: 0.9rem;
+            color: #525252;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f5f4f2;
+            border-radius: 6px;
+        }
+        a {
+            color: #8b7355;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .countdown {
+            font-weight: 600;
+            color: #8b7355;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">C</div>
+        <h1>CellStack 百度验证</h1>
+
+        <div class="verification-info">
+            <h3>🔍 百度站长平台验证</h3>
+            <p><strong>站点：</strong> https://stack.mcell.top</p>
+            <p><strong>验证方式：</strong> HTML标签验证</p>
+            <p><strong>验证码：</strong> 已添加到页面meta标签中</p>
+        </div>
+
+        <p><strong>CellStack</strong> - 专业的工程师技术笔记分享平台</p>
+        <p>📚 前端开发 | 🔧 后端架构 | ⚙️ DevOps运维 | 🤖 AI工程实践</p>
+
+        <div class="redirect-notice">
+            🔄 页面将在 <span class="countdown" id="countdown">3</span> 秒后自动跳转到
+            <a href="https://stack.mcell.top/">首页</a>
+        </div>
+    </div>
+
+    <script>
+        // 倒计时功能
+        let countdown = 3;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://stack.mcell.top/';
+            }
+        }, 1000);
+
+        // 记录验证页面访问
+        console.log('百度站长平台验证页面已加载 - CellStack');
+    </script>
+</body>
+</html>
