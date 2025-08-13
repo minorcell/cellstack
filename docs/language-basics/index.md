@@ -1,13 +1,6 @@
+---
+title: 语言基础
+description: 深入理解编程语言的核心概念、语法特性和最佳实践
+---
+
 # 语言基础
-
-CellStack 中编程语言的基本概念和语法知识整理。
-
-## 目录
-
-- JavaScript
-- TypeScript
-- Python
-- Java
-- Go
-- Rust
-- ...

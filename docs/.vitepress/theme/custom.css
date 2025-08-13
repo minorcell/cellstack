@@ -1,0 +1,932 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+.hand-drawn-filter {
+    filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='roughPaper' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence baseFrequency='0.04' numOctaves='5' result='noise' seed='1'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E#roughPaper");
+}
+
+/* 全局CSS变量定义 */
+:root {
+    /* 主色调 - 米色和柔和色彩 */
+    --vp-c-bg: #faf9f7;
+    /* 米色背景 */
+    --vp-c-bg-alt: #f5f4f2;
+    /* 稍深的米色 */
+    --vp-c-bg-elv: #ffffff;
+    /* 提升元素背景 */
+
+    /* 文字颜色 */
+    --vp-c-text-1: #2c2c2c;
+    /* 主文字 - 深灰黑色 */
+    --vp-c-text-2: #525252;
+    /* 次要文字 */
+    --vp-c-text-3: #737373;
+    /* 辅助文字 */
+
+    /* 强调色 */
+    --vp-c-brand-1: #8b7355;
+    /* 温暖的棕色作为品牌色 */
+    --vp-c-brand-2: #a0896b;
+    /* 稍浅的品牌色 */
+    --vp-c-brand-3: #b59f82;
+    /* 更浅的品牌色 */
+
+    /* 边框和分割线 */
+    --vp-c-divider: #e8e5e0;
+    /* 柔和的分割线 */
+    --vp-c-border: #ebe8e3;
+    /* 边框色 */
+
+    /* 字体设置 - 现代化无衬线字体组合 */
+    --vp-font-family-base:
+        "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --vp-font-family-mono:
+        "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+        monospace;
+    --vp-font-family-heading:
+        "Poppins", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* 字体大小和行高 */
+    --vp-font-size-root: 16px;
+    --vp-line-height-root: 1.7;
+
+    /* 间距 */
+    --vp-space-nav-height: 64px;
+    --vp-space-content-padding: 48px;
+}
+
+/* 暗色模式适配 */
+.dark {
+    --vp-c-bg: #1a1915;
+    /* 深色背景 */
+    --vp-c-bg-alt: #1f1e1a;
+    --vp-c-bg-elv: #252420;
+
+    --vp-c-text-1: #e8e5e0;
+    --vp-c-text-2: #c7c3bc;
+    --vp-c-text-3: #a5a199;
+
+    --vp-c-brand-1: #d4c4a8;
+    --vp-c-brand-2: #bfac8f;
+    --vp-c-brand-3: #a99576;
+
+    --vp-c-divider: #2d2a25;
+    --vp-c-border: #332f28;
+}
+
+/* 全局重置和基础样式 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--vp-font-size-root);
+    line-height: var(--vp-line-height-root);
+}
+
+body {
+    font-family: var(--vp-font-family-base);
+    font-weight: 400;
+    color: var(--vp-c-text-1);
+    /* background-color: var(--vp-c-bg); */
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+/* 添加微妙的背景纹理 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5f4f2' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.VPDoc .container {
+    max-width: 768px;
+    /* 限制内容宽度，增加留白 */
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* 标题样式 - 现代化设计，类似 Styrene 字体效果 */
+.VPDoc h1,
+.VPDoc h2,
+.VPDoc h3,
+.VPDoc h4,
+.VPDoc h5,
+.VPDoc h6 {
+    font-family: var(--vp-font-family-heading);
+}
+
+.VPDoc h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 3rem 0;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.03em;
+    position: relative;
+}
+
+/* 为 h1 添加手绘风格的装饰下划线 */
+.VPDoc h1::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 4'%3E%3Cpath d='M2 2c15 0 15 1 28 1s15-1 28-1' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+    opacity: 0.7;
+}
+
+.VPDoc h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 4rem 0 1.5rem 0;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.02em;
+    border-bottom: none;
+    padding-bottom: 0;
+    position: relative;
+}
+
+/* h2 的手绘风格分割线 */
+.VPDoc h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 2'%3E%3Cpath d='M0 1c25 0 25 1 50 1s25-1 50-1' fill='none' stroke='%23e8e5e0' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+    background-size: 100px 2px;
+}
+
+.VPDoc h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 3rem 0 1.25rem 0;
+    color: var(--vp-c-brand-1);
+    letter-spacing: -0.01em;
+}
+
+.VPDoc h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 2.5rem 0 1rem 0;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.005em;
+}
+
+/* 段落和文本样式 */
+.VPDoc p {
+    margin: 1.5rem 0;
+    line-height: 1.8;
+    color: var(--vp-c-text-1);
+}
+
+.VPDoc .lead {
+    font-size: 1.125rem;
+    color: var(--vp-c-text-2);
+    margin: 2rem 0;
+}
+
+/* 链接样式 */
+.VPDoc a {
+    color: var(--vp-c-brand-1);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.VPDoc a:hover {
+    color: var(--vp-c-brand-2);
+    border-bottom-color: var(--vp-c-brand-2);
+}
+
+/* 代码块样式 */
+.VPDoc code {
+    font-family: var(--vp-font-family-mono);
+    font-size: 0.875em;
+    background-color: var(--vp-c-bg-alt);
+    padding: 0.25em 0.5em;
+    border-radius: 4px;
+    color: var(--vp-c-text-1);
+}
+
+.VPDoc pre {
+    background-color: var(--vp-c-bg-alt);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--vp-c-border);
+}
+
+.VPDoc pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* 引用样式 */
+.VPDoc blockquote {
+    border-left: 4px solid var(--vp-c-brand-1);
+    background-color: var(--vp-c-bg-alt);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: var(--vp-c-text-2);
+}
+
+/* 列表样式 */
+.VPDoc ul,
+.VPDoc ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.VPDoc li {
+    margin: 0.5rem 0;
+    line-height: 1.7;
+}
+
+/* 导航栏样式 */
+.VPNav {
+    background-color: var(--vp-c-bg);
+    border-bottom: 1px solid var(--vp-c-divider);
+    backdrop-filter: blur(10px);
+}
+
+.VPNavBar {
+    padding: 0 32px;
+}
+
+.VPNavBarTitle .title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.01em;
+}
+
+.VPNavBarMenu .VPLink {
+    font-weight: 400;
+    color: var(--vp-c-text-2);
+    transition: color 0.2s ease;
+}
+
+.VPNavBarMenu .VPLink:hover,
+.VPNavBarMenu .VPLink.active {
+    color: var(--vp-c-brand-1);
+}
+
+/* 侧边栏样式 */
+.VPSidebar {
+    background-color: var(--vp-c-bg);
+    border-right: 1px solid var(--vp-c-divider);
+}
+
+.VPSidebarItem .text {
+    font-weight: 400;
+    color: var(--vp-c-text-2);
+    transition: color 0.2s ease;
+}
+
+.VPSidebarItem.is-active .text {
+    color: var(--vp-c-brand-1);
+    font-weight: 500;
+}
+
+.VPSidebarItem:hover .text {
+    color: var(--vp-c-text-1);
+}
+
+/* 按钮样式 */
+.VPButton {
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.VPButton.brand {
+    background-color: var(--vp-c-brand-1);
+    color: white;
+}
+
+.VPButton.brand:hover {
+    background-color: var(--vp-c-brand-2);
+    transform: translateY(-1px);
+}
+
+.VPButton.alt {
+    background-color: transparent;
+    color: var(--vp-c-brand-1);
+    border-color: var(--vp-c-brand-1);
+}
+
+.VPButton.alt:hover {
+    background-color: var(--vp-c-brand-1);
+    color: white;
+}
+
+/* 卡片和容器样式 */
+.custom-block {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--vp-c-brand-1);
+    background-color: var(--vp-c-bg-alt);
+}
+
+.custom-block.tip {
+    border-left-color: var(--vp-c-brand-1);
+}
+
+.custom-block.warning {
+    border-left-color: #f59e0b;
+}
+
+.custom-block.danger {
+    border-left-color: #ef4444;
+}
+
+/* 表格样式 */
+.VPDoc table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--vp-c-border);
+}
+
+.VPDoc th,
+.VPDoc td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.VPDoc th {
+    background-color: var(--vp-c-bg-alt);
+    font-weight: 500;
+    color: var(--vp-c-text-1);
+}
+
+.VPDoc tr:last-child td {
+    border-bottom: none;
+}
+
+.VPHomeHero {
+    padding: 4rem 0 6rem 0;
+}
+
+.VPHomeHero .container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.VPHomeHero .main {
+    flex: 1;
+    max-width: 500px;
+}
+
+.VPHomeHero .image {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.VPHomeHero .image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.VPHomeHero .name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--vp-c-text-1);
+    letter-spacing: -0.03em;
+    font-family: var(--vp-font-family-heading);
+}
+
+.VPHomeHero .text {
+    font-size: 1.5rem;
+    color: var(--vp-c-brand-1);
+    margin: 1rem 0 1.5rem 0;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.VPHomeHero .tagline {
+    font-size: 1.125rem;
+    color: var(--vp-c-text-2);
+    margin: 0 0 2.5rem 0;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* 增加整体留白和间距 */
+.VPDoc .content {
+    padding: 0;
+    margin: 0;
+}
+
+.VPDoc .content-container {
+    max-width: none;
+}
+
+/* 优化阅读体验 */
+.VPDoc .vp-doc {
+    padding: 2rem 0;
+}
+
+.VPDoc .vp-doc>*+* {
+    margin-top: 1.5rem;
+}
+
+.VPDoc .vp-doc>h2+*,
+.VPDoc .vp-doc>h3+*,
+.VPDoc .vp-doc>h4+* {
+    margin-top: 1rem;
+}
+
+/* 手绘风格装饰元素 */
+.decorative-element {
+    position: relative;
+}
+
+.decorative-element::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2C8 2 6 4 8 6c2 2 4 0 6 2s0 4 2 2c2-2 4 0 2 2s-4 0-2 2c2 2 0 4-2 2s0-4-2-2c-2 2-4 0-2-2s4 0 2-2c-2-2 0-4 2-2s0 4-2 2z' fill='none' stroke='%23a0896b' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+}
+
+/* 响应式设计 */
+@media (max-width: 960px) {
+    .VPHomeHero .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .VPHomeHero .image {
+        flex: none;
+        order: -1;
+    }
+
+    .VPHomeHero .main {
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --vp-space-content-padding: 24px;
+    }
+
+    .VPDoc .container {
+        padding: 0 20px;
+    }
+
+    .VPHomeHero .name {
+        font-size: 2.5rem;
+    }
+
+    .VPHomeHero .text {
+        font-size: 1.25rem;
+    }
+
+    .VPHomeHero .tagline {
+        font-size: 1rem;
+    }
+
+    .VPHomeHero .image {
+        flex: 0 0 300px;
+    }
+
+    .VPNavBar {
+        padding: 0 20px;
+    }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--vp-c-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--vp-c-brand-3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--vp-c-brand-2);
+}
+
+/* 选择文本样式 */
+::selection {
+    background-color: var(--vp-c-brand-3);
+    color: white;
+}
+
+/* 焦点样式 */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--vp-c-brand-1);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* 页脚样式 */
+.VPDocFooter {
+    border-top: 1px solid var(--vp-c-divider);
+    padding-top: 2rem;
+    margin-top: 4rem;
+}
+
+/* 搜索框样式 */
+.DocSearch-Button {
+    background-color: var(--vp-c-bg-alt);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 8px;
+    color: var(--vp-c-text-2);
+    transition: all 0.2s ease;
+}
+
+.DocSearch-Button:hover {
+    background-color: var(--vp-c-bg-elv);
+    border-color: var(--vp-c-brand-3);
+}
+
+/* 自定义装饰性元素类 - 手绘风格 */
+.handdrawn-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.handdrawn-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M2 3c20 0 20 2 40 2s20-2 40-2 20 2 16 2' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+    background-size: 100px 6px;
+    opacity: 0.6;
+}
+
+/* 手绘风格的高亮标记 */
+.handdrawn-highlight {
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(212, 196, 168, 0.3) 10%,
+            rgba(212, 196, 168, 0.3) 90%,
+            transparent 100%);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    position: relative;
+}
+
+/* 温暖的引用标记 */
+.warm-quote {
+    position: relative;
+    font-style: italic;
+    color: var(--vp-c-text-2);
+}
+
+.warm-quote::before {
+    content: '"';
+    position: absolute;
+    left: -1.5rem;
+    top: -0.5rem;
+    font-size: 3rem;
+    color: var(--vp-c-brand-3);
+    opacity: 0.4;
+    font-family: Georgia, serif;
+}
+
+/* 手绘风格的边框装饰 */
+.sketch-border {
+    border: 2px solid var(--vp-c-brand-1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+    background-color: var(--vp-c-bg-elv);
+}
+
+.sketch-border::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--vp-c-brand-1);
+    border-radius: 8px;
+    transform: rotate(0.5deg);
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* 微妙的动画效果 */
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 文章卡片样式 */
+.article-card {
+    background-color: var(--vp-c-bg-elv);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    border: 1px solid var(--vp-c-border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg,
+            var(--vp-c-brand-1) 0%,
+            var(--vp-c-brand-3) 100%);
+}
+
+.article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.article-card .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--vp-c-text-1);
+}
+
+.article-card .excerpt {
+    color: var(--vp-c-text-2);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.article-card .meta {
+    color: var(--vp-c-text-3);
+    font-size: 0.875rem;
+}
+
+/* 优化内容间距和版式 */
+.VPDoc .content {
+    line-height: 1.8;
+}
+
+.VPDoc .content>*+* {
+    margin-top: 1.75rem;
+}
+
+.VPDoc .content>h2+*,
+.VPDoc .content>h3+*,
+.VPDoc .content>h4+* {
+    margin-top: 1.25rem;
+}
+
+/* 图片样式 */
+.VPDoc img {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    margin: 2rem 0;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 分隔线样式 */
+.VPDoc hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--vp-c-divider) 50%,
+            transparent 100%);
+    margin: 3rem 0;
+}
+
+/* 标签样式 */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--vp-c-bg-alt);
+    color: var(--vp-c-brand-1);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    border: 1px solid var(--vp-c-brand-3);
+}
+
+/* 增强可访问性 */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 额外的极简主义增强 */
+
+/* 内容区域的额外留白和呼吸感 */
+.VPDoc .content-body {
+    padding: 3rem 0;
+}
+
+/* 优化段落间距，营造阅读的节奏感 */
+.VPDoc .content p+p {
+    margin-top: 2rem;
+}
+
+.VPDoc .content p+h2,
+.VPDoc .content p+h3 {
+    margin-top: 3.5rem;
+}
+
+/* 温暖的选中状态 */
+.VPSidebarItem.is-active {
+    background-color: rgba(160, 137, 107, 0.08);
+    border-radius: 6px;
+    margin: 2px 0;
+}
+
+/* 柔和的悬停效果 */
+.VPFeature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(160, 137, 107, 0.1);
+    border-color: var(--vp-c-brand-2);
+}
+
+/* 手绘风格的注释框 */
+.handdrawn-note {
+    background-color: var(--vp-c-bg-elv);
+    border: 2px dashed var(--vp-c-brand-3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+    font-style: italic;
+    color: var(--vp-c-text-2);
+}
+
+.handdrawn-note::before {
+    content: "✨";
+    position: absolute;
+    top: -8px;
+    left: 1rem;
+    background-color: var(--vp-c-bg);
+    padding: 0 0.5rem;
+    font-style: normal;
+}
+
+/* 增加页面元素之间的呼吸空间 */
+.VPDoc>*+* {
+    margin-top: 2.5rem;
+}
+
+/* 优化首页 hero 区域的间距 */
+.VPHomeHero .container {
+    padding: 5rem 2rem;
+}
+
+/* 为导航添加细微的阴影，增加层次感 */
+.VPNav {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* 优化代码块的视觉呈现 */
+.VPDoc pre {
+    position: relative;
+    overflow: hidden;
+}
+
+.VPDoc pre::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg,
+            var(--vp-c-brand-1) 0%,
+            var(--vp-c-brand-3) 100%);
+}
+
+/* 手绘风格的分页导航 */
+.VPDocFooter .prev-next {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px dashed var(--vp-c-divider);
+}
+
+/* 细节优化：让链接更有温度 */
+.VPDoc a:not(.header-anchor) {
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(160, 137, 107, 0.1) 50%,
+            transparent 100%);
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.VPDoc a:not(.header-anchor):hover {
+    background: linear-gradient(120deg,
+            rgba(160, 137, 107, 0.15) 0%,
+            rgba(160, 137, 107, 0.25) 50%,
+            rgba(160, 137, 107, 0.15) 100%);
+    transform: translateY(-1px);
+}
+
+/* Hero区域的插图样式增强 */
+.VPHomeHero .image svg {
+    animation: heroIllustrationFloat 8s ease-in-out infinite;
+}
+
+@keyframes heroIllustrationFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-5px) rotate(0.5deg);
+    }
+
+    75% {
+        transform: translateY(2px) rotate(-0.3deg);
+    }
+}
+
+/* 为hero区域添加微妙的背景装饰 */
+.VPHomeHero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
