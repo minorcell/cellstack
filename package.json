@@ -1,0 +1,17 @@
+{
+  "name": "cellstack",
+  "version": "1.0.0",
+  "description": "一个工程师的技术笔记，涵盖前端、后端、DevOps 与 AI 工程实践，从零到落地。",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "keywords": ["vitepress", "learning", "knowledge-base"],
+  "author": "learner",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}
