@@ -150,7 +150,7 @@ export default {
     hostname: "https://stack.mcell.top",
   },
 
-  appearance: "light",
+  appearance: "dark",
   lastUpdated: true,
   cleanUrls: true,
 
@@ -190,23 +190,23 @@ export default {
         {
           text: "服务端",
           items: [
-            { text: "项目配置管理的进化之路：从混乱到工程化", link: "/blog/2025/09_projectconfig" },
-            { text: "为什么我们需要 .proto 文件", link: "/blog/2025/16_whyproto" },
-            { text: "揭秘 Webhook 事件驱动机制", link: "/blog/2025/17_webhook" },
-            { text: "为何百万 Goroutine 不卡，Worker Pool 如何榨干 CPU", link: "/blog/2025/18_goroutine" },
-            { text: "那台榨汁机，竟是哈希表祖师爷？", link: "/blog/2025/19_hash" },
             { text: "告别轮询！深度剖析 WebSocket：全双工实时通信原理与实战", link: "/blog/2025/22_ws" },
-
+            { text: "那台榨汁机，竟是哈希表祖师爷？", link: "/blog/2025/19_hash" },
+            { text: "为何百万 Goroutine 不卡，Worker Pool 如何榨干 CPU", link: "/blog/2025/18_goroutine" },
+            { text: "揭秘 Webhook 事件驱动机制", link: "/blog/2025/17_webhook" },
+            { text: "为什么我们需要 .proto 文件", link: "/blog/2025/16_whyproto" },
+            { text: "项目配置管理的进化之路：从混乱到工程化", link: "/blog/2025/09_projectconfig" },
           ],
         },
         {
           text: "客户端",
           items: [
-            { text: "JS Map 知多少：揭开键值对存储的隐秘角落", link: "/blog/2025/02_jsmap" },
-            { text: "你不知道的 Vue Style 黑魔法", link: "/blog/2025/03_vuestyle" },
-            { text: "Vue 自定义指令：揭开 DOM 操作的神秘面纱", link: "/blog/2025/05_vuedirective" },
-            { text: "当浏览器也开始‘造轮子’：Web Components 的觉醒之旅", link: "/blog/2025/06_webcomponents" },
             { text: "每秒打印一个数字：从简单到晦涩的多种实现", link: "/blog/2025/07_jsprintnum" },
+            { text: "当浏览器也开始‘造轮子’：Web Components 的觉醒之旅", link: "/blog/2025/06_webcomponents" },
+            { text: "Vue 自定义指令：揭开 DOM 操作的神秘面纱", link: "/blog/2025/05_vuedirective" },
+            { text: "你不知道的 Vue Style 黑魔法", link: "/blog/2025/03_vuestyle" },
+            { text: "JS Map 知多少：揭开键值对存储的隐秘角落", link: "/blog/2025/02_jsmap" },
+
           ],
         },
         {
@@ -229,10 +229,10 @@ export default {
         {
           text: "开发工具",
           items: [
-            { text: "Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊", link: "/blog/2025/01_hubio" },
-            { text: "VSCode 自动格式化：ESLint 与 Prettier", link: "/blog/2025/04_vscodeformat" },
-            { text: "【不演了，这篇文章是 AI 写的】我是如何用 Cursor 快速生成一个 Golang 新手教程的", link: "/blog/2025/14_curosrblog" },
             { text: "受够 Cursor 卡成蜗牛！我换用 Augment，每月白嫖 300 次真香！", link: "/blog/2025/21_augment" },
+            { text: "【不演了，这篇文章是 AI 写的】我是如何用 Cursor 快速生成一个 Golang 新手教程的", link: "/blog/2025/14_curosrblog" },
+            { text: "VSCode 自动格式化：ESLint 与 Prettier", link: "/blog/2025/04_vscodeformat" },
+            { text: "Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊", link: "/blog/2025/01_hubio" },
           ],
         },
       ],
@@ -243,7 +243,7 @@ export default {
     ],
 
     footer: {
-      message: "持续探索，用爱发电。",
+      message: "持续探索...",
       copyright: "Copyright © 2025 CellStack.",
     },
 

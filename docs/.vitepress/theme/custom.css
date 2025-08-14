@@ -299,7 +299,6 @@ body::before {
 /* 引用样式 */
 .VPDoc blockquote {
     border-left: none;
-    background-color: var(--vp-c-bg-alt);
     font-style: italic;
     color: var(--vp-c-text-2);
 }

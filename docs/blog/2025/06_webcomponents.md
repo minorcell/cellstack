@@ -2,7 +2,7 @@
 title: 当浏览器也开始"造轮子"：Web Components 的觉醒之旅
 description: 探索 Web Components 三大核心技术：Custom Elements、Shadow DOM 和 HTML Templates，实现真正的组件化开发
 date: 2025-01-20
-tags: 
+tags:
   - Web Components
   - Custom Elements
   - Shadow DOM
@@ -115,7 +115,7 @@ Web Components 的提出旨在解决这些问题 — 它由三项主要技术组
 1.  找到 `<hello-button>` 元素
 2.  点击展开旁边的 `#shadow-root`，就像打开一个秘密盒子
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ce059bcac25347acb93b1ae701dcc764~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618965&x-orig-sign=hej8ng%2F4vi1dsthoFxIfK4hIymQ%3D)
+![008.png](/images/2025/008.png)
 
 ---
 
@@ -176,7 +176,7 @@ Web Components 的提出旨在解决这些问题 — 它由三项主要技术组
 **进阶实验**：\
 尝试在页面中添加多个 `<hello-button>`，观察它们的样式是否互相影响。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/57005dbc3bb2428ebeaf6c6827e15422~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618965&x-orig-sign=3wzn%2BynVQXIB52Og4NMxtFuhmiA%3D)
+![009.png](/images/2025/009.png)
 
 ---
 
@@ -320,7 +320,7 @@ Web Components 的提出旨在解决这些问题 — 它由三项主要技术组
 
 在页面中的效果如下：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/85d6cbe400f44cc6b2bcc2d404ee6465~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618965&x-orig-sign=Wk9OsGV7YncaIxxutyEzxkZyNwA%3D)
+![010.png](/images/2025/010.png)
 
 ---
 

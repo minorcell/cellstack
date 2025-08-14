@@ -11,13 +11,13 @@ tags:
 
 # Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊
 
-## 📖 故事要从一个凌晨三点的 Commit 说起...
+## 故事要从一个凌晨三点的 Commit 说起...
 
 去年在开发开源项目[Perfedge](https://github.com/minorcell/perfedge)时，我盯着空荡荡的 README 发愁——如何优雅地展示项目贡献者？手动维护头像列表既低效又容易遗漏，直到灵光一闪：**为什么不让 GitHub API 自动生成这个模块？**
 
 下图是笔者当时在[Perfedge](https://perfedge.vercel.app/docs)中实现的效果：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5424c858436440afb7a1fa306eca98ea~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=FFRuVHFsk1dwiLAwKA%2FIbZB7ZdI%3D)
+![011.png](/images/2025/011.png)
 
 于此，我想既然我有这个需求，是不是别人也有这个需求？尤其是对于开源爱好者来说。恰逢年末，实习的公司也正好放假了，在家没有什么事可以做的，突然就想起来这个：做个网页吧，让大家都可以简便的获取 github 开源仓库贡献者信息。这就是[HUB-IO](https://github.com/minorcell/hub-io)诞生的背景，经过小半天的编码，这个工具已经可以帮助开发者：
 
@@ -25,7 +25,7 @@ tags:
 2.  生成高清头像拼图
 3.  导出结构化 JSON 数据
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/131fe4021f5d4df1850b75d8362c3f64~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=1kXNhxFb4Hnx7fQ13Xf15EsG5Q8%3D)
+![012.png](/images/2025/012.png)
 
 ### 1. Canvas 动态画布
 
@@ -95,9 +95,9 @@ const loadImages = async () => {
 
 图片导出效果（这里用的是 vuejs/vue 团队的示例哈哈哈哈）
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/54712377ab6c4c819569a7943f686fb4~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=CxCUna1gen7iv9lPJ0myLv8zr5Q%3D)
+![013.png](/images/2025/013.png)
 
-![contributors.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b931946e12e4426f9fd34805263a28aa~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=xYASndNk3ZIMsWR3Eh7a6uJLjhM%3D)
+![014.png](/images/2025/014.png)
 
 ### 2. 渐进式数据导出
 
@@ -129,9 +129,9 @@ const loadImages = async () => {
 
 在页面中的效果如下：
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/27d4d8db53c3488a97aa339205f6c1e9~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=y7zS1J3wJkOzfIfqMFU%2BFNjkVTk%3D)
+![015.png](/images/2025/015.png)
 
-## 🛠️ 上手指南
+## 上手指南
 
 1.  访问[在线演示站](https://hub-io-mcells-projects.vercel.app/)
 
@@ -139,7 +139,7 @@ const loadImages = async () => {
 
 3.  点击 Query 按钮获取数据
 
-## 🌟 未来路线图
+## 未来路线图
 
 - **支持更多贡献者信息查询**：目前来说处于公共 API 的限制，仅支持最多 30 个贡献者信息导出
 - **智能排版引擎**：自动识别最佳布局

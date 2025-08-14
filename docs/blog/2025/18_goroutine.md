@@ -2,7 +2,7 @@
 title: 为何百万 Goroutine 不卡，Worker Pool 如何榨干 CPU
 description: 深入理解 Go 语言并发模型，从 Goroutine 轻量级特性到 Worker Pool 实战应用，掌握高性能并发编程技巧
 date: 2025-01-18
-tags: 
+tags:
   - Go
   - Goroutine
   - 并发编程
@@ -53,7 +53,7 @@ func main() {
 
 在上述代码中，`go printMessage(...)` 创建了一个新的 Goroutine。程序会并发执行两个 `printMessage` 函数，因此你会看到两条消息交替输出。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/13990f3a46da4a49897138e6a7bf6104~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754619437&x-orig-sign=r8s7cXk8tManVyZtWe9AiJZpRGM%3D)
+![005.png](/images/2025/005.png)
 
 ---
 
@@ -115,7 +115,7 @@ func main() {
 
 在这个例子中，`main` Goroutine 在尝试从 Channel `ch` 接收数据时会阻塞，直到两个 `sum` Goroutine 完成计算并将结果送入 Channel。
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c31aa6a6284449a79e5ed14368d98a80~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754619437&x-orig-sign=eIAeeB2xJzgEqNH3ERD%2F3CUUtP8%3D)
+![006.png](/images/2025/006.png)
 
 ---
 
@@ -177,7 +177,7 @@ func main() {
 }
 ```
 
-![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e62619bc2b5941488776977d476e5930~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754619437&x-orig-sign=05Cb2UT4kzQE71NxuVbaq68wEmc%3D)
+![007.png](/images/2025/007.png)
 
 **代码要点解析**：
 
