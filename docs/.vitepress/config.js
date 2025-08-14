@@ -179,8 +179,8 @@ export default {
       },
       {
         text: "工程实践",
-        link: "/engineering-practice/",
-        activeMatch: "/engineering-practice/",
+        link: "/project/",
+        activeMatch: "/project/",
       },
       {
         text: "博客",
@@ -202,16 +202,16 @@ export default {
           ],
         },
       ],
-      "/engineering-practice/": [
+      "/project/": [
         {
           text: "工程实践",
           items: [
-            { text: "概述", link: "/engineering-practice/" },
-            { text: "前端工程化", link: "/engineering-practice/frontend/" },
-            { text: "后端架构", link: "/engineering-practice/backend/" },
-            { text: "DevOps 实践", link: "/engineering-practice/devops/" },
-            { text: "AI 工程", link: "/engineering-practice/ai/" },
-            { text: "系统设计", link: "/engineering-practice/system-design/" },
+            { text: "概述", link: "/project/" },
+            { text: "前端工程化", link: "/project/frontend/" },
+            { text: "后端架构", link: "/project/backend/" },
+            { text: "DevOps 实践", link: "/project/devops/" },
+            { text: "AI 工程", link: "/project/ai/" },
+            { text: "系统设计", link: "/project/system-design/" },
           ],
         },
       ],
