@@ -190,6 +190,7 @@ export default {
         {
           text: "服务端",
           items: [
+            { text: "Go 并发定时任务避坑指南：从 Sleep 到 Context 的 8 种写法全解析", link: "/blog/2025/23_goprintnum" },
             { text: "告别轮询！深度剖析 WebSocket：全双工实时通信原理与实战", link: "/blog/2025/22_ws" },
             { text: "那台榨汁机，竟是哈希表祖师爷？", link: "/blog/2025/19_hash" },
             { text: "为何百万 Goroutine 不卡，Worker Pool 如何榨干 CPU", link: "/blog/2025/18_goroutine" },
