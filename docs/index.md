@@ -9,10 +9,7 @@ hero:
     alt: CellStack 手绘插图
   actions:
     - theme: brand
-      text: 开始
-      link: /language-basics/
-    - theme: alt
-      text: 博客
+      text: 开始阅读
       link: /blog/
 ---
 
