@@ -217,4 +217,4 @@ const vClickOutside = {
 
 但请记住：如果 Vue 内置的方式能解决问题，就不要引入额外的复杂性。**写代码是一门权衡的艺术。**
 
-如果下次你又想在 Vue 中使用 `document.querySelector`，试试写个指令，说不定能让你的代码更优雅 😉。
+如果下次你又想在 Vue 中使用 `document.querySelector`，试试写个指令，说不定能让你的代码更优雅。

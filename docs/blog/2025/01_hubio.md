@@ -1,15 +1,15 @@
 ---
-title: Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊 🎨
+title: Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊
 description: 一个让 GitHub 贡献者信息可视化的工具，支持头像拼图导出和 JSON 数据格式
 date: 2025-01-15
-tags: 
+tags:
   - GitHub
   - 开源工具
   - Canvas
   - TypeScript
 ---
 
-# Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊 🎨
+# Hub-IO：输入 URL 获取 GitHub 贡献者信息，README 从此自带开发者画廊
 
 ## 📖 故事要从一个凌晨三点的 Commit 说起...
 
@@ -21,9 +21,9 @@ tags:
 
 于此，我想既然我有这个需求，是不是别人也有这个需求？尤其是对于开源爱好者来说。恰逢年末，实习的公司也正好放假了，在家没有什么事可以做的，突然就想起来这个：做个网页吧，让大家都可以简便的获取 github 开源仓库贡献者信息。这就是[HUB-IO](https://github.com/minorcell/hub-io)诞生的背景，经过小半天的编码，这个工具已经可以帮助开发者：
 
-1.  🌐 输入仓库 URL 自动获取贡献者信息
-2.  🖼️ 生成高清头像拼图
-3.  📋 导出结构化 JSON 数据
+1.  输入仓库 URL 自动获取贡献者信息
+2.  生成高清头像拼图
+3.  导出结构化 JSON 数据
 
 ![image.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/131fe4021f5d4df1850b75d8362c3f64~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgbUNlbGw=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjI4MDgyOTk2NzE0Njc3OSJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1754618667&x-orig-sign=1kXNhxFb4Hnx7fQ13Xf15EsG5Q8%3D)
 
@@ -147,9 +147,9 @@ const loadImages = async () => {
 
 ---
 
-**让每一个贡献者都被看见** ✨
+**让每一个贡献者都被看见**
 
 立即体验：[hub-io.vercel.app](https://hub-io-mcells-projects.vercel.app/)\
 源码仓库：[github.com/minorcell/hub-io](https://github.com/minorcell/hub-io)
 
-欢迎在评论区分享你生成的贡献者画廊！🎉 若觉得项目有用，**别忘了点亮小星星哦~ ⭐️**
+欢迎在评论区分享你生成的贡献者画廊！若觉得项目有用，**别忘了点亮小星星哦~ **

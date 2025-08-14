@@ -150,7 +150,7 @@ export default {
     hostname: "https://stack.mcell.top",
   },
 
-  appearance: "dark",
+  appearance: "light",
   lastUpdated: true,
   cleanUrls: true,
 
@@ -173,12 +173,12 @@ export default {
 
     nav: [
       {
-        text: "语言基础",
+        text: "语言",
         link: "/language-basics/",
         activeMatch: "/language-basics/",
       },
       {
-        text: "工程实践",
+        text: "工程",
         link: "/project/",
         activeMatch: "/project/",
       },
@@ -192,13 +192,9 @@ export default {
     sidebar: {
       "/language-basics/": [
         {
-          text: "语言基础",
+          text: "语言",
           items: [
             { text: "概述", link: "/language-basics/" },
-            { text: "JavaScript 核心", link: "/language-basics/javascript/" },
-            { text: "TypeScript 进阶", link: "/language-basics/typescript/" },
-            { text: "Python 实践", link: "/language-basics/python/" },
-            { text: "Go 语言", link: "/language-basics/go/" },
           ],
         },
       ],
@@ -207,23 +203,14 @@ export default {
           text: "工程实践",
           items: [
             { text: "概述", link: "/project/" },
-            { text: "前端工程化", link: "/project/frontend/" },
-            { text: "后端架构", link: "/project/backend/" },
-            { text: "DevOps 实践", link: "/project/devops/" },
-            { text: "AI 工程", link: "/project/ai/" },
-            { text: "系统设计", link: "/project/system-design/" },
           ],
         },
       ],
       "/blog/": [
         {
-          text: "技术博客",
+          text: "博客",
           items: [
             { text: "所有文章", link: "/blog/" },
-            { text: "前端专题", link: "/blog/frontend/" },
-            { text: "后端专题", link: "/blog/backend/" },
-            { text: "DevOps专题", link: "/blog/devops/" },
-            { text: "AI工程专题", link: "/blog/ai/" },
           ],
         },
         {
@@ -282,8 +269,8 @@ export default {
     ],
 
     footer: {
-      message: "持续探索，用爱发电。分享技术，传递价值。",
-      copyright: "Copyright © 2025 CellStack. 专注于工程师技术成长。",
+      message: "持续探索，用爱发电。",
+      copyright: "Copyright © 2025 CellStack.",
     },
 
     lastUpdated: {
@@ -372,10 +359,10 @@ export default {
   markdown: {
     lineNumbers: true,
     container: {
-      tipLabel: "💡 提示",
-      warningLabel: "⚠️ 注意",
-      dangerLabel: "🚨 警告",
-      infoLabel: "ℹ️ 信息",
+      tipLabel: "提示",
+      warningLabel: "注意",
+      dangerLabel: "警告",
+      infoLabel: "信息",
       detailsLabel: "详细信息",
     },
   },

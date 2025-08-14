@@ -9,7 +9,7 @@ description: CellStack 技术博客，分享前端、后端、DevOps、AI 工程
 
 ## 最新文章
 
-### 2025年文章
+### 2025 年文章
 
 - [告别轮询！深度剖析 WebSocket：全双工实时通信原理与实战](/blog/2025/22_ws)
 - [受够 Cursor 卡成蜗牛！我换用 Augment，每月白嫖 300 次真香！](/blog/2025/21_augment)
@@ -34,39 +34,7 @@ description: CellStack 技术博客，分享前端、后端、DevOps、AI 工程
 - [JavaScript Map 使用全解析](/blog/2025/02_jsmap)
 - [Hub-IO：GitHub 贡献者信息工具](/blog/2025/01_hubio)
 
-## 文章分类
-
-### 前端开发
-- JavaScript 核心概念与实践
-- Vue.js 深度解析
-- Web Components 技术
-- 前端工程化配置
-
-### 后端开发
-- Go 语言并发编程
-- Protocol Buffers 应用
-- API 设计与实现
-- 服务器安全策略
-
-### 系统与运维
-- Linux 命令行实战
-- Webhook 自动化
-- 系统监控与日志
-
-### 开发工具
-- AI 编程助手对比
-- IDE 配置优化
-- 开发效率提升
-
-### 算法与数据结构
-- 哈希算法原理
-- 数据结构实战应用
-
-## 关于作者
-
-我是 mCell，一名全栈工程师，专注于现代 Web 技术栈的研究与实践。通过这个博客，我希望能够分享自己的技术积累，与大家一起成长。
-
 - GitHub: [minorcell](https://github.com/minorcell)
 - 个人主页: [mcell.top](https://mcell.top)
 
-如果你对某个话题特别感兴趣，或者有任何技术问题，欢迎通过 GitHub Issues 或者其他方式与我交流！
+如果你对某个话题特别感兴趣，或者有任何技术问题，请通过 GitHub Issues 交流！
