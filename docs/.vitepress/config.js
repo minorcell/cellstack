@@ -226,6 +226,54 @@ export default {
             { text: "AI工程专题", link: "/blog/ai/" },
           ],
         },
+        {
+          text: "2025年文章",
+          items: [
+            {
+              text: "Hub-IO：GitHub 贡献者信息工具",
+              link: "/blog/2025/01_hubio",
+            },
+            { text: "JavaScript Map 使用全解析", link: "/blog/2025/02_jsmap" },
+            { text: "Vue 样式绑定深度解析", link: "/blog/2025/03_vuestyle" },
+            {
+              text: "VS Code 代码格式化配置",
+              link: "/blog/2025/04_vscodeformat",
+            },
+            {
+              text: "Vue 自定义指令完全指南",
+              link: "/blog/2025/05_vuedirective",
+            },
+            {
+              text: "Web Components 深度解析",
+              link: "/blog/2025/06_webcomponents",
+            },
+            {
+              text: "JavaScript 数字精度处理",
+              link: "/blog/2025/07_jsprintnum",
+            },
+            { text: "HTTP 状态码完全指南", link: "/blog/2025/08_httpcode" },
+            {
+              text: "项目配置文件最佳实践",
+              link: "/blog/2025/09_projectconfig",
+            },
+            { text: "服务器密码管理策略", link: "/blog/2025/10_serverpwd" },
+            { text: "密码哈希算法实战", link: "/blog/2025/11_pwdhashed" },
+            {
+              text: "MD5 vs BCrypt 安全对比",
+              link: "/blog/2025/12_md5_bcrypt",
+            },
+            { text: "密码验证流程设计", link: "/blog/2025/13_pwdflow" },
+            { text: "Cursor 博客开发体验", link: "/blog/2025/14_curosrblog" },
+            { text: "密码重置功能实现", link: "/blog/2025/15_pwdreset" },
+            { text: "为什么需要 .proto 文件", link: "/blog/2025/16_whyproto" },
+            { text: "Webhook 事件驱动机制", link: "/blog/2025/17_webhook" },
+            { text: "Goroutine 并发编程", link: "/blog/2025/18_goroutine" },
+            { text: "哈希算法原理解析", link: "/blog/2025/19_hash" },
+            { text: "Linux 命令行实战", link: "/blog/2025/20_linuxcmd" },
+            { text: "Augment AI 编程工具", link: "/blog/2025/21_augment" },
+            { text: "WebSocket 实时通信", link: "/blog/2025/22_ws" },
+          ],
+        },
       ],
     },
 

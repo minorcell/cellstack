@@ -1,3 +1,15 @@
+---
+title: 受够 Cursor 卡成蜗牛！我换用 Augment，每月白嫖 300 次真香！
+description: Cursor IDE 使用体验吐槽与 Augment AI 插件推荐，对比两款 AI 编程工具的优缺点
+date: 2025-01-21
+tags: 
+  - AI IDE
+  - Cursor
+  - Augment
+  - 编程工具
+  - 开发体验
+---
+
 # 受够 Cursor 卡成蜗牛！我换用 Augment，每月白嫖 300 次真香！
 
 > 这是一篇小记，不算什么正儿八经的知识博客，是我的牢骚，也是一份薅羊毛安利文；

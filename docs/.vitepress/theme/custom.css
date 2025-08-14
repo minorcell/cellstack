@@ -110,7 +110,6 @@ body::before {
 }
 
 .VPDoc .container {
-    max-width: 768px;
     /* 限制内容宽度，增加留白 */
     margin: 0 auto;
     padding: 0 32px;
@@ -144,8 +143,7 @@ body::before {
     left: 0;
     width: 60px;
     height: 4px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 4'%3E%3Cpath d='M2 2c15 0 15 1 28 1s15-1 28-1' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
-        no-repeat;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 4'%3E%3Cpath d='M2 2c15 0 15 1 28 1s15-1 28-1' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
     background-size: contain;
     opacity: 0.7;
 }
@@ -170,8 +168,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 1px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 2'%3E%3Cpath d='M0 1c25 0 25 1 50 1s25-1 50-1' fill='none' stroke='%23e8e5e0' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")
-        repeat-x;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 2'%3E%3Cpath d='M0 1c25 0 25 1 50 1s25-1 50-1' fill='none' stroke='%23e8e5e0' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
     background-size: 100px 2px;
 }
 
@@ -215,7 +212,6 @@ body::before {
 
 .VPDoc a:hover {
     color: var(--vp-c-brand-2);
-    border-bottom-color: var(--vp-c-brand-2);
 }
 
 /* 代码块样式 */
@@ -223,33 +219,32 @@ body::before {
     font-family: var(--vp-font-family-mono);
     font-size: 0.875em;
     background-color: var(--vp-c-bg-alt);
-    padding: 0.25em 0.5em;
-    border-radius: 4px;
     color: var(--vp-c-text-1);
+    border-left: 0;
 }
 
 .VPDoc pre {
     background-color: var(--vp-c-bg-alt);
     border-radius: 8px;
-    padding: 1.5rem;
     margin: 2rem 0;
     overflow-x: auto;
     border: 1px solid var(--vp-c-border);
+    border-left: 0;
 }
 
 .VPDoc pre code {
     background-color: transparent;
     padding: 0;
     border-radius: 0;
+    border-left: 0;
 }
 
 /* 引用样式 */
 .VPDoc blockquote {
-    border-left: 4px solid var(--vp-c-brand-1);
+    border-left: 2px solid var(--vp-c-brand-1);
     background-color: var(--vp-c-bg-alt);
     padding: 1.5rem 2rem;
     margin: 2rem 0;
-    border-radius: 0 8px 8px 0;
     font-style: italic;
     color: var(--vp-c-text-2);
 }
@@ -463,13 +458,13 @@ body::before {
     padding: 2rem 0;
 }
 
-.VPDoc .vp-doc > * + * {
+.VPDoc .vp-doc>*+* {
     margin-top: 1.5rem;
 }
 
-.VPDoc .vp-doc > h2 + *,
-.VPDoc .vp-doc > h3 + *,
-.VPDoc .vp-doc > h4 + * {
+.VPDoc .vp-doc>h2+*,
+.VPDoc .vp-doc>h3+*,
+.VPDoc .vp-doc>h4+* {
     margin-top: 1rem;
 }
 
@@ -485,8 +480,7 @@ body::before {
     left: -10px;
     width: 20px;
     height: 20px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2C8 2 6 4 8 6c2 2 4 0 6 2s0 4 2 2c2-2 4 0 2 2s-4 0-2 2c2 2 0 4-2 2s0-4-2-2c-2 2-4 0-2-2s4 0 2-2c-2-2 0-4 2-2s0 4-2 2z' fill='none' stroke='%23a0896b' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E")
-        no-repeat;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 2C8 2 6 4 8 6c2 2 4 0 6 2s0 4 2 2c2-2 4 0 2 2s-4 0-2 2c2 2 0 4-2 2s0-4-2-2c-2 2-4 0-2-2s4 0 2-2c-2-2 0-4 2-2s0 4-2 2z' fill='none' stroke='%23a0896b' stroke-width='1' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;
     background-size: contain;
     opacity: 0.3;
 }
@@ -607,21 +601,18 @@ input:focus-visible {
     left: 0;
     width: 100%;
     height: 3px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M2 3c20 0 20 2 40 2s20-2 40-2 20 2 16 2' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
-        repeat-x;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6'%3E%3Cpath d='M2 3c20 0 20 2 40 2s20-2 40-2 20 2 16 2' fill='none' stroke='%23a0896b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
     background-size: 100px 6px;
     opacity: 0.6;
 }
 
 /* 手绘风格的高亮标记 */
 .handdrawn-highlight {
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(212, 196, 168, 0.3) 10%,
-        rgba(212, 196, 168, 0.3) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(212, 196, 168, 0.3) 10%,
+            rgba(212, 196, 168, 0.3) 90%,
+            transparent 100%);
     padding: 0.1em 0.3em;
     border-radius: 3px;
     position: relative;
@@ -705,11 +696,9 @@ input:focus-visible {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(
-        90deg,
-        var(--vp-c-brand-1) 0%,
-        var(--vp-c-brand-3) 100%
-    );
+    background: linear-gradient(90deg,
+            var(--vp-c-brand-1) 0%,
+            var(--vp-c-brand-3) 100%);
 }
 
 .article-card:hover {
@@ -740,13 +729,13 @@ input:focus-visible {
     line-height: 1.8;
 }
 
-.VPDoc .content > * + * {
+.VPDoc .content>*+* {
     margin-top: 1.75rem;
 }
 
-.VPDoc .content > h2 + *,
-.VPDoc .content > h3 + *,
-.VPDoc .content > h4 + * {
+.VPDoc .content>h2+*,
+.VPDoc .content>h3+*,
+.VPDoc .content>h4+* {
     margin-top: 1.25rem;
 }
 
@@ -763,12 +752,10 @@ input:focus-visible {
 .VPDoc hr {
     border: none;
     height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--vp-c-divider) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--vp-c-divider) 50%,
+            transparent 100%);
     margin: 3rem 0;
 }
 
@@ -787,6 +774,7 @@ input:focus-visible {
 
 /* 增强可访问性 */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -804,12 +792,12 @@ input:focus-visible {
 }
 
 /* 优化段落间距，营造阅读的节奏感 */
-.VPDoc .content p + p {
+.VPDoc .content p+p {
     margin-top: 2rem;
 }
 
-.VPDoc .content p + h2,
-.VPDoc .content p + h3 {
+.VPDoc .content p+h2,
+.VPDoc .content p+h3 {
     margin-top: 3.5rem;
 }
 
@@ -818,13 +806,6 @@ input:focus-visible {
     background-color: rgba(160, 137, 107, 0.08);
     border-radius: 6px;
     margin: 2px 0;
-}
-
-/* 柔和的悬停效果 */
-.VPFeature:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 48px rgba(160, 137, 107, 0.1);
-    border-color: var(--vp-c-brand-2);
 }
 
 /* 手绘风格的注释框 */
@@ -850,7 +831,7 @@ input:focus-visible {
 }
 
 /* 增加页面元素之间的呼吸空间 */
-.VPDoc > * + * {
+.VPDoc>*+* {
     margin-top: 2.5rem;
 }
 
@@ -870,20 +851,6 @@ input:focus-visible {
     overflow: hidden;
 }
 
-.VPDoc pre::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(
-        180deg,
-        var(--vp-c-brand-1) 0%,
-        var(--vp-c-brand-3) 100%
-    );
-}
-
 /* 手绘风格的分页导航 */
 .VPDocFooter .prev-next {
     margin-top: 4rem;
@@ -893,25 +860,20 @@ input:focus-visible {
 
 /* 细节优化：让链接更有温度 */
 .VPDoc a:not(.header-anchor) {
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(160, 137, 107, 0.1) 50%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(160, 137, 107, 0.1) 50%,
+            transparent 100%);
     padding: 0.1em 0.2em;
     border-radius: 3px;
     transition: all 0.2s ease;
 }
 
 .VPDoc a:not(.header-anchor):hover {
-    background: linear-gradient(
-        120deg,
-        rgba(160, 137, 107, 0.15) 0%,
-        rgba(160, 137, 107, 0.25) 50%,
-        rgba(160, 137, 107, 0.15) 100%
-    );
-    transform: translateY(-1px);
+    background: linear-gradient(120deg,
+            rgba(160, 137, 107, 0.15) 0%,
+            rgba(160, 137, 107, 0.25) 50%,
+            rgba(160, 137, 107, 0.15) 100%);
 }
 
 /* Hero区域的插图样式增强 */
@@ -920,6 +882,7 @@ input:focus-visible {
 }
 
 @keyframes heroIllustrationFloat {
+
     0%,
     100% {
         transform: translateY(0px) rotate(0deg);
@@ -994,7 +957,6 @@ a:hover .external-link-icon {
 
 /* 图片懒加载优化 */
 img[loading="lazy"] {
-    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
@@ -1084,6 +1046,7 @@ pre[data-language]::before {
 
 /* 打印样式优化 - SEO友好 */
 @media print {
+
     .reading-progress,
     .skip-to-content,
     .VPNav,
@@ -1121,6 +1084,7 @@ pre[data-language]::before {
 
 /* 减少动画偏好支持 */
 @media (prefers-reduced-motion: reduce) {
+
     .reading-progress,
     .logo::after,
     * {
