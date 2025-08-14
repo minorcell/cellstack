@@ -1,11 +1,11 @@
 ---
-title: 技术博客
+title: 博客
 description: CellStack 技术博客，分享前端、后端、DevOps、AI 工程等领域的实战经验和最佳实践
 ---
 
-# 技术博客
+# 博客
 
-这里分享我在全栈开发过程中的实战经验、技术思考和最佳实践。
+这里分享我在学习、开发过程中的实战经验、技术思考和最佳实践。
 
 - GitHub: [minorcell](https://github.com/minorcell)
 - 个人主页: [mcell.top](https://mcell.top)

@@ -5,19 +5,16 @@ hero:
   text: "工程师的技术笔记"
   tagline: "从零到落地，涵盖前端、后端、DevOps 工程实践"
   image:
-    src: /hero-illustration.svg
+    src: /logo.svg
     alt: CellStack 手绘插图
   actions:
-    - theme: brand
-      text: 开始阅读
+    - text: 预览博客
       link: /blog/
 ---
 
 <div class="home-content">
 
 ## 为什么要做 CellStack ？
-
-<HandDrawnIllustration variant="abstract" color-scheme="default" />
 
 这里不仅仅是技术文档的堆砌，而是一个有温度的知识分享平台。我相信技术应该是**简洁而优雅**的，就像这个网站的设计一样。
 
@@ -28,8 +25,6 @@ hero:
 实践导向 — 每个知识点都来自真实项目经验。
 
 持续更新 — 技术变化，知识库也在不断完善。
-
-<HandDrawnIllustration variant="organic" color-scheme="earth" />
 
 </div>
 
@@ -47,6 +42,7 @@ hero:
   margin: 3rem 0 1.5rem 0;
   text-align: center;
   letter-spacing: -0.02em;
+  border: none;
 }
 
 .home-content h3 {

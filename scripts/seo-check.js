@@ -70,7 +70,7 @@ class SEOChecker {
       }
 
       // 检查favicon配置
-      if (configContent.includes('logo-simple.svg')) {
+      if (configContent.includes('logo.svg')) {
         this.successes.push('✓ favicon配置正确');
       } else {
         this.warnings.push('⚠️ favicon配置可能需要更新');
@@ -87,7 +87,7 @@ class SEOChecker {
       { path: 'robots.txt', critical: true },
       { path: 'sitemap.xml', critical: true },
       { path: 'manifest.json', critical: false },
-      { path: 'logo-simple.svg', critical: true },
+      { path: 'logo.svg', critical: true },
       { path: 'browserconfig.xml', critical: false },
       { path: 'google-site-verification.html', critical: false },
       { path: 'baidu_verify.html', critical: false }
@@ -221,12 +221,12 @@ class SEOChecker {
       // 检查图标配置
       if (manifestContent.icons && manifestContent.icons.length > 0) {
         const hasSimpleLogo = manifestContent.icons.some(icon =>
-          icon.src.includes('logo-simple.svg')
+          icon.src.includes('logo.svg')
         );
         if (hasSimpleLogo) {
           this.successes.push('✓ manifest图标配置正确');
         } else {
-          this.warnings.push('⚠️ manifest图标未使用logo-simple.svg');
+          this.warnings.push('⚠️ manifest图标未使用logo.svg');
         }
       }
 
@@ -237,10 +237,10 @@ class SEOChecker {
 
   // 检查favicon文件
   checkFavicons() {
-    const logoPath = path.join(this.publicPath, 'logo-simple.svg');
+    const logoPath = path.join(this.publicPath, 'logo.svg');
 
     if (fs.existsSync(logoPath)) {
-      this.successes.push('✓ logo-simple.svg 文件存在');
+      this.successes.push('✓ logo.svg 文件存在');
 
       // 检查SVG内容
       try {
@@ -254,7 +254,7 @@ class SEOChecker {
         this.errors.push(`SVG logo 检查失败: ${error.message}`);
       }
     } else {
-      this.errors.push('❌ logo-simple.svg 文件不存在');
+      this.errors.push('❌ logo.svg 文件不存在');
     }
   }
 
@@ -373,7 +373,7 @@ class SEOChecker {
 - [${fs.existsSync(path.join(this.publicPath, 'sitemap.xml')) ? 'x' : ' '}] sitemap.xml文件
 
 ## 🖼️ 媒体优化
-- [${fs.existsSync(path.join(this.publicPath, 'logo-simple.svg')) ? 'x' : ' '}] favicon配置
+- [${fs.existsSync(path.join(this.publicPath, 'logo.svg')) ? 'x' : ' '}] favicon配置
 - [ ] 图片alt属性检查
 - [ ] 图片压缩优化
 - [ ] WebP格式支持

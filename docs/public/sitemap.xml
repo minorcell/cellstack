@@ -13,7 +13,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://stack.mcell.top/logo-simple.svg</image:loc>
+      <image:loc>https://stack.mcell.top/logo.svg</image:loc>
       <image:title>CellStack - 工程师技术笔记</image:title>
       <image:caption>专业的全栈工程师技术笔记分享平台</image:caption>
     </image:image>

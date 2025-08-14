@@ -4,7 +4,7 @@
 export function enhanceSEO() {
   // SSR兼容性检查
   if (typeof window === "undefined") {
-    return { init: () => {} };
+    return { init: () => { } };
   }
   // 1. 动态Meta标签优化
   function updatePageMeta() {
@@ -128,7 +128,7 @@ export function enhanceSEO() {
           name: "CellStack",
           logo: {
             "@type": "ImageObject",
-            url: "https://stack.mcell.top/logo-simple.svg",
+            url: "https://stack.mcell.top/logo.svg",
           },
         },
         datePublished: lastUpdated || new Date().toISOString(),
@@ -220,7 +220,7 @@ export function enhanceSEO() {
   // 4. 核心Web指标优化
   function optimizeCoreWebVitals() {
     // 预加载关键资源
-    const criticalResources = ["/logo-simple.svg"];
+    const criticalResources = ["/logo.svg"];
 
     criticalResources.forEach((resource) => {
       const link = document.createElement("link");
@@ -265,118 +265,6 @@ export function enhanceSEO() {
         icon.style.fontSize = "0.8em";
         link.appendChild(icon);
       }
-    });
-
-    // 阅读进度条
-    addReadingProgress();
-  }
-
-  function addReadingProgress() {
-    if (document.querySelector(".reading-progress")) return;
-
-    const progressBar = document.createElement("div");
-    progressBar.className = "reading-progress";
-    progressBar.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, #b59f82, #8b7355);
-      z-index: 1000;
-      transition: width 0.1s ease;
-    `;
-    document.body.appendChild(progressBar);
-
-    window.addEventListener("scroll", () => {
-      const winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      const height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + "%";
-    });
-  }
-
-  // 6. 搜索引擎优化增强
-  function enhanceSearchability() {
-    // 为代码块添加语言标识
-    const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
-    codeBlocks.forEach((block) => {
-      const language = block.className.match(/language-(\w+)/)?.[1];
-      if (language && !block.getAttribute("data-language")) {
-        block.setAttribute("data-language", language);
-        block.setAttribute("aria-label", `${language} 代码示例`);
-      }
-    });
-
-    // 为标题添加锚点ID（如果没有的话）
-    const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
-    headings.forEach((heading) => {
-      if (!heading.id) {
-        const id = heading.textContent
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, "")
-          .replace(/[\s_-]+/g, "-")
-          .replace(/^-+|-+$/g, "");
-        heading.id = id;
-      }
-    });
-  }
-
-  // 7. 分析和监控
-  function addAnalytics() {
-    // 页面加载性能监控
-    if ("performance" in window) {
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          const perfData = performance.getEntriesByType("navigation")[0];
-          if (perfData) {
-            console.log("页面性能指标:", {
-              DNS查询: Math.round(
-                perfData.domainLookupEnd - perfData.domainLookupStart,
-              ),
-              TCP连接: Math.round(perfData.connectEnd - perfData.connectStart),
-              首字节时间: Math.round(
-                perfData.responseStart - perfData.requestStart,
-              ),
-              页面加载: Math.round(
-                perfData.loadEventEnd - perfData.navigationStart,
-              ),
-              DOMContentLoaded: Math.round(
-                perfData.domContentLoadedEventEnd - perfData.navigationStart,
-              ),
-            });
-          }
-        }, 0);
-      });
-    }
-
-    // 用户行为跟踪（隐私友好）
-    trackUserEngagement();
-  }
-
-  function trackUserEngagement() {
-    let scrollDepth = 0;
-    let timeOnPage = Date.now();
-
-    window.addEventListener("scroll", () => {
-      const currentScroll = Math.round(
-        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
-          100,
-      );
-      scrollDepth = Math.max(scrollDepth, currentScroll);
-    });
-
-    window.addEventListener("beforeunload", () => {
-      const sessionTime = Date.now() - timeOnPage;
-      // 这里可以发送到分析服务，但要符合隐私规范
-      console.log("用户参与度:", {
-        页面停留时间: Math.round(sessionTime / 1000) + "秒",
-        滚动深度: scrollDepth + "%",
-        页面: window.location.pathname,
-      });
     });
   }
 
@@ -479,7 +367,7 @@ export function enhanceSEO() {
           name: "CellStack",
           logo: {
             "@type": "ImageObject",
-            url: "https://stack.mcell.top/logo-simple.svg",
+            url: "https://stack.mcell.top/logo.svg",
           },
         },
         datePublished: new Date().toISOString(),

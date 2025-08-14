@@ -7,10 +7,10 @@ export default {
 
   head: [
     // Favicon 优化
-    ["link", { rel: "icon", href: "/logo-simple.svg", type: "image/svg+xml" }],
+    ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
     [
       "link",
-      { rel: "apple-touch-icon", href: "/logo-simple.svg", sizes: "180x180" },
+      { rel: "apple-touch-icon", href: "/logo.svg", sizes: "180x180" },
     ],
 
     // 基础SEO Meta标签
@@ -19,7 +19,7 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
     ],
     ["meta", { name: "theme-color", content: "#8b7355" }],
-    ["meta", { name: "author", content: "CellStack" }],
+    ["meta", { name: "author", content: "minorcell" }],
     ["meta", { name: "robots", content: "index, follow" }],
     ["meta", { name: "googlebot", content: "index, follow" }],
 
@@ -53,7 +53,7 @@ export default {
       "meta",
       {
         property: "og:image",
-        content: "https://stack.mcell.top/logo-simple.svg",
+        content: "https://stack.mcell.top/logo.svg",
       },
     ],
     ["meta", { property: "og:image:width", content: "400" }],
@@ -80,7 +80,7 @@ export default {
       "meta",
       {
         name: "twitter:image",
-        content: "https://stack.mcell.top/logo-simple.svg",
+        content: "https://stack.mcell.top/logo.svg",
       },
     ],
     ["meta", { name: "twitter:image:alt", content: "CellStack技术笔记平台" }],
@@ -108,7 +108,7 @@ export default {
           name: "CellStack",
           logo: {
             "@type": "ImageObject",
-            url: "https://stack.mcell.top/logo-simple.svg",
+            url: "https://stack.mcell.top/logo.svg",
           },
         },
         potentialAction: {
@@ -168,7 +168,7 @@ export default {
   },
 
   themeConfig: {
-    logo: "/logo-simple.svg",
+    logo: "/logo.svg",
     siteTitle: "CellStack",
 
     nav: [
@@ -188,16 +188,6 @@ export default {
           ],
         },
         {
-          text: "客户端",
-          items: [
-            { text: "JS Map 知多少：揭开键值对存储的隐秘角落", link: "/blog/2025/02_jsmap" },
-            { text: "你不知道的 Vue Style 黑魔法", link: "/blog/2025/03_vuestyle" },
-            { text: "Vue 自定义指令：揭开 DOM 操作的神秘面纱", link: "/blog/2025/05_vuedirective" },
-            { text: "当浏览器也开始‘造轮子’：Web Components 的觉醒之旅", link: "/blog/2025/06_webcomponents" },
-            { text: "每秒打印一个数字：从简单到晦涩的多种实现", link: "/blog/2025/07_jsprintnum" },
-          ],
-        },
-        {
           text: "服务端",
           items: [
             { text: "项目配置管理的进化之路：从混乱到工程化", link: "/blog/2025/09_projectconfig" },
@@ -207,6 +197,16 @@ export default {
             { text: "那台榨汁机，竟是哈希表祖师爷？", link: "/blog/2025/19_hash" },
             { text: "告别轮询！深度剖析 WebSocket：全双工实时通信原理与实战", link: "/blog/2025/22_ws" },
 
+          ],
+        },
+        {
+          text: "客户端",
+          items: [
+            { text: "JS Map 知多少：揭开键值对存储的隐秘角落", link: "/blog/2025/02_jsmap" },
+            { text: "你不知道的 Vue Style 黑魔法", link: "/blog/2025/03_vuestyle" },
+            { text: "Vue 自定义指令：揭开 DOM 操作的神秘面纱", link: "/blog/2025/05_vuedirective" },
+            { text: "当浏览器也开始‘造轮子’：Web Components 的觉醒之旅", link: "/blog/2025/06_webcomponents" },
+            { text: "每秒打印一个数字：从简单到晦涩的多种实现", link: "/blog/2025/07_jsprintnum" },
           ],
         },
         {
@@ -331,7 +331,7 @@ export default {
 
   // Markdown 配置优化
   markdown: {
-    lineNumbers: true,
+    lineNumbers: false,
     container: {
       tipLabel: "提示",
       warningLabel: "注意",

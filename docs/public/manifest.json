@@ -29,29 +29,29 @@
   ],
   "icons": [
     {
-      "src": "/logo-simple.svg",
+      "src": "/logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo-simple.svg",
+      "src": "/logo.svg",
       "sizes": "16x16",
       "type": "image/svg+xml"
     },
     {
-      "src": "/logo-simple.svg",
+      "src": "/logo.svg",
       "sizes": "32x32",
       "type": "image/svg+xml"
     },
     {
-      "src": "/logo-simple.svg",
+      "src": "/logo.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/logo-simple.svg",
+      "src": "/logo.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -65,7 +65,7 @@
       "url": "/language-basics/",
       "icons": [
         {
-          "src": "/logo-simple.svg",
+          "src": "/logo.svg",
           "sizes": "96x96"
         }
       ]
@@ -77,7 +77,7 @@
       "url": "/engineering-practice/",
       "icons": [
         {
-          "src": "/logo-simple.svg",
+          "src": "/logo.svg",
           "sizes": "96x96"
         }
       ]
@@ -89,7 +89,7 @@
       "url": "/blog/",
       "icons": [
         {
-          "src": "/logo-simple.svg",
+          "src": "/logo.svg",
           "sizes": "96x96"
         }
       ]
