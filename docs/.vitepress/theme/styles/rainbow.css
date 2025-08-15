@@ -1,0 +1,124 @@
+/* 主题色动画 */
+@keyframes rainbow {
+    0% {
+        --rainbow-prev: #FF8C59;
+        --rainbow-next: #FF9A6E;
+    }
+
+    5% {
+        --rainbow-prev: #FF8F5F;
+        --rainbow-next: #FF9D74;
+    }
+
+    10% {
+        --rainbow-prev: #FF9166;
+        --rainbow-next: #FFA079;
+    }
+
+    15% {
+        --rainbow-prev: #FF946C;
+        --rainbow-next: #FFA37F;
+    }
+
+    20% {
+        --rainbow-prev: #FF9773;
+        --rainbow-next: #FFA684;
+    }
+
+    25% {
+        --rainbow-prev: #FF9A6E;
+        --rainbow-next: #FFA884;
+    }
+
+    30% {
+        --rainbow-prev: #FF9D74;
+        --rainbow-next: #FFAB8A;
+    }
+
+    35% {
+        --rainbow-prev: #FFA079;
+        --rainbow-next: #FFAE8F;
+    }
+
+    40% {
+        --rainbow-prev: #FFA37F;
+        --rainbow-next: #FFB194;
+    }
+
+    45% {
+        --rainbow-prev: #FFA684;
+        --rainbow-next: #FFB499;
+    }
+
+    50% {
+        --rainbow-prev: #FFA884;
+        --rainbow-next: #FFB599;
+    }
+
+    55% {
+        --rainbow-prev: #FFA684;
+        --rainbow-next: #FFB194;
+    }
+
+    60% {
+        --rainbow-prev: #FFA37F;
+        --rainbow-next: #FFAE8F;
+    }
+
+    65% {
+        --rainbow-prev: #FFA079;
+        --rainbow-next: #FFAB8A;
+    }
+
+    70% {
+        --rainbow-prev: #FF9D74;
+        --rainbow-next: #FFA884;
+    }
+
+    75% {
+        --rainbow-prev: #FF9A6E;
+        --rainbow-next: #FFA684;
+    }
+
+    80% {
+        --rainbow-prev: #FF9773;
+        --rainbow-next: #FFA37F;
+    }
+
+    85% {
+        --rainbow-prev: #FF946C;
+        --rainbow-next: #FFA079;
+    }
+
+    90% {
+        --rainbow-prev: #FF9166;
+        --rainbow-next: #FF9D74;
+    }
+
+    95% {
+        --rainbow-prev: #FF8F5F;
+        --rainbow-next: #FF9A6E;
+    }
+
+    100% {
+        --rainbow-prev: #FF8C59;
+        --rainbow-next: #FF9A6E;
+    }
+}
+
+/* 主题色卡初始色 */
+:root {
+    --rainbow-prev: #FF8C59;
+    --rainbow-next: #FF9A6E;
+    animation: rainbow 8s linear infinite;
+}
+
+:root {
+    /* hero标题渐变色 */
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, var(--rainbow-prev) 30%, var(--rainbow-next));
+
+    /*hero logo背景渐变色 */
+    --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--rainbow-prev) 30%, var(--rainbow-next));
+    --vp-home-hero-image-filter: blur(150px);
+}

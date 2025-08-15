@@ -21,6 +21,7 @@
   "author": "learner",
   "license": "MIT",
   "devDependencies": {
+    "medium-zoom": "^1.1.0",
     "terser": "^5.43.1",
     "vitepress": "^1.0.0"
   }

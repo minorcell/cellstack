@@ -332,7 +332,7 @@ export default {
 
   // Markdown 配置优化
   markdown: {
-    lineNumbers: false,
+    lineNumbers: true,
     container: {
       tipLabel: "提示",
       warningLabel: "注意",

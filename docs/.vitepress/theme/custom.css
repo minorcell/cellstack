@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
+@import url("./styles/code.css");
+@import url("./styles/rainbow.css");
+@import url("./styles/blur.css");
+
 .hand-drawn-filter {
     filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='roughPaper' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence baseFrequency='0.04' numOctaves='5' result='noise' seed='1'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E#roughPaper");
 }
@@ -206,96 +210,6 @@ body::before {
     color: var(--vp-c-brand-2);
 }
 
-/* 代码块样式 */
-.VPDoc code {
-    font-family: var(--vp-font-family-mono);
-    font-size: 0.875em;
-    color: #333333;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-}
-
-/* 暗黑模式下内联代码样式 */
-.dark .VPDoc code {
-    color: #ffffff;
-}
-
-/* 亮色模式下代码块样式 */
-.VPDoc pre {
-    background-color: #f8f8f8 !important;
-    border-radius: 8px;
-    margin: 2rem 0;
-    overflow-x: auto;
-    border: none;
-}
-
-.VPDoc pre code {
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    color: #333333;
-}
-
-/* 暗黑模式下代码块样式 */
-.dark .VPDoc pre {
-    background-color: #000000 !important;
-}
-
-.dark .VPDoc pre code {
-    color: #00ff41;
-    /* 绿色终端风格 */
-}
-
-/* 亮色模式语法高亮 */
-.VPDoc pre code .token.comment {
-    color: #6a737d;
-}
-
-.VPDoc pre code .token.string {
-    color: #032f62;
-}
-
-.VPDoc pre code .token.function {
-    color: #6f42c1;
-}
-
-.VPDoc pre code .token.keyword {
-    color: #d73a49;
-}
-
-.VPDoc pre code .token.number {
-    color: #005cc5;
-}
-
-.VPDoc pre code .token.operator {
-    color: #d73a49;
-}
-
-/* 暗黑模式语法高亮 */
-.dark .VPDoc pre code .token.comment {
-    color: #999999;
-}
-
-.dark .VPDoc pre code .token.string {
-    color: #98c379;
-}
-
-.dark .VPDoc pre code .token.function {
-    color: #61afef;
-}
-
-.dark .VPDoc pre code .token.keyword {
-    color: #c678dd;
-}
-
-.dark .VPDoc pre code .token.number {
-    color: #d19a66;
-}
-
-.dark .VPDoc pre code .token.operator {
-    color: #56b6c2;
-}
-
 /* 引用样式 */
 .VPDoc blockquote {
     border-left: none;
@@ -311,7 +225,6 @@ body::before {
 
 /* 导航栏样式 */
 .VPNav {
-    background-color: var(--vp-c-bg);
     border-bottom: 1px solid var(--vp-c-divider);
     backdrop-filter: blur(10px);
     border: none !important;
@@ -319,10 +232,6 @@ body::before {
 
 .VPNav .title {
     border-bottom: none;
-}
-
-.VPNavBar {
-    padding: 0 32px;
 }
 
 .VPNavBarTitle .title {
@@ -935,4 +844,13 @@ hr {
 
 .dark .VPButton.brand {
     background: none !important;
+}
+
+.medium-zoom-overlay {
+    z-index: 30;
+}
+
+.medium-zoom-image {
+    z-index: 9999 !important;
+    /* 给的值是21，但是实测盖不住，直接999 */
 }
