@@ -244,8 +244,8 @@ export default {
     ],
 
     footer: {
-      message: `访问 <span id="busuanzi_value_site_pv" ></span> 次  | 访客 <span id="busuanzi_value_site_uv" ></span> 人`,
-      copyright: "Copyright © 2025 CellStack.",
+      message: `累计提供服务 <span id="busuanzi_value_site_pv" ></span> 次`,
+      copyright: `Copyright © 2025 <a href="https://github.com/minorcell/">CellStack</a>`,
     },
 
     lastUpdated: {
