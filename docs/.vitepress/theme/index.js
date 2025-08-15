@@ -2,10 +2,12 @@
 import DefaultTheme from "vitepress/theme";
 import "./custom.css";
 import PageLayout from "./components/PageLayout.vue";
-import { enhanceSEO } from "./seo-enhance.js";
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vitepress';
+import { useRoute, inBrowser, useData } from 'vitepress';
+import busuanzi from 'busuanzi.pure.js'
+import { NProgress } from 'nprogress-v2/dist/index.js'
+import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
 export default {
   extends: DefaultTheme,
@@ -13,43 +15,18 @@ export default {
     // 注册全局组件
     app.component("PageLayout", PageLayout);
 
-    // 初始化SEO优化
-    if (typeof window !== "undefined") {
-      const seoEnhancer = enhanceSEO();
-      seoEnhancer.init();
-
-      // 路由变化时重新执行SEO优化
-      router.onAfterRouteChanged = (to) => {
-        setTimeout(() => {
-          seoEnhancer.init();
-
-          // 在开发环境下自动执行SEO检查
-          if (
-            window.location.hostname === "localhost" ||
-            window.location.hostname === "127.0.0.1"
-          ) {
-            setTimeout(() => {
-              window.CellStackSEO?.healthCheck();
-            }, 1000);
-          }
-        }, 100);
-      };
-
-      // 页面完全加载后初始化SEO报告工具
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          // 全局SEO工具已在seo-report.js中定义
-          if (window.CellStackSEO) {
-            console.log("CellStack SEO工具已就绪");
-            console.log("在控制台输入以下命令使用:");
-            console.log(
-              "   window.CellStackSEO.generateReport() - 生成完整SEO报告",
-            );
-            console.log("   window.CellStackSEO.healthCheck() - 快速健康检查");
-            console.log("   window.CellStackSEO.exportReport() - 导出详细报告");
-          }
-        }, 2000);
-      });
+    if (inBrowser) {
+      router.onAfterRouteChanged = () => {
+        busuanzi.fetch()
+      }
+      NProgress.configure({ showSpinner: false })
+      router.onBeforeRouteChange = () => {
+        NProgress.start() // 开始进度条
+      }
+      router.onAfterRouteChanged = () => {
+        busuanzi.fetch()
+        NProgress.done() // 停止进度条
+      }
     }
   },
   setup() {
@@ -64,6 +41,23 @@ export default {
     watch(
       () => route.path,
       () => nextTick(() => initZoom())
+    );
+
+    const { frontmatter } = useData();
+
+    giscusTalk({
+      repo: 'minorcell/cellstack',
+      repoId: 'R_kgDOPdW_4w',
+      category: 'General',
+      categoryId: 'DIC_kwDOPdW_484CuOIM',
+      mapping: 'pathname',
+      inputPosition: 'bottom',
+      lang: 'zh-CN',
+    },
+      {
+        frontmatter, route
+      },
+      true
     );
   },
 };

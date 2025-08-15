@@ -244,7 +244,7 @@ export default {
     ],
 
     footer: {
-      message: "持续探索...",
+      message: `访问 <span id="busuanzi_value_site_pv" ></span> 次  | 访客 <span id="busuanzi_value_site_uv" ></span> 人`,
       copyright: "Copyright © 2025 CellStack.",
     },
 
