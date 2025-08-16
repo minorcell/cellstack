@@ -29,6 +29,9 @@ importers:
       medium-zoom:
         specifier: ^1.1.0
         version: 1.1.0
+      mermaid:
+        specifier: ^11.9.0
+        version: 11.9.0
       nprogress-v2:
         specifier: ^1.1.10
         version: 1.1.10

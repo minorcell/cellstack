@@ -11,7 +11,6 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 export default {
   extends: DefaultTheme,
   enhanceApp({ app, router, siteData }) {
-
     if (inBrowser) {
       router.onAfterRouteChanged = () => {
         busuanzi.fetch()
@@ -45,7 +44,7 @@ export default {
     // 更新 giscus 主题的函数
     const updateGiscusTheme = (theme) => {
       if (!inBrowser) return;
-      
+
       const sendMessage = () => {
         const iframe = document.querySelector('iframe.giscus-frame');
         if (iframe) {
@@ -61,7 +60,7 @@ export default {
 
       // 立即尝试发送
       sendMessage();
-      
+
       // 如果 iframe 还没加载完成，延迟发送
       setTimeout(sendMessage, 100);
       setTimeout(sendMessage, 500);
