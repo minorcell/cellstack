@@ -16,4 +16,4 @@ description: CellStack 技术博客，分享前端、后端、DevOps、AI 工程
 - GitHub: [minorcell](https://github.com/minorcell)
 - 个人主页: [mcell.top](https://mcell.top)
 
-如果你对某个话题特别感兴趣，或者想讨论什么，可以直接在文章下方通过 **giscus 评论区**交流 🙌
+如果你对某个话题特别感兴趣，或者想讨论什么，可以直接在文章下方通过 **giscus 评论区**交流
