@@ -16,7 +16,7 @@ tags:
 
 今天，我们就来深入探讨如何通过 ESLint 和 Prettier 的结合，在 VSCode 中实现这一"自动化"流程，并揭示其中的一些关键点。
 
-### 1. 确保插件已正确安装
+### 确保插件已正确安装
 
 首先，我们需要确保两个核心工具已经就位：**ESLint** 和 **Prettier**。它们分别扮演着不同的角色：
 
@@ -32,17 +32,17 @@ tags:
 
 > **小提示**：插件只是第一步，真正让它们发挥作用的是后续的配置。别急，我们慢慢来。
 
-### 2. 配置默认格式化工具
+### 配置默认格式化工具
 
 VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Beautify 等），但我们希望明确指定 **Prettier** 作为默认格式化工具。为什么？因为 Prettier 更加专注于代码风格，且与 ESLint 的集成更加顺畅。
 
-#### 方法一：通过 UI 设置
+#### 通过 UI 设置
 
 1. 打开 VSCode 设置（Mac: `Cmd + ,`，Windows/Linux: `Ctrl + ,`）。
 2. 搜索 `Default Formatter`。
 3. 将其设置为 `esbenp.prettier-vscode`（即 Prettier 插件）。
 
-#### 方法二：直接修改 `settings.json`
+#### 直接修改 `settings.json`
 
 如果你更喜欢手动编辑配置文件，可以在 `settings.json` 中添加如下内容：
 
@@ -63,17 +63,17 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 
 这段配置的意思是：针对 JavaScript、TypeScript、HTML 和 Vue 文件，默认使用 Prettier 进行格式化。
 
-### 3. 启用保存时自动格式化
+### 启用保存时自动格式化
 
 接下来，我们需要告诉 VSCode 在保存文件时自动格式化代码。这个功能非常实用，因为它让你无需额外操作即可保持代码整洁。
 
-#### 方法一：通过 UI 设置
+#### 通过 UI 设置
 
 1. 打开设置（`Cmd + ,` 或 `Ctrl + ,`）。
 2. 搜索 `Format On Save`。
 3. 勾选 `Editor: Format On Save`。
 
-#### 方法二：直接修改 `settings.json`
+#### 直接修改 `settings.json`
 
 在 `settings.json` 中添加以下配置：
 
@@ -83,17 +83,17 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 
 这样，每次保存文件时，VSCode 都会调用默认格式化工具（也就是我们刚刚配置的 Prettier）对代码进行格式化。
 
-### 4. 配置 ESLint 自动修复
+### 配置 ESLint 自动修复
 
 虽然 Prettier 负责代码风格，但 ESLint 的作用不可忽视——它可以捕获代码中的潜在问题（如未使用的变量、语法错误等）。为了让 ESLint 在保存时也能自动修复这些问题，我们需要启用它的 `Auto Fix On Save` 功能。
 
-#### 方法一：通过 UI 设置
+#### 通过 UI 设置
 
 1. 打开设置（`Cmd + ,` 或 `Ctrl + ,`）。
 2. 搜索 `ESLint: Auto Fix On Save`。
 3. 勾选该选项。
 
-#### 方法二：直接修改 `settings.json`
+#### 直接修改 `settings.json`
 
 在 `settings.json` 中添加以下配置：
 
@@ -105,7 +105,7 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 
 这段配置的意思是：在保存文件时，自动运行 ESLint 的修复功能。
 
-### 5. 让 Prettier 和 ESLint 协同工作
+### 让 Prettier 和 ESLint 协同工作
 
 到目前为止，我们已经配置了 Prettier 和 ESLint 的基本功能，但它们之间可能会存在规则冲突。例如，ESLint 可能要求使用双引号，而 Prettier 默认使用单引号。这种冲突会导致格式化结果不一致。
 
@@ -133,7 +133,7 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 
 通过这种方式，ESLint 会优先使用 Prettier 的规则，从而避免冲突。
 
-### 6. 验证配置
+### 验证配置
 
 完成上述步骤后，我们需要验证配置是否生效。以下是验证方法：
 
@@ -142,7 +142,7 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 3. 按下 `Command + S` 或 `Ctrl + S`。
 4. 如果配置正确，代码应该会自动格式化，并且 ESLint 的问题也会被修复。
 
-### 7. 完整的 `settings.json` 示例
+### 完整的 `settings.json` 示例
 
 为了方便参考，这里是一个完整的 `settings.json` 配置示例：
 
@@ -171,19 +171,19 @@ VSCode 支持多种格式化工具（比如内置的格式化器、Prettier、Be
 }
 ```
 
-### 8. 常见问题排查
+### 常见问题排查
 
-#### 问题 1：格式化未生效
+#### 格式化未生效
 
 - 确保当前文件类型支持 Prettier（例如 `.js`, `.ts`, `.vue` 等）。
 - 检查 `settings.json` 中是否正确设置了 `editor.defaultFormatter`。
 
-#### 问题 2：ESLint 自动修复未生效
+#### ESLint 自动修复未生效
 
 - 确保项目中已安装 ESLint 和相关插件。
 - 检查 `.eslintrc.js` 文件是否正确配置了 `eslint-plugin-prettier`。
 
-#### 问题 3：规则冲突
+#### 规则冲突
 
 - 如果 Prettier 和 ESLint 规则冲突，优先使用 `eslint-config-prettier` 来禁用冲突规则。
 
