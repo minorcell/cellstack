@@ -12,6 +12,6 @@ hero:
       link: /me/
     - text: 博客
       link: /blog/
-    - text: 转载
+    - text: 收录
       link: /transpond/
 ---

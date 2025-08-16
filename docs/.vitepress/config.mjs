@@ -23,7 +23,7 @@ const defaultTheme = {
         activeMatch: "/blog/",
       },
       {
-        text: "转载",
+        text: "收录",
         link: "/transpond/",
         activeMatch: "/transpond/",
       },
@@ -85,17 +85,12 @@ const defaultTheme = {
       ],
       "/transpond/": [
         {
-          text: "转载",
+          text: "收录",
           items: [
             { text: "介绍", link: "/transpond/" },
+            { text: "写作类", link: "/transpond/01_write" }
           ],
         },
-        {
-          text: "写作",
-          items: [
-            { text: "阮一峰老师最新分享：《技术写作的首要诀窍》", link: "/transpond/write/01_ruanyf" }
-          ]
-        }
       ],
     },
 
