@@ -8,6 +8,10 @@ hero:
     src: /logo.svg
     alt: CellStack 手绘插图
   actions:
-    - text: 预览博客
+    - text: 我
+      link: /me/
+    - text: 博客
       link: /blog/
+    - text: 转载
+      link: /transpond/
 ---
