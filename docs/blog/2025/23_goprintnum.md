@@ -377,7 +377,7 @@ err := db.QueryContext(ctx, "SELECT...")
 | select+Ticker   | ✅   | ✅   | ⚠️\*   | ✅       | ⭐⭐⭐   | 多事件源监控               |
 | context+Ticker  | ✅   | ✅   | ✅     | ✅       | ⭐⭐⭐⭐ | **生产级定时任务（推荐）** |
 
-> \*需自行实现取消通道
+> 需自行实现取消通道
 
 ---
 

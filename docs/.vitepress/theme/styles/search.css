@@ -1,0 +1,67 @@
+/* 搜索框样式 */
+.DocSearch-Button {
+    background-color: var(--vp-c-bg-alt);
+    border: 1px solid var(--vp-c-border);
+    border-radius: 12px;
+    color: var(--vp-c-text-2);
+    width: 400px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 16px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* 搜索框容器居中 */
+.VPNavBarSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* 暗色模式下搜索框样式 */
+.dark .DocSearch-Button {
+    color: #cccccc;
+    background-color: black;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 搜索框图标和文字样式 */
+.DocSearch-Button .DocSearch-Search-Icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+    flex: 1;
+    text-align: left;
+}
+
+.DocSearch-Button .DocSearch-Button-Keys {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    border: none;
+}
+
+.DocSearch-Button .DocSearch-Button-Key {
+    border: none !important;
+}
+
+@media (max-width: 768px) {
+    .DocSearch-Button {
+        width: 240px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .DocSearch-Button {
+        width: 200px;
+        height: 36px;
+    }
+}

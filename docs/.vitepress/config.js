@@ -173,9 +173,19 @@ export default {
 
     nav: [
       {
+        text: "我",
+        link: "/me/",
+        activeMatch: "/me/",
+      },
+      {
         text: "博客",
         link: "/blog/",
         activeMatch: "/blog/",
+      },
+      {
+        text: "转载",
+        link: "/transpond/",
+        activeMatch: "/transpond/",
       },
     ],
 
@@ -237,6 +247,22 @@ export default {
           ],
         },
       ],
+      "/me/": [
+        {
+          text: "关于我",
+          items: [
+            { text: "介绍", link: "/me/" },
+          ],
+        },
+      ],
+      "/transpond/": [
+        {
+          text: "转载",
+          items: [
+            { text: "介绍", link: "/transpond/" },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
@@ -245,7 +271,7 @@ export default {
 
     footer: {
       message: `累计提供服务 <span id="busuanzi_value_site_pv" ></span> 次`,
-      copyright: `Copyright © 2025 <a href="https://github.com/minorcell/">CellStack</a>`,
+      copyright: `© ${new Date().getFullYear()} Created by mcell 豫ICP备2025129196号-1`,
     },
 
     lastUpdated: {
@@ -339,6 +365,9 @@ export default {
       dangerLabel: "警告",
       infoLabel: "信息",
       detailsLabel: "详细信息",
+    },
+    image: {
+      lazyLoading: true
     },
   },
 };
