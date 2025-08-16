@@ -1,7 +1,6 @@
 // VitePress 主题入口文件
 import DefaultTheme from "vitepress/theme";
 import "./custom.css";
-import PageLayout from "./components/PageLayout.vue";
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute, inBrowser, useData } from 'vitepress';
@@ -12,8 +11,6 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 export default {
   extends: DefaultTheme,
   enhanceApp({ app, router, siteData }) {
-    // 注册全局组件
-    app.component("PageLayout", PageLayout);
 
     if (inBrowser) {
       router.onAfterRouteChanged = () => {
@@ -43,7 +40,39 @@ export default {
       () => nextTick(() => initZoom())
     );
 
-    const { frontmatter } = useData();
+    const { frontmatter, isDark } = useData();
+
+    // 更新 giscus 主题的函数
+    const updateGiscusTheme = (theme) => {
+      if (!inBrowser) return;
+      
+      const sendMessage = () => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+          iframe.contentWindow.postMessage({
+            giscus: {
+              setConfig: {
+                theme: theme
+              }
+            }
+          }, 'https://giscus.app');
+        }
+      };
+
+      // 立即尝试发送
+      sendMessage();
+      
+      // 如果 iframe 还没加载完成，延迟发送
+      setTimeout(sendMessage, 100);
+      setTimeout(sendMessage, 500);
+      setTimeout(sendMessage, 1000);
+    };
+
+    // 监听主题变化并更新 giscus 主题
+    watch(isDark, (newVal) => {
+      const theme = newVal ? 'noborder_dark' : 'noborder_light';
+      updateGiscusTheme(theme);
+    });
 
     giscusTalk({
       repo: 'minorcell/cellstack',
@@ -53,6 +82,7 @@ export default {
       mapping: 'pathname',
       inputPosition: 'bottom',
       lang: 'zh-CN',
+      theme: isDark.value ? 'noborder_dark' : 'noborder_light'
     },
       {
         frontmatter, route
