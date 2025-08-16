@@ -3,6 +3,8 @@ title: 我
 description: mCell | DevOps 工程师，专注技术自动化与开源构建。
 ---
 
+![000.png](/images/2025/000.webp)
+
 # 我
 
 关于我, 技术社区常用 **mCell** 或 **minorcell** 标识。

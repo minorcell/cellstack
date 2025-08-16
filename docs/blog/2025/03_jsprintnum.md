@@ -10,6 +10,8 @@ tags:
   - 定时器
 ---
 
+![010.png](/public/images/2025/010.png)
+
 # 探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现
 
 > 本文将摒弃 Web API (`requestAnimationFrame`)，在 Node 环境中探讨六种实现方案，展示不同编程范式下的异步控制技巧。

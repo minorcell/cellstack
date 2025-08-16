@@ -48,6 +48,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
+            { text: "JavaScript 运行机制详解：再谈 Event Loop", link: "/blog/2025/10_jssync" },
             { text: "探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现", link: "/blog/2025/03_jsprintnum" },
             { text: "Vue 样式隔离与动态绑定的工程实践", link: "/blog/2025/01_vuestyle" },
             { text: "IndexedDB 前端数据库实战指南", link: "/blog/2024/01_indexdb" },

@@ -4,6 +4,8 @@ description: IndexedDB 是浏览器提供的本地数据库 API，支持存储�
 tags: [前端, 数据库]
 ---
 
+![012.png](/public/images/2025/012.png)
+
 # IndexedDB 前端数据库实战指南
 
 > IndexedDB 是浏览器提供的本地数据库 API，支持存储大量结构化数据。相比 localStorage，它具备事务处理、索引查询等高级功能，是构建离线应用的首选方案。
