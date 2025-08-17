@@ -12,6 +12,7 @@ tags: [技术博客, 博客]
 
 ## 最近更新
 
+- [编程的未来：从“翻译”到“意图”](/blog/2025/13_codeinfeature)
 - [Claude Code Sub-agent 模式的详解和实践](/blog/2025/12_subagent)
 - [提示工程（Prompt Engineering）入门指南](/blog/2025/11_prompt)
 - [JavaScript 运行机制详解：再谈 Event Loop](/blog/2025/10_jssync)
