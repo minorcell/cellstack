@@ -10,6 +10,12 @@ tags: [技术博客, 博客]
 
 记录在工程化开发中的深度实践与体系化思考，内容覆盖：涵盖前端、后端、DevOps、AI 工程等.
 
+## 最近更新
+
+- [提示工程（Prompt Engineering）入门指南](/blog/2025/11_prompt)
+- [JavaScript 运行机制详解：再谈 Event Loop](/blog/2025/10_jssync)
+- [从 Sleep 到 Select：用一个例子掌握 Go 并发编程精髓](/blog/2025/09_goprintnum)
+
 ## 找到我
 
 - [GitHub@minorcell](https://github.com/minorcell) · 项目迭代

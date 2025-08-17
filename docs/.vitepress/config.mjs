@@ -35,7 +35,6 @@ const defaultTheme = {
           text: "博客",
           items: [
             { text: "介绍", link: "/blog/" },
-            { text: "最近更新", link: "/blog/recent" },
           ],
         },
         {
