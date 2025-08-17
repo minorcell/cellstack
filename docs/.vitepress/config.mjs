@@ -38,6 +38,12 @@ const defaultTheme = {
           ],
         },
         {
+          text: "思考",
+          items: [
+            { text: "编程的未来：从“翻译”到“意图”", link: "/blog/2025/13_codeinfeature" },
+          ]
+        },
+        {
           text: "服务端",
           items: [
             { text: "从 Sleep 到 Select：用一个例子掌握 Go 并发编程精髓", link: "/blog/2025/09_goprintnum" },
