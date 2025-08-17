@@ -12,9 +12,9 @@ tags: [技术博客, 博客]
 
 ## 最近更新
 
+- [Claude Code Sub-agent 模式的详解和实践](/blog/2025/12_subagent)
 - [提示工程（Prompt Engineering）入门指南](/blog/2025/11_prompt)
 - [JavaScript 运行机制详解：再谈 Event Loop](/blog/2025/10_jssync)
-- [从 Sleep 到 Select：用一个例子掌握 Go 并发编程精髓](/blog/2025/09_goprintnum)
 
 ## 找到我
 
