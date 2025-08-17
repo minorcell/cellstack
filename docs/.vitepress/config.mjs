@@ -58,6 +58,7 @@ const defaultTheme = {
         {
           text: "AI 工程",
           items: [
+            { text: "Claude Code Sub-agent 模式的详解和实践", link: "/blog/2025/12_subagent" },
             { text: "提示工程（Prompt Engineering）入门指南", link: "/blog/2025/11_prompt" },
           ],
         },
