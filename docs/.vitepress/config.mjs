@@ -35,6 +35,7 @@ const defaultTheme = {
           text: "博客",
           items: [
             { text: "介绍", link: "/blog/" },
+            { text: "最近更新", link: "/blog/recent" },
           ],
         },
         {
@@ -52,6 +53,13 @@ const defaultTheme = {
             { text: "探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现", link: "/blog/2025/03_jsprintnum" },
             { text: "Vue 样式隔离与动态绑定的工程实践", link: "/blog/2025/01_vuestyle" },
             { text: "IndexedDB 前端数据库实战指南", link: "/blog/2024/01_indexdb" },
+            { text: "VSCode 自动化代码规范实践指南", link: "/blog/2025/02_vscodeformat" },
+          ],
+        },
+        {
+          text: "AI 工程",
+          items: [
+            { text: "提示工程（Prompt Engineering）入门指南", link: "/blog/2025/11_prompt" },
           ],
         },
         {
@@ -65,12 +73,6 @@ const defaultTheme = {
           items: [
             { text: "精通 Linux：开发者必备的 50 个核心命令行工具", link: "/blog/2025/07_linuxcmd" },
             { text: "项目配置管理的进化之路：从混乱到工程化", link: "/blog/2025/05_projectconfig" },
-          ],
-        },
-        {
-          text: "开发工具",
-          items: [
-            { text: "VSCode 自动化代码规范实践指南", link: "/blog/2025/02_vscodeformat" },
           ],
         },
       ],
