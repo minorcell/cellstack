@@ -5,7 +5,7 @@ const defaultTheme = {
   title: "CellStack - 工程师技术笔记",
   titleTemplate: ":title | CellStack",
   description:
-    "专业的全栈工程师技术笔记分享平台，涵盖前端开发、后端架构、DevOps运维、AI工程实践。从零基础到项目落地，提供实战经验和最佳实践指南。",
+    "计算机科学的工程实践和一些个人思考。",
 
   themeConfig: {
     logo: "/logo.svg",
@@ -40,45 +40,45 @@ const defaultTheme = {
         {
           text: "思考",
           items: [
-            { text: "编程的未来：从“翻译”到“意图”", link: "/blog/2025/13_codeinfeature" },
+            { text: "编程的未来是什么", link: "/blog/2025/13_codeinfeature" },
           ]
         },
         {
           text: "服务端",
           items: [
-            { text: "从 Sleep 到 Select：用一个例子掌握 Go 并发编程精髓", link: "/blog/2025/09_goprintnum" },
-            { text: "深度剖析 WebSocket：全双工实时通信原理与实战", link: "/blog/2025/08_ws" },
-            { text: "深入浅出哈希算法：原理、应用与哈希表解析", link: "/blog/2025/06_hash" },
+            { text: "Go 并发编程", link: "/blog/2025/09_goprintnum" },
+            { text: "深度剖析 WebSocket", link: "/blog/2025/08_ws" },
+            { text: "深入浅出哈希算法", link: "/blog/2025/06_hash" },
           ],
         },
         {
           text: "客户端",
           items: [
-            { text: "JavaScript 运行机制详解：再谈 Event Loop", link: "/blog/2025/10_jssync" },
-            { text: "探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现", link: "/blog/2025/03_jsprintnum" },
-            { text: "Vue 样式隔离与动态绑定的工程实践", link: "/blog/2025/01_vuestyle" },
-            { text: "IndexedDB 前端数据库实战指南", link: "/blog/2024/01_indexdb" },
-            { text: "VSCode 自动化代码规范实践指南", link: "/blog/2025/02_vscodeformat" },
+            { text: "JS 运行机制详解", link: "/blog/2025/10_jssync" },
+            { text: "JS 异步编程入门", link: "/blog/2025/03_jsprintnum" },
+            { text: "Vue 样式工程实践", link: "/blog/2025/01_vuestyle" },
+            { text: "IndexedDB 实战指南", link: "/blog/2024/01_indexdb" },
+            { text: "自动化代码规范实践指南", link: "/blog/2025/02_vscodeformat" },
           ],
         },
         {
           text: "AI 工程",
           items: [
-            { text: "Claude Code Sub-agent 模式的详解和实践", link: "/blog/2025/12_subagent" },
-            { text: "提示工程（Prompt Engineering）入门指南", link: "/blog/2025/11_prompt" },
+            { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
+            { text: "提示工程入门指南", link: "/blog/2025/11_prompt" },
           ],
         },
         {
           text: "安全与网络",
           items: [
-            { text: "HTTP 状态码：15 个常见的状态码详解", link: "/blog/2025/04_httpcode" },
+            { text: "15 个常见的状态码详解", link: "/blog/2025/04_httpcode" },
           ],
         },
         {
           text: "系统运维",
           items: [
-            { text: "精通 Linux：开发者必备的 50 个核心命令行工具", link: "/blog/2025/07_linuxcmd" },
-            { text: "项目配置管理的进化之路：从混乱到工程化", link: "/blog/2025/05_projectconfig" },
+            { text: "50 个核心命令行工具", link: "/blog/2025/07_linuxcmd" },
+            { text: "项目配置管理之路", link: "/blog/2025/05_projectconfig" },
           ],
         },
       ],
@@ -87,7 +87,7 @@ const defaultTheme = {
           text: "关于我",
           items: [
             { text: "介绍", link: "/me/" },
-            { text: "技术写作核心规范：单线结构法则", link: "/me/01_write" }
+            { text: "技术写作的单线结构法则", link: "/me/01_write" }
           ],
         },
       ],
@@ -227,14 +227,14 @@ const defaultTheme = {
     ["meta", { property: "og:site_name", content: "CellStack" }],
     [
       "meta",
-      { property: "og:title", content: "CellStack - 工程师技术笔记分享平台" },
+      { property: "og:title", content: "CellStack - 计算机科学的工程实践和一些个人思考" },
     ],
     [
       "meta",
       {
         property: "og:description",
         content:
-          "专业的全栈工程师技术笔记分享平台，涵盖前端、后端、DevOps、AI工程实践。从零基础到项目落地的完整学习路径。",
+          "计算机科学的工程实践和一些个人思考。",
       },
     ],
     ["meta", { property: "og:url", content: "https://stack.mcell.top" }],
@@ -249,7 +249,7 @@ const defaultTheme = {
     ["meta", { property: "og:image:height", content: "400" }],
     [
       "meta",
-      { property: "og:image:alt", content: "CellStack - 工程师技术笔记平台" },
+      { property: "og:image:alt", content: "CellStack - 工程师技术笔记" },
     ],
     ["meta", { property: "og:locale", content: "zh_CN" }],
 
@@ -262,7 +262,7 @@ const defaultTheme = {
       "meta",
       {
         name: "twitter:description",
-        content: "专业技术笔记分享平台，前端后端DevOps AI全栈实践指南",
+        content: "计算机科学的工程实践和一些个人思考。",
       },
     ],
     [
@@ -285,7 +285,7 @@ const defaultTheme = {
         alternateName: "CellStack技术笔记",
         url: "https://stack.mcell.top",
         description:
-          "专业的全栈工程师技术笔记分享平台，涵盖前端开发、后端架构、DevOps运维、AI工程实践",
+          "计算机科学的工程实践和一些个人思考。",
         inLanguage: "zh-CN",
         author: {
           "@type": "Person",

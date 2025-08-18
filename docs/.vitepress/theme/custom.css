@@ -124,6 +124,10 @@ body::before {
 }
 
 /* 标题样式 - 现代化设计，类似 Styrene 字体效果 */
+.VPDoc h1 {
+    margin-top: 40px;
+}
+
 .VPDoc h1,
 .VPDoc h2,
 .VPDoc h3,
@@ -379,14 +383,114 @@ body::before {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
+/* ShareButton 组件样式增强 - 继承主题色彩系统 */
+.share-button-container .share-button {
+    color: var(--vp-c-text-2);
+    transition: all 0.25s ease;
+}
+
+.share-button-container .share-button:hover {
+    color: var(--vp-c-text-1);
+    background: var(--vp-c-bg-soft);
+}
+
+/* 分享弹窗主题适配 */
+.share-modal {
+    background: var(--vp-c-bg);
+    color: var(--vp-c-text-1);
+}
+
+.share-modal-title {
+    color: var(--vp-c-text-1);
+}
+
+.share-modal-close {
+    color: var(--vp-c-text-2);
+}
+
+.share-modal-close:hover {
+    color: var(--vp-c-text-1);
+    background: var(--vp-c-bg-soft);
+}
+
+.share-option:hover {
+    background: var(--vp-c-bg-soft);
+}
+
+.share-option-name {
+    color: var(--vp-c-text-1);
+}
+
+.share-option-desc {
+    color: var(--vp-c-text-2);
+}
+
+.copy-toast {
+    background: var(--vp-c-bg);
+    border: 1px solid var(--vp-c-border);
+    color: var(--vp-c-text-1);
+}
+
+.copy-toast-icon {
+    color: var(--vp-c-brand-1);
+}
+
+/* 加载状态和禁用状态 */
+.share-option:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.share-option:disabled:hover {
+    transform: none;
+    background: transparent;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 暗色模式下的特殊处理 */
+.dark .share-modal-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.dark .share-modal {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark .copy-toast {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* 暗色模式下图标保持原色彩 */
+.dark .copy-icon {
+    background: var(--vp-c-brand-1);
+    color: white;
+}
+
+.dark .card-icon {
+    background: #8b5cf6;
+    color: white;
+}
+
 /* 手绘风格的分页导航 */
 .VPDocFooter .prev-next {
     margin-top: 4rem;
     padding-top: 2rem;
     border-top: 2px dashed var(--vp-c-divider);
 }
-
-
 
 /* 跳转到内容链接 - 可访问性 */
 .skip-to-content {

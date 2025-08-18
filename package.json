@@ -28,5 +28,9 @@
     "vitepress": "^1.0.0",
     "vitepress-plugin-comment-with-giscus": "^1.1.15",
     "vitepress-plugin-mermaid": "^2.0.17"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "qrcode": "^1.5.4"
   }
 }
