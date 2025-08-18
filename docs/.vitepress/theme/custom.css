@@ -272,6 +272,10 @@ body::before {
 
 /* 响应式设计 */
 @media (max-width: 960px) {
+    .VPNavBarTitle {
+        display: none;
+    }
+
     .VPHomeHero .container {
         flex-direction: column;
         text-align: center;
@@ -291,6 +295,14 @@ body::before {
 @media (max-width: 768px) {
     :root {
         --vp-space-content-padding: 24px;
+    }
+
+    .VPNavBarTitle {
+        display: none;
+    }
+
+    .VPNavScreen {
+        position: static !important;
     }
 
     .VPHomeHero .name {
@@ -610,4 +622,23 @@ hr {
 
 .VPFooter {
     border: none !important;
+}
+
+/* 修复移动端VPNavScreen无法显示的问题 */
+@media (max-width: 767px) {
+    .VPNavScreen {
+        z-index: var(--vp-z-index-nav) !important;
+        pointer-events: auto !important;
+    }
+
+    /* 确保VPNavScreen在正确的层级 */
+    .VPNav {
+        z-index: var(--vp-z-index-nav);
+    }
+
+    /* 确保汉堡菜单按钮可点击 */
+    .VPNavBarHamburger {
+        pointer-events: auto !important;
+        z-index: calc(var(--vp-z-index-nav) + 1);
+    }
 }
