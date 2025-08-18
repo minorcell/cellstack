@@ -1,7 +1,7 @@
 {
   "name": "CellStack - 工程师技术笔记",
   "short_name": "CellStack",
-  "description": "专业的全栈工程师技术笔记分享平台，涵盖前端开发、后端架构、DevOps运维、AI工程实践",
+  "description": "计算机科学的工程实践和一些个人思考",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#faf9f7",
