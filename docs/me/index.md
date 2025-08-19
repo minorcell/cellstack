@@ -1,6 +1,7 @@
 ---
 title: 我
-description: mCell | DevOps 工程师，专注技术自动化与开源构建。
+description: mCell | 开发者 & 社区建设者
+tags: [mCell, minorcell, 邓军辉, devops, 社区建设, 开发者]
 ---
 
 ![000.png](/images/2025/000.webp)

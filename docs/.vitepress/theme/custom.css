@@ -642,3 +642,21 @@ hr {
         z-index: calc(var(--vp-z-index-nav) + 1);
     }
 }
+
+.VPSocialLinks::before {
+    content: "";
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.social-links {
+    margin-right: 0 !important;
+}
+
+.VPSocialLink {
+    transform: translate(-4px);
+}
+
+.VPFooter {
+    opacity: 0.7;
+}
