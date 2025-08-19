@@ -1,6 +1,6 @@
 # CellStack - 工程师技术笔记
 
-<center>
+<center text-align="center">
 <img src="./public/logo.svg" width="200" height="200" alt="CellStack">
 </center>
 
