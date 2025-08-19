@@ -4,13 +4,9 @@
 
 # CellStack - 工程师技术笔记
 
-我的技术笔记。
-
 网址：[stack.mcell.top](https://stack.mcell.top)
 
-## 这是什么
-
-一个记录工程实践的地方。主要写前端、后端、DevOps 和 AI 相关的技术内容。
+计算机科学的工程实践和一些个人思考。
 
 ## 联系方式
 
