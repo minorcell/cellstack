@@ -17,6 +17,8 @@
     "technology"
   ],
   "keywords": [
+    "mcell",
+    "minorcell",
     "前端开发",
     "后端开发",
     "全栈工程师",
@@ -59,10 +61,10 @@
   ],
   "shortcuts": [
     {
-      "name": "语言基础",
-      "short_name": "语言基础",
-      "description": "学习编程语言基础知识",
-      "url": "/language-basics/",
+      "name": "关于我",
+      "short_name": "关于我",
+      "description": "关于我, 技术社区常用 **mCell** 或 **minorcell** 标识。",
+      "url": "/me/",
       "icons": [
         {
           "src": "/logo.svg",
@@ -71,7 +73,7 @@
       ]
     },
     {
-      "name": "工程实践",
+      "name": "收录",
       "short_name": "工程实践",
       "description": "探索工程实践和最佳实践",
       "url": "/engineering-practice/",
