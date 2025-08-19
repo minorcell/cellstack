@@ -218,7 +218,7 @@ const defaultTheme = {
       {
         name: "keywords",
         content:
-          "前端开发,后端开发,全栈工程师,DevOps,AI工程,技术笔记,编程教程,JavaScript,TypeScript,React,Vue,Node.js,Python,Go,Docker,Kubernetes,微服务,系统设计,算法,数据结构,最佳实践,项目实战,技术分享,工程师成长",
+          "mcell,minorcell,前端开发,后端开发,全栈工程师,DevOps,AI工程,技术笔记,编程教程,JavaScript,TypeScript,React,Vue,Node.js,Python,Go,Docker,Kubernetes,微服务,系统设计,算法,数据结构,最佳实践,项目实战,技术分享,工程师成长",
       },
     ],
 
@@ -227,7 +227,7 @@ const defaultTheme = {
     ["meta", { property: "og:site_name", content: "CellStack" }],
     [
       "meta",
-      { property: "og:title", content: "CellStack - 计算机科学的工程实践和一些个人思考" },
+      { property: "og:title", content: "CellStack - 工程师技术笔记" },
     ],
     [
       "meta",
