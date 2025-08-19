@@ -1,13 +1,13 @@
-# Robots.txt for CellStack - 工程师技术笔记平台
+# Robots.txt for CellStack - 工程师技术笔记
 # https://stack.mcell.top/robots.txt
 
 User-agent: *
 Allow: /
 
 # 优先抓取重要页面
-Allow: /language-basics/
-Allow: /engineering-practice/
 Allow: /blog/
+Allow: /me/
+Allow: /transpond/
 
 # 禁止抓取的路径
 Disallow: /admin/
