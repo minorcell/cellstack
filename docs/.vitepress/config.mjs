@@ -198,6 +198,7 @@ const defaultTheme = {
   head: [
     // Favicon 优化
     ["link", { rel: "icon", href: "/logo.svg", type: "image/svg+xml" }],
+    ["link", { rel: "icon", href: "/favicon.ico", type: "image/x-icon" }],
     [
       "link",
       { rel: "apple-touch-icon", href: "/logo.svg", sizes: "180x180" },

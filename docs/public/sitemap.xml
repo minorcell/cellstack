@@ -14,6 +14,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://stack.mcell.top/logo.svg</image:loc>
+      <image:loc>https://stack.mcell.top/favicon.ico</image:loc>
       <image:title>CellStack - 工程师技术笔记</image:title>
       <image:caption>计算机科学的工程实践和一些个人思考</image:caption>
     </image:image>
