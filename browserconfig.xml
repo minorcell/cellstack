@@ -6,6 +6,10 @@
       <square150x150logo src="/logo.svg"/>
       <wide310x150logo src="/logo.svg"/>
       <square310x310logo src="/logo.svg"/>
+      <square70x70logo src="/favicon.ico"/>
+      <square150x150logo src="/favicon.ico"/>
+      <wide310x150logo src="/favicon.ico"/>
+      <square310x310logo src="/favicon.ico"/>
       <TileColor>#8b7355</TileColor>
     </tile>
     <badge>
