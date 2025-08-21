@@ -137,6 +137,13 @@
   --font-heading-modern: "Poppins", "Inter", "Helvetica Neue", sans-serif;
 }
 
+/* 等宽字体 */
+:root[data-font="monospace"] {
+  --font-family-monospace: Monaco, Menlo, "Courier New", "SF Mono", "JetBrains Mono", monospace;
+  --font-mono-monospace: Monaco, Menlo, "Courier New", "SF Mono", monospace;
+  --font-heading-monospace: Monaco, Menlo, "Courier New", "SF Mono", monospace;
+}
+
 /* 动态计算的字体族 */
 :root {
   --font-family-computed: var(--font-family-default);
@@ -160,6 +167,12 @@
   --font-family-computed: var(--font-family-modern);
   --font-mono-computed: var(--font-mono-modern);
   --font-heading-computed: var(--font-heading-modern);
+}
+
+:root[data-font="monospace"] {
+  --font-family-computed: var(--font-family-monospace);
+  --font-mono-computed: var(--font-mono-monospace);
+  --font-heading-computed: var(--font-heading-monospace);
 }
 
 

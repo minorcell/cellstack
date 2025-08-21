@@ -381,22 +381,6 @@ const colorOptions = [
     tertiary: "#C4B5FD",
     logoFilter: "hue-rotate(242deg)",
   },
-  {
-    name: "red",
-    displayName: "热情红",
-    primary: "#EF4444",
-    secondary: "#F87171",
-    tertiary: "#FCA5A5",
-    logoFilter: "hue-rotate(-20deg)",
-  },
-  {
-    name: "teal",
-    displayName: "青色",
-    primary: "#14B8A6",
-    secondary: "#5EEAD4",
-    tertiary: "#99F6E4",
-    logoFilter: "hue-rotate(152deg)",
-  },
 ];
 
 // 预设圆角选项
@@ -412,16 +396,9 @@ const radiusPresets = [
 const fontOptions = [
   {
     name: "default",
-    displayName: "默认字体",
+    displayName: "网站默认",
     description: "Inter + Poppins 现代组合",
     preview: "Inter, Poppins, sans-serif",
-    sampleText: "Aa 你好",
-  },
-  {
-    name: "system",
-    displayName: "系统字体",
-    description: "系统默认无衬线字体",
-    preview: '-apple-system, "Segoe UI", sans-serif',
     sampleText: "Aa 你好",
   },
   {
@@ -432,10 +409,10 @@ const fontOptions = [
     sampleText: "Aa 你好",
   },
   {
-    name: "modern",
-    displayName: "现代简约",
-    description: "Poppins + Helvetica 现代简洁",
-    preview: 'Poppins, "Helvetica Neue", sans-serif',
+    name: "monospace",
+    displayName: "等宽代码",
+    description: "Monaco + Menlo 程序员专用",
+    preview: 'Monaco, Menlo, "Courier New", monospace',
     sampleText: "Aa 你好",
   },
 ];
@@ -665,7 +642,7 @@ const applyLogoFilter = (color) => {
 
 // 监听路由，回到首页时调用applyLogoFilter
 watch(router.route, (newRoute) => {
-  if (newRoute.path === "/") {
+  if (newRoute.path === "/" || newRoute.path === "") {
     applyLogoFilter(currentSettings.value.color);
   }
 })

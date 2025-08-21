@@ -38,7 +38,6 @@
         </a>
 
         <ThemeSettings />
-        <ShareButton />
       </div>
     </template>
   </Layout>
@@ -47,7 +46,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import DefaultTheme from "vitepress/theme";
-import ShareButton from "./components/ShareButton.vue";
 import ThemeSettings from "./components/ThemeSettings.vue";
 
 const { Layout } = DefaultTheme;
@@ -257,11 +255,9 @@ onUnmounted(() => {
 .VPNavBarExtra {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: 8px;
+  gap: 4px;
 }
 
-/* GitHub 链接样式 - 统一风格 */
 .github-link {
   display: flex;
   align-items: center;
@@ -292,20 +288,10 @@ onUnmounted(() => {
   transform: scale(1.05);
 }
 
+/* 确保移动端功能区域正常显示 */
 @media (max-width: 768px) {
   .VPNavBarExtra {
-    margin-left: 4px;
-    order: -1;
-  }
-
-  .VPNavBar .container {
-    position: relative;
-  }
-}
-
-@media (min-width: 769px) {
-  .VPNavBarExtra {
-    margin-left: 12px;
+    display: none;
   }
 }
 </style>
