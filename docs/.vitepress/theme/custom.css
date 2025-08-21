@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 
+@import url("./styles/var.css");
 @import url("./styles/code.css");
 @import url("./styles/rainbow.css");
 @import url("./styles/blur.css");
@@ -8,79 +9,10 @@
 @import url("./styles/blockquote.css");
 @import url("./styles/search.css");
 @import url("./styles/comment.css");
+@import url("./styles/global-overrides.css");
 
 .hand-drawn-filter {
     filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='roughPaper' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence baseFrequency='0.04' numOctaves='5' result='noise' seed='1'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E#roughPaper");
-}
-
-/* 全局CSS变量定义 */
-:root {
-    /* 主色调 - 米色和柔和色彩 */
-    --vp-c-bg: #fdfdf8;
-    /* 米色背景 */
-    --vp-c-bg-alt: #fdfdf8;
-    /* 稍深的米色 */
-    --vp-c-bg-elv: #fdfdf8;
-    /* 提升元素背景 */
-
-    /* 文字颜色 */
-    --vp-c-text-1: #2c2c2c;
-    /* 主文字 - 深灰黑色 */
-    --vp-c-text-2: #525252;
-    /* 次要文字 */
-    --vp-c-text-3: #737373;
-    /* 辅助文字 */
-
-    /* 强调色 */
-    --vp-c-brand-1: #FF8C59;
-    /* 橙色作为品牌色 */
-    --vp-c-brand-2: #FFA573;
-    /* 稍浅的品牌色 */
-    --vp-c-brand-3: #FFBE8D;
-    /* 更浅的品牌色 */
-
-    /* 边框和分割线 */
-    --vp-c-divider: #e8e5e0;
-    /* 柔和的分割线 */
-    --vp-c-border: #ebe8e3;
-    /* 边框色 */
-
-    /* 字体设置 - 现代化无衬线字体组合 */
-    --vp-font-family-base: "Styrene Display", sans-serif,
-        "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    --vp-font-family-mono: "Styrene Display", sans-serif,
-        "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
-        monospace;
-    --vp-font-family-heading: -apple-system, "Styrene Display", sans-serif,
-        "Poppins", "Inter", BlinkMacSystemFont, sans-serif;
-
-    /* 字体大小和行高 */
-    --vp-font-size-root: 16px;
-    --vp-line-height-root: 1.7;
-
-    /* 间距 */
-    --vp-space-nav-height: 56px;
-    --vp-space-content-padding: 36px;
-}
-
-/* 暗色模式适配 */
-.dark {
-    --vp-c-bg: #000000;
-    /* 纯黑背景 */
-    --vp-c-bg-alt: #111111;
-    --vp-c-bg-elv: #1a1a1a;
-
-    --vp-c-text-1: #ffffff;
-    --vp-c-text-2: #cccccc;
-    --vp-c-text-3: #999999;
-
-    --vp-c-brand-1: #ffffff;
-    --vp-c-brand-2: #eeeeee;
-    --vp-c-brand-3: #cccccc;
-
-    --vp-c-divider: #333333;
-    --vp-c-border: #444444;
 }
 
 /* 全局重置和基础样式 */
@@ -345,15 +277,15 @@ body::before {
     background: var(--vp-c-brand-2);
 }
 
-/* 选择文本样式 */
+/* 选择文本样式 - 使用动态主题色 */
 ::selection {
-    background-color: #FF8C59;
+    background-color: var(--theme-selection-bg);
     color: white;
 }
 
 /* 暗色模式下选择文本样式 */
 .dark ::selection {
-    background-color: #ffffff;
+    background-color: var(--theme-selection-bg);
     color: #000000;
 }
 
@@ -509,7 +441,7 @@ body::before {
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #FF8C59;
+    background: var(--vp-c-brand-1);
     color: white;
     padding: 8px 12px;
     text-decoration: none;

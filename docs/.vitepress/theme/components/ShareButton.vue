@@ -421,20 +421,30 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6px 8px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius-small);
   background: transparent;
   color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
   outline: none;
-  margin-left: 4px;
+}
+
+.share-button:hover {
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
 }
 
 .share-icon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: currentColor;
+  transition: all 0.25s ease;
+}
+
+.share-button:hover .share-icon {
+  transform: scale(1.05);
 }
 
 .share-modal-overlay {
@@ -443,13 +453,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2000;
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
@@ -464,12 +474,12 @@ onUnmounted(() => {
 .share-modal {
   background: var(--vp-c-bg);
   width: 90vw;
-  border-radius: 8px;
+  border-radius: var(--border-radius-xl);
   max-width: 500px;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow: hidden;
-  animation: slideUp 0.2s ease-out;
-  border: none;
+  animation: slideUp 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes slideUp {
@@ -487,12 +497,13 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 24px 28px;
+  background: var(--vp-c-bg-soft);
 }
 
 .share-modal-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--vp-c-text-1);
 }
@@ -501,14 +512,20 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius-medium);
   background: transparent;
   color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
+}
+
+.share-modal-close:hover {
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg);
+  transform: rotate(90deg);
 }
 
 .share-modal-close svg {
@@ -517,23 +534,43 @@ onUnmounted(() => {
 }
 
 .share-options {
-  padding: 16px 24px 24px;
+  padding: 28px;
+  max-height: calc(90vh - 100px);
+  overflow-y: auto;
+}
+
+.share-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.share-options::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.share-options::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
 }
 
 .share-option {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 12px 16px;
-  margin-bottom: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius-medium);
   background: transparent;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
   position: relative;
+}
+
+.share-option:hover {
+  background: var(--vp-c-bg-soft);
+  transform: translateY(-1px);
 }
 
 .share-option:last-child {
@@ -651,11 +688,11 @@ onUnmounted(() => {
   }
 
   .share-options {
-    padding: 12px 20px 20px;
+    padding: 24px 20px;
   }
 
   .share-option {
-    padding: 10px 12px;
+    padding: 16px 12px;
   }
 
   .share-option-icon {
@@ -680,11 +717,12 @@ onUnmounted(() => {
 
 /* 深色模式适配 */
 .dark .share-modal-overlay {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
 }
 
 .dark .share-modal {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .dark .copy-toast {

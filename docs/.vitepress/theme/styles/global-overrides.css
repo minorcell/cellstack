@@ -1,0 +1,320 @@
+/* VitePress 核心组件圆角 */
+.VPButton,
+.VPButton.brand,
+.VPButton.alt {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+.VPButton.sponsor {
+  border-radius: var(--border-radius-large) !important;
+}
+
+/* 导航相关组件 */
+.VPNavBar,
+.VPNavScreen,
+.VPSidebar,
+.VPLocalNav {
+  border-radius: var(--border-radius-medium);
+}
+
+.VPNavBarTitle,
+.VPNavBarMenu .VPLink {
+  border-radius: var(--border-radius-small);
+}
+
+/* 搜索组件 */
+.DocSearch-Button {
+  border-radius: var(--border-radius-large) !important;
+}
+
+.DocSearch-Modal {
+  border-radius: var(--border-radius-xl) !important;
+}
+
+/* 内容区域组件 */
+.VPDoc .vp-doc,
+.VPDoc .content {
+  border-radius: var(--border-radius-medium);
+}
+
+/* 代码块 */
+.vp-doc div[class*='language-'],
+.vp-code-group {
+  border-radius: var(--border-radius-large) !important;
+}
+
+.vp-code-group .tabs {
+  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0 !important;
+}
+
+/* 自定义块 */
+.custom-block {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+/* 表格 */
+.vp-doc table {
+  border-radius: var(--border-radius-medium);
+  overflow: hidden;
+}
+
+.vp-doc table th,
+.vp-doc table td {
+  border-radius: 0;
+}
+
+.vp-doc table th:first-child,
+.vp-doc table td:first-child {
+  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+}
+
+.vp-doc table th:last-child,
+.vp-doc table td:last-child {
+  border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+}
+
+/* 引用块 */
+.vp-doc blockquote {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+/* 图片 */
+.vp-doc img {
+  border-radius: var(--border-radius-large) !important;
+}
+
+/* 输入框和表单元素 */
+input,
+textarea,
+select {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+/* 标签和徽章 */
+.tag,
+.badge {
+  border-radius: calc(var(--border-radius-medium) * 2) !important;
+}
+
+/* 卡片和容器 */
+.VPFeature,
+.VPTeamMember,
+.VPHomeFeatures .item {
+  border-radius: var(--border-radius-large) !important;
+}
+
+/* 侧边栏项目 */
+.VPSidebarItem .link {
+  border-radius: var(--border-radius-small);
+}
+
+/* 分页导航 */
+.pager-link,
+.VPDocFooter .prev,
+.VPDocFooter .next {
+  border-radius: var(--border-radius-medium) !important;
+}
+
+/* Hero 区域 */
+.VPHomeHero .actions .action {
+  border-radius: var(--border-radius-large) !important;
+}
+
+/* ==================== 字体大小全局应用 ==================== */
+
+/* 根字体大小确保传播 */
+:root {
+  font-size: var(--vp-font-size-root) !important;
+}
+
+/* VitePress 文档内容字体大小 */
+.vp-doc p,
+.vp-doc li,
+.vp-doc div:not([class*='language-']),
+.vp-doc span:not(.line) {
+  font-size: 1rem !important;
+  line-height: var(--vp-line-height-root) !important;
+}
+
+/* 标题字体大小比例调整 */
+.vp-doc h1 {
+  font-size: 2.5em !important;
+}
+
+.vp-doc h2 {
+  font-size: 2em !important;
+}
+
+.vp-doc h3 {
+  font-size: 1.5em !important;
+}
+
+.vp-doc h4 {
+  font-size: 1.25em !important;
+}
+
+.vp-doc h5 {
+  font-size: 1.125em !important;
+}
+
+.vp-doc h6 {
+  font-size: 1em !important;
+}
+
+/* 导航栏字体大小 */
+.VPNavBarTitle .title {
+  font-size: 1.125rem !important;
+}
+
+.VPNavBarMenu .VPLink {
+  font-size: 0.9rem !important;
+}
+
+/* 侧边栏字体大小 */
+.VPSidebarItem .text {
+  font-size: 0.9rem !important;
+}
+
+/* 按钮字体大小 */
+.VPButton {
+  font-size: 0.9rem !important;
+}
+
+/* 搜索框字体大小 */
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  font-size: 0.85rem !important;
+}
+
+/* 代码字体大小 */
+.vp-doc code:not(.hljs) {
+  font-size: 0.85em !important;
+}
+
+.vp-doc pre code {
+  font-size: 0.85rem !important;
+}
+
+/* 表格字体大小 */
+.vp-doc table {
+  font-size: 0.9rem !important;
+}
+
+/* 自定义块字体大小 */
+.custom-block {
+  font-size: 0.95rem !important;
+}
+
+.custom-block-title {
+  font-size: 1rem !important;
+}
+
+/* 引用块字体大小 */
+.vp-doc blockquote {
+  font-size: 1rem !important;
+}
+
+/* Footer 字体大小 */
+.VPFooter {
+  font-size: 0.85rem !important;
+}
+
+/* ==================== 响应式字体调整 ==================== */
+@media (max-width: 768px) {
+  .vp-doc h1 {
+    font-size: 2rem !important;
+  }
+  
+  .vp-doc h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  .vp-doc h3 {
+    font-size: 1.375rem !important;
+  }
+  
+  .VPNavBarTitle .title {
+    font-size: 1rem !important;
+  }
+}
+
+/* ==================== 强制重写某些固定样式 ==================== */
+
+/* 确保圆角变量被正确应用 */
+* {
+  --vp-code-block-border-radius: var(--border-radius-medium) !important;
+  --vp-button-border-radius: var(--border-radius-medium) !important;
+}
+
+/* 确保字体大小变量传播到所有元素 */
+*,
+*::before,
+*::after {
+  font-size: inherit;
+}
+
+/* VitePress 特定组件的字体大小覆盖 */
+.VPNav *,
+.VPSidebar *,
+.VPDoc * {
+  font-size: inherit !important;
+}
+
+/* 代码高亮保持合适的字体大小 */
+.vp-code-group .tabs button {
+  font-size: 0.85rem !important;
+}
+
+.line-numbers-wrapper {
+  font-size: 0.85rem !important;
+}
+
+/* 确保主题切换和其他功能按钮的样式 */
+.VPSwitchAppearance,
+.VPSocialLink,
+.VPNavBarHamburger {
+  border-radius: var(--border-radius-small) !important;
+}
+
+/* 大纲导航 */
+.VPDocAside .content,
+.VPDocOutlineItem a {
+  border-radius: var(--border-radius-small);
+}
+
+/* 本地搜索 */
+.VPLocalSearchBox {
+  border-radius: var(--border-radius-large) !important;
+}
+
+/* 确保所有链接的圆角 */
+a.header-anchor,
+.vp-doc a:not(.header-anchor) {
+  border-radius: var(--border-radius-small);
+}
+
+/* Home 页面特殊元素 */
+.VPHomeHero .name {
+  font-size: 4rem !important;
+}
+
+.VPHomeHero .text {
+  font-size: 1.5rem !important;
+}
+
+.VPHomeHero .tagline {
+  font-size: 1.125rem !important;
+}
+
+@media (max-width: 768px) {
+  .VPHomeHero .name {
+    font-size: 2.5rem !important;
+  }
+
+  .VPHomeHero .text {
+    font-size: 1.25rem !important;
+  }
+
+  .VPHomeHero .tagline {
+    font-size: 1rem !important;
+  }
+}

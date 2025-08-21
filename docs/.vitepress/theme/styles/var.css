@@ -1,0 +1,196 @@
+/* =============================================== */
+/*                  主题变量集中管理               */
+/* =============================================== */
+
+:root {
+  /* ==================== 颜色系统 ==================== */
+  
+  /* 品牌色 - 可动态切换的主题色 */
+  --theme-primary: #FF8C59;
+  --theme-secondary: #FFA573;  
+  --theme-tertiary: #FFBE8D;
+  
+  /* 基础色调 - 米色和柔和色彩 */
+  --vp-c-bg: #fdfdf8;
+  --vp-c-bg-alt: #fdfdf8;
+  --vp-c-bg-elv: #fdfdf8;
+  
+  /* 文字颜色 */
+  --vp-c-text-1: #2c2c2c;
+  --vp-c-text-2: #525252;
+  --vp-c-text-3: #737373;
+  
+  /* 品牌色映射到VitePress变量 */
+  --vp-c-brand-1: var(--theme-primary);
+  --vp-c-brand-2: var(--theme-secondary);
+  --vp-c-brand-3: var(--theme-tertiary);
+  
+  /* 边框和分割线 */
+  --vp-c-divider: #e8e5e0;
+  --vp-c-border: #ebe8e3;
+  
+  /* 选择文本颜色 */
+  --theme-selection-bg: var(--theme-primary);
+  
+  
+  /* ==================== 字体系统 ==================== */
+  
+  /* 字体族 - 可动态切换 */
+  --theme-font-family: "default";
+  
+  /* 基础字体设置 */
+  --vp-font-family-base: var(--font-family-computed);
+  --vp-font-family-mono: var(--font-mono-computed);
+  --vp-font-family-heading: var(--font-heading-computed);
+  
+  /* 字体大小和行高 */
+  --vp-font-size-root: 16px;
+  --vp-line-height-root: 1.7;
+  
+  
+  /* ==================== 圆角系统 ==================== */
+  
+  /* 圆角大小 - 可动态切换 */
+  --theme-border-radius: 8px;
+  
+  /* 各种圆角映射 */
+  --border-radius-small: calc(var(--theme-border-radius) * 0.5);
+  --border-radius-medium: var(--theme-border-radius);
+  --border-radius-large: calc(var(--theme-border-radius) * 1.5);
+  --border-radius-xl: calc(var(--theme-border-radius) * 2);
+  
+  
+  /* ==================== 间距系统 ==================== */
+  
+  --vp-space-nav-height: 56px;
+  --vp-space-content-padding: 36px;
+  
+  
+  /* ==================== 动画系统 ==================== */
+  
+  /* 渐变动画变量 */
+  --rainbow-prev: var(--theme-primary);
+  --rainbow-next: var(--theme-secondary);
+  
+  /* Hero背景渐变 */
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--rainbow-prev) 30%, var(--rainbow-next));
+  --vp-home-hero-image-filter: blur(150px);
+}
+
+
+/* ==================== 暗色模式 ==================== */
+.dark {
+  /* 基础色调 */
+  --vp-c-bg: #000000;
+  --vp-c-bg-alt: #111111;
+  --vp-c-bg-elv: #1a1a1a;
+  
+  /* 文字颜色 */
+  --vp-c-text-1: #ffffff;
+  --vp-c-text-2: #cccccc;
+  --vp-c-text-3: #999999;
+  
+  /* 暗色模式下的品牌色 */
+  --vp-c-brand-1: #ffffff;
+  --vp-c-brand-2: #eeeeee;
+  --vp-c-brand-3: #cccccc;
+  
+  /* 边框和分割线 */
+  --vp-c-divider: #333333;
+  --vp-c-border: #444444;
+  
+  /* 暗色模式下选择文本 */
+  --theme-selection-bg: #ffffff;
+}
+
+
+/* ==================== 字体族预设 ==================== */
+
+/* 默认字体 */
+:root {
+  --font-family-default: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono-default: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-heading-default: -apple-system, "Poppins", "Inter", BlinkMacSystemFont, sans-serif;
+}
+
+/* 系统字体 */
+:root[data-font="system"] {
+  --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono-system: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-heading-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 优雅字体 */
+:root[data-font="elegant"] {
+  --font-family-elegant: "Georgia", "Times New Roman", "Noto Serif SC", serif;
+  --font-mono-elegant: "Fira Code", "Source Code Pro", "JetBrains Mono", monospace;
+  --font-heading-elegant: "Georgia", "Playfair Display", "Noto Serif SC", serif;
+}
+
+/* 现代字体 */
+:root[data-font="modern"] {
+  --font-family-modern: "Poppins", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono-modern: "JetBrains Mono", "Fira Code", "Source Code Pro", monospace;
+  --font-heading-modern: "Poppins", "Inter", "Helvetica Neue", sans-serif;
+}
+
+/* 动态计算的字体族 */
+:root {
+  --font-family-computed: var(--font-family-default);
+  --font-mono-computed: var(--font-mono-default);
+  --font-heading-computed: var(--font-heading-default);
+}
+
+:root[data-font="system"] {
+  --font-family-computed: var(--font-family-system);
+  --font-mono-computed: var(--font-mono-system);
+  --font-heading-computed: var(--font-heading-system);
+}
+
+:root[data-font="elegant"] {
+  --font-family-computed: var(--font-family-elegant);
+  --font-mono-computed: var(--font-mono-elegant);
+  --font-heading-computed: var(--font-heading-elegant);
+}
+
+:root[data-font="modern"] {
+  --font-family-computed: var(--font-family-modern);
+  --font-mono-computed: var(--font-mono-modern);
+  --font-heading-computed: var(--font-heading-modern);
+}
+
+
+/* ==================== 自定义块变量 ==================== */
+:root {
+  --custom-block-info-left: #cccccc;
+  --custom-block-info-bg: #fafafa;
+  --custom-block-tip-left: #009400;
+  --custom-block-tip-bg: #e6f6e6;
+  --custom-block-warning-left: #e6a700;
+  --custom-block-warning-bg: #fff8e6;
+  --custom-block-danger-left: #e13238;
+  --custom-block-danger-bg: #ffebec;
+  --custom-block-note-left: #4cb3d4;
+  --custom-block-note-bg: #eef9fd;
+  --custom-block-important-left: #a371f7;
+  --custom-block-important-bg: #f4eefe;
+  --custom-block-caution-left: #e0575b;
+  --custom-block-caution-bg: #fde4e8;
+}
+
+.dark {
+  --custom-block-info-left: #cccccc;
+  --custom-block-info-bg: #474748;
+  --custom-block-tip-left: #009400;
+  --custom-block-tip-bg: #003100;
+  --custom-block-warning-left: #e6a700;
+  --custom-block-warning-bg: #4d3800;
+  --custom-block-danger-left: #e13238;
+  --custom-block-danger-bg: #4b1113;
+  --custom-block-note-left: #4cb3d4;
+  --custom-block-note-bg: #193c47;
+  --custom-block-important-left: #a371f7;
+  --custom-block-important-bg: #230555;
+  --custom-block-caution-left: #e0575b;
+  --custom-block-caution-bg: #391c22;
+}

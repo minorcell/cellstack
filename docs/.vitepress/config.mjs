@@ -103,10 +103,6 @@ const defaultTheme = {
       ],
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/minorcell/cellstack" },
-    ],
-
     footer: {
       message: `累计提供服务 <span id="busuanzi_value_site_pv" ></span> 次`,
       copyright: `© ${new Date().getFullYear()} Created by mcell 豫ICP备2025129196号-1`,
@@ -341,7 +337,7 @@ const defaultTheme = {
     hostname: "https://stack.mcell.top",
   },
 
-  appearance: "dark",
+  appearance: false,
   lastUpdated: true,
   cleanUrls: true,
 

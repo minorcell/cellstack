@@ -1,48 +1,4 @@
-:root {
-    --custom-block-info-left: #cccccc;
-    --custom-block-info-bg: #fafafa;
-
-    --custom-block-tip-left: #009400;
-    --custom-block-tip-bg: #e6f6e6;
-
-    --custom-block-warning-left: #e6a700;
-    --custom-block-warning-bg: #fff8e6;
-
-    --custom-block-danger-left: #e13238;
-    --custom-block-danger-bg: #ffebec;
-
-    --custom-block-note-left: #4cb3d4;
-    --custom-block-note-bg: #eef9fd;
-
-    --custom-block-important-left: #a371f7;
-    --custom-block-important-bg: #f4eefe;
-
-    --custom-block-caution-left: #e0575b;
-    --custom-block-caution-bg: #fde4e8;
-}
-
-.dark {
-    --custom-block-info-left: #cccccc;
-    --custom-block-info-bg: #474748;
-
-    --custom-block-tip-left: #009400;
-    --custom-block-tip-bg: #003100;
-
-    --custom-block-warning-left: #e6a700;
-    --custom-block-warning-bg: #4d3800;
-
-    --custom-block-danger-left: #e13238;
-    --custom-block-danger-bg: #4b1113;
-
-    --custom-block-note-left: #4cb3d4;
-    --custom-block-note-bg: #193c47;
-
-    --custom-block-important-left: #a371f7;
-    --custom-block-important-bg: #230555;
-
-    --custom-block-caution-left: #e0575b;
-    --custom-block-caution-bg: #391c22;
-}
+/* 自定义块变量已移至 ./var.css 统一管理 */
 
 
 /* 标题字体大小 */
