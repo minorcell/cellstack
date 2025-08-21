@@ -32,6 +32,9 @@
   /* 选择文本颜色 */
   --theme-selection-bg: var(--theme-primary);
   
+  /* Logo主题色适配滤镜 - 基于原始橙色#FF8C59 */
+  --logo-theme-filter: hue-rotate(0deg) !important;
+  
   
   /* ==================== 字体系统 ==================== */
   

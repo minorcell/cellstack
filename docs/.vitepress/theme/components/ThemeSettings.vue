@@ -287,13 +287,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick, watch } from "vue";
+import { useRouter } from "vitepress";
 
 // 响应式状态
 const isModalOpen = ref(false);
 const showingCustomColor = ref(false);
 const customBorderRadius = ref(8);
 const fontSize = ref(16);
+
+const router = useRouter();
 
 // 自定义颜色
 const customColors = ref({
@@ -310,6 +313,7 @@ const currentSettings = ref({
     primary: "#FF8C59",
     secondary: "#FFA573",
     tertiary: "#FFBE8D",
+    logoFilter: "hue-rotate(0deg)",
   },
   borderRadius: {
     name: "medium",
@@ -351,6 +355,7 @@ const colorOptions = [
     primary: "#FF8C59",
     secondary: "#FFA573",
     tertiary: "#FFBE8D",
+    logoFilter: "hue-rotate(0deg)",
   },
   {
     name: "blue",
@@ -358,6 +363,7 @@ const colorOptions = [
     primary: "#4F9CF9",
     secondary: "#7BB3FA",
     tertiary: "#A8C9FC",
+    logoFilter: "hue-rotate(199deg)",
   },
   {
     name: "green",
@@ -365,6 +371,7 @@ const colorOptions = [
     primary: "#22C55E",
     secondary: "#4ADE80",
     tertiary: "#86EFAC",
+    logoFilter: "hue-rotate(122deg)",
   },
   {
     name: "purple",
@@ -372,6 +379,7 @@ const colorOptions = [
     primary: "#8B5CF6",
     secondary: "#A78BFA",
     tertiary: "#C4B5FD",
+    logoFilter: "hue-rotate(242deg)",
   },
   {
     name: "red",
@@ -379,6 +387,7 @@ const colorOptions = [
     primary: "#EF4444",
     secondary: "#F87171",
     tertiary: "#FCA5A5",
+    logoFilter: "hue-rotate(-20deg)",
   },
   {
     name: "teal",
@@ -386,6 +395,7 @@ const colorOptions = [
     primary: "#14B8A6",
     secondary: "#5EEAD4",
     tertiary: "#99F6E4",
+    logoFilter: "hue-rotate(152deg)",
   },
 ];
 
@@ -450,6 +460,7 @@ const showCustomColorPicker = () => {
       primary: customColors.value.primary,
       secondary: customColors.value.secondary,
       tertiary: customColors.value.secondary,
+      logoFilter: 'hue-rotate(0deg)',
     };
     applyColor(currentSettings.value.color);
     saveSettings();
@@ -465,6 +476,7 @@ const updateCustomColor = () => {
       primary: customColors.value.primary,
       secondary: customColors.value.secondary,
       tertiary: customColors.value.secondary,
+      logoFilter: 'hue-rotate(0deg)', // 自定义颜色默认不变化logo
     };
     applyColor(currentSettings.value.color);
     saveSettings();
@@ -530,6 +542,7 @@ const resetToDefaults = () => {
       primary: "#FF8C59",
       secondary: "#FFA573",
       tertiary: "#FFBE8D",
+      logoFilter: "hue-rotate(0deg)",
     },
     borderRadius: {
       name: "medium",
@@ -553,6 +566,7 @@ const resetToDefaults = () => {
   applyBorderRadius(currentSettings.value.borderRadius);
   applyFont(currentSettings.value.font);
   applyFontSize(currentSettings.value.fontSize);
+  applyLogoFilter(currentSettings.value.color);
   saveSettings();
 };
 
@@ -588,6 +602,9 @@ const applyColor = (color: any) => {
 
   // 设置rainbow动画主题
   root.setAttribute("data-theme", color.name);
+  
+  // 应用logo主题色适配
+  applyLogoFilter(color);
 };
 
 // 应用圆角设置
@@ -624,6 +641,34 @@ const saveSettings = () => {
     console.warn("无法保存主题设置:", e);
   }
 };
+
+// 应用logo主题色适配
+const applyLogoFilter = (color) => {
+  const root = document.documentElement;
+  
+  // 获取logoFilter属性，如果没有则使用默认值
+  const logoFilter = color.logoFilter || 'hue-rotate(0deg)';
+  
+  // 设置CSS变量
+  root.style.setProperty('--logo-theme-filter', logoFilter);
+  
+  // 立即应用到所有logo元素
+  const logoElements = document.querySelectorAll(
+    'img[src="/logo.svg"], img[src*="logo.svg"], .VPImage[src="/logo.svg"], .VPImage[src*="logo.svg"], .VPNavBar img, .VPNavBarTitle img, .VPNavBarTitle .VPImage, .VPSiteTitle img, .VPNavBarTitle .title img, .VPNavBarTitle a img, nav img, header img, .VPNavBarTitle .logo, .VPNavBarTitle .logo img, .logo img, .logo, img.logo, [class*="logo"] img, .VPHomeHero img, .VPHero img'
+  );
+  
+  logoElements.forEach((img) => {
+    img.style.filter = logoFilter;
+    img.style.transition = 'filter 0.3s ease';
+  });
+};
+
+// 监听路由，回到首页时调用applyLogoFilter
+watch(router.route, (newRoute) => {
+  if (newRoute.path === "/") {
+    applyLogoFilter(currentSettings.value.color);
+  }
+})
 
 // 加载设置
 const loadSettings = () => {
@@ -680,6 +725,7 @@ onMounted(() => {
     applyBorderRadius(settings.borderRadius);
     applyFont(settings.font);
     applyFontSize(settings.fontSize || 16);
+    applyLogoFilter(settings.color);
   });
 
   // 监听按键和系统主题

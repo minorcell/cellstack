@@ -4,18 +4,36 @@
     <template #nav-bar-content-after>
       <div class="VPNavBarExtra">
         <!-- GitHub 链接 -->
-        <a 
-          href="https://github.com/minorcell/cellstack" 
-          target="_blank" 
+        <a
+          href="https://github.com/minorcell/cellstack"
+          target="_blank"
           rel="noopener noreferrer"
           class="github-link"
           title="GitHub"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            >
+              <path
+                d="M9.096 21.25v-3.146a3.33 3.33 0 0 1 .758-2.115c-3.005-.4-5.28-1.859-5.28-5.798c0-1.666 1.432-3.89 1.432-3.89c-.514-1.13-.5-3.084.06-3.551c0 0 1.95.175 3.847 1.75c1.838-.495 3.764-.554 5.661 0c1.897-1.575 3.848-1.75 3.848-1.75c.558.467.573 2.422.06 3.551c0 0 1.432 2.224 1.432 3.89c0 3.94-2.276 5.398-5.28 5.798a3.33 3.33 0 0 1 .757 2.115v3.146"
+              />
+              <path
+                d="M3.086 16.57c.163.554.463 1.066.878 1.496c.414.431.932.77 1.513.988a4.46 4.46 0 0 0 3.62-.216"
+              />
+            </g>
           </svg>
         </a>
-        
+
         <ThemeSettings />
         <ShareButton />
       </div>
@@ -24,11 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import DefaultTheme from 'vitepress/theme'
-import ShareButton from './components/ShareButton.vue'
-import ThemeSettings from './components/ThemeSettings.vue'
+import DefaultTheme from "vitepress/theme";
+import ShareButton from "./components/ShareButton.vue";
+import ThemeSettings from "./components/ThemeSettings.vue";
 
-const { Layout } = DefaultTheme
+const { Layout } = DefaultTheme;
 </script>
 
 <style scoped>
@@ -77,12 +95,12 @@ const { Layout } = DefaultTheme
     /* 确保不会遮挡移动端菜单按钮 */
     order: -1;
   }
-  
+
   /* 确保移动端导航菜单和功能区正常工作 */
   .VPNavBar .container {
     position: relative;
   }
-  
+
   /* 移除可能导致VPNavScreen无法显示的z-index设置 */
   /* 让VitePress默认的层级关系正常工作 */
 }
