@@ -12,6 +12,8 @@ tags: [技术博客, 博客]
 
 ## 最近更新
 
+- [前端新手学习指南（2025 版）](/blog/2025/15_frontendlearn)
+- [一个技术写作者的抉择](/blog/2025/14_whywrite)
 - [编程的未来：从“翻译”到“意图”](/blog/2025/13_codeinfeature)
 - [Claude Code Sub-agent 模式的详解和实践](/blog/2025/12_subagent)
 - [提示工程（Prompt Engineering）入门指南](/blog/2025/11_prompt)
