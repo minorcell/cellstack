@@ -2,7 +2,6 @@
 
 @import url("./styles/var.css");
 @import url("./styles/code.css");
-@import url("./styles/rainbow.css");
 @import url("./styles/blur.css");
 @import url("./styles/process.css");
 @import url("./styles/block.css");
@@ -31,25 +30,6 @@ body {
         color 0.3s ease,
         background-color 0.3s ease;
     letter-spacing: 0.05em;
-}
-
-/* 添加微妙的背景纹理 */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f5f4f2' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.1;
-}
-
-/* 暗色模式下隐藏背景纹理 */
-.dark body::before {
-    display: none;
 }
 
 /* 标题样式 - 现代化设计，类似 Styrene 字体效果 */
