@@ -5,7 +5,6 @@ import Layout from "./Layout.vue";
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute, inBrowser, useData } from 'vitepress';
-import busuanzi from 'busuanzi.pure.js'
 import { NProgress } from 'nprogress-v2/dist/index.js'
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
@@ -14,15 +13,11 @@ export default {
   Layout,
   enhanceApp({ app, router, siteData }) {
     if (inBrowser) {
-      router.onAfterRouteChanged = () => {
-        busuanzi.fetch()
-      }
       NProgress.configure({ showSpinner: false })
       router.onBeforeRouteChange = () => {
         NProgress.start() // 开始进度条
       }
       router.onAfterRouteChanged = () => {
-        busuanzi.fetch()
         NProgress.done() // 停止进度条
       }
     }

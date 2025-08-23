@@ -105,7 +105,6 @@ const defaultTheme = {
     },
 
     footer: {
-      message: `累计提供服务 <span id="busuanzi_value_site_pv" ></span> 次`,
       copyright: `© ${new Date().getFullYear()} Created by mcell 豫ICP备2025129196号-1`,
     },
 

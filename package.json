@@ -16,7 +16,6 @@
   "license": "MIT",
   "devDependencies": {
     "@braintree/sanitize-url": "^7.1.1",
-    "busuanzi.pure.js": "^1.0.3",
     "cytoscape": "^3.33.1",
     "cytoscape-cose-bilkent": "^4.1.0",
     "dayjs": "^1.11.13",
