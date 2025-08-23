@@ -6,7 +6,6 @@ import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute, inBrowser, useData } from 'vitepress';
 import { NProgress } from 'nprogress-v2/dist/index.js'
-import busuanzi from 'busuanzi.pure.js'
 import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
 export default {
@@ -19,7 +18,6 @@ export default {
         NProgress.start() // 开始进度条
       }
       router.onAfterRouteChanged = () => {
-        busuanzi.fetch()
         NProgress.done() // 停止进度条
       }
     }
