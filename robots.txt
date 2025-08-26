@@ -47,7 +47,6 @@ Disallow: /
 
 # 站点地图
 Sitemap: https://stack.mcell.top/sitemap.xml
-Sitemap: https://stack.mcell.top/sitemap_index.xml
 
 # 主机信息
 Host: stack.mcell.top
