@@ -1,8 +1,21 @@
 ---
-title: 编程的演进：从指令到意图
-description: 我们今天所熟知的“编程”——即一行行地编写代码，未来可能将不复存在。
-author: mcell
-tags: [编程, 人工智能, 编程的本质, 汇编语言, 高级语言, AI 编程, 意识编程]
+title: 编程的演进：从指令到意图 - AI时代编程的未来
+description: 深度探讨编程的本质演进：从汇编语言到高级语言，再到AI辅助编程。利用Cursor、Claude Code半年实践，预测未来编程将从写代码转为表达意图的新模式。
+tags:
+  - 编程思考
+  - AI编程
+  - 人工智能
+  - Cursor
+  - Claude Code
+  - 编程历史
+  - 汇编语言
+  - 高级语言
+  - 意图编程
+  - 技本趋势
+  - 编程未来
+author: mCell
+date: 2025-01-18
+lastUpdated: 2025-01-18
 ---
 
 ![022.webp](/public/images/2025/022.webp)

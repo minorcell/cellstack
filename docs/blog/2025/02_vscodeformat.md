@@ -1,12 +1,21 @@
 ---
-title: VSCode 自动化代码规范实践指南
-description: 在团队协作中，**代码风格一致性**是提升开发效率的关键因素。通过 VSCode + ESLint + Prettier 的组合，开发者可以在保存文件时自动完成代码规范检查和格式化，将人工干预降至最低。本文将揭示这套自动化工作流的配置奥秘。
+title: VSCode 代码规范自动化配置完全指南：ESLint + Prettier 最佳实践
+description: 最实用的 VSCode 代码规范自动化配置指南。深入讲解 ESLint + Prettier 的完美组合，实现保存时自动代码检查、格式化和错误修复。提升团队开发效率，确保代码风格一致性。
 tags:
-  - VSCode
+  - VSCode配置
   - ESLint
   - Prettier
   - 代码格式化
+  - 代码规范
   - 开发工具
+  - 自动化
+  - 前端工具链
+  - 团队协作
+  - 工程化实践
+  - 代码质量
+author: mCell
+date: 2025-01-08
+lastUpdated: 2025-01-08
 ---
 
 ![016.webp](/public/images/2025/016.webp)

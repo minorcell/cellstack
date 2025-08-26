@@ -1,7 +1,22 @@
 ---
-title: 提示工程（Prompt Engineering）入门指南
-description: 这篇指南是我从 [Claude Code 官方文档](https://docs.anthropic.com/zh-CN/docs/build-with-claude/prompt-engineering/overview) 中提炼出最核心的技巧，从基础的“清晰指令”和“提供范例”，到进阶的“思考链”和“角色设定”，帮助你将 AI 这个强大的工具，变成你工作流中不可或缺的伙伴。如果你想让 AI 真正懂你所想，这篇文章正是你需要的入门手册。
-tags: [Claude Code, 提示工程, 提示工程入门指南, AI]
+title: 提示工程（Prompt Engineering）入门指南 - 让AI懂你所想
+description: 基于Claude Code官方文档提炼的最实用提示工程技巧。从基础的清晰指令、提供范例，到进阶的思考链、角色设定，全面提升AI交互效果和工作效率。
+tags:
+  - 提示工程
+  - Prompt Engineering
+  - Claude Code
+  - AI交互
+  - 人工智能
+  - 大语言模型
+  - LLM
+  - 思考链
+  - 角色设定
+  - AI工具
+  - 效率提升
+  - 实用技巧
+author: mCell
+date: 2025-01-17
+lastUpdated: 2025-01-17
 ---
 
 ![020.jpg](/public/images/2025/020.jpg)

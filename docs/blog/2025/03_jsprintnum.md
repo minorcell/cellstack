@@ -1,13 +1,22 @@
 ---
-title: 探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现
-description: 以“每秒打印一个数字”为引，本文深入剖析了 JavaScript 中实现定时任务的六种核心方法。从经典的闭包问题到现代的 async/await，再到生成器与函数式编程，带你领略 JS 异步编程的演进与魅力。
-date: 2025-01-21
+title: JavaScript 异步编程完全指南：从 setTimeout 到生成器的 6 种实现模式
+description: 深入探索 JavaScript 异步编程的完整演进路径。以“每秒打印数字”为实例，深入剖析 6 种定时任务实现方法：从经典的闭包问题、Promise 链式调用，到现代的 async/await、生成器函数和函数式编程。
 tags:
-  - JavaScript
+  - JavaScript异步
   - 异步编程
   - Promise
+  - async/await
   - 生成器函数
+  - Generator
+  - setTimeout
+  - setInterval
   - 定时器
+  - 闭包
+  - ES6+
+  - 函数式编程
+author: mCell
+date: 2025-01-09
+lastUpdated: 2025-01-09
 ---
 
 ![010.png](/public/images/2025/010.png)

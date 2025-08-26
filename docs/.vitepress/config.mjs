@@ -5,7 +5,7 @@ const defaultTheme = {
   title: "CellStack - 工程师技术笔记",
   titleTemplate: ":title | CellStack",
   description:
-    "计算机科学的工程实践和一些个人思考。",
+    "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
 
   themeConfig: {
     logo: "/logo.svg",
@@ -216,7 +216,7 @@ const defaultTheme = {
       {
         name: "keywords",
         content:
-          "mcell,minorcell,前端开发,后端开发,全栈工程师,DevOps,AI工程,技术笔记,编程教程,JavaScript,TypeScript,React,Vue,Node.js,Python,Go,Docker,Kubernetes,微服务,系统设计,算法,数据结构,最佳实践,项目实战,技术分享,工程师成长",
+          "CellStack,mCell,minorcell,技术博客,前端开发,后端开发,全栈工程师,DevOps,AI工程,技术笔记,编程教程,JavaScript,TypeScript,React,Vue,Node.js,Python,Go,Docker,Kubernetes,微服务,系统设计,算法,数据结构,最佳实践,项目实战,技术分享,工程师成长,Sub-agent,提示工程,WebSocket,哈希算法,Linux命令,HTTP状态码,IndexedDB,Vue样式管理,VSCode配置,Go并发编程",
       },
     ],
 
@@ -232,7 +232,7 @@ const defaultTheme = {
       {
         property: "og:description",
         content:
-          "计算机科学的工程实践和一些个人思考。",
+          "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
       },
     ],
     ["meta", { property: "og:url", content: "https://stack.mcell.top" }],
@@ -260,7 +260,7 @@ const defaultTheme = {
       "meta",
       {
         name: "twitter:description",
-        content: "计算机科学的工程实践和一些个人思考。",
+        content: "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
       },
     ],
     [
@@ -283,7 +283,7 @@ const defaultTheme = {
         alternateName: "CellStack技术笔记",
         url: "https://stack.mcell.top",
         description:
-          "计算机科学的工程实践和一些个人思考。",
+          "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
         inLanguage: "zh-CN",
         author: {
           "@type": "Person",
@@ -330,11 +330,29 @@ const defaultTheme = {
     // 安全和性能
     ["meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" }],
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
+    
+    // 搜索引擎优化
+    ["meta", { name: "msapplication-tooltip", content: "CellStack - 工程师技术笔记" }],
+    ["meta", { name: "format-detection", content: "telephone=no" }],
+    
+    // 地理位置和语言
+    ["meta", { name: "geo.region", content: "CN" }],
+    ["meta", { name: "geo.country", content: "China" }],
+    ["meta", { "http-equiv": "content-language", content: "zh-CN" }],
   ],
 
   // 站点地图和SEO配置
   sitemap: {
     hostname: "https://stack.mcell.top",
+    transformItems: (items) => {
+      // 为sitemap添加更多SEO信息
+      return items.map((item) => ({
+        ...item,
+        changefreq: item.url.includes('/blog/') ? 'weekly' : 'monthly',
+        priority: item.url === 'https://stack.mcell.top/' ? 1.0 : 
+                 item.url.includes('/blog/') ? 0.8 : 0.6,
+      }))
+    }
   },
 
   appearance: false,

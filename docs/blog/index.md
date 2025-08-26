@@ -1,7 +1,20 @@
 ---
-title: 技术博客
-description: 记录在工程化开发中的深度实践与体系化思考，内容覆盖：涵盖前端、后端、DevOps、AI 工程等。
-tags: [技术博客, 博客]
+title: 技术博客 - CellStack
+description: 记录工程化开发中的深度实践与体系化思考。涵盖前端JavaScript/Vue/React、后端Go/Node.js、DevOps运维、AI工程等技术领域的原创教程和实战经验。
+tags: 
+  - 技术博客
+  - 前端开发
+  - 后端开发
+  - DevOps
+  - AI工程
+  - JavaScript
+  - Vue
+  - React
+  - Go
+  - Node.js
+  - 实战教程
+  - 最佳实践
+author: mCell
 ---
 
 ![001.jpg](/public/images/2025/001.jpg)
