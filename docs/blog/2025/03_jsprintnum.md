@@ -15,8 +15,6 @@ tags:
   - ES6+
   - 函数式编程
 author: mCell
-date: 2025-01-09
-lastUpdated: 2025-01-09
 ---
 
 ![010.png](/public/images/2025/010.png)

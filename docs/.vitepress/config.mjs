@@ -40,6 +40,7 @@ const defaultTheme = {
         {
           text: "思考",
           items: [
+            { text: "关于“黑话”，我想说几句", link: "/blog/2025/16_slang" },
             { text: "一个技术写作者的抉择", link: "/blog/2025/14_whywrite" },
             { text: "编程的演进：从指令到意图", link: "/blog/2025/13_codeinfeature" },
           ]

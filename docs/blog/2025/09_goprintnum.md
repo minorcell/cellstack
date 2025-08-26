@@ -13,8 +13,6 @@ tags:
   - 后端开发
   - Go实战
 author: mCell
-date: 2025-01-15
-lastUpdated: 2025-01-15
 ---
 
 ![008.jpg](/public/images/2025/008.jpg)

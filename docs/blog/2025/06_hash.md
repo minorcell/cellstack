@@ -14,8 +14,6 @@ tags:
   - 计算机科学
   - 数据完整性
 author: mCell
-date: 2025-01-12
-lastUpdated: 2025-01-12
 ---
 
 ![009.webp](/public/images/2025/009.webp)

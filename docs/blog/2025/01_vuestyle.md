@@ -14,8 +14,6 @@ tags:
   - Vue组件
   - SFC单文件组件
 author: mCell
-date: 2025-01-07
-lastUpdated: 2025-01-07
 ---
 
 ![011.png](/public/images/2025/011.png)

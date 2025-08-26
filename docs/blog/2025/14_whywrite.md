@@ -13,8 +13,6 @@ tags:
   - 价值创造
   - 写作思考
 author: mCell
-date: 2025-01-19
-lastUpdated: 2025-01-19
 ---
 
 ![027.avif](/public/images/2025/027.avif)

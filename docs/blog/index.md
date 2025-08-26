@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [关于“黑话”，我想说几句](/blog/2025/16_slang)
 - [前端新手学习指南（2025 版）](/blog/2025/15_frontendlearn)
 - [一个技术写作者的抉择](/blog/2025/14_whywrite)
 - [编程的未来：从“翻译”到“意图”](/blog/2025/13_codeinfeature)
