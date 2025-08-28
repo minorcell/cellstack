@@ -215,6 +215,6 @@ $ docker run -d -p 8080:8080 --name go-server go-hello-server:1.0
 
 现在访问 `http://localhost:8080`，你将看到来自 Go 服务器的问候。
 
-## **六、 总结**
+## **总结**
 
 这只是一个开始，Docker 的世界还有很多值得探索的功能，比如 `Docker Compose` 用于编排多个容器，`Docker Hub` 用于分享镜像等。
