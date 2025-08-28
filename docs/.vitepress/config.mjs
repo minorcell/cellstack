@@ -80,6 +80,8 @@ const defaultTheme = {
         {
           text: "系统运维",
           items: [
+            { text: "Docker 进阶指南", link: "/blog/2025/18_dockersecond" },
+            { text: "Docker 入门指南", link: "/blog/2025/17_dockerfirst" },
             { text: "50 个核心命令行工具", link: "/blog/2025/07_linuxcmd" },
             { text: "项目配置管理之路", link: "/blog/2025/05_projectconfig" },
           ],
@@ -332,11 +334,11 @@ const defaultTheme = {
     // 安全和性能
     ["meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" }],
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
-    
+
     // 搜索引擎优化
     ["meta", { name: "msapplication-tooltip", content: "CellStack - 工程师技术笔记" }],
     ["meta", { name: "format-detection", content: "telephone=no" }],
-    
+
     // 地理位置和语言
     ["meta", { name: "geo.region", content: "CN" }],
     ["meta", { name: "geo.country", content: "China" }],
@@ -351,8 +353,8 @@ const defaultTheme = {
       return items.map((item) => ({
         ...item,
         changefreq: item.url.includes('/blog/') ? 'weekly' : 'monthly',
-        priority: item.url === 'https://stack.mcell.top/' ? 1.0 : 
-                 item.url.includes('/blog/') ? 0.8 : 0.6,
+        priority: item.url === 'https://stack.mcell.top/' ? 1.0 :
+          item.url.includes('/blog/') ? 0.8 : 0.6,
       }))
     }
   },

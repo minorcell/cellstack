@@ -38,3 +38,6 @@ author: mCell
 
 6. [《TypeScript Deep Dive》](https://basarat.gitbook.io/typescript/index.html)  
    **收录理由**：TypeScript 权威深度指南，从基础语法到高级特性全面覆盖，适合 JavaScript 开发者进阶
+
+7. [Docker 入门与实践](https://hujb2000.gitbooks.io/docker-flow-evolution/content/cn//index.html)
+   **收录理由**：全面的 Docker 技术书籍，包含 Docker 基础篇、Docker 进价篇、Docker 实践篇和 Docker 生态篇
