@@ -9,7 +9,11 @@ tags:
   - 异步机制
 ---
 
-![005.avif](/public/images/2025/005.avif)
+<!-- ![005.avif](/public/images/2025/005.avif) -->
+
+<VideoEmbed
+  url="https://youtu.be/cCOL7MC4Pl0?si=fwgtpeQNmohgyjEZ"
+  title="Jake Archibald: 在循环 - JSConf.Asia" />
 
 # JavaScript 运行机制详解：再谈 Event Loop
 

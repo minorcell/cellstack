@@ -16,7 +16,10 @@ tags:
 author: mCell
 ---
 
-![009.webp](/public/images/2025/009.webp)
+<VideoEmbed
+    url="https://www.bilibili.com/video/BV1qR4y1V7g6"
+    title="偶尔有点小迷糊 - 『教程』哈希表是个啥？"
+    />
 
 # 深入浅出哈希算法：原理、应用与哈希表解析
 

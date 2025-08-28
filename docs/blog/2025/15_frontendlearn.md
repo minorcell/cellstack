@@ -19,11 +19,15 @@ tags:
 author: mCell
 ---
 
-![028.png](/public/images/2025/028.png)
+<VideoEmbed 
+  url="https://www.bilibili.com/video/BV1eC411p73m" 
+  title="织点代码-前端技术的十八年风雨" />
 
 # **前端新手学习指南（2025 版）**
 
-> 如果你对“前端开发”感到好奇，但不知道从哪里开始，这篇文章就是为你准备的。这里依旧贴上 [前端技术的十八年风雨（2006-2024）](https://www.bilibili.com/video/BV1eC411p73m) 的视频链接。
+::: tip
+或许，可以在开始阅读本文之前，观看上面的视频，对前端会有更好的理解。
+:::
 
 我假设你是一张白纸，没有任何技术背景。本文会回答四个问题：
 

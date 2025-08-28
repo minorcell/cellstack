@@ -2,6 +2,7 @@
 import DefaultTheme from "vitepress/theme";
 import "./custom.css";
 import Layout from "./Layout.vue";
+import VideoEmbed from "./components/VideoEmbed.vue";
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
 import { useRoute, inBrowser, useData } from 'vitepress';
@@ -11,7 +12,10 @@ import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 export default {
   extends: DefaultTheme,
   Layout,
-  enhanceApp({ app, router, siteData }) {
+  enhanceApp({ app, router }) {
+    // 注册全局组件
+    app.component('VideoEmbed', VideoEmbed);
+    
     if (inBrowser) {
       NProgress.configure({ showSpinner: false })
       router.onBeforeRouteChange = () => {
