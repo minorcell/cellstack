@@ -99,7 +99,8 @@ const defaultTheme = {
           text: "收录",
           items: [
             { text: "介绍", link: "/transpond/" },
-            { text: "写作类", link: "/transpond/01_write" }
+            { text: "写作类", link: "/transpond/01_write" },
+            { text: "技术类", link: "/transpond/02_tech" }
           ],
         },
       ],
