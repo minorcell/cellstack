@@ -16,17 +16,6 @@
   <div v-if="title" class="video-title">
     {{ title }}
   </div>
-  <div v-else class="video-embed-error">
-    <div class="error-content">
-      <svg class="error-icon" viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-        />
-      </svg>
-      <p class="error-message">不支持的视频链接格式</p>
-      <p class="error-hint">当前支持: Bilibili、YouTube</p>
-    </div>
-  </div>
 </template>
 
 <script setup>
@@ -52,10 +41,6 @@ const props = defineProps({
   aspectRatio: {
     type: String,
     default: "16:9",
-  },
-  showPlatformIcon: {
-    type: Boolean,
-    default: true,
   },
 });
 

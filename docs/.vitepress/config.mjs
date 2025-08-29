@@ -91,8 +91,15 @@ const defaultTheme = {
         {
           text: "关于我",
           items: [
-            { text: "介绍", link: "/me/" },
-            { text: "技术写作的单线结构法则", link: "/me/01_write" }
+            { text: "介绍", link: "/me/" }
+          ],
+        },
+        {
+          text: "站点建设",
+          items: [
+            { text: "技术写作的单线结构法则", link: "/me/01_write" },
+            { text: "VideoEmbed 视频嵌入组件", link: "/me/03_videoembed" },
+            { text: "MusicEmbed 音乐嵌入组件", link: "/me/02_musicembed" }
           ],
         },
       ],
@@ -109,6 +116,7 @@ const defaultTheme = {
     },
 
     footer: {
+      message: `累计访问 <span id="busuanzi_value_site_pv" ></span> 次`,
       copyright: `© ${new Date().getFullYear()} Created by mcell 豫ICP备2025129196号-1`,
     },
 
