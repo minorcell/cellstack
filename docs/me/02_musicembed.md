@@ -2,6 +2,8 @@
 
 MusicEmbed 是一个专为 Spotify 设计的音乐嵌入组件，采用极简设计，仅使用 iframe 实现，无额外装饰。
 
+组件链接：[minorcell/cellstack](https://github.com/minorcell/cellstack/blob/main/docs/.vitepress/theme/components/MusicEmbed.vue)
+
 ## 使用方法
 
 ```vue

@@ -2,6 +2,8 @@
 
 VideoEmbed 是一个用于嵌入主流视频平台内容的 Vue 组件，支持 Bilibili 和 YouTube 视频嵌入。
 
+组件链接：[minorcell/cellstack](https://github.com/minorcell/cellstack/blob/main/docs/.vitepress/theme/components/VideoEmbed.vue)
+
 ::: warning
 当前仅支持 Bilibili 和 YouTube 视频平台。
 :::
