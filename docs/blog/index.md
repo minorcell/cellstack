@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [JavaScript 的多线程能力：Worker](/blog/2025/19_jsworker)
 - [Docker 进阶指南](/blog/2025/18_dockersecond)
 - [Docker 入门指南](/blog/2025/17_dockerfirst)
 - [关于“黑话”，我想说几句](/blog/2025/16_slang)

@@ -56,6 +56,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
+            { text: "JS 的多线程能力", link: "/blog/2025/19_jsworker" },
             { text: "前端新手学习指南", link: "/blog/2025/15_frontendlearn" },
             { text: "JS 运行机制详解", link: "/blog/2025/10_jssync" },
             { text: "JS 异步编程入门", link: "/blog/2025/03_jsprintnum" },
