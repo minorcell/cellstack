@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [GSAP 入门指南](/blog/2025/20_gsap01)
 - [JavaScript 的多线程能力：Worker](/blog/2025/19_jsworker)
 - [Docker 进阶指南](/blog/2025/18_dockersecond)
 - [Docker 入门指南](/blog/2025/17_dockerfirst)
