@@ -1,4 +1,4 @@
-import { withMermaid } from "vitepress-plugin-mermaid";
+import { withMermaid } from "vitepress-plugin-mermaid"
 
 const defaultTheme = {
   base: "/",
@@ -56,6 +56,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
+            { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
             { text: "Gsap 入门指南", link: "/blog/2025/20_gsap01" },
             { text: "JS 的多线程能力", link: "/blog/2025/19_jsworker" },
             { text: "前端新手学习指南", link: "/blog/2025/15_frontendlearn" },
@@ -377,13 +378,13 @@ const defaultTheme = {
   transformPageData(pageData) {
     const canonicalUrl = `https://stack.mcell.top${pageData.relativePath}`
       .replace(/index\.md$/, "")
-      .replace(/\.md$/, "");
+      .replace(/\.md$/, "")
 
-    pageData.frontmatter.head ??= [];
+    pageData.frontmatter.head ??= []
     pageData.frontmatter.head.push(
       ["link", { rel: "canonical", href: canonicalUrl }],
       ["meta", { property: "og:url", content: canonicalUrl }],
-    );
+    )
   },
 
   // Markdown 配置优化
@@ -406,8 +407,8 @@ const defaultTheme = {
   mermaidPlugin: {
     class: "mermaid",
   },
-};
+}
 
 export default withMermaid({
   ...defaultTheme
-});
+})

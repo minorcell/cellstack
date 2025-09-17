@@ -1,12 +1,8 @@
 # VideoEmbed 视频嵌入组件
 
-VideoEmbed 是一个用于嵌入主流视频平台内容的 Vue 组件，支持 Bilibili 和 YouTube 视频嵌入。
+VideoEmbed 是一个用于嵌入主流视频平台内容的 Vue 组件，支持 Bilibili 和 YouTube 视频嵌入，同时也支持本地视频文件播放。
 
 组件链接：[minorcell/cellstack](https://github.com/minorcell/cellstack/blob/main/docs/.vitepress/theme/components/VideoEmbed.vue)
-
-::: warning
-当前仅支持 Bilibili 和 YouTube 视频平台。
-:::
 
 ## 使用方法
 
@@ -62,12 +58,42 @@ VideoEmbed 是一个用于嵌入主流视频平台内容的 Vue 组件，支持 
 />
 ```
 
+## 本地视频使用
+
+VideoEmbed 组件也支持本地视频文件播放。只需将视频文件放置在 `docs/public/videos/` 目录下，并使用相对于 `public` 目录的路径作为 `url` 参数。
+
+### 基础使用
+
+<VideoEmbed url="/videos/2025/001.mp4" />
+
+```vue
+<VideoEmbed url="/videos/2025/001.mp4" />
+```
+
+### 带标题的本地视频
+
+<VideoEmbed 
+  url="/videos/2025/002.mp4" 
+  title="本地视频示例"
+/>
+
+```vue
+<VideoEmbed 
+  url="/videos/2025/002.mp4" 
+  title="本地视频示例"
+/>
+```
+
 ## 参数说明
 
 | 参数         | 类型          | 必填 | 默认值 | 说明                               |
 | ------------ | ------------- | ---- | ------ | ---------------------------------- |
-| url          | String        | 是   | -      | 视频平台链接，在视频平台分享时获取 |
+| url          | String        | 是   | -      | 视频平台链接或本地视频路径         |
 | title        | String        | 否   | ""     | 视频标题                           |
 | width        | String/Number | 否   | "100%" | 播放器宽度                         |
 | height       | String/Number | 否   | 315    | 播放器高度                         |
 | aspect-ratio | String        | 否   | "16:9" | 宽高比                             |
+| poster       | String        | 否   | ""     | 本地视频封面图片路径               |
+| autoplay     | Boolean       | 否   | false  | 本地视频是否自动播放               |
+| loop         | Boolean       | 否   | false  | 本地视频是否循环播放               |
+| muted        | Boolean       | 否   | false  | 本地视频是否静音                   |

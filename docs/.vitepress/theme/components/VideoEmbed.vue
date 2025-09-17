@@ -1,5 +1,18 @@
 <template>
-  <div class="video-embed-container" v-if="embedUrl">
+  <!-- 本地视频 -->
+  <div class="video-embed-container" v-if="isLocalVideo">
+    <div class="video-embed-wrapper">
+      <video
+        :src="localVideoUrl"
+        controls
+        class="video-element"
+        :poster="poster"
+      ></video>
+    </div>
+  </div>
+
+  <!-- 在线视频 (iframe) -->
+  <div class="video-embed-container" v-else-if="embedUrl">
     <div class="video-embed-wrapper">
       <iframe
         :src="embedUrl"
@@ -13,6 +26,7 @@
       ></iframe>
     </div>
   </div>
+
   <div v-if="title" class="video-title">
     {{ title }}
   </div>
@@ -42,10 +56,49 @@ const props = defineProps({
     type: String,
     default: "16:9",
   },
+  poster: {
+    type: String,
+    default: "",
+  },
+  autoplay: {
+    type: Boolean,
+    default: false,
+  },
+  loop: {
+    type: Boolean,
+    default: false,
+  },
+  muted: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+// 检查是否为本地视频
+const isLocalVideo = computed(() => {
+  const url = props.url.trim();
+  // 检查是否以 /videos/ 开头，表示本地视频
+  return url.startsWith('/videos/');
+});
+
+// 本地视频URL
+const localVideoUrl = computed(() => {
+  if (isLocalVideo.value) {
+    // 确保URL格式正确
+    const url = props.url.trim();
+    // 如果已经是完整路径则直接返回，否则添加前导斜杠
+    return url.startsWith('/') ? url : `/${url}`;
+  }
+  return '';
 });
 
 // 解析不同平台的视频ID和生成embed链接
 const videoInfo = computed(() => {
+  // 如果是本地视频，直接返回null
+  if (isLocalVideo.value) {
+    return null;
+  }
+
   const url = props.url.trim();
 
   // Bilibili 支持多种格式
@@ -187,6 +240,15 @@ const aspectRatioStyle = computed(() => {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
 }
 
 .video-title {
