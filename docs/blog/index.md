@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [Echarts 万字入门指南](/blog/2025/22_echarts)
 - [GSAP ScrollTrigger 详解](/blog/2025/21_gsap02)
 - [GSAP 入门指南](/blog/2025/20_gsap01)
 - [JavaScript 的多线程能力：Worker](/blog/2025/19_jsworker)
