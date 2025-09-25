@@ -27,6 +27,21 @@
     </div>
   </div>
 
+  <!-- 直接视频链接 (非本地、非特定平台) -->
+  <div class="video-embed-container" v-else-if="isDirectVideoLink">
+    <div class="video-embed-wrapper">
+      <video
+        :src="props.url"
+        controls
+        class="video-element"
+        :poster="poster"
+        :autoplay="autoplay"
+        :loop="loop"
+        :muted="muted"
+      ></video>
+    </div>
+  </div>
+
   <div v-if="title" class="video-title">
     {{ title }}
   </div>
@@ -92,10 +107,31 @@ const localVideoUrl = computed(() => {
   return '';
 });
 
+// 检查是否为直接视频链接
+const isDirectVideoLink = computed(() => {
+  if (isLocalVideo.value) {
+    return false; // 如果是本地视频，不是直接链接
+  }
+  
+  const url = props.url.trim();
+  
+  // 检查是否是视频文件扩展名
+  const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.m4v'];
+  const extension = videoExtensions.find(ext => url.toLowerCase().includes(ext));
+  
+  // 如果是支持的视频格式，并且不是特定平台链接，那就是直接视频链接
+  return !!extension && !url.includes('youtube.com') && !url.includes('youtu.be') && !url.includes('bilibili.com');
+});
+
 // 解析不同平台的视频ID和生成embed链接
 const videoInfo = computed(() => {
   // 如果是本地视频，直接返回null
   if (isLocalVideo.value) {
+    return null;
+  }
+
+  // 如果是直接视频链接，也返回null
+  if (isDirectVideoLink.value) {
     return null;
   }
 
@@ -190,6 +226,7 @@ const videoInfo = computed(() => {
   // 其他平台可以在这里扩展
   // 如: 优酷、爱奇艺、腾讯视频等
 
+  // 默认情况下，返回null，对于直接视频链接会在模板中处理
   return null;
 });
 

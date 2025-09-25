@@ -14,7 +14,7 @@ tags:
 author: mCell
 ---
 
-![021.webp](/public/images/2025/021.webp)
+![021.webp](https://stack-mcell.tos-cn-shanghai.volces.com/021.webp)
 
 # Claude Code Sub-agent 模式的详解和实践
 

@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![015.png](/public/images/2025/015.png)
+![015.png](https://stack-mcell.tos-cn-shanghai.volces.com/015.png)
 
 # 项目配置管理的进化之路：从混乱到工程化
 

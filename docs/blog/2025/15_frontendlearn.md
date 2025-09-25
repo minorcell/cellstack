@@ -109,7 +109,7 @@ author: mCell
 
 ## **三、React 还是 Vue？**
 
-![029.webp](/public/images/2025/029.webp)
+![029.webp](https://stack-mcell.tos-cn-shanghai.volces.com/029.webp)
 
 当你用上面三样东西做的页面越来越复杂，你就会觉得代码开始失控了。这时，你需要一个“框架”（Framework），帮你更好地组织代码。
 

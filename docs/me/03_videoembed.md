@@ -64,36 +64,36 @@ VideoEmbed 组件也支持本地视频文件播放。只需将视频文件放置
 
 ### 基础使用
 
-<VideoEmbed url="/videos/2025/001.mp4" />
+<VideoEmbed url="https://stack-mcell.tos-cn-shanghai.volces.com/040.mp4" />
 
 ```vue
-<VideoEmbed url="/videos/2025/001.mp4" />
+<VideoEmbed url="https://stack-mcell.tos-cn-shanghai.volces.com/040.mp4" />
 ```
 
 ### 带标题的本地视频
 
 <VideoEmbed 
-  url="/videos/2025/002.mp4" 
+  url="https://stack-mcell.tos-cn-shanghai.volces.com/041.mp4" 
   title="本地视频示例"
 />
 
 ```vue
-<VideoEmbed 
-  url="/videos/2025/002.mp4" 
+<VideoEmbed
+  url="https://stack-mcell.tos-cn-shanghai.volces.com/041.mp4"
   title="本地视频示例"
 />
 ```
 
 ## 参数说明
 
-| 参数         | 类型          | 必填 | 默认值 | 说明                               |
-| ------------ | ------------- | ---- | ------ | ---------------------------------- |
-| url          | String        | 是   | -      | 视频平台链接或本地视频路径         |
-| title        | String        | 否   | ""     | 视频标题                           |
-| width        | String/Number | 否   | "100%" | 播放器宽度                         |
-| height       | String/Number | 否   | 315    | 播放器高度                         |
-| aspect-ratio | String        | 否   | "16:9" | 宽高比                             |
-| poster       | String        | 否   | ""     | 本地视频封面图片路径               |
-| autoplay     | Boolean       | 否   | false  | 本地视频是否自动播放               |
-| loop         | Boolean       | 否   | false  | 本地视频是否循环播放               |
-| muted        | Boolean       | 否   | false  | 本地视频是否静音                   |
+| 参数         | 类型          | 必填 | 默认值 | 说明                       |
+| ------------ | ------------- | ---- | ------ | -------------------------- |
+| url          | String        | 是   | -      | 视频平台链接或本地视频路径 |
+| title        | String        | 否   | ""     | 视频标题                   |
+| width        | String/Number | 否   | "100%" | 播放器宽度                 |
+| height       | String/Number | 否   | 315    | 播放器高度                 |
+| aspect-ratio | String        | 否   | "16:9" | 宽高比                     |
+| poster       | String        | 否   | ""     | 本地视频封面图片路径       |
+| autoplay     | Boolean       | 否   | false  | 本地视频是否自动播放       |
+| loop         | Boolean       | 否   | false  | 本地视频是否循环播放       |
+| muted        | Boolean       | 否   | false  | 本地视频是否静音           |

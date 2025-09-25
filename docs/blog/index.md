@@ -17,7 +17,7 @@ tags:
 author: mCell
 ---
 
-![001.jpg](/public/images/2025/001.jpg)
+![001.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/001.jpg)
 
 # 技术博客
 

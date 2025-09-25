@@ -14,7 +14,7 @@ tags:
 author: mCell
 ---
 
-![018.jpg](/images/2025/018.jpg)
+![018.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/018.jpg)
 
 # 收录
 

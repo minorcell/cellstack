@@ -1,7 +1,7 @@
 ---
 title: 关于我 - mCell | CellStack
 description: mCell (minorcell) - TypeScript + Golang 全栈开发者，DevOps 体系探索者。专注于前端工程化、后端架构设计和技术社区建设，分享实战经验和技术思考。
-tags: 
+tags:
   - mCell
   - minorcell
   - 全栈开发
@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![000.png](/images/2025/000.webp)
+![000.png](https://stack-mcell.tos-cn-shanghai.volces.com/000.webp)
 
 # 我
 

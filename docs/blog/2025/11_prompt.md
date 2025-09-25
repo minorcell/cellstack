@@ -17,7 +17,7 @@ tags:
 author: mCell
 ---
 
-![020.jpg](/public/images/2025/020.jpg)
+![020.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/020.jpg)
 
 # 提示工程（Prompt Engineering）入门指南
 

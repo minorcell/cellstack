@@ -9,7 +9,7 @@ tags:
   - 异步机制
 ---
 
-<!-- ![005.avif](/public/images/2025/005.avif) -->
+<!-- ![005.avif](https://stack-mcell.tos-cn-shanghai.volces.com/005.avif) -->
 
 <VideoEmbed
   url="https://youtu.be/cCOL7MC4Pl0?si=fwgtpeQNmohgyjEZ"
@@ -22,17 +22,17 @@ tags:
 我常常在各种场合被问到类似下面代码的输出顺序。
 
 ```javascript
-console.log("start");
+console.log("start")
 
 setTimeout(function () {
-  console.log("setTimeout");
-}, 0);
+  console.log("setTimeout")
+}, 0)
 
 Promise.resolve().then(function () {
-  console.log("promise");
-});
+  console.log("promise")
+})
 
-console.log("end");
+console.log("end")
 ```
 
 如果你能毫不犹豫地答出 `start, end, promise, setTimeout`，并解释其原因，那么你对 JS 的异步机制已经有了不错的理解。如果你还有一丝困惑，希望本文能帮助你彻底梳理清楚。
@@ -77,12 +77,12 @@ console.log("end");
 // 一个会让页面卡住的例子
 document.getElementById("myButton").addEventListener("click", function () {
   // 假装这是一个非常耗时的计算
-  const start = Date.now();
+  const start = Date.now()
   while (Date.now() - start < 5000) {
     // 这5秒内，页面完全无法响应
   }
-  console.log("计算完成!");
-});
+  console.log("计算完成!")
+})
 ```
 
 为了解决这个问题，浏览器引入了异步（asynchronous）执行模型。当遇到一些耗时操作（比如网络请求、定时器）时，主线程不会傻等，而是把这些任务“外包”给浏览器的其他线程（比如网络线程、定时器线程）。
@@ -93,7 +93,7 @@ document.getElementById("myButton").addEventListener("click", function () {
 
 这个模型可以用一张经典的图来表示：
 
-![019.jpg](/public/images/2025/019.jpg)
+![019.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/019.jpg)
 
 ## **微任务（Microtask）和宏任务（Macrotask）**
 
@@ -129,19 +129,19 @@ document.getElementById("myButton").addEventListener("click", function () {
 现在，我们用这个模型来分析开头的代码：
 
 ```javascript
-console.log("start"); // 1
+console.log("start") // 1
 
 setTimeout(function () {
   // 4
-  console.log("setTimeout");
-}, 0);
+  console.log("setTimeout")
+}, 0)
 
 Promise.resolve().then(function () {
   // 3
-  console.log("promise");
-});
+  console.log("promise")
+})
 
-console.log("end"); // 2
+console.log("end") // 2
 ```
 
 1.  **第一轮宏任务（script 脚本）开始执行。**

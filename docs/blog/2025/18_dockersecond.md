@@ -15,7 +15,7 @@ tags:
 author: mCell
 ---
 
-![033.jpg](/public/images/2025/033.jpg)
+![033.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/033.jpg)
 
 # **Docker 进阶指南**
 

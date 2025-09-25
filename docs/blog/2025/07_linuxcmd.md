@@ -17,7 +17,7 @@ tags:
 author: mCell
 ---
 
-![014.webp](/public/images/2025/014.webp)
+![014.webp](https://stack-mcell.tos-cn-shanghai.volces.com/014.webp)
 
 # 精通 Linux：开发者必备的 50 个核心命令行工具
 

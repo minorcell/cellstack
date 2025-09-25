@@ -15,7 +15,7 @@ tags:
 author: mCell
 ---
 
-![017.webp](/images/2025/017.webp)
+![017.webp](https://stack-mcell.tos-cn-shanghai.volces.com/017.webp)
 
 # 写作技巧类收录
 

@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![022.webp](/public/images/2025/022.webp)
+![022.webp](https://stack-mcell.tos-cn-shanghai.volces.com/022.webp)
 
 # 编程的演进：从指令到意图
 
@@ -28,7 +28,7 @@ author: mCell
 
 ## 机器指令的时代
 
-![023.png](/public/images/2025/023.png)
+![023.png](https://stack-mcell.tos-cn-shanghai.volces.com/023.png)
 \_雷军在大学期间写的汇编程序\_
 
 计算机的 CPU 只懂机器码，也就是 0 和 1 组成的指令。这是计算机世界最底层的语言。
@@ -41,7 +41,7 @@ author: mCell
 
 ## 翻译官的诞生
 
-![024.png](/public/images/2025/024.png)
+![024.png](https://stack-mcell.tos-cn-shanghai.volces.com/024.png)
 \_Hello World\_
 
 真正的飞跃，始于高级语言的出现。
@@ -65,7 +65,7 @@ author: mCell
 
 **第二阶段，AI 是“主导者”（AI-Native IDE）。** 在 Cursor 这样的环境中，你提出需求，AI 生成代码，你负责审查和修改。此时，程序员从“翻译官”变成了“主编”，主要职责是向下达指令和审核翻译稿。
 
-![025.webp](/public/images/2025/025.webp)
+![025.webp](https://stack-mcell.tos-cn-shanghai.volces.com/025.webp)
 \_市面上一些较火的 AI 插件或者 AI IDE\_
 
 在这个阶段，我们写的代码越来越少，写的“提示”（Prompt）越来越多。如何清晰地描述需求，成了新的核心技能。
@@ -95,7 +95,7 @@ author: mCell
 
 更远的未来，脑机接口技术甚至可能让“意图”的表达也消失了。构建软件，会像我们此刻的思考一样，自然发生。
 
-![026.jpg](/public/images/2025/026.jpg)
+![026.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/026.jpg)
 \_马斯克的 Neuralink 项目，将 AI 与脑进行连接，实现“意念”的表达。\_
 
 ## 结论

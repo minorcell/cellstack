@@ -15,7 +15,7 @@ tags:
 author: mCell
 ---
 
-![027.avif](/public/images/2025/027.avif)
+![027.avif](https://stack-mcell.tos-cn-shanghai.volces.com/027.avif)
 
 # 一个技术写作者的抉择
 

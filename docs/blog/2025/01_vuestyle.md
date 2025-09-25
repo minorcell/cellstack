@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![011.png](/public/images/2025/011.png)
+![011.png](https://stack-mcell.tos-cn-shanghai.volces.com/011.png)
 
 # Vue 样式隔离与动态绑定的工程实践
 
@@ -105,10 +105,10 @@ PostCSS 为组件内每个元素添加唯一 `data-v` 属性，形成**组件级
 
 ```vue
 <script setup>
-import { useCssModule } from "vue";
+import { useCssModule } from "vue"
 
-const light = useCssModule("light");
-const dark = useCssModule("dark");
+const light = useCssModule("light")
+const dark = useCssModule("dark")
 </script>
 
 <template>
@@ -137,7 +137,7 @@ const dark = useCssModule("dark");
 const theme = reactive({
   primary: "#409EFF",
   padding: "12px",
-});
+})
 </script>
 
 <style scoped>
@@ -161,10 +161,10 @@ const theme = reactive({
 
 ```vue
 <script setup>
-const scale = ref(1);
+const scale = ref(1)
 
 function zoomIn() {
-  scale.value += 0.1;
+  scale.value += 0.1
 }
 </script>
 

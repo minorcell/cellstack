@@ -7,7 +7,7 @@ keywords: 互联网黑话, 职场沟通, 技术术语, 团队协作, 专业术�
 category: 思考
 ---
 
-![030.jpeg](/public/images/2025/030.jpeg)
+![030.jpeg](https://stack-mcell.tos-cn-shanghai.volces.com/030.jpeg)
 
 # **关于"黑话"，我想说几句**
 
@@ -53,7 +53,7 @@ category: 思考
 
 这才是“黑话”引起反感的根本原因。它从一个**效率工具**，异化成了一个**沟通壁垒**和**身份表演**。
 
-![031.jpg](/public/images/2025/031.jpg)
+![031.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/031.jpg)
 
 ## **我们应该如何看待和使用“黑话”？**
 

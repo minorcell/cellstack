@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![017.png](/images/2025/017.webp)
+![017.png](https://stack-mcell.tos-cn-shanghai.volces.com/017.webp)
 
 # **技术写作核心规范：单线结构法则**
 

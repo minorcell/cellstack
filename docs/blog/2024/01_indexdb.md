@@ -19,7 +19,7 @@ date: 2024-12-01
 lastUpdated: 2024-12-01
 ---
 
-![012.png](/public/images/2025/012.png)
+![012.png](https://stack-mcell.tos-cn-shanghai.volces.com/012.png)
 
 # IndexedDB 前端数据库实战指南
 
@@ -51,16 +51,16 @@ lastUpdated: 2024-12-01
 ```js
 // 创建学生数据库
 request.onupgradeneeded = (event) => {
-  const db = event.target.result;
+  const db = event.target.result
   const store = db.createObjectStore("students", {
     keyPath: "id",
     autoIncrement: true,
-  });
+  })
 
   // 创建查询索引
-  store.createIndex("name_idx", "name");
-  store.createIndex("grade_idx", "grade");
-};
+  store.createIndex("name_idx", "name")
+  store.createIndex("grade_idx", "grade")
+}
 ```
 
 2. **模式化操作封装**
@@ -68,15 +68,15 @@ request.onupgradeneeded = (event) => {
 ```js
 // 添加学生（返回Promise）
 async function addStudent(student) {
-  const store = await getStore("readwrite");
-  return promisify(store.add(student));
+  const store = await getStore("readwrite")
+  return promisify(store.add(student))
 }
 
 // 按成绩范围查询
 async function getByGrade(min, max) {
-  const store = await getStore();
-  const index = store.index("grade_idx");
-  return promisify(index.getAll(IDBKeyRange.bound(min, max)));
+  const store = await getStore()
+  const index = store.index("grade_idx")
+  return promisify(index.getAll(IDBKeyRange.bound(min, max)))
 }
 ```
 
@@ -93,12 +93,12 @@ pnpm add idb
 ```js
 // 原生 vs idb 查询对比
 // 原生
-const store = transaction.objectStore("students");
-const request = store.getAll();
+const store = transaction.objectStore("students")
+const request = store.getAll()
 
 // idb
-const db = await openDB("StudentDB");
-const students = await db.getAll("students");
+const db = await openDB("StudentDB")
+const students = await db.getAll("students")
 ```
 
 ### idb 核心优势：
@@ -128,9 +128,9 @@ upgrade(db, oldVersion) {
 ```js
 async function safeDBOp(operation) {
   try {
-    return await operation();
+    return await operation()
   } catch (error) {
-    console.error("DB操作失败:", error);
+    console.error("DB操作失败:", error)
     // 重试/降级逻辑
   }
 }

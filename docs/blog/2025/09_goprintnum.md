@@ -15,7 +15,7 @@ tags:
 author: mCell
 ---
 
-![008.jpg](/public/images/2025/008.jpg)
+![008.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/008.jpg)
 
 # 从 Sleep 到 Select：用一个例子掌握 Go 并发编程精髓
 

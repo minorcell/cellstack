@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![016.webp](/public/images/2025/016.webp)
+![016.webp](https://stack-mcell.tos-cn-shanghai.volces.com/016.webp)
 
 # VSCode 自动化代码规范实践指南
 
@@ -87,7 +87,7 @@ module.exports = {
       },
     ],
   },
-};
+}
 ```
 
 ## 配置深度解析

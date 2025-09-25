@@ -15,7 +15,7 @@ tags:
 author: mCell
 ---
 
-![032.png](/public/images/2025/032.png)
+![032.png](https://stack-mcell.tos-cn-shanghai.volces.com/032.png)
 
 > 技术的本质，总是在实践中被理解。这份收录精选社区口碑教程：从 Git、Makefile，到 nginx、React、Python 和 TypeScript ...，每一篇都承载了开发者的实战智慧。它们不是厚重教材，而是指引你快速上手、少走弯路的成长手册。
 
