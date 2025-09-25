@@ -21,7 +21,7 @@ keywords:
   - eCharts 实例
 ---
 
-<VideoEmbed url="https://youtu.be/6tvF4MyTQc8" title="Apache ECharts Introduction" />
+![039.png](https://stack-mcell.tos-cn-shanghai.volces.com/039.png)
 
 # eCharts 万字入门指南
 
