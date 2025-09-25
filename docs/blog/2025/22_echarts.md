@@ -1,9 +1,9 @@
 ---
-title: eCharts 万字入门指南
+title: ECharts 万字入门指南
 description: 详细学习 Apache ECharts 图表库，掌握丰富的图表类型、强大的交互功能和灵活的配置项，实现数据可视化。
 author: mcell
 tags:
-  - eCharts
+  - ECharts
   - 数据可视化
   - JavaScript
   - 图表库
@@ -11,19 +11,21 @@ tags:
   - Web开发
   - 数据分析
 keywords:
-  - eCharts 教程
+  - ECharts 教程
   - 数据可视化
   - JavaScript 图表
-  - eCharts 配置项
+  - ECharts 配置项
   - 前端图表库
   - 数据分析可视化
   - 网页图表制作
-  - eCharts 实例
+  - ECharts 实例
 ---
 
 ![039.png](https://stack-mcell.tos-cn-shanghai.volces.com/039.png)
 
-# eCharts 万字入门指南
+# ECharts 万字入门指南
+
+> 本文将作为你的 ECharts 入门指南，带你系统性地梳理 ECharts 的核心知识体系，并通过一个贴近实际业务的“高三期末考试成绩分析”案例，手把手教你如何将数据转化为富有洞察力的图表。
 
 前端，本质上就是把数据可视化的技术。如何将枯燥的数据，以一种更直观、更易于理解的方式呈现给用户，始终是一个重要的课题。
 
@@ -31,19 +33,17 @@ keywords:
 
 小到健康 App 中记录一周睡眠变化的柱状图，大到金融应用的实时股票仪表板，图表作为一种强大的视觉语言，其传递信息的效率远超纯粹的文字或表格。它能帮助我们快速发现数据中的模式、趋势和异常点。
 
-对于前端开发者而言，掌握一个强大的图表库，就如同多了一件神兵利-器。在众多选择中，[Apache ECharts](https://echarts.apache.org/zh/index.html) 无疑是当下最闪耀的明星之一。它凭借其丰富的图表类型、强大的交互功能、灵活的配置项以及活跃的社区，成为了国内前端开发者的首选。
+在众多选择中，[Apache ECharts](https://echarts.apache.org/zh/index.html) 无疑是当下最闪耀的产品之一。凭借其丰富的图表类型、强大的交互功能、灵活的配置项以及活跃的社区，成为了全球前端开发者的首选。
 
-然而，和 GSAP 动画库一样，很多人对 ECharts 的第一印象是“配置项繁多”、“学习曲线陡峭”。但事实果真如此吗？
+然而，和 [GSAP 动画库](https://stack.mcell.top/blog/2025/20_gsap01) 一样，很多人对 ECharts 的第一印象是“配置项繁多”、“学习曲线陡峭”。但事实果真如此吗？
 
 当我们静下心来，深入探索 ECharts 的世界，会发现其核心概念并不复杂。万变不离其宗，所有的图表配置，都围绕着一些固定的核心模块展开：**容器与大小、样式、数据集、坐标轴、视觉映射、图例**等等。
 
-ECharts 官网提供了海量的[示例](https://echarts.apache.org/examples/zh/index.html)，几乎涵盖了你能想到的所有图表效果。更棒的是，它的[配置项文档](https://echarts.apache.org/zh/option.html)本身就是可交互的——你可以一边修改配置，一边实时预览效果。这极大地降低了学习门槛。
+ECharts 官网提供了海量的[示例](https://echarts.apache.org/examples/zh/index.html)，几乎涵盖了你能想到的所有图表效果。甚至，它的[配置项文档](https://echarts.apache.org/zh/option.html)本身就是可交互的——你可以一边修改配置，一边实时预览效果。这极大地降低了学习门槛。
 
-本文将作为你的 ECharts 入门指南，带你系统性地梳理 ECharts 的核心知识体系，并通过一个贴近实际业务的“高三期末考试成绩分析”案例，手把手教你如何将数据转化为富有洞察力的图表。
+![043.png](https://stack-mcell.tos-cn-shanghai.volces.com/043.png)
 
-希望读完本文，你不仅能掌握 ECharts 的基本使用，更能理解其背后的设计思想，从此面对任何复杂图表需求都能游刃有余。
-
-##ECharts 初体验：绘制你的第一个图表
+## ECharts 初体验：绘制你的第一个图表
 
 学习任何一门技术的最好方式，就是从一个“Hello World”开始。
 
@@ -51,9 +51,15 @@ ECharts 官网提供了海量的[示例](https://echarts.apache.org/examples/zh/
 
 我们将使用最简单的方式：通过 CDN 引入。你只需要在 HTML 文件中加入一个 `<script>` 标签即可。这种方式无需构建工具，非常适合快速原型开发和学习。
 
+```html
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+```
+
 ### 完整示例
 
 将下面的代码完整复制到一个 HTML 文件中，然后用浏览器打开它，你就能看到你的第一个 ECharts 图表了。
+
+::: details 完整示例
 
 ```html
 <!DOCTYPE html>
@@ -101,11 +107,14 @@ ECharts 官网提供了海量的[示例](https://echarts.apache.org/examples/zh/
 </html>
 ```
 
-这个简单的例子，已经揭示了 ECharts 的核心工作流程：**引入脚本 -\> 准备容器 -\> 初始化实例 -\> 设置配置项**。而所有 ECharts 图表的“魔法”，都蕴含在那个巨大的 `option` 对象中。
+:::
+![044.png](https://stack-mcell.tos-cn-shanghai.volces.com/044.png)
+
+这个简单的例子，已经揭示了 ECharts 的核心工作流程：**引入脚本 -\> 准备容器 -\> 初始化实例 -\> 设置配置项**。而所有 ECharts 图表的实现，都蕴含在那个巨大的 `option` 对象中。
 
 ## 核心概念解析：解构 `option` 对象
 
-ECharts 的 `option` 对象是一个庞大而复杂的 JavaScript 对象，它描述了图表的一切：数据、样式、交互、动画等等。理解了它的核心构成，就等于掌握了 ECharts 的精髓。
+ECharts 的 `option` 对象是一个庞大而复杂的 JavaScript 对象，`option` 描述了图表的一切：数据、样式、交互、动画等等。理解了它的核心构成，就等于掌握了 ECharts 的精髓。
 
 让我们像剥洋葱一样，一层一层地解析 `option` 的核心组件。
 
@@ -161,6 +170,8 @@ ECharts 支持的[图表类型](https://www.google.com/search?q=https://echarts.
 - `graph`: 关系图
 - ...等等
 
+![049.png](https://stack-mcell.tos-cn-shanghai.volces.com/049.png)
+
 `series` 的强大之处在于，它不仅定义了图表的“形”，更承载了图表的“魂”——数据。
 
 ### `xAxis` & `yAxis`：坐标轴
@@ -184,6 +195,8 @@ xAxis: {
   } // 刻度标签样式
 }
 ```
+
+![050.png](https://stack-mcell.tos-cn-shanghai.volces.com/050.png)
 
 坐标轴的 `type` 是一个关键属性，它决定了坐标轴如何解析数据：
 
@@ -311,7 +324,9 @@ var option = {
 
 **分析目标**：直观对比各个班级的平均总分，了解班级间的整体学习水平差异。
 
-**完整代码**：
+![045.png](https://stack-mcell.tos-cn-shanghai.volces.com/045.png)
+
+::: details 完整代码
 
 ```html
 <!DOCTYPE html>
@@ -429,13 +444,16 @@ var option = {
 </html>
 ```
 
+:::
 通过这个柱状图，我们可以一目了然地看出哪个班级的平均成绩最高，哪个最低。
 
 ### 场景二：单科成绩分布情况（饼图 & 玫瑰图）
 
 **分析目标**：以高三(1)班为例，分析数学单科成绩的分布情况（如：优秀、良好、及格、不及格）。
 
-**完整代码**：
+![046.png](https://stack-mcell.tos-cn-shanghai.volces.com/046.png)
+
+::: details 完整代码
 
 ```html
 <!DOCTYPE html>
@@ -550,13 +568,17 @@ var option = {
 </html>
 ```
 
+:::
+
 饼图清晰地展示了各个分数段的人数占比。如果将 `series.roseType` 设置为 `'area'`，它会变成一个南丁格尔玫瑰图，扇区的半径会根据数据大小进行调整，视觉冲击力更强。
 
 ### 场景三：理科综合成绩关联性分析（散点图）
 
 **分析目标**：探究学生的物理成绩和化学成绩之间是否存在关联性。比如，是不是物理好的学生，化学也普遍不错？
 
-**完整代码**：
+![047.png](https://stack-mcell.tos-cn-shanghai.volces.com/047.png)
+
+::: details 完整代码
 
 ```html
 <!DOCTYPE html>
@@ -656,13 +678,16 @@ var option = {
 </html>
 ```
 
+:::
 通过观察散点图的分布趋势，我们可以做出初步判断。如果点主要集中在从左下到右上的对角线区域，则说明物理和化学成绩呈正相关关系。我们还可以轻易地发现那些“偏科”的异常点（比如物理很高但化学很低的学生）。
 
 ### 场景四：尖子生各科能力模型（雷达图）
 
 **分析目标**：选取总分排名前三的学生，用雷达图对比他们的各科能力，分析他们的学科优势与短板。
 
-**完整代码**：
+![048.png](https://stack-mcell.tos-cn-shanghai.volces.com/048.png)
+
+::: details 完整代码
 
 ```html
 <!DOCTYPE html>
@@ -751,6 +776,7 @@ var option = {
 </html>
 ```
 
+:::
 雷达图能够非常直观地展示出每个学生的学科均衡性。面积越大的学生，综合实力越强；在某个坐标轴上特别突出的，说明该学科是其优势学科。
 
 ## 进阶话题与技巧
@@ -818,11 +844,4 @@ ECharts 内置了流畅的动画效果。你可以在 `option` 的根级别对�
 
 数据可视化的征途是星辰大海。本文只是一个起点，ECharts 还有更多高级的功能（如图形组件、自定义系列、GL 三维图表等）等待你去探索。
 
-记住，学习 ECharts 最好的方法永远是：
-
-1.  **多看官方示例**：模仿是最好的学习。
-2.  **多查官方文档**：它是最权威的老师。
-3.  **多动手实践**：将学到的知识用到你自己的项目中去。
-
-现在，打开你的代码编辑器，找一份你感兴趣的数据，开始你的 ECharts 创作之旅吧！
 (完)

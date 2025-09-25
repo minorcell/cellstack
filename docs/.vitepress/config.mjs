@@ -56,7 +56,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
-            { text: "Echarts 万字入门指南", link: "/blog/2025/22_echarts" },
+            { text: "ECharts 万字入门指南", link: "/blog/2025/22_echarts" },
             { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
             { text: "Gsap 入门指南", link: "/blog/2025/20_gsap01" },
             { text: "JS 的多线程能力", link: "/blog/2025/19_jsworker" },
