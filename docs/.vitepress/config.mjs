@@ -46,11 +46,11 @@ const defaultTheme = {
           ]
         },
         {
-          text: "服务端",
+          text: "AI 工程",
           items: [
-            { text: "Go 并发编程", link: "/blog/2025/09_goprintnum" },
-            { text: "深度剖析 WebSocket", link: "/blog/2025/08_ws" },
-            { text: "深入浅出哈希算法", link: "/blog/2025/06_hash" },
+            { text: "长期以来我对 LLM 的误解", link: "/blog/2025/23_llm01" },
+            { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
+            { text: "提示工程入门指南", link: "/blog/2025/11_prompt" },
           ],
         },
         {
@@ -69,10 +69,11 @@ const defaultTheme = {
           ],
         },
         {
-          text: "AI 工程",
+          text: "服务端",
           items: [
-            { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
-            { text: "提示工程入门指南", link: "/blog/2025/11_prompt" },
+            { text: "Go 并发编程", link: "/blog/2025/09_goprintnum" },
+            { text: "深度剖析 WebSocket", link: "/blog/2025/08_ws" },
+            { text: "深入浅出哈希算法", link: "/blog/2025/06_hash" },
           ],
         },
         {

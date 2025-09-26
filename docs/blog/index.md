@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [长期以来我对 LLM 的误解](/blog/2025/23_llm01)
 - [ECharts 万字入门指南](/blog/2025/22_echarts)
 - [GSAP ScrollTrigger 详解](/blog/2025/21_gsap02)
 - [GSAP 入门指南](/blog/2025/20_gsap01)
