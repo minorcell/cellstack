@@ -48,6 +48,7 @@ const defaultTheme = {
         {
           text: "AI 工程",
           items: [
+            { text: "Agents.md 又是什么", link: "/blog/2025/24_agents" },
             { text: "长期以来我对 LLM 的误解", link: "/blog/2025/23_llm01" },
             { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
             { text: "提示工程入门指南", link: "/blog/2025/11_prompt" },
