@@ -151,9 +151,8 @@ Allow: /feed.xml
 
 完成以上步骤后，重新构建并部署你的网站。现在，一个与你的博客内容实时同步的 RSS 源已经成功上线了！你可以将 `https://你的域名/feed.xml` 这个地址添加到 Folo 或任何你喜欢的 RSS 阅读器中，亲自体验一下订阅自己创作的乐趣。
 
-> 成功添加 RSS 订阅源之后，你的 Vitepress 站点右上角会出现一个 RSS 图标，如图：
->
-> ![061.png](https://stack-mcell.tos-cn-shanghai.volces.com/061.png)
+比如这里，我的 FOLO 订阅了 CellStack 的 RSS 源之后，就可以看到 CellStack 的最新内容：
+![063.png](https://stack-mcell.tos-cn-shanghai.volces.com/063.png)
 
 ## 结语
 
