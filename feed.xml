@@ -4,7 +4,7 @@
         <title>CellStack - 工程师技术笔记</title>
         <link>https://stack.mcell.top</link>
         <description>计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。</description>
-        <lastBuildDate>Tue, 14 Oct 2025 18:01:17 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Oct 2025 18:04:05 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-cn</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[为博客添加 RSS 订阅]]></title>
             <link>https://stack.mcell.top/blog/2025/25_rss</link>
             <guid>https://stack.mcell.top/blog/2025/25_rss</guid>
-            <pubDate>Tue, 14 Oct 2025 18:00:24 GMT</pubDate>
+            <pubDate>Tue, 14 Oct 2025 18:03:15 GMT</pubDate>
             <description><![CDATA[基于 vitepress-plugin-rss 集成 RSS，构建时自动生成 feed.xml，支持筛选博客目录与 SEO 发现，过程简洁可靠。]]></description>
             <content:encoded><![CDATA[<p><img src="https://stack-mcell.tos-cn-shanghai.volces.com/062.png" alt="062.png" loading="lazy"></p>
 <h1 id="为博客添加-rss-订阅" tabindex="-1">为博客添加 RSS 订阅 <a class="header-anchor" href="#为博客添加-rss-订阅" aria-label="Permalink to &quot;为博客添加 RSS 订阅&quot;"></a></h1>
@@ -115,10 +115,8 @@
 <span class="line"><span></span></span>
 <span class="line"><span>Allow: /feed.xml</span></span></code></pre>
 <div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>完成以上步骤后，重新构建并部署你的网站。现在，一个与你的博客内容实时同步的 RSS 源已经成功上线了！你可以将 <code>https://你的域名/feed.xml</code> 这个地址添加到 Folo 或任何你喜欢的 RSS 阅读器中，亲自体验一下订阅自己创作的乐趣。</p>
-<blockquote>
-<p>成功添加 RSS 订阅源之后，你的 Vitepress 站点右上角会出现一个 RSS 图标，如图：</p>
-<p><img src="https://stack-mcell.tos-cn-shanghai.volces.com/061.png" alt="061.png" loading="lazy"></p>
-</blockquote>
+<p>比如这里，我的 FOLO 订阅了 CellStack 的 RSS 源之后，就可以看到 CellStack 的最新内容：
+<img src="https://stack-mcell.tos-cn-shanghai.volces.com/063.png" alt="063.png" loading="lazy"></p>
 <h2 id="结语" tabindex="-1">结语 <a class="header-anchor" href="#结语" aria-label="Permalink to &quot;结语&quot;"></a></h2>
 <p>相比于手动编写脚本，使用 <code>vitepress-plugin-rss</code> 插件无疑是一种更高效、更可靠的方式。它将复杂的 RSS 规范封装起来，我们只需要关心清晰的配置项即可。</p>
 <p>这不仅是一次简单的技术实践，更是对内容传播渠道的一次拓展。在这个算法推荐盛行的时代，RSS 这种看似“古老”的协议，却赋予了我们——无论是读者还是创作者——更多的主动权。它建立了一条纯粹的、无干扰的桥梁，连接了内容和真正关心它的人。</p>
