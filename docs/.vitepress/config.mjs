@@ -60,6 +60,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
+            { text: "为博客添加 RSS 订阅", link: "/blog/2025/25_rss"},
             { text: "ECharts 万字入门指南", link: "/blog/2025/22_echarts" },
             { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
             { text: "Gsap 入门指南", link: "/blog/2025/20_gsap01" },
