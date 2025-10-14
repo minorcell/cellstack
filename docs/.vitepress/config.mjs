@@ -407,7 +407,7 @@ const defaultTheme = {
 
   // Markdown 配置优化
   markdown: {
-    lineNumbers: true,
+    lineNumbers: false,
     container: {
       tipLabel: "提示",
       warningLabel: "注意",
