@@ -13,6 +13,7 @@ Allow: /transpond/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /_vitepress/
+Allow: /feed.xml
 Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /dist/

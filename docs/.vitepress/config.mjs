@@ -1,4 +1,5 @@
 import { withMermaid } from "vitepress-plugin-mermaid"
+import { RssPlugin } from "vitepress-plugin-rss"
 
 const defaultTheme = {
   base: "/",
@@ -10,6 +11,8 @@ const defaultTheme = {
   themeConfig: {
     logo: "/logo.svg",
     siteTitle: "CellStack",
+    // 供 vitepress-plugin-rss 插件注入 RSS 链接
+    socialLinks: [],
 
     nav: [
       {
@@ -349,6 +352,17 @@ const defaultTheme = {
     ["meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" }],
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
 
+    // RSS 订阅源发现
+    [
+      "link",
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        href: "/feed.xml",
+        title: "CellStack RSS Feed",
+      },
+    ],
+
     // 搜索引擎优化
     ["meta", { name: "msapplication-tooltip", content: "CellStack - 工程师技术笔记" }],
     ["meta", { name: "format-detection", content: "telephone=no" }],
@@ -409,9 +423,34 @@ const defaultTheme = {
   },
   mermaidPlugin: {
     class: "mermaid",
+  }
+}
+
+// RSS 插件配置（使用 vitepress-plugin-rss 生成 feed.xml）
+const RSS = {
+  title: "CellStack - 工程师技术笔记",
+  description:
+    "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
+  baseUrl: "https://stack.mcell.top",
+  url: "https://stack.mcell.top/feed.xml",
+  filename: "feed.xml",
+  copyright: `© ${new Date().getFullYear()} mCell`,
+  language: "zh-cn",
+  author: {
+    name: "mCell",
+    link: "https://stack.mcell.top",
   },
+  ignoreHome: true,
+  ignorePublish: false,
+  // 仅收录博客目录下的文章
+  filter: (post) => post.url && post.url.startsWith("/blog/"),
 }
 
 export default withMermaid({
   ...defaultTheme
+  ,
+  // 集成 RSS 生成插件
+  vite: {
+    plugins: [RssPlugin(RSS)]
+  }
 })

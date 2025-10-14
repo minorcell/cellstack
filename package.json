@@ -16,8 +16,8 @@
   "license": "MIT",
   "devDependencies": {
     "@braintree/sanitize-url": "^7.1.1",
-    "cytoscape": "^3.33.1",
     "busuanzi.pure.js": "^1.0.3",
+    "cytoscape": "^3.33.1",
     "cytoscape-cose-bilkent": "^4.1.0",
     "dayjs": "^1.11.13",
     "debug": "^4.4.1",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
-    "qrcode": "^1.5.4"
+    "qrcode": "^1.5.4",
+    "vitepress-plugin-rss": "^0.3.2"
   }
 }
