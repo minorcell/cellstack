@@ -21,23 +21,18 @@ author: mCell
 
 # 目录
 
-1. [简介 - Git 教程 - 廖雪峰的官方网站](https://liaoxuefeng.com/books/git/introduction/index.html)  
-   **收录理由**：中文最佳 Git 入门教程，循序渐进，理论与实践并重，适合零基础快速掌握版本控制核心概念
+[yan5xu - 从ChatGPT到AI Agent，一文讲透 Agent 的底层逻辑](https://mp.weixin.qq.com/s/tewBKHgbyrjxUjAOmkXI7A)
 
-2. [《跟我一起写 makefile》 - 陈皓](https://scc.ustc.edu.cn/_upload/article/files/7d/f9/033cd3b84a9d8a16b2b2eb9987e6/W020150417520333830657.pdf)  
-   **收录理由**：经典构建工具教程，深入浅出讲解 Makefile 语法和最佳实践，是 Linux 开发者必备技能
+[简介 - Git 教程 - 廖雪峰的官方网站](https://liaoxuefeng.com/books/git/introduction/index.html)  
 
-3. [《nginx 开发从入门到精通》](https://tengine.taobao.org/book/index.html)  
-   **收录理由**：阿里巴巴团队出品，从基础配置到模块开发全覆盖，实战性强，适合 Web 服务器运维和开发
+[《跟我一起写 makefile》 - 陈皓](https://scc.ustc.edu.cn/_upload/article/files/7d/f9/033cd3b84a9d8a16b2b2eb9987e6/W020150417520333830657.pdf)  
 
-4. [React 技术揭秘](https://react.iamkasong.com/#%E5%AF%BC%E5%AD%A6%E8%A7%86%E9%A2%91)  
-   **收录理由**：深度解析 React 源码和工作原理，帮助开发者理解虚拟 DOM、Fiber 架构等核心机制
+[《nginx 开发从入门到精通》](https://tengine.taobao.org/book/index.html)  
 
-5. [《Python 简明教程》](https://learnku.com/docs/byte-of-python/2018)  
-   **收录理由**：简洁明了的 Python 入门指南，适合编程新手快速上手，涵盖语法基础到实际应用
+[React 技术揭秘](https://react.iamkasong.com/#%E5%AF%BC%E5%AD%A6%E8%A7%86%E9%A2%91)  
 
-6. [《TypeScript Deep Dive》](https://basarat.gitbook.io/typescript/index.html)  
-   **收录理由**：TypeScript 权威深度指南，从基础语法到高级特性全面覆盖，适合 JavaScript 开发者进阶
+[《Python 简明教程》](https://learnku.com/docs/byte-of-python/2018)  
 
-7. [Docker 入门与实践](https://hujb2000.gitbooks.io/docker-flow-evolution/content/cn//index.html)
-   **收录理由**：全面的 Docker 技术书籍，包含 Docker 基础篇、Docker 进价篇、Docker 实践篇和 Docker 生态篇
+[《TypeScript Deep Dive》](https://basarat.gitbook.io/typescript/index.html)  
+
+[Docker 入门与实践](https://hujb2000.gitbooks.io/docker-flow-evolution/content/cn//index.html)
