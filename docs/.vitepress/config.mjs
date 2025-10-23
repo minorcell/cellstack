@@ -51,6 +51,7 @@ const defaultTheme = {
         {
           text: "AI 工程",
           items: [
+            { text: "Agent = LLM + Tools", link: "/blog/2025/26_agent_is_llm_plus_tools" },
             { text: "Agents.md 又是什么", link: "/blog/2025/24_agents" },
             { text: "长期以来我对 LLM 的误解", link: "/blog/2025/23_llm01" },
             { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
@@ -60,7 +61,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
-            { text: "为博客添加 RSS 订阅", link: "/blog/2025/25_rss"},
+            { text: "为博客添加 RSS 订阅", link: "/blog/2025/25_rss" },
             { text: "ECharts 万字入门指南", link: "/blog/2025/22_echarts" },
             { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
             { text: "Gsap 入门指南", link: "/blog/2025/20_gsap01" },
@@ -443,8 +444,8 @@ const RSS = {
   },
   ignoreHome: true,
   ignorePublish: false,
-  // 仅收录博客目录下的文章
-  filter: (post) => post.url && post.url.startsWith("/blog/"),
+  // 仅收录博客目录下的文章，排除 index 页面
+  filter: (post) => post.url && post.url.startsWith("/blog/") && !post.url.includes("index"),
 }
 
 export default withMermaid({

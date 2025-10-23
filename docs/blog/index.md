@@ -25,6 +25,7 @@ author: mCell
 
 ## 最近更新
 
+- [Agent = LLM + Tools](/blog/2025/26_agent_is_llm_plus_tools.md)
 - [为博客添加 RSS 订阅](/blog/2025/25_rss)
 - [Agents.md 又是什么](/blog/2025/24_agents)
 - [长期以来我对 LLM 的误解](/blog/2025/23_llm01)
