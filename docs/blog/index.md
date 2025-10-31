@@ -23,26 +23,6 @@ author: mCell
 
 记录在工程化开发中的深度实践与体系化思考，内容覆盖：涵盖前端、后端、DevOps、AI 工程等。
 
-## 最近更新
-
-- [Agent = LLM + Tools](/blog/2025/26_agent_is_llm_plus_tools.md)
-- [为博客添加 RSS 订阅](/blog/2025/25_rss)
-- [Agents.md 又是什么](/blog/2025/24_agents)
-- [长期以来我对 LLM 的误解](/blog/2025/23_llm01)
-- [ECharts 万字入门指南](/blog/2025/22_echarts)
-- [GSAP ScrollTrigger 详解](/blog/2025/21_gsap02)
-- [GSAP 入门指南](/blog/2025/20_gsap01)
-- [JavaScript 的多线程能力：Worker](/blog/2025/19_jsworker)
-- [Docker 进阶指南](/blog/2025/18_dockersecond)
-- [Docker 入门指南](/blog/2025/17_dockerfirst)
-- [关于“黑话”，我想说几句](/blog/2025/16_slang)
-- [前端新手学习指南（2025 版）](/blog/2025/15_frontendlearn)
-- [一个技术写作者的抉择](/blog/2025/14_whywrite)
-- [编程的未来：从“翻译”到“意图”](/blog/2025/13_codeinfeature)
-- [Claude Code Sub-agent 模式的详解和实践](/blog/2025/12_subagent)
-- [提示工程（Prompt Engineering）入门指南](/blog/2025/11_prompt)
-- [JavaScript 运行机制详解：再谈 Event Loop](/blog/2025/10_jssync)
-
 ## 找到我
 
 - [GitHub@minorcell](https://github.com/minorcell) · 项目迭代
