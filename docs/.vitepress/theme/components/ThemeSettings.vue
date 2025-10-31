@@ -814,7 +814,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 12px 16px;
 }
 
 .theme-modal-title {
@@ -845,7 +845,7 @@ onUnmounted(() => {
 }
 
 .theme-settings-content {
-  padding: 12px;
+  padding: 16px;
   max-height: calc(80vh - 80px);
   overflow-y: auto;
 }
@@ -1342,7 +1342,7 @@ onUnmounted(() => {
   }
 
   .theme-settings-content {
-    padding: 12px 12px;
+    padding: 16px;
   }
 
   .appearance-options {
