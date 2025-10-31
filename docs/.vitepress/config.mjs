@@ -51,6 +51,7 @@ const defaultTheme = {
         {
           text: "AI 工程",
           items: [
+            { text: "Agent ReAct and Loop", link: "/blog/2025/27_react_loop" },
             { text: "Agent = LLM + Tools", link: "/blog/2025/26_agent_is_llm_plus_tools" },
             { text: "Agents.md 又是什么", link: "/blog/2025/24_agents" },
             { text: "长期以来我对 LLM 的误解", link: "/blog/2025/23_llm01" },

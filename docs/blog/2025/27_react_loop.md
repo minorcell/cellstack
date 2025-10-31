@@ -1,8 +1,40 @@
-# Agent 自动执行的秘密：ReAct 循环
+---
+title: Agent ReAct and Loop
+description: 深入解析 AI Agent 的 ReAct 架构和工作循环原理，探讨智能体如何实现自动化任务执行，从理论到实践的完整指南。
+author: mcell
+tags:
+  - AI Agent
+  - ReAct
+  - Loop
+  - LLM
+  - 人工智能
+  - 大语言模型
+  - 工具调用
+  - 智能体架构
+  - 自动化
+  - AI工程
+keywords:
+  - ReAct架构
+  - AI Agent循环
+  - 智能体工作原理
+  - LLM工具调用
+  - Agent自动化
+  - 思考行动循环
+  - AI推理执行
+  - 智能体设计模式
+  - 工具执行机制
+  - AI Agent开发
+---
+
+![065.png](https://stack-mcell.tos-cn-shanghai.volces.com/065.png)
+
+# Agent ReAct and Loop
 
 我一直在使用 ChatGPT 或通义千问这样的 AI 工具，它们很强大，但多数情况下都是“一问一答”。我提一个问题，它给一个答案。
 
 但我最近注意到，像 Manus 或 Claude Code CLI 这样的“Agent”（智能体）产品，它们似乎可以**自动执行**任务。你给它一个目标，它会自己去调用工具、分析结果、继续下一步，直到任务完成。
+
+![066](https://stack-mcell.tos-cn-shanghai.volces.com/066.png)
 
 这到底是怎么做到的？它如何摆脱“一问一答”的限制，实现自动循环？这就是我这周探索的问题。
 
@@ -22,6 +54,8 @@
 这个“思考-行动”的循环听起来很合理。为了验证它，我做了一个小实验。
 
 我查看了 Claude 编码助手（我在 Mac 上的路径是 `./claude/projects/*.jsonl`）的会话日志文件。这些 `.jsonl` 文件记录了我和 Agent 的完整对话。
+
+![067](https://stack-mcell.tos-cn-shanghai.volces.com/067.png)
 
 我发现，里面的消息（Message）并不仅仅是“我问”和“它答”，而是主要有四种类型：
 
@@ -44,105 +78,39 @@
 
 只要 LLM 返回的不是最终答案，而是一个 `tool_call`，系统就去执行它，然后把结果塞回去，让 LLM 继续“思考”。
 
-## 动手实现：TypeScript 伪代码
+## Demo 快速验证
 
-我尝试用 TypeScript 把这个核心循环写了出来。
-
-这个想法很简单：我们写一个函数，它负责调用 LLM。调用后，我们检查返回结果。
+我的逻辑很清晰：一个主函数，它负责调用 LLM。调用后，检查返回结果。
 
 - 如果结果是普通文本（最终答案），就返回它。
 - 如果结果是 `tool_call`，就去执行工具，然后把工具结果和之前的对话历史“拼”在一起，**递归调用**自己。
 
 下面是一个简化的伪代码：
 
-```typescript
-// 定义消息的类型
-interface Message {
-  role: "user" | "assistant" | "tool_result"
-  content: string | null
-  toolCalls?: ToolCall[] // assistant 可能要求调用工具
-  toolCallId?: string // tool_result 需要
-}
-
-// 模拟的 LLM 调用
-async function callLLM(messages: Message[]): Promise<Message> {
-  // 假设 llm.chat(...) 会返回一个 assistant 消息
-  // 这个消息可能包含 content，也可能包含 toolCalls
-  const response = await llm.chat(messages, { tools: allMyTools })
-  return response // 示例：{ role: 'assistant', content: null, toolCalls: [...] }
-}
-
-// 模拟的工具执行
-async function executeTool(toolCall: ToolCall): Promise<Message> {
-  const { toolName, args } = toolCall
-  let result: any
-
-  if (toolName === "readFile") {
-    result = await fs.promises.readFile(args.path, "utf-8")
-  } else if (toolName === "writeFile") {
-    await fs.promises.writeFile(args.path, args.content)
-    result = { success: true }
+```javascript
+class SimpleAgent {
+  async chat(message) {
+    const assistantResponse = await this.callLLM(message)
+    if (assistantResponse.hasToolCall) {
+      const toolResult = await this.callTool(assistantResponse.toolCall) // 递归调用，将tool result作为新消息
+      return this.chat(toolResult)
+    }
+    return assistantResponse.content
   }
-  // ... 其他工具
-
-  return {
-    role: "tool_result",
-    toolCallId: toolCall.id, // 告诉 LLM 这是哪个调用的结果
-    content: JSON.stringify(result),
-  }
-}
-
-/**
- * Agent 的核心循环
- */
-async function agentLoop(messages: Message[]): Promise<Message> {
-  // 1. 调用 LLM（思考）
-  const assistantResponse = await callLLM(messages)
-
-  // 2. 将 LLM 的思考加入历史
-  messages.push(assistantResponse)
-
-  // 3. 检查是否需要行动 (Act)
-  if (assistantResponse.toolCalls && assistantResponse.toolCalls.length > 0) {
-    // 4. 执行所有工具调用
-    const toolResults = await Promise.all(
-      assistantResponse.toolCalls.map(executeTool)
-    )
-
-    // 5. 将工具结果加入历史
-    messages.push(...toolResults)
-
-    // 6. 递归：带着新结果，再次进入循环
-    return agentLoop(messages)
-  } else {
-    // 7. 停止循环：LLM 认为任务完成，给出了最终答案
-    return assistantResponse
-  }
-}
-
-// --------
-// 启动 Agent
-// --------
-async function main() {
-  const systemPrompt = "你是一个智能助手，...（这里是提示词）"
-  const userMessage =
-    "请帮我读取 'config.json' 文件的内容，并写入 'output.txt'。"
-
-  const initialMessages: Message[] = [
-    // 也可以在这里加入 System Prompt
-    { role: "user", content: userMessage },
-  ]
-
-  const finalAnswer = await agentLoop(initialMessages)
-  console.log("Agent 任务完成：", finalAnswer.content)
 }
 ```
 
+为了快速验证我的想法，我让 Claude Code 基于 Plasmo 快速开发了一个侧边栏形式的 Browser Agent，效果如下：
+
+![068](https://stack-mcell.tos-cn-shanghai.volces.com/068.png)
+
+> 这不是产品，只是 Demo。仅用于验证我自己所理解的 Loop。
+
 ## 我的感想
 
-写完这个简单的循环，我豁然开朗。
+在做完这些事情以后，我豁然开朗。
 
-Agent 的“自动执行”，其核心就是这个 **“LLM 思考 -\> 工具执行 -\> 结果反馈 -\> LLM 再思考”** 的循环。
+Agent 的“自动执行”，其核心就是这个 **“LLM 思考 -> 工具执行 -> 结果反馈 -> LLM 再思考”** 的循环。
 
 当然，我这个实现非常简陋。一个工业级的 Agent 框架（比如 LangChain）要复杂得多，它们需要处理：
 
@@ -151,6 +119,6 @@ Agent 的“自动执行”，其核心就是这个 **“LLM 思考 -\> 工具�
 3.  **记忆（Memory）**：如何在循环中管理越来越长的对话历史，防止 Token 溢出。
 4.  **路由（Router）**：当有上百个工具时，如何决定调用哪一个。
 
-但通过亲自动手，我总算摸清了 ReAct 架构的基本原理。这对于我后续的学习，打下了一个很好的基础。
+但通过亲自动手，我总算摸清了 ReAct 架构的基本原理。这对于我后续的学习，算是打下了一个很好的基础吧。
 
 （完）
