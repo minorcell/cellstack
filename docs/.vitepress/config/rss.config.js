@@ -17,6 +17,17 @@ export const rssConfig = {
   },
   ignoreHome: true,
   ignorePublish: false,
+
+  // 限制 RSS 订阅只包含最新的 10 篇文章
+  limit: 10,
+
   // 仅收录 topics 目录下的文章，排除 index 页面
   filter: (post) => post.url && post.url.startsWith("/topics/") && !post.url.includes("index"),
+
+  // 按最后修改时间排序（最新的在前）
+  sort: (a, b) => {
+    const dateA = a.date || a.frontmatter?.date || new Date(0)
+    const dateB = b.date || b.frontmatter?.date || new Date(0)
+    return new Date(dateB) - new Date(dateA)
+  }
 }
