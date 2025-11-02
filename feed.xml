@@ -4,11 +4,63 @@
         <title>CellStack - 工程师技术笔记</title>
         <link>https://stack.mcell.top</link>
         <description>计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。</description>
-        <lastBuildDate>Sun, 02 Nov 2025 18:12:55 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Nov 2025 18:34:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-cn</language>
         <copyright>© 2025 mCell</copyright>
+        <item>
+            <title><![CDATA[AI 专题]]></title>
+            <link>https://stack.mcell.top/topics/ai/</link>
+            <guid>https://stack.mcell.top/topics/ai/</guid>
+            <pubDate>Sun, 02 Nov 2025 18:23:01 GMT</pubDate>
+            <description><![CDATA[聚焦 AI 工程、Agent 架构、提示工程等主题文章。]]></description>
+            <content:encoded><![CDATA[<h1 id="ai-专题" tabindex="-1">AI 专题 <a class="header-anchor" href="#ai-专题" aria-label="Permalink to &quot;AI 专题&quot;"></a></h1>
+<p>软件开发正在经历范式转变，从编写确定性的代码，到编排不确定性的智能。</p>
+<p>这个专题关注的是：如何将智能能力工程化。这不是训练模型，而是使用模型；不是研究算法，而是设计系统。核心挑战在于处理模型的不确定性、设计可靠的架构、在成本和效果之间找到平衡。</p>
+<p>智能系统的开发需要新的思维方式：你不能像传统编程那样精确控制每一步，但也不能完全放任自流。你需要理解智能的边界，设计容错机制，用自然语言表达逻辑，让不同的智能模块协作完成复杂任务。</p>
+<p>这是一个介于传统软件工程和机器学习之间的新领域——它需要工程师的系统思维，也需要对智能系统特性的深刻理解。</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[客户端专题]]></title>
+            <link>https://stack.mcell.top/topics/client/</link>
+            <guid>https://stack.mcell.top/topics/client/</guid>
+            <pubDate>Sun, 02 Nov 2025 18:23:01 GMT</pubDate>
+            <description><![CDATA[前端开发与客户端技术相关的文章集合。]]></description>
+            <content:encoded><![CDATA[<h1 id="客户端专题" tabindex="-1">客户端专题 <a class="header-anchor" href="#客户端专题" aria-label="Permalink to &quot;客户端专题&quot;"></a></h1>
+<p>前端开发的本质是在受限环境中创造流畅体验。</p>
+<p>浏览器是一个复杂的运行时：单线程执行、异步事件驱动、多进程渲染、受限的存储和计算能力。这些约束不是障碍，而是设计的边界。理解这些边界，才能写出高性能、可靠的代码。</p>
+<p>这个专题关注的是底层机制而非表层框架：为什么需要异步编程？如何突破单线程限制？数据如何在客户端持久化？动画为什么会掉帧？这些问题的答案不在文档里，而在对运行时环境的深刻理解中。</p>
+<p>工程化不是使用工具，而是理解工具背后的原理。当你知道为什么某个技术方案有效，你就能在新场景中做出正确的决策。技术迭代很快，但底层原理是稳定的——这些知识的半衰期远比框架更长。</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[网络与运维专题]]></title>
+            <link>https://stack.mcell.top/topics/netops/</link>
+            <guid>https://stack.mcell.top/topics/netops/</guid>
+            <pubDate>Sun, 02 Nov 2025 18:23:01 GMT</pubDate>
+            <description><![CDATA[合并网络与系统运维相关的文章集合。]]></description>
+            <content:encoded><![CDATA[<h1 id="网络与运维专题" tabindex="-1">网络与运维专题 <a class="header-anchor" href="#网络与运维专题" aria-label="Permalink to &quot;网络与运维专题&quot;"></a></h1>
+<p>基础设施是应用的底座,工程效率是团队的倍增器。</p>
+<p>现代软件开发早已打破了开发与运维的边界。容器化、自动化部署、持续集成、监控告警,这些不是&quot;别人的工作&quot;,而是工程能力的基本要求。一个不理解基础设施的开发者,很难写出真正可部署的代码;一个不熟悉系统环境的工程师,在排查线上问题时会举步维艰。</p>
+<p>这个专题关注的是:缩短&quot;从代码到价值&quot;的路径。更快的构建、更可靠的部署、更及时的反馈——这需要理解自动化的边界、隔离的价值、配置的策略、监控的设计。</p>
+<p>基础设施不是附属品,而是工程实践的核心部分。理解网络通信的本质、掌握系统环境的操作、设计高效的交付流程,这些能力决定了一个工程师能走多远。</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[服务端专题]]></title>
+            <link>https://stack.mcell.top/topics/server/</link>
+            <guid>https://stack.mcell.top/topics/server/</guid>
+            <pubDate>Sun, 02 Nov 2025 18:23:01 GMT</pubDate>
+            <description><![CDATA[服务端与后端工程相关的文章集合。]]></description>
+            <content:encoded><![CDATA[<h1 id="服务端专题" tabindex="-1">服务端专题 <a class="header-anchor" href="#服务端专题" aria-label="Permalink to &quot;服务端专题&quot;"></a></h1>
+<p>后端开发是在处理复杂性：并发、状态、一致性、可靠性。</p>
+<p>服务端代码运行在看不见的地方，但它承载着系统的核心逻辑。一个请求的响应时间、一个查询的执行效率、一个锁的设计策略，这些细节决定了系统能否在高负载下稳定运行。</p>
+<p>这个专题关注的是技术选择背后的权衡：什么时候需要并发？如何平衡同步和异步？状态应该放在哪里？一致性要牺牲什么？这些问题没有标准答案，只有在具体场景下的合理决策。</p>
+<p>后端工程的核心不在于语言和框架，而在于对系统特性的理解。并发与并行、阻塞与非阻塞、有状态与无状态——这些是跨语言、跨框架的通用知识。理解它们，才能设计出可扩展、可维护、可观测的系统。</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Agent = LLM + Tools]]></title>
             <link>https://stack.mcell.top/topics/ai/agent_is_llm_plus_tools</link>
@@ -282,16 +334,6 @@ Tools 封装的就是 <code>shell</code> 命令（比如 <code>ls</code>, <code>
 <p><strong>（完）</strong></p>
 ]]></content:encoded>
             <enclosure url="https://stack-mcell.tos-cn-shanghai.volces.com/021.webp" length="0" type="image/webp"/>
-        </item>
-        <item>
-            <title><![CDATA[AI 专题]]></title>
-            <link>https://stack.mcell.top/topics/ai/</link>
-            <guid>https://stack.mcell.top/topics/ai/</guid>
-            <pubDate>Sun, 02 Nov 2025 18:08:08 GMT</pubDate>
-            <description><![CDATA[聚焦 AI 工程、Agent 架构、提示工程等主题文章。]]></description>
-            <content:encoded><![CDATA[<h1 id="ai-专题" tabindex="-1">AI 专题 <a class="header-anchor" href="#ai-专题" aria-label="Permalink to &quot;AI 专题&quot;"></a></h1>
-<p>本专题收录与 AI 工程相关的文章：Agent 架构、提示工程、模型理解等。</p>
-]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[长期以来我对 LLM 的误解]]></title>
@@ -1850,16 +1892,6 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[客户端专题]]></title>
-            <link>https://stack.mcell.top/topics/client/</link>
-            <guid>https://stack.mcell.top/topics/client/</guid>
-            <pubDate>Sun, 02 Nov 2025 18:08:08 GMT</pubDate>
-            <description><![CDATA[前端开发与客户端技术相关的文章集合。]]></description>
-            <content:encoded><![CDATA[<h1 id="客户端专题" tabindex="-1">客户端专题 <a class="header-anchor" href="#客户端专题" aria-label="Permalink to &quot;客户端专题&quot;"></a></h1>
-<p>前端开发与客户端技术相关的精选文章。</p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[JavaScript 异步编程完全指南：从 setTimeout 到生成器的 6 种实现模式]]></title>
             <link>https://stack.mcell.top/topics/client/javascript_async_guide_6_patterns</link>
             <guid>https://stack.mcell.top/topics/client/javascript_async_guide_6_patterns</guid>
@@ -2645,16 +2677,12 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 </li>
 <li>
 <p><strong>规则管理原则</strong></p>
-
-      <Suspense> 
-      <template #default>
-      <Mermaid id="mermaid-317" class="mermaid" graph="graph%20LR%0A%20%20A%5B%E5%9F%BA%E7%A1%80%E8%A7%84%E5%88%99%5D%20--%3E%20B(ESLint%E5%AE%98%E6%96%B9%E6%8E%A8%E8%8D%90)%0A%20%20A%20--%3E%20C(Airbnb%2FStandard)%0A%20%20D%5B%E9%A3%8E%E6%A0%BC%E8%A7%84%E5%88%99%5D%20--%3E%20E(Prettier%E6%8E%A5%E7%AE%A1)%0A%20%20E%20--%3E%20F(.prettierrc%E8%A6%86%E7%9B%96)%0A"></Mermaid>
-      </template>
-        <!-- loading state via #fallback slot -->
-        <template #fallback>
-          Loading...
-        </template>
-      </Suspense></li>
+<div class="language-mermaid vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">mermaid</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">graph LR</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  A[基础规则] --> B(ESLint官方推荐)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  A --> C(Airbnb/Standard)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  D[风格规则] --> E(Prettier接管)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  E --> F(.prettierrc覆盖)</span></span></code></pre>
+</div></li>
 <li>
 <p><strong>协作优化建议</strong></p>
 <ul>
@@ -2875,16 +2903,16 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">style</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span></code></pre>
 </div><h2 id="架构选型建议" tabindex="-1">架构选型建议 <a class="header-anchor" href="#架构选型建议" aria-label="Permalink to &quot;架构选型建议&quot;"></a></h2>
 <h3 id="方案决策树" tabindex="-1">方案决策树 <a class="header-anchor" href="#方案决策树" aria-label="Permalink to &quot;方案决策树&quot;"></a></h3>
-
-      <Suspense> 
-      <template #default>
-      <Mermaid id="mermaid-184" class="mermaid" graph="graph%20TD%0A%20%20A%5B%E9%9C%80%E8%A6%81%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB%EF%BC%9F%5D%20--%3E%7C%E5%90%A6%7C%20B%5B%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80CSS%5D%0A%20%20A%20--%3E%7C%E6%98%AF%7C%20C%7B%E9%A1%B9%E7%9B%AE%E8%A7%84%E6%A8%A1%7D%0A%20%20C%20--%3E%7C%E4%B8%AD%E5%B0%8F%E5%9E%8B%7C%20D%5BScoped%20CSS%5D%0A%20%20C%20--%3E%7C%E5%A4%A7%E5%9E%8B%7C%20E%5BCSS%20Modules%5D%0A%20%20D%20--%3E%20F%7B%E9%9C%80%E8%A6%81%E5%8A%A8%E6%80%81%E6%A0%B7%E5%BC%8F%EF%BC%9F%7D%0A%20%20F%20--%3E%7C%E6%98%AF%7C%20G%5B%E7%BB%93%E5%90%88v-bind%5D%0A%20%20E%20--%3E%20H%7B%E9%9C%80%E8%A6%81%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2%EF%BC%9F%7D%0A%20%20H%20--%3E%7C%E6%98%AF%7C%20I%5B%E5%A4%9ACSS%20Modules%5D%0A"></Mermaid>
-      </template>
-        <!-- loading state via #fallback slot -->
-        <template #fallback>
-          Loading...
-        </template>
-      </Suspense><h3 id="混合应用模式" tabindex="-1">混合应用模式 <a class="header-anchor" href="#混合应用模式" aria-label="Permalink to &quot;混合应用模式&quot;"></a></h3>
+<div class="language-mermaid vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">mermaid</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">graph TD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  A[需要样式隔离？] -->|否| B[使用全局CSS]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  A -->|是| C{项目规模}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  C -->|中小型| D[Scoped CSS]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  C -->|大型| E[CSS Modules]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  D --> F{需要动态样式？}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  F -->|是| G[结合v-bind]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  E --> H{需要主题切换？}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  H -->|是| I[多CSS Modules]</span></span></code></pre>
+</div><h3 id="混合应用模式" tabindex="-1">混合应用模式 <a class="header-anchor" href="#混合应用模式" aria-label="Permalink to &quot;混合应用模式&quot;"></a></h3>
 <div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">style</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> module</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/* 基础样式 */</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">style</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
@@ -3249,16 +3277,15 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 <li><strong>产品经理</strong>：理解功能实现的边界条件</li>
 </ul>
 <h3 id="_2-效率提升的关键" tabindex="-1">2. 效率提升的关键 <a class="header-anchor" href="#_2-效率提升的关键" aria-label="Permalink to &quot;2. 效率提升的关键&quot;"></a></h3>
-
-      <Suspense> 
-      <template #default>
-      <Mermaid id="mermaid-42" class="mermaid" graph="graph%20TD%0A%20%20%20%20A%5B%E6%94%B6%E5%88%B0%E7%8A%B6%E6%80%81%E7%A0%81%5D%20--%3E%20B%7B%E7%8A%B6%E6%80%81%E7%A0%81%E7%B1%BB%E5%9E%8B%7D%0A%20%20%20%20B%20--%3E%7C2xx%7C%20C%5B%E7%BB%A7%E7%BB%AD%E6%AD%A3%E5%B8%B8%E6%B5%81%E7%A8%8B%5D%0A%20%20%20%20B%20--%3E%7C4xx%7C%20D%5B%E6%A3%80%E6%9F%A5%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82%5D%0A%20%20%20%20B%20--%3E%7C5xx%7C%20E%5B%E6%8E%92%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98%5D%0A%20%20%20%20C%20--%3E%20F%5B%E5%AE%8C%E6%88%90%E6%93%8D%E4%BD%9C%5D%0A%20%20%20%20D%20--%3E%20G%5B%E4%BF%AE%E6%AD%A3%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%5D%0A%20%20%20%20E%20--%3E%20H%5B%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81%5D%0A"></Mermaid>
-      </template>
-        <!-- loading state via #fallback slot -->
-        <template #fallback>
-          Loading...
-        </template>
-      </Suspense><h3 id="_3-用户体验的隐形守护者" tabindex="-1">3. 用户体验的隐形守护者 <a class="header-anchor" href="#_3-用户体验的隐形守护者" aria-label="Permalink to &quot;3. 用户体验的隐形守护者&quot;"></a></h3>
+<div class="language-mermaid vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">mermaid</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">graph TD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A[收到状态码] --> B{状态码类型}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    B -->|2xx| C[继续正常流程]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    B -->|4xx| D[检查客户端请求]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    B -->|5xx| E[排查服务器问题]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    C --> F[完成操作]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    D --> G[修正请求参数]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    E --> H[检查服务状态]</span></span></code></pre>
+</div><h3 id="_3-用户体验的隐形守护者" tabindex="-1">3. 用户体验的隐形守护者 <a class="header-anchor" href="#_3-用户体验的隐形守护者" aria-label="Permalink to &quot;3. 用户体验的隐形守护者&quot;"></a></h3>
 <ul>
 <li>401 状态时自动跳转登录页</li>
 <li>503 状态展示友好维护页面</li>
@@ -3429,16 +3456,13 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 </tbody>
 </table>
 <h3 id="_3-重定向的正确选择" tabindex="-1">3. 重定向的正确选择 <a class="header-anchor" href="#_3-重定向的正确选择" aria-label="Permalink to &quot;3. 重定向的正确选择&quot;"></a></h3>
-
-      <Suspense> 
-      <template #default>
-      <Mermaid id="mermaid-352" class="mermaid" graph="graph%20LR%0A%20%20%20%20A%5B%E6%B0%B8%E4%B9%85%E7%A7%BB%E5%8A%A8%5D%20--%3E%20B(301)%0A%20%20%20%20C%5B%E4%B8%B4%E6%97%B6%E7%A7%BB%E5%8A%A8%5D%20--%3E%20D%7B%E5%90%8E%E7%BB%AD%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%7D%0A%20%20%20%20D%20--%3E%7CGET%7C%20E(302%2F307)%0A%20%20%20%20D%20--%3E%7C%E9%9D%9EGET%7C%20F(307)%0A%20%20%20%20G%5B%E6%94%B9%E5%8F%98%E6%96%B9%E6%B3%95%5D%20--%3E%20H(303)%0A"></Mermaid>
-      </template>
-        <!-- loading state via #fallback slot -->
-        <template #fallback>
-          Loading...
-        </template>
-      </Suspense><h3 id="_4-监控告警策略" tabindex="-1">4. 监控告警策略 <a class="header-anchor" href="#_4-监控告警策略" aria-label="Permalink to &quot;4. 监控告警策略&quot;"></a></h3>
+<div class="language-mermaid vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">mermaid</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">graph LR</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A[永久移动] --> B(301)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    C[临时移动] --> D{后续请求方法}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    D -->|GET| E(302/307)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    D -->|非GET| F(307)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    G[改变方法] --> H(303)</span></span></code></pre>
+</div><h3 id="_4-监控告警策略" tabindex="-1">4. 监控告警策略 <a class="header-anchor" href="#_4-监控告警策略" aria-label="Permalink to &quot;4. 监控告警策略&quot;"></a></h3>
 <div class="language-yaml vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">yaml</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"># 监控系统配置示例</span></span>
 <span class="line"><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">alert_rules</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">server_errors_high</span></span>
@@ -3494,16 +3518,29 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 <span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    proxy_pass</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> http://backend</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
 </div><h2 id="状态码知识体系" tabindex="-1">状态码知识体系 <a class="header-anchor" href="#状态码知识体系" aria-label="Permalink to &quot;状态码知识体系&quot;"></a></h2>
-
-      <Suspense> 
-      <template #default>
-      <Mermaid id="mermaid-375" class="mermaid" graph="graph%20TD%0A%20%20%20%20A%5BHTTP%E7%8A%B6%E6%80%81%E7%A0%81%5D%20--%3E%20B%5B%E4%BF%A1%E6%81%AF%E5%93%8D%E5%BA%94%5D%0A%20%20%20%20A%20--%3E%20C%5B%E6%88%90%E5%8A%9F%E5%93%8D%E5%BA%94%5D%0A%20%20%20%20A%20--%3E%20D%5B%E9%87%8D%E5%AE%9A%E5%90%91%5D%0A%20%20%20%20A%20--%3E%20E%5B%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF%5D%0A%20%20%20%20A%20--%3E%20F%5B%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%94%99%E8%AF%AF%5D%0A%0A%20%20%20%20B%20--%3E%20B1(100%20Continue)%0A%20%20%20%20B%20--%3E%20B2(103%20Early%20Hints)%0A%0A%20%20%20%20C%20--%3E%20C1(200%20OK)%0A%20%20%20%20C%20--%3E%20C2(201%20Created)%0A%20%20%20%20C%20--%3E%20C3(204%20No%20Content)%0A%0A%20%20%20%20D%20--%3E%20D1(301%20%E6%B0%B8%E4%B9%85%E9%87%8D%E5%AE%9A%E5%90%91)%0A%20%20%20%20D%20--%3E%20D2(304%20%E7%BC%93%E5%AD%98%E6%9C%89%E6%95%88)%0A%0A%20%20%20%20E%20--%3E%20E1(400%20%E9%94%99%E8%AF%AF%E8%AF%B7%E6%B1%82)%0A%20%20%20%20E%20--%3E%20E2(429%20%E8%AF%B7%E6%B1%82%E8%BF%87%E5%A4%9A)%0A%0A%20%20%20%20F%20--%3E%20F1(502%20%E7%BD%91%E5%85%B3%E9%94%99%E8%AF%AF)%0A%20%20%20%20F%20--%3E%20F2(503%20%E6%9C%8D%E5%8A%A1%E4%B8%8D%E5%8F%AF%E7%94%A8)%0A"></Mermaid>
-      </template>
-        <!-- loading state via #fallback slot -->
-        <template #fallback>
-          Loading...
-        </template>
-      </Suspense><h2 id="结语-数字背后的网络哲学" tabindex="-1">结语：数字背后的网络哲学 <a class="header-anchor" href="#结语-数字背后的网络哲学" aria-label="Permalink to &quot;结语：数字背后的网络哲学&quot;"></a></h2>
+<div class="language-mermaid vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">mermaid</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">graph TD</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A[HTTP状态码] --> B[信息响应]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A --> C[成功响应]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A --> D[重定向]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A --> E[客户端错误]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    A --> F[服务端错误]</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    B --> B1(100 Continue)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    B --> B2(103 Early Hints)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    C --> C1(200 OK)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    C --> C2(201 Created)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    C --> C3(204 No Content)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    D --> D1(301 永久重定向)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    D --> D2(304 缓存有效)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    E --> E1(400 错误请求)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    E --> E2(429 请求过多)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    F --> F1(502 网关错误)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    F --> F2(503 服务不可用)</span></span></code></pre>
+</div><h2 id="结语-数字背后的网络哲学" tabindex="-1">结语：数字背后的网络哲学 <a class="header-anchor" href="#结语-数字背后的网络哲学" aria-label="Permalink to &quot;结语：数字背后的网络哲学&quot;"></a></h2>
 <p>HTTP 状态码不仅是技术规范，更是系统设计的哲学体现：</p>
 <ol>
 <li><strong>精确沟通</strong>：每个数字传递特定语义</li>
@@ -3521,16 +3558,6 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 </ol>
 ]]></content:encoded>
             <enclosure url="https://stack-mcell.tos-cn-shanghai.volces.com/013.webp" length="0" type="image/webp"/>
-        </item>
-        <item>
-            <title><![CDATA[网络与运维专题]]></title>
-            <link>https://stack.mcell.top/topics/netops/</link>
-            <guid>https://stack.mcell.top/topics/netops/</guid>
-            <pubDate>Sun, 02 Nov 2025 18:08:08 GMT</pubDate>
-            <description><![CDATA[合并网络与系统运维相关的文章集合。]]></description>
-            <content:encoded><![CDATA[<h1 id="网络与运维专题" tabindex="-1">网络与运维专题 <a class="header-anchor" href="#网络与运维专题" aria-label="Permalink to &quot;网络与运维专题&quot;"></a></h1>
-<p>网络协议、安全与系统运维（DevOps、容器、命令行、配置管理）相关的精选文章。</p>
-]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Linux 命令行宝典：50个开发者必掎核心工具]]></title>
@@ -4380,16 +4407,6 @@ AGENTS.md 则解决“AI 如何理解你的项目”的问题。</p>
 <ol>
 <li>Go Authors. (n.d.). <em>Go maps in action</em>. The Go Blog. Retrieved from <a href="https://go.dev/blog/maps" target="_blank" rel="noreferrer">https://go.dev/blog/maps</a></li>
 </ol>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[服务端专题]]></title>
-            <link>https://stack.mcell.top/topics/server/</link>
-            <guid>https://stack.mcell.top/topics/server/</guid>
-            <pubDate>Sun, 02 Nov 2025 18:08:08 GMT</pubDate>
-            <description><![CDATA[服务端与后端工程相关的文章集合。]]></description>
-            <content:encoded><![CDATA[<h1 id="服务端专题" tabindex="-1">服务端专题 <a class="header-anchor" href="#服务端专题" aria-label="Permalink to &quot;服务端专题&quot;"></a></h1>
-<p>后端工程与服务端技术相关的精选文章。</p>
 ]]></content:encoded>
         </item>
         <item>
