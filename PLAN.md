@@ -294,12 +294,13 @@ difficulty: intermediate
 **任务**：
 1. ✅ 保持现有 4 个一级目录不变
 2. ✅ 给所有现有文章添加 tags（5-7 个标签）
-3. ⏳ 识别现有的系列文章，添加 series 字段
+3. ✅ 识别现有的系列文章，添加 series 字段
 
 **预期成果**：
 - ✅ 所有文章都有完整的 frontmatter
 - ✅ 用户可以通过标签多维度找内容
 - ✅ VitePress 搜索能索引标签
+- ✅ 系列文章有明确的学习路径
 
 **完成记录（2025-01-15）**：
 - ✅ 手动精简所有 24 篇文章标签（AI: 6篇，客户端: 10篇，服务端: 4篇，运维: 5篇）
@@ -315,6 +316,34 @@ difficulty: intermediate
 - `hash_algorithm_complete_guide.md`: 11个标签 → 5个（后端, 哈希算法, 数据结构, 密码学, 数据安全）
 - `linux_command_line_50_core_tools.md`: 12个标签 → 4个（DevOps, Linux, 命令行, Shell）
 - `websocket.md`: 13个标签 → 5个（后端, WebSocket, 实时通信, 网络协议, Node.js）
+
+**完成记录（2025-11-03 继续）**：
+- ✅ 识别并添加系列字段到 12 篇文章
+- ✅ 共创建 5 个系列（Docker、GSAP、AI Agent、Prompt Engineering、JavaScript 运行机制）
+
+**系列实施详情**：
+
+1. **Docker 从入门到实战** (`docker-mastery`)
+   - `docker_getting_started.md` (seriesOrder: 1)
+   - `docker_advanced_guide.md` (seriesOrder: 2)
+
+2. **GSAP 动画完全指南** (`gsap-mastery`)
+   - `gsap_getting_started_guide.md` (seriesOrder: 1)
+   - `gsap_scrolltrigger.md` (seriesOrder: 2)
+
+3. **AI Agent 核心原理** (`ai-agent-fundamentals`)
+   - `what_is_agents_md.md` (seriesOrder: 1)
+   - `agent_is_llm_plus_tools.md` (seriesOrder: 2)
+   - `agent_react_and_loop.md` (seriesOrder: 3)
+   - `misunderstanding_llm.md` (seriesOrder: 4)
+
+4. **Prompt Engineering 实战指南** (`prompt-engineering-mastery`)
+   - `prompt_engineering_getting_started.md` (seriesOrder: 1)
+   - `claude_code_sub_agent.md` (seriesOrder: 2)
+
+5. **JavaScript 运行机制深度解析** (`javascript-runtime-deep-dive`)
+   - `javascript_event_loop.md` (seriesOrder: 1)
+   - `javascript_multithreading_worker.md` (seriesOrder: 2)
 
 ---
 

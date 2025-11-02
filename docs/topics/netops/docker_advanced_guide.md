@@ -5,6 +5,9 @@ tags:
   - Docker
   - Go
   - DevOps
+series: docker-mastery
+seriesOrder: 2
+seriesTitle: Docker 从入门到实战
 author: mCell
 ---
 

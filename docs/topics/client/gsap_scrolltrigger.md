@@ -8,6 +8,9 @@ tags:
   - 交互设计
   - GSAP
   - JavaScript
+series: gsap-mastery
+seriesOrder: 2
+seriesTitle: GSAP 动画完全指南
 ---
 
 <VideoEmbed url="https://youtu.be/X7IBa7vZjmo" title="Introducing ScrollTrigger for GSAP" />

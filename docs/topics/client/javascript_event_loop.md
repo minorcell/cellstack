@@ -7,6 +7,9 @@ tags:
   - 浏览器
   - 事件循环
   - 异步编程
+series: javascript-runtime-deep-dive
+seriesOrder: 1
+seriesTitle: JavaScript 运行机制深度解析
 ---
 
 <!-- ![005.avif](https://stack-mcell.tos-cn-shanghai.volces.com/005.avif) -->

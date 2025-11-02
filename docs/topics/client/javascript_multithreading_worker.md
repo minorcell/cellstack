@@ -8,6 +8,9 @@ tags:
   - Web Worker
   - 多线程
   - 浏览器
+series: javascript-runtime-deep-dive
+seriesOrder: 2
+seriesTitle: JavaScript 运行机制深度解析
 ---
 
 ![035.png](https://stack-mcell.tos-cn-shanghai.volces.com/035.png)

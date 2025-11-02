@@ -6,6 +6,9 @@ tags:
   - Go
   - Nginx
   - DevOps
+series: docker-mastery
+seriesOrder: 1
+seriesTitle: Docker 从入门到实战
 author: mCell
 ---
 

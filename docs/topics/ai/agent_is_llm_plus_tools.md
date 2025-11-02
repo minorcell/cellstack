@@ -7,6 +7,9 @@ tags:
   - AI代理
   - Claude Code
   - ReAct
+series: ai-agent-fundamentals
+seriesOrder: 2
+seriesTitle: AI Agent 核心原理
 ---
 
 ![064.png](https://stack-mcell.tos-cn-shanghai.volces.com/064.png)

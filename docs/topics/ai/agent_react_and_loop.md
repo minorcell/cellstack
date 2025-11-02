@@ -6,6 +6,9 @@ tags:
   - AI工程
   - AI代理
   - ReAct
+series: ai-agent-fundamentals
+seriesOrder: 3
+seriesTitle: AI Agent 核心原理
 ---
 
 ![065.png](https://stack-mcell.tos-cn-shanghai.volces.com/065.png)

@@ -7,6 +7,9 @@ tags:
   - Claude Code
   - 提示工程
   - AI代理
+series: prompt-engineering-mastery
+seriesOrder: 2
+seriesTitle: Prompt Engineering 实战指南
 author: mCell
 ---
 

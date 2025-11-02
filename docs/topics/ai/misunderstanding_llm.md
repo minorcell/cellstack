@@ -8,6 +8,9 @@ tags:
   - 工具调用
   - Transformer
   - Claude Code
+series: ai-agent-fundamentals
+seriesOrder: 4
+seriesTitle: AI Agent 核心原理
 ---
 
 ![051.png](https://stack-mcell.tos-cn-shanghai.volces.com/051.png)

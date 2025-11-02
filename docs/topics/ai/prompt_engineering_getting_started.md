@@ -7,6 +7,9 @@ tags:
   - Claude Code
   - 工具调用
   - Sub-agent
+series: prompt-engineering-mastery
+seriesOrder: 1
+seriesTitle: Prompt Engineering 实战指南
 author: mCell
 ---
 

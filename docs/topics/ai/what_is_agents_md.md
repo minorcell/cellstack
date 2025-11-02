@@ -8,6 +8,9 @@ tags:
   - AGENTS.md
   - MCP
   - Claude Code
+series: ai-agent-fundamentals
+seriesOrder: 1
+seriesTitle: AI Agent 核心原理
 ---
 
 ![056.png](https://stack-mcell.tos-cn-shanghai.volces.com/056.png)

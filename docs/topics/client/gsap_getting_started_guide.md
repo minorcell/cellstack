@@ -8,6 +8,9 @@ tags:
   - JavaScript
   - GSAP
   - 动效设计
+series: gsap-mastery
+seriesOrder: 1
+seriesTitle: GSAP 动画完全指南
 ---
 
 ![038.png](https://stack-mcell.tos-cn-shanghai.volces.com/038.png)
