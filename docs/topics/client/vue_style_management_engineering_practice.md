@@ -2,17 +2,9 @@
 title: Vue 样式管理工程实践：从隔离到动态的完整解决方案
 description: 最全面的 Vue 样式管理指南，深入解析大型 Vue 项目中的样式管理挑战和解决方案。从 Scoped CSS 、CSS Modules 到动态样式绑定，掌握避免全局污染、实现动态更新的最佳实践。
 tags:
-  - Vue样式
-  - Vue.js
-  - Scoped CSS
-  - CSS Modules
-  - 样式隔离
-  - 样式管理
-  - 动态样式
-  - CSS-in-JS
+  - Vue
   - 前端工程化
-  - Vue组件
-  - SFC单文件组件
+  - JavaScript
 author: mCell
 ---
 

@@ -2,17 +2,11 @@
 title: VSCode 代码规范自动化配置完全指南：ESLint + Prettier 最佳实践
 description: 最实用的 VSCode 代码规范自动化配置指南。深入讲解 ESLint + Prettier 的完美组合，实现保存时自动代码检查、格式化和错误修复。提升团队开发效率，确保代码风格一致性。
 tags:
-  - VSCode配置
-  - ESLint
-  - Prettier
-  - 代码格式化
-  - 代码规范
+  - 前端
+  - VSCode
   - 开发工具
-  - 自动化
-  - 前端工具链
-  - 团队协作
-  - 工程化实践
-  - 代码质量
+  - 工程化
+  - ESLint
 author: mCell
 ---
 

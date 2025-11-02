@@ -3,22 +3,11 @@ title: ECharts 万字入门指南
 description: 详细学习 Apache ECharts 图表库，掌握丰富的图表类型、强大的交互功能和灵活的配置项，实现数据可视化。
 author: mcell
 tags:
-  - ECharts
+  - 前端
   - 数据可视化
   - JavaScript
-  - 图表库
-  - 前端开发
-  - Web开发
-  - 数据分析
-keywords:
-  - ECharts 教程
-  - 数据可视化
-  - JavaScript 图表
-  - ECharts 配置项
-  - 前端图表库
-  - 数据分析可视化
-  - 网页图表制作
-  - ECharts 实例
+  - ECharts
+  - 图表设计
 ---
 
 ![039.png](https://stack-mcell.tos-cn-shanghai.volces.com/039.png)

@@ -3,25 +3,10 @@ title: Agent = LLM + Tools
 description: 深入浅出地讲解 AI Agent 的本质，从 LLM 到 Tools，从宿主环境到执行机制，用一个简洁的公式帮你理解 Claude Code、Codex 等智能体的工作原理。
 author: mcell
 tags:
-  - AI Agent
-  - LLM
-  - Claude Code
-  - 人工智能
-  - 大语言模型
-  - Tools
-  - 智能体
   - AI工程
-keywords:
-  - AI Agent教程
-  - LLM应用
-  - Claude Code原理
-  - 智能体开发
-  - Agent工作原理
-  - 大语言模型工具
-  - AI Agent架构
-  - 宿主环境
-  - ReAct框架
-  - 提示词工程
+  - AI代理
+  - Claude Code
+  - ReAct
 ---
 
 ![064.png](https://stack-mcell.tos-cn-shanghai.volces.com/064.png)

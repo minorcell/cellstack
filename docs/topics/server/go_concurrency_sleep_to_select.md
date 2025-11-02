@@ -2,16 +2,11 @@
 title: Go 并发编程精髓：从 Sleep 到 Select 的实战指南
 description: 深度解析 Go 并发编程从入门到精通的完整路径。从简单的 time.Sleep 阻塞到高效的 select 定时器，从并发误区到正确的 goroutine 模式，最终掌握 context 构建健壮可维护的并发代码。
 tags:
-  - Go语言
+  - 后端
+  - Go
   - 并发编程
   - Goroutine
-  - Select语句
   - Context
-  - 定时器
-  - 阻塞
-  - 通道Channel
-  - 后端开发
-  - Go实战
 author: mCell
 ---
 

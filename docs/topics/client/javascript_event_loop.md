@@ -2,11 +2,11 @@
 title: JavaScript 运行机制详解：再谈 Event Loop
 description: 本文从经典的 Promise 与 setTimeout 执行顺序问题入手，深入浅出地剖析了 JavaScript 的单线程模型、事件循环（Event Loop）机制。通过辨析宏任务与微任务的区别与优先级，帮助你彻底理解 JS 异步执行的底层原理，看懂页面卡顿的真相。
 tags:
+  - 前端
   - JavaScript
   - 浏览器
   - 事件循环
-  - Promise
-  - 异步机制
+  - 异步编程
 ---
 
 <!-- ![005.avif](https://stack-mcell.tos-cn-shanghai.volces.com/005.avif) -->

@@ -2,20 +2,11 @@
 title: 前端新手学习指南（2025 版）- 零基础入门前端开发
 description: 2025年前端开发完整学习路线图。从零基础到就业，涵盖HTML/CSS/JavaScript基础、React/Vue框架、工程化工具、AI辅助开发等现代前端技术栈的系统性学习指南。
 tags:
-  - 前端开发
-  - 新手教程
-  - 学习指南
+  - 前端
+  - 学习路径
   - HTML
-  - CSS
   - JavaScript
-  - React
-  - Vue
-  - 前端框架
-  - 工程化
-  - AI辅助开发
-  - 零基础
-  - 学习路线
-  - 2025
+  - 框架设计
 author: mCell
 ---
 

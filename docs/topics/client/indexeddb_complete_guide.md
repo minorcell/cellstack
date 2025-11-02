@@ -2,18 +2,11 @@
 title: IndexedDB 前端数据库完全指南：从入门到实战的本地存储方案
 description: 最详细的 IndexedDB 前端数据库教程，深入讲解浏览器本地数据库 API 的使用方法。相比 localStorage 具备事务处理、索引查询、大容量存储等高级功能，是构建离线应用、PWA 应用的首选本地存储方案。
 tags:
+  - 前端
   - IndexedDB
-  - 前端数据库
-  - 本地存储
-  - 浏览器API
-  - 离线应用
-  - PWA
-  - 前端存储
-  - Web存储
-  - 结构化数据
-  - 事务处理
-  - 索引查询
-  - JavaScript数据库
+  - JavaScript
+  - 浏览器存储
+  - 数据库
 author: mCell
 date: 2024-12-01
 lastUpdated: 2024-12-01

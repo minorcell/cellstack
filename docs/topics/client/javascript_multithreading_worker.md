@@ -3,24 +3,11 @@ title: JavaScript 的多线程能力：Worker
 description: 深入探讨 JavaScript 的多线程编程能力，包括 Web Worker、Service Worker 和 Worklet 的原理、使用场景和代码实践，让你的 Web 应用不再卡顿。
 author: mcell
 tags:
+  - 前端
   - JavaScript
   - Web Worker
-  - Service Worker
-  - Worklet
   - 多线程
-  - 前端性能
-  - 浏览器原理
-  - PWA
-keywords:
-  - JavaScript多线程
-  - Web Worker教程
-  - Service Worker离线缓存
-  - Worklet渲染
-  - 前端性能优化
-  - 浏览器多线程
-  - JavaScript并发
-  - PWA开发
-  - 前端架构
+  - 浏览器
 ---
 
 ![035.png](https://stack-mcell.tos-cn-shanghai.volces.com/035.png)

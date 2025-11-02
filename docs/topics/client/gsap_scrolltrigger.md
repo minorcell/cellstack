@@ -3,22 +3,11 @@ title: GSAP ScrollTrigger 详解
 description: 深入学习 GSAP ScrollTrigger 插件，掌握如何通过滚动控制动画，实现视差滚动、元素固定、滚动驱动动画等高级交互效果。
 author: mcell
 tags:
-  - GSAP
-  - ScrollTrigger
+  - 前端
   - Web动画
+  - 交互设计
+  - GSAP
   - JavaScript
-  - 滚动动画
-  - 前端开发
-  - 用户体验
-keywords:
-  - GSAP ScrollTrigger 教程
-  - 滚动动画
-  - 视差滚动
-  - 滚动驱动动画
-  - Web 交互设计
-  - 前端动画库
-  - 动画控制
-  - 用户体验优化
 ---
 
 <VideoEmbed url="https://youtu.be/X7IBa7vZjmo" title="Introducing ScrollTrigger for GSAP" />

@@ -3,24 +3,11 @@ title: GSAP 入门指南
 description: 深入浅出地讲解 GSAP 动画库的核心概念，从补间动画到时间线，从简单的移动效果到复杂的序列动画，让你彻底掌握 Web 动画的精髓。
 author: mcell
 tags:
-  - GSAP
+  - 前端
   - Web动画
   - JavaScript
-  - CSS动画
-  - 前端开发
-  - 用户体验
-  - Tween
-  - Timeline
-keywords:
-  - GSAP教程
-  - Web动画入门
-  - JavaScript动画库
-  - CSS3动画
-  - 补间动画
-  - 时间线动画
-  - 前端动效
-  - 动画优化
-  - 用户体验设计
+  - GSAP
+  - 动效设计
 ---
 
 ![038.png](https://stack-mcell.tos-cn-shanghai.volces.com/038.png)
