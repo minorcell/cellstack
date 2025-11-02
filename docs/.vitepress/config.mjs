@@ -453,7 +453,7 @@ const RSS = {
   ignoreHome: true,
   ignorePublish: false,
   // 仅收录博客目录下的文章，排除 index 页面
-  filter: (post) => post.url && post.url.startsWith("/blog/") && !post.url.includes("index"),
+  filter: (post) => post.url && post.url.startsWith("/topics/") && !post.url.includes("index"),
 }
 
 export default withMermaid({
