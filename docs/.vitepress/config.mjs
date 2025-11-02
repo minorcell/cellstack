@@ -21,9 +21,14 @@ const defaultTheme = {
         activeMatch: "/me/",
       },
       {
-        text: "博客",
-        link: "/blog/",
-        activeMatch: "/blog/",
+        text: "专题",
+        activeMatch: "/topics/",
+        items: [
+          { text: "AI", link: "/topics/ai/" },
+          { text: "客户端", link: "/topics/client/" },
+          { text: "服务端", link: "/topics/server/" },
+          { text: "网络与运维", link: "/topics/netops/" },
+        ],
       },
       {
         text: "收录",
@@ -33,61 +38,63 @@ const defaultTheme = {
     ],
 
     sidebar: {
+      "/topics/ai/": [
+        {
+          text: "AI",
+          items: [
+            { text: "Agent ReAct and Loop", link: "/topics/ai/agent_react_and_loop" },
+            { text: "Agent = LLM + Tools", link: "/topics/ai/agent_is_llm_plus_tools" },
+            { text: "Agents.md 又是什么", link: "/topics/ai/what_is_agents_md" },
+            { text: "长期以来我对 LLM 的误解", link: "/topics/ai/misunderstanding_llm" },
+            { text: "Sub-agent 模式详解和实践", link: "/topics/ai/claude_code_sub_agent" },
+            { text: "提示工程入门指南", link: "/topics/ai/prompt_engineering_getting_started" },
+          ],
+        },
+      ],
+      "/topics/client/": [
+        {
+          text: "客户端",
+          items: [
+            { text: "ECharts 万字入门指南", link: "/topics/client/echarts_getting_started_guide" },
+            { text: "GSAP ScrollTrigger 详解", link: "/topics/client/gsap_scrolltrigger" },
+            { text: "Gsap 入门指南", link: "/topics/client/gsap_getting_started_guide" },
+            { text: "JS 的多线程能力", link: "/topics/client/javascript_multithreading_worker" },
+            { text: "前端新手学习指南", link: "/topics/client/frontend_beginner_guide_2025" },
+            { text: "JS 运行机制详解", link: "/topics/client/javascript_event_loop" },
+            { text: "JS 异步编程入门", link: "/topics/client/javascript_async_guide_6_patterns" },
+            { text: "Vue 样式工程实践", link: "/topics/client/vue_style_management_engineering_practice" },
+            { text: "IndexedDB 实战指南", link: "/topics/client/indexeddb_complete_guide" },
+            { text: "自动化代码规范实践指南", link: "/topics/client/vscode_eslint_plus_prettier" },
+          ],
+        },
+      ],
+      "/topics/server/": [
+        {
+          text: "服务端",
+          items: [
+            { text: "Go 并发编程", link: "/topics/server/go_concurrency_sleep_to_select" },
+            { text: "深度剖析 WebSocket", link: "/topics/server/websocket" },
+            { text: "深入浅出哈希算法", link: "/topics/server/hash_algorithm_complete_guide" },
+          ],
+        },
+      ],
+      "/topics/netops/": [
+        {
+          text: "网络与运维",
+          items: [
+            { text: "Docker 进阶指南", link: "/topics/netops/docker_advanced_guide" },
+            { text: "Docker 入门指南", link: "/topics/netops/docker_getting_started" },
+            { text: "50 个核心命令行工具", link: "/topics/netops/linux_command_line_50_core_tools" },
+            { text: "项目配置管理之路", link: "/topics/netops/project_configuration_management_best_practices" },
+            { text: "15 个常见的状态码详解", link: "/topics/netops/http_status_codes_guide_15_core" },
+          ],
+        },
+      ],
       "/blog/": [
         {
           text: "博客",
           items: [
             { text: "介绍", link: "/blog/" },
-          ],
-        },
-        {
-          text: "AI 工程",
-          items: [
-            { text: "Agent ReAct and Loop", link: "/blog/agent_react_and_loop" },
-            { text: "Agent = LLM + Tools", link: "/blog/agent_is_llm_plus_tools" },
-            { text: "Agents.md 又是什么", link: "/blog/what_is_agents_md" },
-            { text: "长期以来我对 LLM 的误解", link: "/blog/misunderstanding_llm" },
-            { text: "Sub-agent 模式详解和实践", link: "/blog/claude_code_sub_agent" },
-            { text: "提示工程入门指南", link: "/blog/prompt_engineering_getting_started" },
-          ],
-        },
-        {
-          text: "客户端",
-          items: [
-            { text: "为博客添加 RSS 订阅", link: "/blog/add_rss_subscription_to_blog" },
-            { text: "ECharts 万字入门指南", link: "/blog/echarts_getting_started_guide" },
-            { text: "GSAP ScrollTrigger 详解", link: "/blog/gsap_scrolltrigger" },
-            { text: "Gsap 入门指南", link: "/blog/gsap_getting_started_guide" },
-            { text: "JS 的多线程能力", link: "/blog/javascript_multithreading_worker" },
-            { text: "前端新手学习指南", link: "/blog/frontend_beginner_guide_2025" },
-            { text: "JS 运行机制详解", link: "/blog/javascript_event_loop" },
-            { text: "JS 异步编程入门", link: "/blog/javascript_async_guide_6_patterns" },
-            { text: "Vue 样式工程实践", link: "/blog/vue_style_management_engineering_practice" },
-            { text: "IndexedDB 实战指南", link: "/blog/indexeddb_complete_guide" },
-            { text: "自动化代码规范实践指南", link: "/blog/vscode_eslint_plus_prettier" },
-          ],
-        },
-        {
-          text: "服务端",
-          items: [
-            { text: "Go 并发编程", link: "/blog/go_concurrency_sleep_to_select" },
-            { text: "深度剖析 WebSocket", link: "/blog/websocket" },
-            { text: "深入浅出哈希算法", link: "/blog/hash_algorithm_complete_guide" },
-          ],
-        },
-        {
-          text: "安全与网络",
-          items: [
-            { text: "15 个常见的状态码详解", link: "/blog/http_status_codes_guide_15_core" },
-          ],
-        },
-        {
-          text: "系统运维",
-          items: [
-            { text: "Docker 进阶指南", link: "/blog/docker_advanced_guide" },
-            { text: "Docker 入门指南", link: "/blog/docker_getting_started" },
-            { text: "50 个核心命令行工具", link: "/blog/linux_command_line_50_core_tools" },
-            { text: "项目配置管理之路", link: "/blog/project_configuration_management_best_practices" },
           ],
         },
       ],
@@ -109,7 +116,7 @@ const defaultTheme = {
         {
           text: "站点建设",
           items: [
-            { text: "技术写作的单线结构法则", link: "/me/curated_writing_tips_collection" },
+            { text: "SSR订阅", link: "/me/ssr_subscription" },
             { text: "VideoEmbed 视频嵌入组件", link: "/me/video_embed_vue_component" },
             { text: "MusicEmbed 音乐嵌入组件", link: "/me/music_embed_spotify_component" }
           ],

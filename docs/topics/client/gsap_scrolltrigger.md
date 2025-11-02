@@ -25,7 +25,7 @@ keywords:
 
 # GSAP ScrollTrigger 详解
 
-在上一篇文章 [GSAP 入门指南](https://stack.mcell.top/blog/gsap_getting_started_guide) 里，我们学习了 GSAP 的两个核心：
+在上一篇文章 [GSAP 入门指南](https://stack.mcell.top/topics/client/gsap_getting_started_guide) 里，我们学习了 GSAP 的两个核心：
 
 - **Tween**：补间动画。
 - **Timeline**：时间线。
