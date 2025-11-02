@@ -1,7 +1,7 @@
 {
   "name": "CellStack - 工程师技术笔记",
   "short_name": "CellStack",
-  "description": "计算机科学的工程实践和一些个人思考",
+  "description": "计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#faf9f7",
@@ -17,8 +17,10 @@
     "technology"
   ],
   "keywords": [
-    "mcell",
+    "CellStack",
+    "mCell",
     "minorcell",
+    "技术博客",
     "前端开发",
     "后端开发",
     "全栈工程师",
@@ -26,8 +28,13 @@
     "AI工程",
     "技术笔记",
     "编程教程",
+    "JavaScript",
+    "TypeScript",
+    "Go",
+    "Docker",
     "最佳实践",
-    "项目实战"
+    "项目实战",
+    "工程师成长"
   ],
   "icons": [
     {
@@ -77,8 +84,8 @@
   "shortcuts": [
     {
       "name": "关于我",
-      "short_name": "关于我",
-      "description": "关于我, 技术社区常用 **mCell** 或 **minorcell** 标识。",
+      "short_name": "关于",
+      "description": "个人介绍和技术思考",
       "url": "/me/",
       "icons": [
         {
@@ -88,10 +95,10 @@
       ]
     },
     {
-      "name": "收录",
-      "short_name": "工程实践",
-      "description": "探索工程实践和最佳实践",
-      "url": "/engineering-practice/",
+      "name": "AI 专题",
+      "short_name": "AI",
+      "description": "AI 工程、Agent 架构、提示工程",
+      "url": "/topics/ai/",
       "icons": [
         {
           "src": "/logo.svg",
@@ -100,10 +107,34 @@
       ]
     },
     {
-      "name": "技术博客",
-      "short_name": "博客",
-      "description": "阅读最新技术博客文章",
-      "url": "/blog/",
+      "name": "客户端专题",
+      "short_name": "前端",
+      "description": "前端开发与客户端技术",
+      "url": "/topics/client/",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "服务端专题",
+      "short_name": "后端",
+      "description": "服务端与后端工程",
+      "url": "/topics/server/",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "收录",
+      "short_name": "收录",
+      "description": "精选优质技术内容收录",
+      "url": "/transpond/",
       "icons": [
         {
           "src": "/logo.svg",

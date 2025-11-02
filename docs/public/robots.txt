@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # 优先抓取重要页面
-Allow: /blog/
+Allow: /topics/
 Allow: /me/
 Allow: /transpond/
 

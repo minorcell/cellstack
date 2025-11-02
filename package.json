@@ -22,16 +22,13 @@
     "dayjs": "^1.11.13",
     "debug": "^4.4.1",
     "medium-zoom": "^1.1.0",
-    "mermaid": "^11.9.0",
     "nprogress-v2": "^1.1.10",
     "terser": "^5.43.1",
     "vitepress": "^1.0.0",
-    "vitepress-plugin-comment-with-giscus": "^1.1.15",
-    "vitepress-plugin-mermaid": "^2.0.17"
+    "vitepress-plugin-comment-with-giscus": "^1.1.15"
   },
   "dependencies": {
     "html2canvas": "^1.4.1",
-    "qrcode": "^1.5.4",
     "vitepress-plugin-rss": "^0.3.2"
   }
 }
