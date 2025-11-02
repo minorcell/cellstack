@@ -1,12 +1,6 @@
 ---
 title: WebSocket 深度解析：全双工实时通信完全指南
 description: 最全面的 WebSocket 技术指南：从协议原理到实战应用，深入解析全双工实时通信机制。告别 HTTP 轮询的低效模式，掌握现代实时 Web 应用开发核心技术。
-tags:
-  - 后端
-  - WebSocket
-  - 实时通信
-  - 网络协议
-  - Node.js
 author: mCell
 ---
 

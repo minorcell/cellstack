@@ -1,16 +1,6 @@
 ---
 title: Claude Code Sub-agent 模式详解和实践
 description: 深入解析Claude Code的Sub-agent子代理模式，学会创建专业化AI代理来提升代码生成、数据分析等复杂任务的效率和准确性。附完整实践教程和最佳实践。
-tags:
-  - AI工程
-  - Sub-agent
-  - Claude Code
-  - 提示工程
-  - AI代理
-series: prompt-engineering-mastery
-seriesOrder: 2
-seriesTitle: Prompt Engineering 实战指南
-author: mCell
 ---
 
 ![021.webp](https://stack-mcell.tos-cn-shanghai.volces.com/021.webp)

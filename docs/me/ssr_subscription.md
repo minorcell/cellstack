@@ -2,12 +2,6 @@
 title: SSR订阅
 description: 基于 vitepress-plugin-rss 集成 RSS，构建时自动生成 feed.xml，支持筛选博客目录与 SEO 发现，过程简洁可靠。
 author: mcell
-tags:
-  - VitePress
-  - RSS
-  - 博客
-  - 插件
-  - 静态站点
 keywords:
   - RSS 订阅
   - VitePress RSS

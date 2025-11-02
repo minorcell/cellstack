@@ -1,13 +1,6 @@
 ---
 title: Docker 进阶指南 - 容器管理与多服务编排实战
 description: Docker 进阶教程，深入学习容器生命周期管理、网络通信、数据持久化和 Docker Compose 多服务编排。通过实战案例掌握 Go 应用与 PostgreSQL 数据库的容器化部署和服务间通信。
-tags:
-  - Docker
-  - Go
-  - DevOps
-series: docker-mastery
-seriesOrder: 2
-seriesTitle: Docker 从入门到实战
 author: mCell
 ---
 

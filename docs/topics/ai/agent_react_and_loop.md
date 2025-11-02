@@ -2,13 +2,6 @@
 title: Agent ReAct and Loop
 description: 深入解析 AI Agent 的 ReAct 架构和工作循环原理，探讨智能体如何实现自动化任务执行，从理论到实践的完整指南。
 author: mcell
-tags:
-  - AI工程
-  - AI代理
-  - ReAct
-series: ai-agent-fundamentals
-seriesOrder: 3
-seriesTitle: AI Agent 核心原理
 ---
 
 ![065.png](https://stack-mcell.tos-cn-shanghai.volces.com/065.png)

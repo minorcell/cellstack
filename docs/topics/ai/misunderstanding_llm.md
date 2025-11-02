@@ -2,15 +2,6 @@
 title: 长期以来我对 LLM 的误解
 description: 深入探讨大语言模型（LLM）的工作原理，理解从传统规则编程到概率计算的范式转换，揭秘模型参数与智能的本质。
 author: mcell
-tags:
-  - AI工程
-  - 提示工程
-  - 工具调用
-  - Transformer
-  - Claude Code
-series: ai-agent-fundamentals
-seriesOrder: 4
-seriesTitle: AI Agent 核心原理
 ---
 
 ![051.png](https://stack-mcell.tos-cn-shanghai.volces.com/051.png)

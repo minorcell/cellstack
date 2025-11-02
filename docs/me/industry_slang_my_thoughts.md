@@ -2,9 +2,7 @@
 title: 关于"黑话"，我想说几句
 description: 互联网行业黑话现象深度分析：从效率工具到沟通壁垒，探讨如何正确使用专业术语，建立高效的团队沟通文化
 author: mcell
-tags: [职场沟通, 团队管理, 技术文化, 工作思考]
 keywords: 互联网黑话, 职场沟通, 技术术语, 团队协作, 专业术语, 内部语言, 沟通效率
-category: 思考
 ---
 
 ![030.jpeg](https://stack-mcell.tos-cn-shanghai.volces.com/030.jpeg)

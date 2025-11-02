@@ -1,14 +1,6 @@
 ---
 title: Docker 入门教程
 description: 全面的 Docker 入门指南，通过实战案例学会容器化部署。涵盖 Docker 核心概念、Dockerfile 编写、静态网站部署、Go 服务器容器化等内容，帮助前端和后端工程师快速掌握容器技术。
-tags:
-  - Docker
-  - Go
-  - Nginx
-  - DevOps
-series: docker-mastery
-seriesOrder: 1
-seriesTitle: Docker 从入门到实战
 author: mCell
 ---
 

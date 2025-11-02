@@ -1,11 +1,6 @@
 ---
 title: Linux 命令行宝典：50个开发者必掎核心工具
 description: 最实用的 Linux 命令行完全指南，精选 50 个核心命令工具。系统性覆盖文件操作、进程管理、网络诊断、文本处理等方面，帮助开发者和运维工程师构建扎实的命令行技能。
-tags:
-  - Linux
-  - DevOps
-  - Shell
-  - Bash
 author: mCell
 ---
 
