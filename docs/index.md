@@ -33,11 +33,4 @@ hero:
   image:
     src: /logo.svg
     alt: CellStack 手绘插图
-  actions:
-    - text: 我
-      link: /me/
-    - text: 博客
-      link: /blog/
-    - text: 收录
-      link: /transpond/
 ---
