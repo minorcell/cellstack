@@ -23,13 +23,13 @@ author: mCell
 
 ## 目录
 
-1. [阮一峰 ——《科技爱好者周刊（第 288 期）：技术写作的首要诀窍）](https://www.ruanyifeng.com/blog/2024/01/weekly-issue-288.html)  
+1. [阮一峰 ——《科技爱好者周刊（第 288 期）：技术写作的首要诀窍）](https://www.ruanyifeng.com/blog/01/weekly-issue-288.html)  
    **收录理由**：阮一峰基于多年写作经验总结的技术写作精髓，强调"从读者角度出发"的核心理念，实用性极强
 
-2. [阮一峰 —— 《为什么要写 Blog?》](https://www.ruanyifeng.com/blog/2006/12/why_i_keep_blogging.html)  
+2. [阮一峰 —— 《为什么要写 Blog?》](https://www.ruanyifeng.com/blog/12/why_i_keep_blogging.html)  
    **收录理由**：经典的写作动机思考文章，解答技术人员为何要坚持写博客，激发写作内驱力的必读启发文
 
-3. [阮一峰 —— 《与王建硕的对话》](https://www.ruanyifeng.com/blog/2010/04/talk_with_wangjianshuo.html)  
+3. [阮一峰 —— 《与王建硕的对话》](https://www.ruanyifeng.com/blog/04/talk_with_wangjianshuo.html)  
    **收录理由**：两位技术写作先驱的深度对话，探讨技术传播价值和写作坚持之道，具有重要的思想启发意义
 
 4. [FreeCodeCamp ——《如何撰写一篇优秀的技术博文》](https://www.freecodecamp.org/chinese/news/how-to-write-a-great-technical-blog-post/)  

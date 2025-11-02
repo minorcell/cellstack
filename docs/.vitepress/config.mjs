@@ -41,61 +41,53 @@ const defaultTheme = {
           ],
         },
         {
-          text: "思考",
-          items: [
-            { text: "关于“黑话”，我想说几句", link: "/blog/2025/16_slang" },
-            { text: "一个技术写作者的抉择", link: "/blog/2025/14_whywrite" },
-            { text: "编程的演进：从指令到意图", link: "/blog/2025/13_codeinfeature" },
-          ]
-        },
-        {
           text: "AI 工程",
           items: [
-            { text: "Agent ReAct and Loop", link: "/blog/2025/27_react_loop" },
-            { text: "Agent = LLM + Tools", link: "/blog/2025/26_agent_is_llm_plus_tools" },
-            { text: "Agents.md 又是什么", link: "/blog/2025/24_agents" },
-            { text: "长期以来我对 LLM 的误解", link: "/blog/2025/23_llm01" },
-            { text: "Sub-agent 模式详解和实践", link: "/blog/2025/12_subagent" },
-            { text: "提示工程入门指南", link: "/blog/2025/11_prompt" },
+            { text: "Agent ReAct and Loop", link: "/blog/agent_react_and_loop" },
+            { text: "Agent = LLM + Tools", link: "/blog/agent_is_llm_plus_tools" },
+            { text: "Agents.md 又是什么", link: "/blog/what_is_agents_md" },
+            { text: "长期以来我对 LLM 的误解", link: "/blog/misunderstanding_llm" },
+            { text: "Sub-agent 模式详解和实践", link: "/blog/claude_code_sub_agent" },
+            { text: "提示工程入门指南", link: "/blog/prompt_engineering_getting_started" },
           ],
         },
         {
           text: "客户端",
           items: [
-            { text: "为博客添加 RSS 订阅", link: "/blog/2025/25_rss" },
-            { text: "ECharts 万字入门指南", link: "/blog/2025/22_echarts" },
-            { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
-            { text: "Gsap 入门指南", link: "/blog/2025/20_gsap01" },
-            { text: "JS 的多线程能力", link: "/blog/2025/19_jsworker" },
-            { text: "前端新手学习指南", link: "/blog/2025/15_frontendlearn" },
-            { text: "JS 运行机制详解", link: "/blog/2025/10_jssync" },
-            { text: "JS 异步编程入门", link: "/blog/2025/03_jsprintnum" },
-            { text: "Vue 样式工程实践", link: "/blog/2025/01_vuestyle" },
-            { text: "IndexedDB 实战指南", link: "/blog/2024/01_indexdb" },
-            { text: "自动化代码规范实践指南", link: "/blog/2025/02_vscodeformat" },
+            { text: "为博客添加 RSS 订阅", link: "/blog/add_rss_subscription_to_blog" },
+            { text: "ECharts 万字入门指南", link: "/blog/echarts_getting_started_guide" },
+            { text: "GSAP ScrollTrigger 详解", link: "/blog/gsap_scrolltrigger" },
+            { text: "Gsap 入门指南", link: "/blog/gsap_getting_started_guide" },
+            { text: "JS 的多线程能力", link: "/blog/javascript_multithreading_worker" },
+            { text: "前端新手学习指南", link: "/blog/frontend_beginner_guide_2025" },
+            { text: "JS 运行机制详解", link: "/blog/javascript_event_loop" },
+            { text: "JS 异步编程入门", link: "/blog/javascript_async_guide_6_patterns" },
+            { text: "Vue 样式工程实践", link: "/blog/vue_style_management_engineering_practice" },
+            { text: "IndexedDB 实战指南", link: "/blog/indexeddb_complete_guide" },
+            { text: "自动化代码规范实践指南", link: "/blog/vscode_eslint_plus_prettier" },
           ],
         },
         {
           text: "服务端",
           items: [
-            { text: "Go 并发编程", link: "/blog/2025/09_goprintnum" },
-            { text: "深度剖析 WebSocket", link: "/blog/2025/08_ws" },
-            { text: "深入浅出哈希算法", link: "/blog/2025/06_hash" },
+            { text: "Go 并发编程", link: "/blog/go_concurrency_sleep_to_select" },
+            { text: "深度剖析 WebSocket", link: "/blog/websocket" },
+            { text: "深入浅出哈希算法", link: "/blog/hash_algorithm_complete_guide" },
           ],
         },
         {
           text: "安全与网络",
           items: [
-            { text: "15 个常见的状态码详解", link: "/blog/2025/04_httpcode" },
+            { text: "15 个常见的状态码详解", link: "/blog/http_status_codes_guide_15_core" },
           ],
         },
         {
           text: "系统运维",
           items: [
-            { text: "Docker 进阶指南", link: "/blog/2025/18_dockersecond" },
-            { text: "Docker 入门指南", link: "/blog/2025/17_dockerfirst" },
-            { text: "50 个核心命令行工具", link: "/blog/2025/07_linuxcmd" },
-            { text: "项目配置管理之路", link: "/blog/2025/05_projectconfig" },
+            { text: "Docker 进阶指南", link: "/blog/docker_advanced_guide" },
+            { text: "Docker 入门指南", link: "/blog/docker_getting_started" },
+            { text: "50 个核心命令行工具", link: "/blog/linux_command_line_50_core_tools" },
+            { text: "项目配置管理之路", link: "/blog/project_configuration_management_best_practices" },
           ],
         },
       ],
@@ -107,11 +99,19 @@ const defaultTheme = {
           ],
         },
         {
+          text: "思考",
+          items: [
+            { text: "关于“黑话”，我想说几句", link: "/me/industry_slang_my_thoughts" },
+            { text: "一个技术写作者的抉择", link: "/me/technical_writer_choice_traffic_vs_value" },
+            { text: "编程的演进：从指令到意图", link: "/me/programming_evolution_instruction_to_intent_ai_era" },
+          ],
+        },
+        {
           text: "站点建设",
           items: [
-            { text: "技术写作的单线结构法则", link: "/me/01_write" },
-            { text: "VideoEmbed 视频嵌入组件", link: "/me/03_videoembed" },
-            { text: "MusicEmbed 音乐嵌入组件", link: "/me/02_musicembed" }
+            { text: "技术写作的单线结构法则", link: "/me/curated_writing_tips_collection" },
+            { text: "VideoEmbed 视频嵌入组件", link: "/me/video_embed_vue_component" },
+            { text: "MusicEmbed 音乐嵌入组件", link: "/me/music_embed_spotify_component" }
           ],
         },
       ],
@@ -120,8 +120,8 @@ const defaultTheme = {
           text: "收录",
           items: [
             { text: "介绍", link: "/transpond/" },
-            { text: "写作类", link: "/transpond/01_write" },
-            { text: "技术类", link: "/transpond/02_tech" }
+            { text: "写作类", link: "/transpond/curated_writing_tips_collection" },
+            { text: "技术类", link: "/transpond/curated_technical_tutorials_collection" }
           ],
         },
       ],

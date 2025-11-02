@@ -147,7 +147,7 @@ AI 不会取代前端工程师，但它会成为我们工作中不可或缺的�
 **核心**：AI 是你的加速器，不是你的替代品。AI 生成的代码，你必须能看懂、能修改。最终负责的人，依然是你。
 
 ::: tip
-在[提示工程（Prompt Engineering）入门指南](https://stack.mcell.top/blog/2025/11_prompt)一文中，我详细介绍了如何与一个大型语言模型（LLM）高效对话，希望对你有帮助。
+在[提示工程（Prompt Engineering）入门指南](https://stack.mcell.top/blog/prompt_engineering_getting_started_engineering_ai)一文中，我详细介绍了如何与一个大型语言模型（LLM）高效对话，希望对你有帮助。
 :::
 
 ## **五、一些心里话**
