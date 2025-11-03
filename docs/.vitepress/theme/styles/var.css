@@ -6,9 +6,9 @@
   /* ==================== 颜色系统 ==================== */
   
   /* 品牌色 - 可动态切换的主题色 */
-  --theme-primary: #FF8C59;
-  --theme-secondary: #FFA573;  
-  --theme-tertiary: #FFBE8D;
+  --theme-primary: #1b8194;
+  --theme-secondary: #52a4b5;
+  --theme-tertiary: #8ac7d6;
   
   /* 基础色调 - 米色和柔和色彩 */
   --vp-c-bg: #fdfdf8;
@@ -32,7 +32,7 @@
   /* 选择文本颜色 */
   --theme-selection-bg: var(--theme-primary);
   
-  /* Logo主题色适配滤镜 - 基于原始橙色#FF8C59 */
+  /* Logo主题色适配滤镜 - 基于原始青色#1b8194 */
   --logo-theme-filter: hue-rotate(0deg) !important;
   
   

@@ -116,7 +116,7 @@ const showExternalWarning = (url: string, callback: () => void) => {
           padding: 12px 16px;
           border-radius: 8px;
           margin-bottom: 16px;
-          border-left: 3px solid var(--theme-primary, #FF8C59);
+          border-left: 3px solid var(--theme-primary, #1b8194);
         ">
           <span style="font-family: monospace; font-size: 14px; color: var(--vp-c-text-2); word-break: break-all;">${url}</span>
         </div>
@@ -153,7 +153,7 @@ const showExternalWarning = (url: string, callback: () => void) => {
           font-size: 14px;
           font-weight: 500;
           cursor: pointer;
-          background: var(--theme-primary, #FF8C59);
+          background: var(--theme-primary, #1b8194);
           color: white;
           transition: all 0.25s ease;
         ">继续访问</button>

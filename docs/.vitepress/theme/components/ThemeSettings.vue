@@ -127,7 +127,7 @@
                         v-model="customColors.primary"
                         @input="updateCustomColor"
                         class="color-text-input"
-                        placeholder="#FF8C59"
+                        placeholder="#1b8194"
                       />
                     </div>
                   </div>
@@ -145,7 +145,7 @@
                         v-model="customColors.secondary"
                         @input="updateCustomColor"
                         class="color-text-input"
-                        placeholder="#FFA573"
+                        placeholder="#52a4b5"
                       />
                     </div>
                   </div>
@@ -300,8 +300,8 @@ const router = useRouter();
 
 // 自定义颜色
 const customColors = ref({
-  primary: "#FF8C59",
-  secondary: "#FFA573",
+  primary: "#1b8194",
+  secondary: "#52a4b5",
 });
 
 // 当前设置状态
@@ -310,9 +310,9 @@ const currentSettings = ref({
   color: {
     name: "orange",
     displayName: "经典橙",
-    primary: "#FF8C59",
-    secondary: "#FFA573",
-    tertiary: "#FFBE8D",
+    primary: "#1b8194",
+    secondary: "#52a4b5",
+    tertiary: "#8ac7d6",
     logoFilter: "hue-rotate(0deg)",
   },
   borderRadius: {
@@ -352,9 +352,9 @@ const colorOptions = [
   {
     name: "orange",
     displayName: "经典橙",
-    primary: "#FF8C59",
-    secondary: "#FFA573",
-    tertiary: "#FFBE8D",
+    primary: "#1b8194",
+    secondary: "#52a4b5",
+    tertiary: "#8ac7d6",
     logoFilter: "hue-rotate(0deg)",
   },
   {
@@ -516,9 +516,9 @@ const resetToDefaults = () => {
     color: {
       name: "orange",
       displayName: "经典橙",
-      primary: "#FF8C59",
-      secondary: "#FFA573",
-      tertiary: "#FFBE8D",
+      primary: "#1b8194",
+      secondary: "#52a4b5",
+      tertiary: "#8ac7d6",
       logoFilter: "hue-rotate(0deg)",
     },
     borderRadius: {
