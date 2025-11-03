@@ -107,10 +107,10 @@
       ]
     },
     {
-      "name": "客户端专题",
-      "short_name": "前端",
-      "description": "前端开发与客户端技术",
-      "url": "/topics/client/",
+      "name": "网络专题",
+      "short_name": "网络",
+      "description": "网络协议、WebSocket、HTTP",
+      "url": "/topics/network/",
       "icons": [
         {
           "src": "/logo.svg",
@@ -119,10 +119,34 @@
       ]
     },
     {
-      "name": "服务端专题",
-      "short_name": "后端",
-      "description": "服务端与后端工程",
-      "url": "/topics/server/",
+      "name": "语言专题",
+      "short_name": "语言",
+      "description": "JavaScript、Go、前端框架、可视化",
+      "url": "/topics/language/",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "运维专题",
+      "short_name": "运维",
+      "description": "Docker、Linux、工程化实践",
+      "url": "/topics/devops/",
+      "icons": [
+        {
+          "src": "/logo.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "性能优化专题",
+      "short_name": "性能",
+      "description": "算法优化、系统性能调优",
+      "url": "/topics/performance/",
       "icons": [
         {
           "src": "/logo.svg",
