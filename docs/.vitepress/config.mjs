@@ -23,9 +23,15 @@ const config = {
     transformItems: (items) => {
       return items.map((item) => ({
         ...item,
-        changefreq: item.url.includes('/blog/') ? 'weekly' : 'monthly',
+        changefreq: item.url.includes('/blog/') ? 'weekly' :
+                    item.url.includes('/topics/') ? 'weekly' : 'monthly',
         priority: item.url === 'https://stack.mcell.top/' ? 1.0 :
-          item.url.includes('/blog/') ? 0.8 : 0.6,
+          item.url.includes('/blog/') ? 0.8 :
+          item.url.includes('/topics/ai/') ? 0.9 :
+          item.url.includes('/topics/network/') ? 0.8 :
+          item.url.includes('/topics/language/') ? 0.8 :
+          item.url.includes('/topics/devops/') ? 0.8 :
+          item.url.includes('/topics/performance/') ? 0.8 : 0.6,
       }))
     }
   },

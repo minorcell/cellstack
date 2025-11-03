@@ -21,9 +21,10 @@ export const themeConfig = {
       activeMatch: "/topics/",
       items: [
         { text: "AI", link: "/topics/ai/" },
-        { text: "客户端", link: "/topics/client/" },
-        { text: "服务端", link: "/topics/server/" },
-        { text: "网络与运维", link: "/topics/netops/" },
+        { text: "网络", link: "/topics/network/" },
+        { text: "语言", link: "/topics/language/" },
+        { text: "运维", link: "/topics/devops/" },
+        { text: "性能优化", link: "/topics/performance/" },
       ],
     },
     {
