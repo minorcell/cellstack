@@ -5,11 +5,7 @@ User-agent: *
 Allow: /
 
 # 优先抓取重要页面
-Allow: /topics/ai/
-Allow: /topics/network/
-Allow: /topics/language/
-Allow: /topics/devops/
-Allow: /topics/performance/
+Allow: /blog/
 Allow: /me/
 Allow: /transpond/
 
