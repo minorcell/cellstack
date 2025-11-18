@@ -4,7 +4,7 @@
         <title>CellStack - 工程师技术笔记</title>
         <link>https://stack.mcell.top</link>
         <description>计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。</description>
-        <lastBuildDate>Tue, 18 Nov 2025 03:05:13 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Nov 2025 03:32:29 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-cn</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[React 如何处理高频的实时数据？]]></title>
             <link>https://stack.mcell.top/blog/2025/28_react_maximum</link>
             <guid>https://stack.mcell.top/blog/2025/28_react_maximum</guid>
-            <pubDate>Tue, 18 Nov 2025 03:04:24 GMT</pubDate>
+            <pubDate>Tue, 18 Nov 2025 03:31:40 GMT</pubDate>
             <description><![CDATA[深入解析 React 处理高频实时数据的技术方案，从 Maximum update depth exceeded 错误到批处理优化，完整解决 SSE 推送场景下的性能问题。]]></description>
             <content:encoded><![CDATA[<p><img src="https://stack-mcell.tos-cn-shanghai.volces.com/069.png" alt="069.png" loading="lazy"></p>
 <h1 id="react-如何处理高频的实时数据" tabindex="-1">React 如何处理高频的实时数据？ <a class="header-anchor" href="#react-如何处理高频的实时数据" aria-label="Permalink to &quot;React 如何处理高频的实时数据？&quot;"></a></h1>
@@ -21,7 +21,7 @@
 <p>我需要开发一个实时的日志查看器，功能上需要实时展示服务运行的日志。因为这个项目是内部的，我这里大概抽象一下：</p>
 <p>后端使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank" rel="noreferrer">SSE（Server-Sent Events）</a> 技术，源源不断地把日志推送给前端。</p>
 <p>当日志一条一条、不紧不慢地过来时，一切正常。</p>
-<p>但是，当服务器在短时间内（比如 1 秒内）推送上百条日志时（比如查看历史日志的场景），网页卡顿了一下。浏览器控制台显示了一个 React 开发者很熟悉的错误：</p>
+<p>但是，当我预览一个已经完成的任务日志时，网页卡顿了一下。浏览器控制台显示了一个 React 开发者很熟悉的错误：</p>
 <blockquote>
 <p><code>Uncaught Error: Maximum update depth exceeded...</code>
 (错误：超过最大更新深度)</p>
@@ -42,6 +42,9 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
 </div><p>那么，问题出在哪里呢？</p>
 <h2 id="问题的根源-高频更新" tabindex="-1">问题的根源：高频更新 <a class="header-anchor" href="#问题的根源-高频更新" aria-label="Permalink to &quot;问题的根源：高频更新&quot;"></a></h2>
+<p>起初我以为是哪里的更新逻辑不对，让 claude 排查很久都没找到具体问题。在给现有函数增加了不少缓存，比如<code>useMemo</code>，<code>useCallback</code>，甚至 <code>React.memo</code> 都使用上了，仍旧没有解决这个报错。</p>
+<p>代码没有问题，那么问题就应该出现在一些极端场景导致的高频渲染。比如网络？我才打开控制台的网络部分，看到几乎在很短时间内，上百条的 log 被推送过来！</p>
+<p>到这里问题就和清晰了：<strong>当服务器在短时间内（比如 1 秒内）推送上百条日志时，每一个 log 都触发了 React 进行重新渲染，这里触发了 React 的某些机制，React 对这种行为发出了报错。</strong></p>
 <p>React 内部有一个“嵌套更新计数器”，用来防止无限循环。</p>
 <p>简单说，如果在一次渲染（Render）的过程中，又因为某些原因触发了新的状态更新，这就叫“嵌套更新”。当这个次数短时间内超过一个阈值（通常是 50 次），React 就会认为你“可能”写了一个 Bug，于是主动抛出错误，终止程序。</p>
 <p>我们的问题就出在这里。SSE 的事件回调来得太快了。</p>
@@ -56,6 +59,9 @@
 <p>在 React 看来，这 51 次更新几乎是“同时”发生的，它无法分辨这是“51 条独立日志”还是“一个死循环”。为了保护自己，它选择了报错。</p>
 <p><strong>问题的本质是：数据接收的频率（高频）和 React 状态更新的频率（低频）不匹配。</strong></p>
 <p>我们不能每收到一条数据，就立刻更新一次状态。</p>
+<blockquote>
+<p>后续我了解到 React 18 版本对高频渲染的问题进行了优化，但它目前仅适用于 React 事件处理函数内的同步更新。对于 SSE 回调、fetch 回调、setInterval 等异步事件源触发的更新，仍需手动实现批处理。</p>
+</blockquote>
 <h2 id="解决方案-批处理-batching" tabindex="-1">解决方案：批处理（Batching） <a class="header-anchor" href="#解决方案-批处理-batching" aria-label="Permalink to &quot;解决方案：批处理（Batching）&quot;"></a></h2>
 <p>既然不能一条一条地更新，那很自然就想到，能不能把日志“攒一下”，再一次性提交给 React？</p>
 <p>这就是“批处理”（Batching）思想。</p>
