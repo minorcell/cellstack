@@ -62,6 +62,7 @@ const defaultTheme = {
         {
           text: "客户端",
           items: [
+            { text: "React 高频数据处理", link: "/blog/2025/28_react_maximum" },
             { text: "为博客添加 RSS 订阅", link: "/blog/2025/25_rss" },
             { text: "ECharts 万字入门指南", link: "/blog/2025/22_echarts" },
             { text: "GSAP ScrollTrigger 详解", link: "/blog/2025/21_gsap02" },
