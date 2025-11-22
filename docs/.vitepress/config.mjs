@@ -1,6 +1,9 @@
 import { withMermaid } from "vitepress-plugin-mermaid"
 import { RssPlugin } from "vitepress-plugin-rss"
 
+const GOOGLE_ANALYTICS_ID = process.env.GOOGLE_ANALYTICS_ID
+const BAIDU_TONGJI_ID = process.env.BAIDU_TONGJI_ID
+
 const defaultTheme = {
   base: "/",
   title: "CellStack - 工程师技术笔记",
@@ -375,6 +378,48 @@ const defaultTheme = {
     ["meta", { name: "geo.region", content: "CN" }],
     ["meta", { name: "geo.country", content: "China" }],
     ["meta", { "http-equiv": "content-language", content: "zh-CN" }],
+
+    // 数据统计：谷歌分析
+    ...(GOOGLE_ANALYTICS_ID
+      ? [
+          [
+            "script",
+            {
+              async: "",
+              src: `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`,
+            },
+          ],
+          [
+            "script",
+            {},
+            `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GOOGLE_ANALYTICS_ID}');
+            `,
+          ],
+        ]
+      : []),
+
+    // 数据统计：百度统计
+    ...(BAIDU_TONGJI_ID
+      ? [
+          [
+            "script",
+            {},
+            `
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?${BAIDU_TONGJI_ID}";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            `,
+          ],
+        ]
+      : []),
   ],
 
   // 站点地图和SEO配置
