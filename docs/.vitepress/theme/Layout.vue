@@ -1,5 +1,10 @@
 <template>
   <Layout>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLFSQ4QT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- 在导航栏的社交链接区域后添加功能按钮 -->
     <template #nav-bar-content-after>
       <div class="VPNavBarExtra">
