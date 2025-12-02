@@ -4,11 +4,247 @@
         <title>CellStack - 工程师技术笔记</title>
         <link>https://stack.mcell.top</link>
         <description>计算机科学的工程实践和个人思考。涵盖前端开发、后端架构、DevOps运维、AI工程等技术领域的深度文章和实战经验分享。</description>
-        <lastBuildDate>Sat, 22 Nov 2025 07:11:52 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 02 Dec 2025 16:56:29 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-cn</language>
         <copyright>© 2025 mCell</copyright>
+        <item>
+            <title><![CDATA[前端路由详解]]></title>
+            <link>https://stack.mcell.top/blog/2025/29_web_router</link>
+            <guid>https://stack.mcell.top/blog/2025/29_web_router</guid>
+            <pubDate>Tue, 02 Dec 2025 16:55:45 GMT</pubDate>
+            <description><![CDATA[全面解析前端路由的 Hash 与 History 两种模式，涵盖原理、实现、优缺点、服务器配置与框架实践，帮助你做出兼顾兼容性与 SEO 的路由选型。]]></description>
+            <content:encoded><![CDATA[<p><img src="https://stack-mcell.tos-cn-shanghai.volces.com/070.png" alt="070" loading="lazy"></p>
+<h1 id="前端路由详解式" tabindex="-1">前端路由详解式 <a class="header-anchor" href="#前端路由详解式" aria-label="Permalink to &quot;前端路由详解式&quot;"></a></h1>
+<h2 id="背景" tabindex="-1">背景 <a class="header-anchor" href="#背景" aria-label="Permalink to &quot;背景&quot;"></a></h2>
+<p>在 Web 开发的早期，互联网主要由 多页应用（MPA, Multi-Page Application）组成。那时的路由逻辑非常简单：用户点击一个链接，浏览器向服务器发送请求；服务器接收请求，根据 URL 路径找到对应的 HTML 文件（或通过模板引擎生成），返回给浏览器；浏览器卸载当前页面，重新渲染新页面。</p>
+<p>这种模式的缺点显而易见：每次页面切换都需要重新加载资源，出现短暂的“白屏”，用户体验不够流畅。</p>
+<p>随着 AJAX 技术的普及，单页应用（SPA, Single-Page Application）开始流行。SPA 的核心理念是：<strong>页面初始化时加载必要的 HTML、CSS 和 JavaScript，之后的页面切换不再请求完整的 HTML，而是通过 JS 动态更新页面内容。</strong></p>
+<p>这就带来了一个新问题：<strong>如何在不刷新页面的前提下，改变 URL 并渲染对应的内容？</strong></p>
+<p>这就是<strong>前端路由</strong>诞生的背景。目前主流的解决方案有两种：<strong>Hash 模式</strong>和 <strong>History 模式</strong>。</p>
+<h2 id="hash-模式" tabindex="-1">Hash 模式 <a class="header-anchor" href="#hash-模式" aria-label="Permalink to &quot;Hash 模式&quot;"></a></h2>
+<p>如果你看到 URL 中包含一个 <code>#</code> 号，例如 <code>http://www.example.com/#/home</code>，那么这个应用很可能使用的是 Hash 模式。</p>
+<h3 id="hash-的本质" tabindex="-1">Hash 的本质 <a class="header-anchor" href="#hash-的本质" aria-label="Permalink to &quot;Hash 的本质&quot;"></a></h3>
+<p>Hash（哈希）原本是用来做页面定位的（锚点）。比如 <code>&lt;a href=&quot;#content&quot;&gt;</code> 可以直接跳转到页面 id 为 <code>content</code> 的位置。</p>
+<p>Hash 有一个非常重要的特性：<strong>URL 中 <code>#</code> 及其后面的内容，虽然会显示在浏览器地址栏，但不会被包含在 HTTP 请求中。</strong></p>
+<p>当你访问 <code>http://www.example.com/#/home</code> 时，浏览器向服务器请求的仅仅是 <code>http://www.example.com/</code>。这意味着，无论 <code>#</code> 后面的内容如何变化，服务端都只接收到同一个请求，返回同一个 <code>index.html</code>。</p>
+<h3 id="实现原理" tabindex="-1">实现原理 <a class="header-anchor" href="#实现原理" aria-label="Permalink to &quot;实现原理&quot;"></a></h3>
+<p>在浏览器中，我们可以通过 <code>window.location.hash</code> 属性读取或修改 Hash 值。</p>
+<p>更关键的是，浏览器提供了一个 <code>hashchange</code> 事件。当 URL 的 Hash 部分发生变化时，就会触发这个事件。</p>
+<div class="language-javascript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 监听 Hash 变化</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">window.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"hashchange"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> () {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"The hash has changed to: "</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> location.hash)</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 在这里根据 hash 的值，动态更新页面 DOM</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
+</div><h3 id="优缺点分析" tabindex="-1">优缺点分析 <a class="header-anchor" href="#优缺点分析" aria-label="Permalink to &quot;优缺点分析&quot;"></a></h3>
+<ul>
+<li><strong>优点</strong>：
+<ul>
+<li><strong>兼容性好</strong>：支持低版本浏览器（如 IE8）。</li>
+<li><strong>无需服务端配置</strong>：因为 Hash 不参与 HTTP 请求，服务器只需处理根路径请求，部署极其简单。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li><strong>URL 不美观</strong>：<code>#</code> 符号夹在中间，违背了 URL 的语义（Uniform Resource Locator），看起来像个“补丁”。</li>
+<li><strong>SEO 较差</strong>：搜索引擎爬虫虽然在进化，但对 Hash 的支持依然不如纯路径友好。</li>
+</ul>
+</li>
+</ul>
+<h2 id="history-模式" tabindex="-1">History 模式 <a class="header-anchor" href="#history-模式" aria-label="Permalink to &quot;History 模式&quot;"></a></h2>
+<p>为了解决 Hash 模式 URL 不美观的问题，HTML5 标准在 <code>history</code> 对象上增加了新的 API。这就是 History 模式的基础。</p>
+<h3 id="核心-api" tabindex="-1">核心 API <a class="header-anchor" href="#核心-api" aria-label="Permalink to &quot;核心 API&quot;"></a></h3>
+<p>在 HTML4 时代，<code>window.history</code> 只能用于前进（<code>forward</code>）、后退（<code>back</code>）和跳转（<code>go</code>）。</p>
+<p>HTML5 新增了两个关键方法，允许我们在<strong>不刷新页面</strong>的情况下修改 URL：</p>
+<ol>
+<li><code>history.pushState(state, title, url)</code>：向历史记录堆栈中添加一条新记录。</li>
+<li><code>history.replaceState(state, title, url)</code>：修改当前的历史记录。</li>
+</ol>
+<p>例如，执行 <code>history.pushState(null, null, '/user/id')</code> 后，浏览器的地址栏会变为 <code>http://www.example.com/user/id</code>，但浏览器<strong>不会</strong>向服务器发送请求，页面也不会刷新。</p>
+<h3 id="实现原理-1" tabindex="-1">实现原理 <a class="header-anchor" href="#实现原理-1" aria-label="Permalink to &quot;实现原理&quot;"></a></h3>
+<p>History 模式的实现比 Hash 稍微复杂一点。我们需要处理两种情况：</p>
+<ol>
+<li><strong>用户点击链接</strong>：前端框架会拦截 <code>&lt;a&gt;</code> 标签的点击事件，阻止默认跳转，改用 <code>history.pushState</code> 修改 URL，并手动更新视图。</li>
+<li><strong>用户点击浏览器的前进/后退按钮</strong>：这会触发 <code>popstate</code> 事件。我们需要监听这个事件来更新视图。</li>
+</ol>
+<!-- end list -->
+<div class="language-javascript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 监听浏览器的前进、后退</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">window.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"popstate"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">event</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">    "Location: "</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> document.location </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">+</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> ", state: "</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> +</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> JSON</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">stringify</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(event.state)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  )</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 根据当前 path 更新视图</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
+</div><h3 id="优缺点分析-1" tabindex="-1">优缺点分析 <a class="header-anchor" href="#优缺点分析-1" aria-label="Permalink to &quot;优缺点分析&quot;"></a></h3>
+<ul>
+<li><strong>优点</strong>：
+<ul>
+<li><strong>URL 美观</strong>：和传统后端路由一样的路径结构，符合 RESTful 规范。</li>
+<li><strong>功能更强</strong>：<code>pushState</code> 可以传递 <code>state</code> 对象，允许在页面跳转时传递复杂数据。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：
+<ul>
+<li><strong>兼容性</strong>：需要 IE10 及以上。</li>
+<li><strong>必须服务端配置</strong>：这是最大的痛点（详见第五节）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="源码级实战-手写迷你路由" tabindex="-1">源码级实战：手写迷你路由 <a class="header-anchor" href="#源码级实战-手写迷你路由" aria-label="Permalink to &quot;源码级实战：手写迷你路由&quot;"></a></h2>
+<p>为了彻底理解，我们模仿 Vue Router 写一个简化版。</p>
+<h3 id="_4-1-hashrouter-实现" tabindex="-1">4.1 HashRouter 实现 <a class="header-anchor" href="#_4-1-hashrouter-实现" aria-label="Permalink to &quot;4.1 HashRouter 实现&quot;"></a></h3>
+<div class="language-javascript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> HashRouter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  constructor</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {} </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 存储路径与回调函数的映射</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.currentUrl </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> ""</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 绑定 this，防止指向丢失</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.refresh </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.refresh.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">bind</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 监听 load 和 hashchange 事件</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    window.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"load"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.refresh)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    window.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"hashchange"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.refresh)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 注册路由</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  route</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">callback</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[path] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> callback </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">||</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> () {}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 刷新页面逻辑</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  refresh</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 获取当前 hash，去掉 # 号</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.currentUrl </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> location.hash.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">slice</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">||</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "/"</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // 执行对应的回调函数（渲染 UI）</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.currentUrl]) {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.currentUrl]()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><h3 id="historyrouter-实现" tabindex="-1">HistoryRouter 实现 <a class="header-anchor" href="#historyrouter-实现" aria-label="Permalink to &quot;HistoryRouter 实现&quot;"></a></h3>
+<div class="language-javascript vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">javascript</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> HistoryRouter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  constructor</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">bindPopState</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">initLinkHijack</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 拦截 a 标签</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  route</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">callback</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[path] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> callback </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">||</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> () {}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 监听浏览器自带的前进后退</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  bindPopState</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    window.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"popstate"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> location.pathname</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">updateView</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(path)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    })</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 拦截全局点击事件，处理 link 跳转</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  initLinkHijack</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    document.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addEventListener</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"click"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">e</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> target</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> e.target</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (target.tagName </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">===</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "A"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        e.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">preventDefault</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 阻止默认跳转</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> path</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> target.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">getAttribute</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"href"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        // 手动修改 URL</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        history.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">pushState</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, path)</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        // 更新视图</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">updateView</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(path)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    })</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  updateView</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">path</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[path]) {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.routes[path]()</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><h2 id="部署难题-history-模式下的-404-问题" tabindex="-1">部署难题：History 模式下的 404 问题 <a class="header-anchor" href="#部署难题-history-模式下的-404-问题" aria-label="Permalink to &quot;部署难题：History 模式下的 404 问题&quot;"></a></h2>
+<p>这是新手最容易遇到的“坑”。</p>
+<h3 id="现象复现" tabindex="-1">现象复现 <a class="header-anchor" href="#现象复现" aria-label="Permalink to &quot;现象复现&quot;"></a></h3>
+<p>你在本地开发时（使用 <code>webpack-dev-server</code> 或 <code>vite</code>），一切正常。但是，当你运行 <code>npm run build</code> 打包，将生成的文件部署到 Nginx 服务器后：</p>
+<ol>
+<li>访问根路径 <code>http://www.site.com/</code>，页面正常显示。</li>
+<li>点击导航进入 <code>http://www.site.com/about</code>，页面正常显示（因为是 JS 动态渲染的）。</li>
+<li><strong>但是</strong>，如果你在 <code>/about</code> 页面按下<strong>刷新</strong>按钮，或者直接在地址栏输入这个地址，页面会显示 <strong>404 Not Found</strong>。</li>
+</ol>
+<h3 id="根本原因" tabindex="-1">根本原因 <a class="header-anchor" href="#根本原因" aria-label="Permalink to &quot;根本原因&quot;"></a></h3>
+<p>这是一个典型的“前端路由与后端路由冲突”问题。</p>
+<ul>
+<li><strong>前端逻辑</strong>：我认为 <code>/about</code> 是一个视图（Component），属于 <code>index.html</code> 的一部分。</li>
+<li><strong>后端逻辑</strong>：当浏览器发送 <code>/about</code> 请求时，服务器会去文件系统中查找名为 <code>about</code> 的文件夹或文件。</li>
+</ul>
+<p>很显然，你的服务器上只有一个 <code>index.html</code>，并没有 <code>about</code> 这个文件，所以 Nginx 诚实地返回了 404。</p>
+<h3 id="解决方案" tabindex="-1">解决方案 <a class="header-anchor" href="#解决方案" aria-label="Permalink to &quot;解决方案&quot;"></a></h3>
+<p>解决思路很简单：<strong>告诉服务器，如果找不到对应的文件，不要报 404，而是统统返回 <code>index.html</code>。</strong></p>
+<p>只要返回了 <code>index.html</code>，浏览器就会加载 JS，路由插件（Vue Router 等）就会接管 URL，分析路径是 <code>/about</code>，然后渲染出对应的组件。</p>
+<p><strong>Nginx 配置示例：</strong></p>
+<div class="language-nginx vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">nginx</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">location</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> / </span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  root </span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  /usr/share/nginx/html;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  index </span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> index.html index.htm;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  # 核心配置：尝试查找文件，找不到则重定向到 index.html</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  try_files </span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">$uri $uri/ /index.html;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><p><code>try_files $uri $uri/ /index.html;</code> 的意思是：</p>
+<ol>
+<li>先看用户请求的是不是一个真实存在的文件（<code>$uri</code>）。</li>
+<li>如果不是，再看是不是一个真实存在的目录（<code>$uri/</code>）。</li>
+<li>如果都不是，就返回 <code>/index.html</code>。</li>
+</ol>
+<h2 id="总结与选型指南" tabindex="-1">总结与选型指南 <a class="header-anchor" href="#总结与选型指南" aria-label="Permalink to &quot;总结与选型指南&quot;"></a></h2>
+<p>最后，我们用一张表格来总结两者的区别，帮助你在项目中做出选择。</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">Hash 模式</th>
+<th style="text-align:left">History 模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>URL 外观</strong></td>
+<td style="text-align:left"><code>example.com/#/about</code></td>
+<td style="text-align:left"><code>example.com/about</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>美观度</strong></td>
+<td style="text-align:left">丑，有“#”号干扰</td>
+<td style="text-align:left">美观，符合标准</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>原理</strong></td>
+<td style="text-align:left"><code>window.location.hash</code></td>
+<td style="text-align:left"><code>history.pushState</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>兼容性</strong></td>
+<td style="text-align:left">极好（IE8+）</td>
+<td style="text-align:left">较好（IE10+）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>服务端配置</strong></td>
+<td style="text-align:left"><strong>不需要</strong></td>
+<td style="text-align:left"><strong>必须配置</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>应用场景</strong></td>
+<td style="text-align:left">内部系统、Demo、静态资源服务器</td>
+<td style="text-align:left">正式商业项目、C 端应用</td>
+</tr>
+</tbody>
+</table>
+<p>在现代前端开发中，除非你有特殊的兼容性需求或者由于权限问题无法配置服务器，否则<strong>强烈建议使用 History 模式</strong>。它不仅能提供更好的用户体验，也更符合 Web 标准的发展趋势。</p>
+<p>（完）</p>
+]]></content:encoded>
+            <enclosure url="https://stack-mcell.tos-cn-shanghai.volces.com/070.png" length="0" type="image/png"/>
+        </item>
         <item>
             <title><![CDATA[React 如何处理高频的实时数据？]]></title>
             <link>https://stack.mcell.top/blog/2025/28_react_maximum</link>
