@@ -51,7 +51,7 @@ const defaultTheme = {
         {
           text: "AI 工程",
           items: [
-            { text: "LLM 基础：什么是 Tokens", link: "/blog/2025/30_llm_tokens" },
+            { text: "LLM 扫盲：什么是 Tokens", link: "/blog/2025/30_llm_tokens" },
             { text: "Agent ReAct and Loop", link: "/blog/2025/27_react_loop" },
             { text: "Agent = LLM + Tools", link: "/blog/2025/26_agent_is_llm_plus_tools" },
             { text: "Agents.md 又是什么", link: "/blog/2025/24_agents" },
