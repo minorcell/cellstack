@@ -28,7 +28,7 @@ keywords:
 
 ![070](https://stack-mcell.tos-cn-shanghai.volces.com/070.png)
 
-# 前端路由详解式
+# 前端路由详解
 
 ## 背景
 
