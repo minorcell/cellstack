@@ -1,37 +1,41 @@
 {
-  "name": "cellstack",
-  "version": "1.0.0",
-  "description": "一个工程师的技术笔记，涵盖前端、后端、DevOps 与 AI 工程实践，从零到落地。",
+  "name": "temp_web",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
-  },
-  "keywords": [
-    "vitepress",
-    "learning",
-    "knowledge-base"
-  ],
-  "author": "mcell",
-  "license": "MIT",
-  "devDependencies": {
-    "@braintree/sanitize-url": "^7.1.1",
-    "busuanzi.pure.js": "^1.0.3",
-    "cytoscape": "^3.33.1",
-    "cytoscape-cose-bilkent": "^4.1.0",
-    "dayjs": "^1.11.13",
-    "debug": "^4.4.1",
-    "medium-zoom": "^1.1.0",
-    "mermaid": "^11.9.0",
-    "nprogress-v2": "^1.1.10",
-    "terser": "^5.43.1",
-    "vitepress": "^1.0.0",
-    "vitepress-plugin-comment-with-giscus": "^1.1.15",
-    "vitepress-plugin-mermaid": "^2.0.17"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "html2canvas": "^1.4.1",
-    "qrcode": "^1.5.4",
-    "vitepress-plugin-rss": "^0.3.2"
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/three": "^0.181.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.25",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
+    "lucide-react": "^0.556.0",
+    "maath": "^0.10.8",
+    "next": "16.0.7",
+    "next-mdx-remote": "^5.0.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-medium-image-zoom": "^5.4.0",
+    "rehype-highlight": "^7.0.2",
+    "tailwind-merge": "^3.4.0",
+    "three": "^0.181.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
