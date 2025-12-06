@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CellStack",
   description: "Engineering, Design, and Intelligence",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
