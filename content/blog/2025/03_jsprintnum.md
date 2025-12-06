@@ -1,6 +1,6 @@
 ---
 date: 2025-04-10
-title: JavaScript 异步编程完全指南
+title: 探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现
 description: 深入探索 JavaScript 异步编程的完整演进路径。以“每秒打印数字”为实例，深入剖析 6 种定时任务实现方法：从经典的闭包问题、Promise 链式调用，到现代的 async/await、生成器函数和函数式编程。
 tags:
   - JavaScript异步
@@ -19,8 +19,6 @@ author: mCell
 ---
 
 ![010.png](https://stack-mcell.tos-cn-shanghai.volces.com/010.png)
-
-# 探索 JS 异步编程：从 setTimeout 到生成器的六种定时实现
 
 > 本文将摒弃 Web API (`requestAnimationFrame`)，在 Node 环境中探讨六种实现方案，展示不同编程范式下的异步控制技巧。
 

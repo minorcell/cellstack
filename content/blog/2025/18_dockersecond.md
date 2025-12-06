@@ -18,8 +18,6 @@ author: mCell
 
 ![033.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/033.jpg)
 
-# **Docker 进阶指南**
-
 在上一篇文章里，我们用 `docker build` 和 `docker run` 命令，成功地将一个应用放进了容器里并运行起来。这感觉很棒，就像 hello world 一样。
 
 但是，hello world 之后，我们总会好奇背后的秘密。而且，只靠这两个命令，还远远无法应对真实的工作场景。你可能马上就会遇到一连串新的问题：

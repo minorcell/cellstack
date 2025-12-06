@@ -29,8 +29,6 @@ keywords:
 
 ![073](https://stack-mcell.tos-cn-shanghai.volces.com/073.png)
 
-# useSearchParams
-
 在开发 React 应用时，我们经常遇到一种场景：用户在搜索框输入关键词，筛选出一个列表，然后希望把这个结果分享给同事。
 
 如果我们将筛选条件仅仅保存在组件的 `useState` 中，一旦刷新页面或复制链接，这些状态就会丢失，用户看到的只能是初始页面。

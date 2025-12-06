@@ -20,8 +20,6 @@ author: mCell
 
 ![020.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/020.jpg)
 
-# 提示工程（Prompt Engineering）入门指南
-
 > 这篇指南是我从 [Claude Code 官方文档](https://docs.anthropic.com/zh-CN/docs/build-with-claude/prompt-engineering/overview) 中提炼出最核心的技巧，从基础的“清晰指令”和“提供范例”，到进阶的“思考链”和“角色设定”，帮助你将 AI 这个强大的工具，变成你工作流中不可或缺的伙伴。如果你想让 AI 真正懂你所想，这篇文章正是你需要的入门手册。
 
 最近一年，大语言模型（LLM）的发展，正在深刻地改变我们获取信息和创造内容的方式。无论是 Claude、GPT、Gemini 还是国内的各种模型，AI 已经成为许多人工作中不可或缺的伙伴。

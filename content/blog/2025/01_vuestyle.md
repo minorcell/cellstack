@@ -1,6 +1,6 @@
 ---
 date: 2025-03-21
-title: Vue 样式管理工程实践
+title: Vue 样式隔离与动态绑定的工程实践
 description: 最全面的 Vue 样式管理指南，深入解析大型 Vue 项目中的样式管理挑战和解决方案。从 Scoped CSS 、CSS Modules 到动态样式绑定，掌握避免全局污染、实现动态更新的最佳实践。
 tags:
   - Vue样式
@@ -18,8 +18,6 @@ author: mCell
 ---
 
 ![011.png](https://stack-mcell.tos-cn-shanghai.volces.com/011.png)
-
-# Vue 样式隔离与动态绑定的工程实践
 
 > 在大型 Vue 项目中，样式管理面临两大核心挑战：**避免全局污染**和**实现动态更新**。Vue 单文件组件通过多种创新方案解决了这些问题，本文将深入解析这些"黑魔法"的工作原理与最佳实践。
 

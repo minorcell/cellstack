@@ -27,8 +27,6 @@ keywords:
 
 ![069.png](https://stack-mcell.tos-cn-shanghai.volces.com/069.png)
 
-# React 如何处理高频的实时数据？
-
 最近，我遇到了一个很有意思的 React 问题。
 
 我需要开发一个实时的日志查看器，功能上需要实时展示服务运行的日志。因为这个项目是内部的，我这里大概抽象一下：

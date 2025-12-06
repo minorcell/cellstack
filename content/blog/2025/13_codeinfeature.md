@@ -19,8 +19,6 @@ author: mCell
 
 ![022.webp](https://stack-mcell.tos-cn-shanghai.volces.com/022.webp)
 
-# 编程的演进：从指令到意图
-
 我使用 AI 编程工具（比如 Cursor、 Claude Code）已经半年了。它能根据注释，自动生成完整的函数。
 
 这让我产生了一个想法：我们今天所熟知的“编程”——即一行行地编写代码，未来可能将不复存在。

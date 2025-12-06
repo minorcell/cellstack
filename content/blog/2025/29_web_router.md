@@ -1,6 +1,6 @@
 ---
 date: 2025-11-16
-title: 前端路由详解
+title: 前端路由详解：Hash VS History
 description: 全面解析前端路由的 Hash 与 History 两种模式，涵盖原理、实现、优缺点、服务器配置与框架实践，帮助你做出兼顾兼容性与 SEO 的路由选型。
 author: mcell
 tags:
@@ -28,8 +28,6 @@ keywords:
 ---
 
 ![070](https://stack-mcell.tos-cn-shanghai.volces.com/070.png)
-
-# 前端路由详解
 
 ## 背景
 
@@ -100,7 +98,7 @@ History 模式的实现比 Hash 稍微复杂一点。我们需要处理两种情
 1.  **用户点击链接**：前端框架会拦截 `<a>` 标签的点击事件，阻止默认跳转，改用 `history.pushState` 修改 URL，并手动更新视图。
 2.  **用户点击浏览器的前进/后退按钮**：这会触发 `popstate` 事件。我们需要监听这个事件来更新视图。
 
-{/* end list */}
+{/_ end list _/}
 
 ```javascript
 // 监听浏览器的前进、后退

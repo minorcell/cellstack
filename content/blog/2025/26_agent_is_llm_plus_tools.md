@@ -27,8 +27,6 @@ keywords:
 
 ![064.png](https://stack-mcell.tos-cn-shanghai.volces.com/064.png)
 
-# Agent = LLM + Tools
-
 最近，AI Agent 这个词非常火。
 
 比如 Claude Code CLI、Codex，它能像个程序员一样，在你的命令行里读写文件、执行代码。很多人觉得很神奇，它到底是怎么做到的？

@@ -22,8 +22,6 @@ keywords:
 
 ![056.png](https://stack-mcell.tos-cn-shanghai.volces.com/056.png)
 
-# Agents.md 又是什么
-
 最近，如果你关注 AI 编程工具的生态，可能会注意到两个新名词频繁出现：**MCP** 和 **Agents.md**。
 
 MCP（Model Context Protocol）是为大语言模型（LLM）提供标准化上下文接入方式的协议，类似于让 LLM 能“看懂”外部工具、数据源和环境的一种通用语言。它试图解决的问题是：**如何让不同的 AI 工具以统一方式向模型提供上下文？**

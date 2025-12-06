@@ -29,8 +29,6 @@ keywords:
 
 ![072](https://stack-mcell.tos-cn-shanghai.volces.com/072.jpg)
 
-# LLM 扫盲：什么是 Tokens？
-
 GPT 5.1 发布已经有一段时间了，LLM（大语言模型）的能力边界再一次被拓宽。对于应用开发者而言，虽然模型越来越智能，但 API 的计费逻辑和底层限制依然没有变：**Token** 始终是那个核心计量单位。
 
 很多人对 Token 有误解，认为它等同于字符（Character）或单词（Word）。这种误解往往导致两个问题：一是预估 API 成本时出现较大偏差，二是无法精确控制 Prompt 的上下文长度，导致模型“失忆”。
