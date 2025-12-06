@@ -98,8 +98,6 @@ History 模式的实现比 Hash 稍微复杂一点。我们需要处理两种情
 1.  **用户点击链接**：前端框架会拦截 `<a>` 标签的点击事件，阻止默认跳转，改用 `history.pushState` 修改 URL，并手动更新视图。
 2.  **用户点击浏览器的前进/后退按钮**：这会触发 `popstate` 事件。我们需要监听这个事件来更新视图。
 
-{/_ end list _/}
-
 ```javascript
 // 监听浏览器的前进、后退
 window.addEventListener("popstate", function (event) {
