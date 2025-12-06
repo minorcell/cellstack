@@ -29,8 +29,6 @@ keywords:
 
 ![065.png](https://stack-mcell.tos-cn-shanghai.volces.com/065.png)
 
-# Agent ReAct and Loop
-
 我一直在使用 ChatGPT 或通义千问这样的 AI 工具，它们很强大，但多数情况下都是“一问一答”。我提一个问题，它给一个答案。
 
 但我注意到，像 Manus 或 Claude Code CLI 这样的“Agent”（智能体）产品，它们似乎可以**自动执行**任务。你给它一个目标，它会自己去调用工具、分析结果、继续下一步，直到任务完成。

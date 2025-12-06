@@ -4,6 +4,14 @@ import { ZoomImage } from '@/components/ZoomImage';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/atom-one-dark.css';
 
+const formatDate = (value: string) => {
+  const date = new Date(value);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}${m}${d}`;
+};
+
 interface Props {
   params: Promise<{
     slug: string[];
@@ -26,13 +34,9 @@ export default async function BlogPost({ params }: Props) {
     <article className="max-w-[70vw] mx-auto px-6 sm:px-12">
       <header className="mb-16 text-center">
         <div className="flex items-center justify-center gap-3 text-sm text-gray-500 mb-6 font-medium uppercase tracking-wider">
-          <span>发布于</span>
+          <span>Published</span>
           <span>·</span>
-          <span>{new Date(post.metadata.date).toLocaleDateString('zh-CN', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}</span>
+          <span>{formatDate(post.metadata.date)}</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-black mb-8 leading-tight">
           {post.metadata.title}
