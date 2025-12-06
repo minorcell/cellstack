@@ -1,4 +1,5 @@
 ---
+date: 2025-04-10
 title: JavaScript 异步编程完全指南
 description: 深入探索 JavaScript 异步编程的完整演进路径。以“每秒打印数字”为实例，深入剖析 6 种定时任务实现方法：从经典的闭包问题、Promise 链式调用，到现代的 async/await、生成器函数和函数式编程。
 tags:

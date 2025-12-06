@@ -1,4 +1,5 @@
 ---
+date: 2025-08-08
 title: Docker 进阶指南
 description: Docker 进阶教程，深入学习容器生命周期管理、网络通信、数据持久化和 Docker Compose 多服务编排。通过实战案例掌握 Go 应用与 PostgreSQL 数据库的容器化部署和服务间通信。
 tags:

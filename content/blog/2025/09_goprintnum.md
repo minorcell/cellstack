@@ -1,4 +1,5 @@
 ---
+date: 2025-05-30
 title: Go 并发编程精髓
 description: 深度解析 Go 并发编程从入门到精通的完整路径。从简单的 time.Sleep 阻塞到高效的 select 定时器，从并发误区到正确的 goroutine 模式，最终掌握 context 构建健壮可维护的并发代码。
 tags:

@@ -65,7 +65,7 @@ export default function BlogPage() {
                   {post.metadata.title}
                 </h3>
                 <div className="flex items-center gap-3 text-sm text-gray-500">
-                  <span>{new Date(post.metadata.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                  <span>{new Date(post.metadata.date).toLocaleDateString('zh-CN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                   <span>·</span>
                   <span className="flex items-center text-black group-hover:text-blue-600 transition-colors">
                     阅读 <ArrowRight className="w-3 h-3 ml-1" />

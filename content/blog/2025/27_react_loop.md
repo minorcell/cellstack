@@ -1,4 +1,5 @@
 ---
+date: 2025-10-27
 title: Agent ReAct and Loop
 description: 深入解析 AI Agent 的 ReAct 架构和工作循环原理，探讨智能体如何实现自动化任务执行，从理论到实践的完整指南。
 author: mcell
