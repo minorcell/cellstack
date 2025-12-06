@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { getAllPosts } from '@/lib/mdx';
-
 export default function BlogLayout({
   children,
 }: {

@@ -4,10 +4,6 @@ import { ZoomImage } from '@/components/ZoomImage';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/atom-one-dark.css';
 
-const components = {
-  img: ZoomImage,
-};
-
 interface Props {
   params: Promise<{
     slug: string[];

@@ -16,6 +16,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.25",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "lucide-react": "^0.556.0",
     "maath": "^0.10.8",
     "next": "16.0.7",
