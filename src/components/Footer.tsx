@@ -34,12 +34,12 @@ export function Footer() {
 
   return (
     <footer className="h-24 mt-auto flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-600 font-mono">
+          <p className="text-xs sm:text-sm text-gray-600 font-mono">
             © {new Date().getFullYear()} CELLSTACK
           </p>
-          <div className="flex space-x-8 text-sm font-mono uppercase tracking-[0.35em] text-gray-800 whitespace-nowrap">
+          <div className="flex space-x-6 sm:space-x-8 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] sm:tracking-[0.35em] text-gray-800 whitespace-nowrap">
             <a
               href="https://github.com/minorcell"
               className="hover:text-black transition-colors"

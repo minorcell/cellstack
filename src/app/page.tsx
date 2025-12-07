@@ -14,12 +14,12 @@ export default function Home() {
     <div className="relative min-h-[calc(100vh-10rem)] flex flex-col justify-center items-center overflow-hidden select-none">
       <ThreeBackground />
       
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <h1 className="text-6xl sm:text-9xl font-bold tracking-tighter mb-6 text-black animate-fade-in opacity-0">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter mb-6 text-black animate-fade-in opacity-0">
           CELLSTACK
         </h1>
         
-        <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto font-light tracking-wide animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
+        <p className="text-lg sm:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto font-light tracking-wide animate-fade-in opacity-0" style={{ animationDelay: '0.2s' }}>
           ENGINEERING · DESIGN · INTELLIGENCE
         </p>
         

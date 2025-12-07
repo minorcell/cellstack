@@ -3,7 +3,7 @@ import { ZoomImage } from "@/components/ZoomImage"
 
 export default function MePage() {
   return (
-    <div className="max-w-2xl mx-auto px-6 pt-20 select-none">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 select-none">
       {/* Header Profile */}
       <div className="flex flex-col items-center text-center mb-16">
         <div className="w-32 h-32 mb-8 rounded-full overflow-hidden border-2 border-black/10">
@@ -13,17 +13,17 @@ export default function MePage() {
             className="w-full h-full object-cover"
           />
         </div>
-        <h1 className="text-4xl font-bold text-black mb-4 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4 tracking-tight">
           mCell
         </h1>
-        <p className="text-gray-600 text-lg font-light">
+        <p className="text-gray-600 text-base sm:text-lg font-light">
           Engineering · Design · Intelligence
         </p>
       </div>
 
       {/* Intro */}
       <div className="prose max-w-none mb-16 text-center">
-        <p className="text-xl text-gray-700 leading-relaxed font-light">
+        <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-light">
           <span className="text-black font-medium">Full Stack Developer</span>{" "}
           exploring the frontiers of DevOps and AI. Building digital experiences
           with <span className="text-blue-600">TypeScript</span> and{" "}
