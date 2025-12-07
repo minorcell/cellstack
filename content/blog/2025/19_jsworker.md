@@ -57,22 +57,22 @@ Web Worker 是 W3C 和 WHATWG 制定的一项标准，允许我们在后台创�
 
 ```javascript
 // 创建一个新的 Worker
-const worker = new Worker("worker.js");
+const worker = new Worker('worker.js')
 
 // 向 Worker 发送消息，开始计算
-console.log("主线程：开始计算...");
-worker.postMessage({ number: 40 });
+console.log('主线程：开始计算...')
+worker.postMessage({ number: 40 })
 
 // 监听来自 Worker 的消息
 worker.onmessage = function (event) {
   // event.data 是 Worker 返回的结果
-  console.log("主线程：收到计算结果 ->", event.data);
-};
+  console.log('主线程：收到计算结果 ->', event.data)
+}
 
 // 监听错误
 worker.onerror = function (error) {
-  console.error("主线程：Worker 发生错误 ->", error.message);
-};
+  console.error('主线程：Worker 发生错误 ->', error.message)
+}
 ```
 
 **`worker.js` (Worker 线程)**
@@ -80,20 +80,20 @@ worker.onerror = function (error) {
 ```javascript
 // 监听来自主线程的消息
 self.onmessage = function (event) {
-  console.log("Worker：收到计算任务 ->", event.data.number);
+  console.log('Worker：收到计算任务 ->', event.data.number)
 
   // 执行耗时计算
-  let result = 0;
+  let result = 0
   for (let i = 0; i < 2000000000; i++) {
-    result += i; // 模拟一个耗时操作
+    result += i // 模拟一个耗时操作
   }
 
   // 将结果发送回主线程
-  self.postMessage(result);
+  self.postMessage(result)
 
   // 计算完成后，可以关闭自己
-  self.close();
-};
+  self.close()
+}
 ```
 
 通过这种方式，即使用户在等待计算结果时，依然可以流畅地与页面进行交互。Web Worker 就像是主线程雇佣的一个计算专家，脏活累活都交给他，自己则专注于“门面工作”。
@@ -124,47 +124,47 @@ Service Worker 的生命周期比 Web Worker 复杂，主要包括三个阶段�
 **`main.js` (主线程)**
 
 ```javascript
-if ("serviceWorker" in navigator) {
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register("/sw.js")
+    .register('/sw.js')
     .then((registration) => {
-      console.log("Service Worker 注册成功，作用域：", registration.scope);
+      console.log('Service Worker 注册成功，作用域：', registration.scope)
     })
     .catch((error) => {
-      console.log("Service Worker 注册失败：", error);
-    });
+      console.log('Service Worker 注册失败：', error)
+    })
 }
 ```
 
 **`sw.js` (Service Worker 线程)**
 
 ```javascript
-const CACHE_NAME = "my-cache-v1";
-const urlsToCache = ["/", "/styles/main.css", "/script/main.js"];
+const CACHE_NAME = 'my-cache-v1'
+const urlsToCache = ['/', '/styles/main.css', '/script/main.js']
 
 // 安装阶段，缓存核心资源
-self.addEventListener("install", (event) => {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("缓存已打开");
-      return cache.addAll(urlsToCache);
+      console.log('缓存已打开')
+      return cache.addAll(urlsToCache)
     }),
-  );
-});
+  )
+})
 
 // 拦截网络请求
-self.addEventListener("fetch", (event) => {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       // 如果在缓存中找到了匹配的资源，则返回它
       if (response) {
-        return response;
+        return response
       }
       // 否则，正常发起网络请求
-      return fetch(event.request);
+      return fetch(event.request)
     }),
-  );
-});
+  )
+})
 ```
 
 Service Worker 的出现，极大地模糊了 Web 应用和原生应用的界限，让 Web 的体验更加可靠和强大。
@@ -200,8 +200,8 @@ Worklet 是一种非常轻量、高度专用的 Worker。你可以把它想象�
 
 ```javascript
 // 注册 PaintWorklet
-if ("paintWorklet" in CSS) {
-  CSS.paintWorklet.addModule("houdini-checkerboard.js");
+if ('paintWorklet' in CSS) {
+  CSS.paintWorklet.addModule('houdini-checkerboard.js')
 }
 ```
 
@@ -218,26 +218,26 @@ textarea {
 ```javascript
 // 定义一个名为 'checkerboard' 的绘制器
 registerPaint(
-  "checkerboard",
+  'checkerboard',
   class {
     paint(ctx, size) {
       // ctx 是一个类似 Canvas 2D 的上下文
       // size 包含了要绘制的区域的宽和高
-      ctx.fillStyle = "#f0f0f0";
-      ctx.fillRect(0, 0, size.width / 2, size.height / 2);
+      ctx.fillStyle = '#f0f0f0'
+      ctx.fillRect(0, 0, size.width / 2, size.height / 2)
       ctx.fillRect(
         size.width / 2,
         size.height / 2,
         size.width / 2,
         size.height / 2,
-      );
+      )
 
-      ctx.fillStyle = "#ccc";
-      ctx.fillRect(size.width / 2, 0, size.width / 2, size.height / 2);
-      ctx.fillRect(0, size.height / 2, size.width / 2, size.height / 2);
+      ctx.fillStyle = '#ccc'
+      ctx.fillRect(size.width / 2, 0, size.width / 2, size.height / 2)
+      ctx.fillRect(0, size.height / 2, size.width / 2, size.height / 2)
     }
   },
-);
+)
 ```
 
 Worklet 将 Web 的可编程性带入了一个新的维度，它让我们有能力去干预和定制浏览器最底层的渲染行为，这是过去无法想象的。

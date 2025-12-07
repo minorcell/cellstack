@@ -1,75 +1,75 @@
-"use client";
+'use client'
 
-import React, { useEffect, useMemo, useState } from "react";
-import { Copy, Maximize2, X } from "lucide-react";
+import React, { useEffect, useMemo, useState } from 'react'
+import { Copy, Maximize2, X } from 'lucide-react'
 
 type MermaidBlockProps = {
-  code: string;
-};
+  code: string
+}
 
 export function MermaidBlock({ code }: MermaidBlockProps) {
-  const [svg, setSvg] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [svg, setSvg] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const renderId = useMemo(
     () => `mermaid-${Math.random().toString(36).slice(2)}`,
     [],
-  );
-  const [copied, setCopied] = useState(false);
-  const [zoomed, setZoomed] = useState(false);
+  )
+  const [copied, setCopied] = useState(false)
+  const [zoomed, setZoomed] = useState(false)
 
   useEffect(() => {
-    let mounted = true;
+    let mounted = true
 
-    (async () => {
+    ;(async () => {
       try {
-        const mermaid = (await import("mermaid")).default;
+        const mermaid = (await import('mermaid')).default
         mermaid.initialize({
           startOnLoad: false,
-          securityLevel: "loose",
-          theme: "dark",
-          fontFamily: "Source Sans 3, Inter, -apple-system, sans-serif",
+          securityLevel: 'loose',
+          theme: 'dark',
+          fontFamily: 'Source Sans 3, Inter, -apple-system, sans-serif',
           themeVariables: {
-            background: "#0b0d11",
-            primaryColor: "#1a73e8",
-            primaryTextColor: "#e5e7eb",
-            lineColor: "#94a3b8",
+            background: '#0b0d11',
+            primaryColor: '#1a73e8',
+            primaryTextColor: '#e5e7eb',
+            lineColor: '#94a3b8',
           },
-        });
-        const { svg } = await mermaid.render(renderId, code);
+        })
+        const { svg } = await mermaid.render(renderId, code)
         if (mounted) {
-          setSvg(svg);
-          setError(null);
+          setSvg(svg)
+          setError(null)
         }
       } catch (err) {
-        console.error("Mermaid render failed", err);
-        if (mounted) setError("Mermaid 图渲染失败");
+        console.error('Mermaid render failed', err)
+        if (mounted) setError('Mermaid 图渲染失败')
       }
-    })();
+    })()
 
     return () => {
-      mounted = false;
-    };
-  }, [code, renderId]);
+      mounted = false
+    }
+  }, [code, renderId])
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
+      await navigator.clipboard.writeText(code)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1200)
     } catch (err) {
-      console.error("Copy failed", err);
+      console.error('Copy failed', err)
     }
-  };
+  }
 
   const Shell = ({ children }: { children: React.ReactNode }) => (
     <div
       className={`my-8 overflow-hidden rounded-2xl border border-gray-200/50 bg-[#0b0d11] shadow-[0_12px_40px_rgba(0,0,0,0.18)] ${
-        zoomed ? "fixed inset-6 sm:inset-10 z-[60]" : ""
+        zoomed ? 'fixed inset-6 sm:inset-10 z-[60]' : ''
       }`}
     >
       {children}
     </div>
-  );
+  )
 
   return (
     <>
@@ -89,7 +89,7 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
               type="button"
               onClick={() => setZoomed((v) => !v)}
               className="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-gray-200 hover:bg-white/5 active:scale-[0.99] transition"
-              aria-label={zoomed ? "Close full view" : "Open full view"}
+              aria-label={zoomed ? 'Close full view' : 'Open full view'}
             >
               {zoomed ? (
                 <X className="h-4 w-4 mr-1" />
@@ -97,7 +97,7 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
                 <Maximize2 className="h-4 w-4 mr-1" />
               )}
               <span className="hidden sm:inline">
-                {zoomed ? "Close" : "Zoom"}
+                {zoomed ? 'Close' : 'Zoom'}
               </span>
             </button>
             <button
@@ -108,7 +108,7 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
             >
               <Copy className="h-4 w-4" />
               <span className="hidden sm:inline">
-                {copied ? "Copied" : "Copy"}
+                {copied ? 'Copied' : 'Copy'}
               </span>
             </button>
           </div>
@@ -116,7 +116,7 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
 
         <div
           className={`overflow-auto bg-[#0b0d11] m-0 p-0 ${
-            zoomed ? "max-h-[calc(100vh-12rem)]" : ""
+            zoomed ? 'max-h-[calc(100vh-12rem)]' : ''
           }`}
         >
           {error && <div className="p-4 text-sm text-red-300">{error}</div>}
@@ -132,5 +132,5 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
         </div>
       </Shell>
     </>
-  );
+  )
 }

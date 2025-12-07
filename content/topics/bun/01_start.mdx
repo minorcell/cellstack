@@ -1,0 +1,94 @@
+---
+title: '引言'
+date: 2025-12-08
+description: '如果你也厌倦了无休止的配置调试，或者想为你的 AI Agent 寻找一个更轻量的执行环境，那么，欢迎来到 Bun 的世界。'
+order: 3
+---
+
+## 当运行时成为 AI 的“直觉”
+
+前几天，整个技术圈被一则新闻刷屏：**Anthropic 正式收购 Bun，与此同时 Claude Code 营收突破 10 亿美元。**
+
+起初看到这篇[报道](https://www.anthropic.com/news/anthropic-acquires-bun-as-claude-code-reaches-usd1b-milestone)时，大多数人的第一反应可能是“巨头又在掐尖开源项目”。但作为一个长期关注 AI Engineering 的开发者，我嗅到的是另一种信号：
+
+**在 Agent 能够独立编写、运行、调试代码的今天，Runtime（运行时）的速度和简洁性，已经不再是“锦上添花”，而是“基础设施”。**
+
+想象一下，Claude Code 或其他 Agent 在为你生成代码并尝试运行时，如果每一次迭代都要经历 `npm install` 的漫长等待，或者处理 `ts-node` 的配置报错，那个“思考-执行”的闭环就会被无限拉长。
+
+Anthropic 选择 Bun，是因为 Agent 需要一个**启动极快、零配置、且原生支持 TypeScript** 的环境。
+
+带着这份好奇，我把手头的几个脚本迁移到了 Bun，体验了一番。结论很简单：**回不去了。**
+
+## Node.js 的“配置地狱”与 Bun 的“开箱即用”
+
+我们在这个行业太久，以至于这种“痛苦”都变得习以为常了。在 Node.js 中想要运行一个现代的 TypeScript 项目，你通常需要：
+
+1.  初始化 `package.json`。
+2.  安装 `typescript` 和 `ts-node` (或者 `tsx`)。
+3.  折腾一份几十行的 `tsconfig.json`。
+4.  如果要打包，还得配置 Webpack、Rollup 或 Esbuild。
+5.  如果要测试，还得装 Jest 并配置它的转译器。
+
+**这就好比你想喝杯水，却得先组装一套净水器。**
+
+而 Bun 给我的体验是：
+
+```bash
+bun init
+bun run index.ts
+```
+
+结束了。
+
+它不需要我告诉它怎么处理 TypeScript，不需要我配置路径别名，甚至不需要我安装 `dotenv` —— 它原生就读取 `.env` 文件。
+
+## 直击痛点：内置即正义
+
+除了省去配置，Bun 最让我惊喜的是它内置的 API 设计。它没有像 Node 那样背负着十几年的历史包袱（比如回调地狱遗留下来的 API 设计），而是提供了一套极其精简、现代的标准库。
+
+举个读文件的例子。
+
+**在 Node.js 中：**
+
+```javascript
+const fs = require('fs')
+const path = require('path')
+
+// 哪怕是 promise 版本，写起来也觉得啰嗦
+async function readFile() {
+  const data = await fs.promises.readFile(
+    path.join(__dirname, 'data.txt'),
+    'utf-8',
+  )
+  console.log(data)
+}
+```
+
+**在 Bun 中：**
+
+```typescript
+const file = Bun.file('data.txt')
+const text = await file.text()
+console.log(text)
+```
+
+这种 `Bun.file()`、`Bun.serve()`、`Bun.write()` 的直觉式 API，让代码的可读性提升了一个量级。对于正在学习编程的 AI Agent 来说，这种简洁性意味着更少的 Token 消耗和更低的幻觉概率；而对于人类开发者，这意味着**心智负担的释放**。
+
+## 为什么要写这个专题？
+
+虽然 Bun 的官方文档已经写得很好了，但在实际工程落地中，我们还是会遇到很多“从 Node 思维迁移到 Bun 思维”的挑战。
+
+这不只是一次工具的替换，更是一次开发模式的升级。
+
+在这个《Bun 实战指南》专题中，我不想照本宣科地翻译文档。我希望结合我现有的工程经验，以及在 Agent 开发中的实际场景，带大家从零开始掌握 Bun。
+
+我们将覆盖：
+
+- **基础篇**：运行时替代与包管理加速。
+- **进阶篇**：由内置 API (`Bun.serve`) 构建的高性能 HTTP 服务。
+- **实战篇**：如何用 Bun 构建一个全栈应用，以及它在 Serverless/Edge 环境下的表现。
+- **生态篇**：Bun 与现有 Node 生态的兼容性陷阱与解决方案。
+
+如果你也厌倦了无休止的配置调试，或者想为你的 AI Agent 寻找一个更轻量的执行环境，那么，欢迎来到 Bun 的世界。
+
+Let's verify everything.

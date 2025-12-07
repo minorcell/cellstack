@@ -1,50 +1,81 @@
-"use client";
+'use client'
 
-import { Github, Mail, Gamepad2, BookOpen, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { ZoomImage } from "@/components/ZoomImage";
+import { Github, Mail, Gamepad2, BookOpen, ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ZoomImage } from '@/components/ZoomImage'
 
 const links = [
   {
-    href: "https://github.com/minorcell",
+    href: 'https://github.com/minorcell',
     icon: Github,
-    label: "GitHub",
-    meta: "Code",
+    label: 'GitHub',
+    meta: 'Code',
   },
   {
-    href: "https://juejin.cn/user/2280829967146779",
+    href: 'https://juejin.cn/user/2280829967146779',
     icon: BookOpen,
-    label: "Juejin",
-    meta: "Writing",
+    label: 'Juejin',
+    meta: 'Writing',
   },
   {
-    href: "mailto:minorcell6789@gmail.com",
+    href: 'mailto:minorcell6789@gmail.com',
     icon: Mail,
-    label: "Email",
-    meta: "Contact",
+    label: 'Email',
+    meta: 'Contact',
   },
   {
-    href: "https://steamcommunity.com/profiles/76561199379749961/",
+    href: 'https://steamcommunity.com/profiles/76561199379749961/',
     icon: Gamepad2,
-    label: "Steam",
-    meta: "Play",
+    label: 'Steam',
+    meta: 'Play',
   },
-];
+]
 
 export default function MePage() {
   return (
-    <div className="relative overflow-hidden select-none">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-32 top-10 h-64 w-64 rounded-full bg-blue-100 blur-[100px]" />
-        <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-black/5 blur-[120px]" />
-      </div>
+    <motion.div
+      className="relative overflow-hidden select-none"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+      }}
+    >
+      <motion.div
+        className="pointer-events-none absolute inset-0"
+        variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        <motion.div
+          className="absolute -left-32 top-10 h-64 w-64 rounded-full bg-blue-100 blur-[100px]"
+          variants={{
+            hidden: { opacity: 0, scale: 0.9 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        />
+        <motion.div
+          className="absolute right-0 top-32 h-72 w-72 rounded-full bg-black/5 blur-[120px]"
+          variants={{
+            hidden: { opacity: 0, scale: 0.9 },
+            visible: { opacity: 1, scale: 1 },
+          }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
+        />
+      </motion.div>
 
       <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-28 sm:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={{
+              hidden: { opacity: 0, y: 14 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: 'easeOut' },
+              },
+            }}
             className="space-y-6"
           >
             <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.35em] text-gray-500">
@@ -58,7 +89,7 @@ export default function MePage() {
               但更执着于速度、可维护性和现场体验。
             </p>
             <div className="flex flex-wrap gap-3">
-              {["Full Stack", "DevOps", "AI + R3F", "Product Thinking"].map(
+              {['Full Stack', 'DevOps', 'AI + R3F', 'Product Thinking'].map(
                 (tag) => (
                   <span
                     key={tag}
@@ -72,9 +103,14 @@ export default function MePage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            variants={{
+              hidden: { opacity: 0, y: 18 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: 'easeOut', delay: 0.1 },
+              },
+            }}
             className="relative"
           >
             <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl bg-gradient-to-br from-gray-50 to-white" />
@@ -108,9 +144,7 @@ export default function MePage() {
                   <p className="mt-2 font-semibold text-black">
                     TypeScript / Go
                   </p>
-                  <p className="text-xs text-gray-500">
-                    Web · Agent · DevOps
-                  </p>
+                  <p className="text-xs text-gray-500">Web · Agent · DevOps</p>
                 </div>
                 <div className="rounded-2xl border border-gray-100 p-4">
                   <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-500">
@@ -125,9 +159,14 @@ export default function MePage() {
         </div>
 
         <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, ease: 'easeOut', delay: 0.15 },
+            },
+          }}
           className="mt-16 sm:mt-20"
         >
           <div className="flex items-center justify-between mb-6">
@@ -143,22 +182,38 @@ export default function MePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {links.map((item) => (
-              <a
+            {links.map((item, idx) => (
+              <motion.a
                 key={item.label}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
+                target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel={
-                  item.href.startsWith("http")
-                    ? "noopener noreferrer"
+                  item.href.startsWith('http')
+                    ? 'noopener noreferrer'
                     : undefined
                 }
-                className="group flex items-center justify-between rounded-2xl border border-gray-200 bg-white/70 backdrop-blur px-5 py-4 transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
+                className="group flex items-center justify-between rounded-2xl border border-gray-200 bg-white/70 backdrop-blur px-5 py-4"
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  ease: 'easeOut',
+                  delay: 0.08 * idx,
+                }}
+                whileHover={{
+                  y: -6,
+                  boxShadow: '0 20px 60px -40px rgba(0,0,0,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black text-white transition-transform group-hover:scale-105">
+                  <motion.div
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-black text-white"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ type: 'spring', stiffness: 320, damping: 18 }}
+                  >
                     <item.icon className="h-5 w-5" />
-                  </div>
+                  </motion.div>
                   <div>
                     <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-gray-500">
                       {item.meta}
@@ -168,12 +223,18 @@ export default function MePage() {
                     </p>
                   </div>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-black" />
-              </a>
+                <motion.div
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                  className="text-gray-400 group-hover:text-black"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </motion.div>
+              </motion.a>
             ))}
           </div>
         </motion.section>
       </div>
-    </div>
-  );
+    </motion.div>
+  )
 }

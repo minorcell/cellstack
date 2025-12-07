@@ -81,24 +81,24 @@ npm install @dqbd/tiktoken
 代码示例：
 
 ```javascript
-import { encoding_for_model } from "@dqbd/tiktoken";
+import { encoding_for_model } from '@dqbd/tiktoken'
 
 // 获取 GPT-5.1
-const enc = encoding_for_model("GPT-5.1");
+const enc = encoding_for_model('GPT-5.1')
 
-const text = "AI技术";
+const text = 'AI技术'
 
 // 将文本转换为 Token ID 数组
-const tokens = enc.encode(text);
+const tokens = enc.encode(text)
 
-console.log(tokens);
+console.log(tokens)
 // 输出可能是: Uint32Array(2) [ 12345, 67890 ]
 // 解释：'AI' 是一个 Token，'技术' 作为一个常用词可能被编码为一个 Token，或者两个汉字各一个。
 
-console.log("Token Count:", tokens.length);
+console.log('Token Count:', tokens.length)
 
 // 记得释放内存
-enc.free();
+enc.free()
 ```
 
 ![71](https://stack-mcell.tos-cn-shanghai.volces.com/071.png)

@@ -29,7 +29,7 @@ author: mCell
 ```javascript
 function printNumbersWithTimeout() {
   for (let i = 1; i <= 10; i++) {
-    setTimeout(() => console.log(i), i * 1000);
+    setTimeout(() => console.log(i), i * 1000)
   }
 }
 ```
@@ -47,11 +47,11 @@ function printNumbersWithTimeout() {
 
 ```javascript
 function printNumbersWithInterval() {
-  let i = 1;
+  let i = 1
   const timer = setInterval(() => {
-    console.log(i++);
-    if (i > 10) clearInterval(timer);
-  }, 1000);
+    console.log(i++)
+    if (i > 10) clearInterval(timer)
+  }, 1000)
 }
 ```
 
@@ -68,11 +68,11 @@ function printNumbersWithInterval() {
 
 ```javascript
 function printNumbersRecursive(i = 1) {
-  if (i > 10) return;
+  if (i > 10) return
 
-  console.log(i);
+  console.log(i)
 
-  setTimeout(() => printNumbersRecursive(i + 1), 1000);
+  setTimeout(() => printNumbersRecursive(i + 1), 1000)
 }
 ```
 
@@ -88,12 +88,12 @@ function printNumbersRecursive(i = 1) {
 ## 4. `async/await` 同步化表达
 
 ```javascript
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 async function printNumbersAsync() {
   for (let i = 1; i <= 10; i++) {
-    await sleep(1000);
-    console.log(i);
+    await sleep(1000)
+    console.log(i)
   }
 }
 ```
@@ -114,10 +114,10 @@ function* numberGenerator() {
   for (let i = 1; i <= 10; i++) {
     yield new Promise((resolve) =>
       setTimeout(() => {
-        console.log(i);
-        resolve();
+        console.log(i)
+        resolve()
       }, 1000),
-    );
+    )
   }
 }
 
@@ -146,13 +146,13 @@ function printNumbersFunctional() {
         () =>
           new Promise((resolve) =>
             setTimeout(() => {
-              console.log(num);
-              resolve();
+              console.log(num)
+              resolve()
             }, 1000),
           ),
       ),
     Promise.resolve(),
-  );
+  )
 }
 ```
 
