@@ -19,6 +19,7 @@
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.556.0",
     "maath": "^0.10.8",
+    "mermaid": "^10.9.5",
     "next": "16.0.7",
     "next-mdx-remote": "^5.0.0",
     "react": "19.2.0",

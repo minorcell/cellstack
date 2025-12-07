@@ -2,7 +2,7 @@ import React from "react";
 import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { ZoomImage } from "@/components/ZoomImage";
-import { CodeBlock } from "@/components/CodeBlock";
+import { MdxPre } from "@/components/MdxPre";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import "highlight.js/styles/atom-one-dark.css";
@@ -64,15 +64,15 @@ export default async function BlogPost({ params }: Props) {
         
         <div className="prose prose-base sm:prose-lg max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none">
           <MDXRemote 
-            source={post.content} 
-            components={{ 
-              img: ZoomImage,
-              p: Paragraph,
-              pre: CodeBlock,
-            }}
-            options={{
-              mdxOptions: {
-                rehypePlugins: [rehypeHighlight],
+          source={post.content} 
+          components={{ 
+            img: ZoomImage,
+            p: Paragraph,
+            pre: MdxPre,
+          }}
+          options={{
+            mdxOptions: {
+              rehypePlugins: [rehypeHighlight],
                 remarkPlugins: [remarkGfm],
               },
             }}
