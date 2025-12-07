@@ -1,8 +1,9 @@
-import { getPostBySlug, getPostSlugs } from '@/lib/mdx';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { ZoomImage } from '@/components/ZoomImage';
-import rehypeHighlight from 'rehype-highlight';
-import 'highlight.js/styles/atom-one-dark.css';
+import React from "react";
+import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { ZoomImage } from "@/components/ZoomImage";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/atom-one-dark.css";
 
 const formatDate = (value: string) => {
   const date = new Date(value);
@@ -24,6 +25,21 @@ export async function generateStaticParams() {
     slug: slug.replace(/\.mdx?$/, '').split('/'),
   }));
 }
+
+const Paragraph = ({ children }: { children: React.ReactNode }) => {
+  const nodes = React.Children.toArray(children);
+  const onlyChild = nodes.length === 1 ? nodes[0] : null;
+
+  if (
+    onlyChild &&
+    React.isValidElement(onlyChild) &&
+    (onlyChild.type === ZoomImage || (typeof onlyChild.type === "string" && onlyChild.type === "img"))
+  ) {
+    return <figure className="my-8">{onlyChild}</figure>;
+  }
+
+  return <p>{children}</p>;
+};
 
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
@@ -47,7 +63,8 @@ export default async function BlogPost({ params }: Props) {
         <MDXRemote 
           source={post.content} 
           components={{ 
-            img: ZoomImage 
+            img: ZoomImage,
+            p: Paragraph,
           }}
           options={{
             mdxOptions: {
