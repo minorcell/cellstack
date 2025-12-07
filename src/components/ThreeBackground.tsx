@@ -60,7 +60,7 @@ function ParticleNet() {
       }
     }
     return [pos, cols, base];
-  }, []);
+  }, [particleCount, sep, totalPoints]);
   const baseCoordsRef = useRef(baseCoords);
 
   useFrame((state) => {

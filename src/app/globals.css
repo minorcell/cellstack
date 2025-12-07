@@ -107,3 +107,15 @@ html {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+/* Code window overrides to neutralize highlight.js padding/background */
+.code-window pre {
+  margin: 0;
+}
+
+.code-window code {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+}

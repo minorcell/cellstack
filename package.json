@@ -25,6 +25,7 @@
     "react-dom": "19.2.0",
     "react-medium-image-zoom": "^5.4.0",
     "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.0",
     "tailwind-merge": "^3.4.0",
     "three": "^0.181.2"
   },

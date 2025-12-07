@@ -11,7 +11,8 @@ export interface PostMetadata {
     title: string
     date: string
     slug: string
-    [key: string]: any
+    image?: string
+    [key: string]: unknown
 }
 
 export interface Post {
@@ -77,7 +78,14 @@ export function getPostBySlug(type: PostType, slug: string): Post {
     }
 
     const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data, content } = matter(fileContents)
+    const parsed = matter(fileContents)
+    const data = parsed.data as {
+        title?: string
+        date?: string | Date
+        image?: string
+        [key: string]: unknown
+    }
+    const content = parsed.content
 
     // Extract first image from content if not provided in frontmatter
     let image = data.image
