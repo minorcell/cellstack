@@ -1,17 +1,17 @@
-import Link from 'next/link';
-import { getAllPosts } from '@/lib/mdx';
-import { ArrowRight } from 'lucide-react';
+import Link from "next/link";
+import { getAllPosts } from "@/lib/mdx";
+import { ArrowRight } from "lucide-react";
 
 const formatDate = (value: string) => {
   const date = new Date(value);
   const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
   return `${y}${m}${d}`;
 };
 
 export default function BlogPage() {
-  const posts = getAllPosts('blog');
+  const posts = getAllPosts("blog");
   const featuredPost = posts[0];
   const remainingPosts = posts.slice(1);
 
@@ -40,17 +40,17 @@ export default function BlogPage() {
                 </span>
               </div>
             </div>
-            
+
             <div className="aspect-[21/9] w-full rounded-2xl md:rounded-3xl overflow-hidden relative border border-gray-200">
               {featuredPost.metadata.image ? (
-                <img 
-                  src={featuredPost.metadata.image} 
+                <img
+                  src={featuredPost.metadata.image}
                   alt={featuredPost.metadata.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
                 <div className="absolute inset-0 bg-linear-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                   <div className="w-32 h-32 bg-linear-to-t from-blue-300 to-purple-300 rounded-full blur-3xl opacity-50"></div>
+                  <div className="w-32 h-32 bg-linear-to-t from-blue-300 to-purple-300 rounded-full blur-3xl opacity-50"></div>
                 </div>
               )}
             </div>
@@ -59,8 +59,10 @@ export default function BlogPage() {
       )}
 
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-black mb-10 sm:mb-16">Archive</h2>
-        
+        <h2 className="text-3xl font-bold text-black mb-10 sm:mb-16">
+          Archive
+        </h2>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {remainingPosts.map((post) => (
             <Link
@@ -83,14 +85,14 @@ export default function BlogPage() {
 
               <div className="w-full md:w-48 lg:w-64 aspect-[4/3] shrink-0 rounded-xl overflow-hidden bg-gray-100 relative transition-colors">
                 {post.metadata.image ? (
-                  <img 
-                    src={post.metadata.image} 
+                  <img
+                    src={post.metadata.image}
                     alt={post.metadata.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
                   <div className="absolute inset-0 bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                     <div className="w-12 h-12 bg-linear-to-t from-blue-300/30 to-purple-300/30 rounded-full blur-xl"></div>
+                    <div className="w-12 h-12 bg-linear-to-t from-blue-300/30 to-purple-300/30 rounded-full blur-xl"></div>
                   </div>
                 )}
               </div>

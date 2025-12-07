@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { Copy } from "lucide-react";
+import { Copy, Maximize2, X } from "lucide-react";
 
 type MermaidBlockProps = {
   code: string;
@@ -10,8 +10,12 @@ type MermaidBlockProps = {
 export function MermaidBlock({ code }: MermaidBlockProps) {
   const [svg, setSvg] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const renderId = useMemo(() => `mermaid-${Math.random().toString(36).slice(2)}`, []);
+  const renderId = useMemo(
+    () => `mermaid-${Math.random().toString(36).slice(2)}`,
+    [],
+  );
   const [copied, setCopied] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -57,31 +61,76 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
     }
   };
 
-  return (
-    <div className="my-8 overflow-hidden rounded-2xl border border-gray-200/50 bg-[#0b0d11] shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
-      <div className="flex items-center justify-between px-4 py-3 bg-[#0f1116]/90">
-        <span className="text-xs font-medium uppercase tracking-wide text-gray-200">Mermaid Diagram</span>
-        <button
-          type="button"
-          onClick={handleCopy}
-          className="inline-flex items-center gap-2 rounded-md px-2.5 py-1 text-xs font-medium text-gray-200 hover:bg-white/5 active:scale-[0.99] transition"
-          aria-label="Copy mermaid source"
-        >
-          <Copy className="h-4 w-4" />
-          <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
-        </button>
-      </div>
-
-      <div className="overflow-auto bg-[#0b0d11] m-0 p-0">
-        {error && <div className="p-4 text-sm text-red-300">{error}</div>}
-        {!error && !svg && <div className="p-4 text-sm text-gray-300">渲染中...</div>}
-        {!error && svg && (
-          <div
-            className="p-4 sm:p-5 md:p-6 min-w-full mermaid-diagram"
-            dangerouslySetInnerHTML={{ __html: svg }}
-          />
-        )}
-      </div>
+  const Shell = ({ children }: { children: React.ReactNode }) => (
+    <div
+      className={`my-8 overflow-hidden rounded-2xl border border-gray-200/50 bg-[#0b0d11] shadow-[0_12px_40px_rgba(0,0,0,0.18)] ${
+        zoomed ? "fixed inset-6 sm:inset-10 z-[60]" : ""
+      }`}
+    >
+      {children}
     </div>
+  );
+
+  return (
+    <>
+      {zoomed && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+          onClick={() => setZoomed(false)}
+        />
+      )}
+      <Shell>
+        <div className="flex items-center justify-between px-4 py-3 bg-[#0f1116]/90 relative z-10">
+          <span className="text-xs font-medium uppercase tracking-wide text-gray-200">
+            Mermaid Diagram
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setZoomed((v) => !v)}
+              className="inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-medium text-gray-200 hover:bg-white/5 active:scale-[0.99] transition"
+              aria-label={zoomed ? "Close full view" : "Open full view"}
+            >
+              {zoomed ? (
+                <X className="h-4 w-4 mr-1" />
+              ) : (
+                <Maximize2 className="h-4 w-4 mr-1" />
+              )}
+              <span className="hidden sm:inline">
+                {zoomed ? "Close" : "Zoom"}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="inline-flex items-center gap-2 rounded-md px-2.5 py-1 text-xs font-medium text-gray-200 hover:bg-white/5 active:scale-[0.99] transition"
+              aria-label="Copy mermaid source"
+            >
+              <Copy className="h-4 w-4" />
+              <span className="hidden sm:inline">
+                {copied ? "Copied" : "Copy"}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`overflow-auto bg-[#0b0d11] m-0 p-0 ${
+            zoomed ? "max-h-[calc(100vh-12rem)]" : ""
+          }`}
+        >
+          {error && <div className="p-4 text-sm text-red-300">{error}</div>}
+          {!error && !svg && (
+            <div className="p-4 text-sm text-gray-300">渲染中...</div>
+          )}
+          {!error && svg && (
+            <div
+              className="p-4 sm:p-5 md:p-6 min-w-full mermaid-diagram"
+              dangerouslySetInnerHTML={{ __html: svg }}
+            />
+          )}
+        </div>
+      </Shell>
+    </>
   );
 }

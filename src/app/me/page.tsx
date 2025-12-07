@@ -1,5 +1,5 @@
-import { Github, Mail, Gamepad2, BookOpen } from "lucide-react"
-import { ZoomImage } from "@/components/ZoomImage"
+import { Github, Mail, Gamepad2, BookOpen } from "lucide-react";
+import { ZoomImage } from "@/components/ZoomImage";
 
 export default function MePage() {
   return (
@@ -93,5 +93,5 @@ export default function MePage() {
         <p className="text-sm text-gray-500 font-mono">minorcell / mCell</p>
       </div>
     </div>
-  )
+  );
 }

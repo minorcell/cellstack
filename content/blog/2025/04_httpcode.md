@@ -204,21 +204,21 @@ alert_rules:
 ```javascript
 // 全局错误处理示例
 axios.interceptors.response.use(null, (error) => {
-  const status = error.response?.status
+  const status = error.response?.status;
 
   switch (status) {
     case 401:
-      store.dispatch("logout")
-      break
+      store.dispatch("logout");
+      break;
     case 429:
-      showRateLimitAlert(error.response.headers)
-      break
+      showRateLimitAlert(error.response.headers);
+      break;
     default:
-      showGenericError(status)
+      showGenericError(status);
   }
 
-  return Promise.reject(error)
-})
+  return Promise.reject(error);
+});
 ```
 
 ### 后端工程师

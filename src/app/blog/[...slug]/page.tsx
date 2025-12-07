@@ -10,8 +10,8 @@ import "highlight.js/styles/atom-one-dark.css";
 const formatDate = (value: string) => {
   const date = new Date(value);
   const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
   return `${y}${m}${d}`;
 };
 
@@ -22,9 +22,9 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs('blog');
+  const slugs = getPostSlugs("blog");
   return slugs.map((slug) => ({
-    slug: slug.replace(/\.mdx?$/, '').split('/'),
+    slug: slug.replace(/\.mdx?$/, "").split("/"),
   }));
 }
 
@@ -35,7 +35,8 @@ const Paragraph = ({ children }: { children: React.ReactNode }) => {
   if (
     onlyChild &&
     React.isValidElement(onlyChild) &&
-    (onlyChild.type === ZoomImage || (typeof onlyChild.type === "string" && onlyChild.type === "img"))
+    (onlyChild.type === ZoomImage ||
+      (typeof onlyChild.type === "string" && onlyChild.type === "img"))
   ) {
     return <figure className="my-8">{onlyChild}</figure>;
   }
@@ -45,8 +46,8 @@ const Paragraph = ({ children }: { children: React.ReactNode }) => {
 
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
-  const slugString = slug.join('/');
-  const post = getPostBySlug('blog', slugString);
+  const slugString = slug.join("/");
+  const post = getPostBySlug("blog", slugString);
 
   return (
     <article className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,18 +62,18 @@ export default async function BlogPost({ params }: Props) {
             {post.metadata.title}
           </h1>
         </header>
-        
+
         <div className="prose prose-base sm:prose-lg max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none">
-          <MDXRemote 
-          source={post.content} 
-          components={{ 
-            img: ZoomImage,
-            p: Paragraph,
-            pre: MdxPre,
-          }}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [rehypeHighlight],
+          <MDXRemote
+            source={post.content}
+            components={{
+              img: ZoomImage,
+              p: Paragraph,
+              pre: MdxPre,
+            }}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [rehypeHighlight],
                 remarkPlugins: [remarkGfm],
               },
             }}

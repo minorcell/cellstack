@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, type ReactNode, type CSSProperties } from "react";
 import { Copy } from "lucide-react";
@@ -18,11 +18,14 @@ function isElement(node: ReactNode): node is SafeElement {
 }
 
 export function CodeBlock({ children }: CodeBlockProps) {
-  const child = (React.Children.toArray(children)[0] as ReactNode | undefined) ?? null;
+  const child =
+    (React.Children.toArray(children)[0] as ReactNode | undefined) ?? null;
 
   const extractText = (node: React.ReactNode): string => {
-    if (node === null || node === undefined || typeof node === "boolean") return "";
-    if (typeof node === "string" || typeof node === "number") return String(node);
+    if (node === null || node === undefined || typeof node === "boolean")
+      return "";
+    if (typeof node === "string" || typeof node === "number")
+      return String(node);
     if (Array.isArray(node)) return node.map(extractText).join("");
     if (isElement(node)) return extractText(node.props?.children);
     return "";
@@ -48,7 +51,11 @@ export function CodeBlock({ children }: CodeBlockProps) {
     const match = resolvedClassName.match(/language-([a-z0-9#+-]+)/i);
     const lang = match?.[1] ?? "text";
 
-    return { codeText: text.trimEnd(), language: lang, className: resolvedClassName };
+    return {
+      codeText: text.trimEnd(),
+      language: lang,
+      className: resolvedClassName,
+    };
   };
 
   const { codeText, language, className } = deriveCodeMeta();
@@ -70,9 +77,18 @@ export function CodeBlock({ children }: CodeBlockProps) {
     <div className="code-window my-8 overflow-hidden rounded-xl border border-gray-200/60 bg-[#0b0d11] shadow-[0_12px_40px_rgba(0,0,0,0.18)]">
       <div className="flex items-center justify-between px-4 py-2 bg-[#0f1116] border-b border-white/5">
         <div className="flex items-center gap-2">
-          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden="true" />
-          <span className="h-3 w-3 rounded-full bg-[#febb2e]" aria-hidden="true" />
-          <span className="h-3 w-3 rounded-full bg-[#28c840]" aria-hidden="true" />
+          <span
+            className="h-3 w-3 rounded-full bg-[#ff5f57]"
+            aria-hidden="true"
+          />
+          <span
+            className="h-3 w-3 rounded-full bg-[#febb2e]"
+            aria-hidden="true"
+          />
+          <span
+            className="h-3 w-3 rounded-full bg-[#28c840]"
+            aria-hidden="true"
+          />
           <span className="ml-3 text-xs font-medium uppercase tracking-wide text-gray-300">
             {language}
           </span>
@@ -91,14 +107,17 @@ export function CodeBlock({ children }: CodeBlockProps) {
         <div className="p-4 sm:p-5 md:p-6 min-w-full">
           {isElement(child) ? (
             React.cloneElement(child, {
-              className: `${className} block bg-transparent p-0 m-0 whitespace-pre`.trim(),
+              className:
+                `${className} block bg-transparent p-0 m-0 whitespace-pre`.trim(),
               style: {
                 ...(child.props?.style || {}),
                 background: "transparent",
               },
             })
           ) : (
-            <code className={`${className} block bg-transparent p-0 m-0 whitespace-pre`.trim()}>
+            <code
+              className={`${className} block bg-transparent p-0 m-0 whitespace-pre`.trim()}
+            >
               {extractText(child)}
             </code>
           )}

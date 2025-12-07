@@ -134,7 +134,7 @@ series: [
     type: "bar", // 图表类型
     data: [5, 20, 36, 10, 10, 20], // 系列数据
   },
-]
+];
 ```
 
 - `type: 'bar'` 告诉 ECharts，这个系列要绘制成柱状图。
@@ -154,7 +154,7 @@ series: [
     type: "line", // 图表类型为折线图
     data: [15, 25, 30, 18, 15, 30],
   },
-]
+];
 ```
 
 ECharts 支持的[图表类型](https://www.google.com/search?q=https://echarts.apache.org/zh/option.html%23series)非常丰富，常见的有：
@@ -298,7 +298,7 @@ var option = {
   yAxis: {},
   // 声明多个 series。
   series: [{ type: "bar" }, { type: "bar" }, { type: "bar" }],
-}
+};
 ```
 
 在这个例子中，`dataset.source` 定义了一个二维数组。ECharts 会默认将第一行/第一列作为维度（dimension）。`series` 中甚至不需要写 `data`，ECharts 会自动从 `dataset` 中取数据。第一列 `product` 映射到 `xAxis`，后续的 '2015', '2016', '2017' 三列数据，依次映射到三个 `series`。
@@ -790,10 +790,10 @@ ECharts 实例支持监听鼠标事件。你可以通过 `myChart.on('click', ..
 // myChart 变量来自前面的初始化实例
 myChart.on("click", function (params) {
   // 打印点击的系列名称、数据、数据索引
-  console.log(params.seriesName, params.name, params.dataIndex)
+  console.log(params.seriesName, params.name, params.dataIndex);
   // 在这里可以触发其他操作，比如弹出一个对话框显示详细信息
-  alert("你点击了：" + params.name)
-})
+  alert("你点击了：" + params.name);
+});
 ```
 
 ### 响应式布局
@@ -803,8 +803,8 @@ myChart.on("click", function (params) {
 ```javascript
 // myChart 变量来自前面的初始化实例
 window.addEventListener("resize", function () {
-  myChart.resize()
-})
+  myChart.resize();
+});
 ```
 
 结合 `grid`、`legend` 等组件的百分比布局配置，可以轻松实现完美的响应式图表。

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\"",
+    "format:check": "prettier --check \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\""
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -38,6 +40,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "prettier": "^3.7.4"
   }
 }

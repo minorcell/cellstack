@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { type ReactNode } from "react";
 import { CodeBlock } from "./CodeBlock";
@@ -18,7 +18,8 @@ function isCodeElement(node: ReactNode): node is SafeCodeElement {
 }
 
 const extractText = (node: React.ReactNode): string => {
-  if (node === null || node === undefined || typeof node === "boolean") return "";
+  if (node === null || node === undefined || typeof node === "boolean")
+    return "";
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(extractText).join("");
   if (isCodeElement(node)) return extractText(node.props?.children);
@@ -26,7 +27,8 @@ const extractText = (node: React.ReactNode): string => {
 };
 
 export function MdxPre({ children }: MdxPreProps) {
-  const child = (React.Children.toArray(children)[0] as ReactNode | undefined) ?? null;
+  const child =
+    (React.Children.toArray(children)[0] as ReactNode | undefined) ?? null;
 
   if (isCodeElement(child)) {
     const className = child.props?.className ?? "";

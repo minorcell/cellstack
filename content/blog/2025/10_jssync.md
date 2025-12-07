@@ -10,24 +10,24 @@ tags:
   - 异步机制
 ---
 
-{/* ![005.avif](https://stack-mcell.tos-cn-shanghai.volces.com/005.avif) */}
+{/_ ![005.avif](https://stack-mcell.tos-cn-shanghai.volces.com/005.avif) _/}
 
 > 本文从经典的 Promise 与 setTimeout 执行顺序问题入手，深入浅出地剖析了 JavaScript 的单线程模型、事件循环（Event Loop）机制。通过辨析宏任务与微任务的区别与优先级，帮助你彻底理解 JS 异步执行的底层原理，看懂页面卡顿的真相。
 
 我常常在各种场合被问到类似下面代码的输出顺序。
 
 ```javascript
-console.log("start")
+console.log("start");
 
 setTimeout(function () {
-  console.log("setTimeout")
-}, 0)
+  console.log("setTimeout");
+}, 0);
 
 Promise.resolve().then(function () {
-  console.log("promise")
-})
+  console.log("promise");
+});
 
-console.log("end")
+console.log("end");
 ```
 
 如果你能毫不犹豫地答出 `start, end, promise, setTimeout`，并解释其原因，那么你对 JS 的异步机制已经有了不错的理解。如果你还有一丝困惑，希望本文能帮助你彻底梳理清楚。
@@ -72,12 +72,12 @@ console.log("end")
 // 一个会让页面卡住的例子
 document.getElementById("myButton").addEventListener("click", function () {
   // 假装这是一个非常耗时的计算
-  const start = Date.now()
+  const start = Date.now();
   while (Date.now() - start < 5000) {
     // 这5秒内，页面完全无法响应
   }
-  console.log("计算完成!")
-})
+  console.log("计算完成!");
+});
 ```
 
 为了解决这个问题，浏览器引入了异步（asynchronous）执行模型。当遇到一些耗时操作（比如网络请求、定时器）时，主线程不会傻等，而是把这些任务“外包”给浏览器的其他线程（比如网络线程、定时器线程）。
@@ -95,14 +95,12 @@ document.getElementById("myButton").addEventListener("click", function () {
 事情还没完。任务队列其实不止一个。根据 [WHATWG 规范](https://www.google.com/search?q=https://html.spec.whatwg.org/multipage/webappapis.html%23event-loops)，任务被分为两种类型：
 
 1.  **宏任务（Macrotask，规范中称为 Task）**
-
     - `setTimeout`, `setInterval`
     - `script`（整体代码块）
     - I/O 操作, UI 渲染
     - 用户交互事件（如 `click`, `scroll`）
 
 2.  **微任务（Microtask）**
-
     - `Promise.then()`, `Promise.catch()`, `Promise.finally()`
     - `queueMicrotask()`
     - `MutationObserver`
@@ -124,36 +122,33 @@ document.getElementById("myButton").addEventListener("click", function () {
 现在，我们用这个模型来分析开头的代码：
 
 ```javascript
-console.log("start") // 1
+console.log("start"); // 1
 
 setTimeout(function () {
   // 4
-  console.log("setTimeout")
-}, 0)
+  console.log("setTimeout");
+}, 0);
 
 Promise.resolve().then(function () {
   // 3
-  console.log("promise")
-})
+  console.log("promise");
+});
 
-console.log("end") // 2
+console.log("end"); // 2
 ```
 
 1.  **第一轮宏任务（script 脚本）开始执行。**
-
     - 遇到 `console.log('start')`，直接执行。输出 `start`。
     - 遇到 `setTimeout`，它是一个宏任务。浏览器定时器线程接管，0ms 后将其回调函数推入**宏任务队列**。
     - 遇到 `Promise.resolve().then()`，`.then()` 的回调是一个微任务。它被推入**微任务队列**。
     - 遇到 `console.log('end')`，直接执行。输出 `end`。
 
 2.  **第一个宏任务（script）执行完毕。**
-
     - 现在，事件循环会检查**微任务队列**。发现里面有一个任务（打印 `promise`）。
     - 取出并执行该微任务。输出 `promise`。
     - 微任务队列现在空了。
 
 3.  **开始下一轮宏任务。**
-
     - 事件循环检查**宏任务队列**，发现 `setTimeout` 的回调函数在那里。
     - 取出并执行该宏任务。输出 `setTimeout`。
 

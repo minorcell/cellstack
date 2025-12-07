@@ -37,9 +37,7 @@ export default function RootLayout({
         className={`${sourceSans.variable} ${sourceCodePro.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <Navbar />
-        <main className="flex-grow pt-16">
-          {children}
-        </main>
+        <main className="flex-grow pt-16">{children}</main>
         <Footer />
       </body>
     </html>

@@ -52,9 +52,9 @@ keywords:
 `useSearchParams` 的用法与 React 原生的 `useState` 非常相似。它返回一个数组，包含两个元素：当前的查询参数对象和一个更新查询参数的函数。
 
 ```javascript
-import { useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom";
 
-const [searchParams, setSearchParams] = useSearchParams()
+const [searchParams, setSearchParams] = useSearchParams();
 ```
 
 - **`searchParams`**：这是一个 `URLSearchParams` 对象，用于读取当前的 URL 参数。
@@ -67,7 +67,7 @@ const [searchParams, setSearchParams] = useSearchParams()
 要获取 `q` 参数的值，我们使用 standard URLSearchParams API 中的 `.get()` 方法。
 
 ```javascript
-const query = searchParams.get("q") // 返回 "javascript"
+const query = searchParams.get("q"); // 返回 "javascript"
 ```
 
 **注意**：`URLSearchParams` 获取到的值默认都是字符串。如果你在处理页码（如 `?page=1`），获取到的将是字符串 `"1"`，在使用前可能需要通过 `parseInt` 或 `Number` 进行转换。
@@ -78,7 +78,7 @@ const query = searchParams.get("q") // 返回 "javascript"
 
 ```javascript
 // 将 URL 更新为 /search?q=react
-setSearchParams({ q: "react" })
+setSearchParams({ q: "react" });
 ```
 
 如果你想保留现有的其他参数（例如在切换页码时保留搜索关键词），你需要手动合并对象，或者传入一个回调函数（取决于 React Router 的具体版本行为，通常直接传入新对象会替换旧对象，因此建议显式构建新对象）。
@@ -97,28 +97,28 @@ setSearchParams({ q: "react" })
 ### 代码实现
 
 ```jsx
-import React from "react"
-import { useSearchParams } from "react-router-dom"
+import React from "react";
+import { useSearchParams } from "react-router-dom";
 
 function SearchPage() {
   // 1. 初始化 hook
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // 2. 读取参数：获取 URL 中的 'q'，如果没有则默认为空字符串
-  const query = searchParams.get("q") || ""
+  const query = searchParams.get("q") || "";
 
   // 3. 事件处理：当 input 变化时，更新 URL
   const handleInputChange = (event) => {
-    const value = event.target.value
+    const value = event.target.value;
 
     if (value) {
       // 设置参数，URL 会变为 ?q=输入值
-      setSearchParams({ q: value })
+      setSearchParams({ q: value });
     } else {
       // 如果清空了输入，最好也移除参数，保持 URL 干净
-      setSearchParams({})
+      setSearchParams({});
     }
-  }
+  };
 
   return (
     <div style={{ padding: "20px" }}>
@@ -143,10 +143,10 @@ function SearchPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default SearchPage
+export default SearchPage;
 ```
 
 ### 代码解析
@@ -167,7 +167,7 @@ export default SearchPage
 通常，我们会配合“防抖”技术，在用户停止输入 300ms 或 500ms 后再更新 URL。或者，使用 `setSearchParams` 的 `replace` 选项：
 
 ```javascript
-setSearchParams({ q: value }, { replace: true })
+setSearchParams({ q: value }, { replace: true });
 ```
 
 设置 `replace: true` 会替换当前的历史记录项，而不是新增一条，这样用户点击“后退”时会直接回到进入搜索页之前的页面。
