@@ -109,7 +109,7 @@ export default function MePage() {
                     TypeScript / Go
                   </p>
                   <p className="text-xs text-gray-500">
-                    Next.js · R3F · DevOps
+                    Web · Agent · DevOps
                   </p>
                 </div>
                 <div className="rounded-2xl border border-gray-100 p-4">
