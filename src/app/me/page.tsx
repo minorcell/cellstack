@@ -1,96 +1,178 @@
-import { Github, Mail, Gamepad2, BookOpen } from "lucide-react";
+"use client";
+
+import { Github, Mail, Gamepad2, BookOpen, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { ZoomImage } from "@/components/ZoomImage";
+
+const links = [
+  {
+    href: "https://github.com/minorcell",
+    icon: Github,
+    label: "GitHub",
+    meta: "Code",
+  },
+  {
+    href: "https://juejin.cn/user/2280829967146779",
+    icon: BookOpen,
+    label: "Juejin",
+    meta: "Writing",
+  },
+  {
+    href: "mailto:minorcell6789@gmail.com",
+    icon: Mail,
+    label: "Email",
+    meta: "Contact",
+  },
+  {
+    href: "https://steamcommunity.com/profiles/76561199379749961/",
+    icon: Gamepad2,
+    label: "Steam",
+    meta: "Play",
+  },
+];
 
 export default function MePage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 select-none">
-      {/* Header Profile */}
-      <div className="flex flex-col items-center text-center mb-16">
-        <div className="w-32 h-32 mb-8 rounded-full overflow-hidden border-2 border-black/10">
-          <ZoomImage
-            src="https://avatars.githubusercontent.com/u/120795714"
-            alt="mCell Profile"
-            className="w-full h-full object-cover"
-          />
+    <div className="relative overflow-hidden select-none">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-32 top-10 h-64 w-64 rounded-full bg-blue-100 blur-[100px]" />
+        <div className="absolute right-0 top-32 h-72 w-72 rounded-full bg-black/5 blur-[120px]" />
+      </div>
+
+      <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-28 sm:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.35em] text-gray-500">
+              ME
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-black leading-tight">
+              Engineering. Design. Intelligence.
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl">
+              全栈工程师，偏好 TypeScript & Golang。细节控，
+              但更执着于速度、可维护性和现场体验。
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {["Full Stack", "DevOps", "AI + R3F", "Product Thinking"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-mono uppercase tracking-[0.15em] text-gray-600"
+                  >
+                    {tag}
+                  </span>
+                ),
+              )}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl bg-gradient-to-br from-gray-50 to-white" />
+            <div className="relative rounded-3xl border border-gray-200 bg-white/70 backdrop-blur p-8 shadow-[0_30px_80px_-60px_rgba(0,0,0,0.35)]">
+              <div className="flex items-center gap-6">
+                <div className="w-24 h-24 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+                  <ZoomImage
+                    src="https://avatars.githubusercontent.com/u/120795714"
+                    alt="mCell Profile"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="text-xs font-mono uppercase tracking-[0.25em] text-gray-500">
+                    mCell / minorcell
+                  </p>
+                  <p className="text-2xl font-semibold text-black mt-2">
+                    Building CellStack
+                  </p>
+                  <p className="text-sm text-gray-600 mt-1">
+                    产品体验、架构演进、团队节奏三线并行。
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4 text-sm text-gray-600">
+                <div className="rounded-2xl border border-gray-100 p-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                    Stack
+                  </p>
+                  <p className="mt-2 font-semibold text-black">
+                    TypeScript / Go
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Next.js · R3F · DevOps
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-gray-100 p-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gray-500">
+                    Focus
+                  </p>
+                  <p className="mt-2 font-semibold text-black">Systems & DX</p>
+                  <p className="text-xs text-gray-500">速度 · 可靠 · 可观察</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4 tracking-tight">
-          mCell
-        </h1>
-        <p className="text-gray-600 text-base sm:text-lg font-light">
-          Engineering · Design · Intelligence
-        </p>
-      </div>
 
-      {/* Intro */}
-      <div className="prose max-w-none mb-16 text-center">
-        <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-light">
-          <span className="text-black font-medium">Full Stack Developer</span>{" "}
-          exploring the frontiers of DevOps and AI. Building digital experiences
-          with <span className="text-blue-600">TypeScript</span> and{" "}
-          <span className="text-blue-600">Golang</span>.
-        </p>
-      </div>
-
-      {/* Connect - Minimalist Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-20">
-        <a
-          href="https://github.com/minorcell"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center gap-3 group"
+        <motion.section
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+          className="mt-16 sm:mt-20"
         >
-          <div className="p-4 rounded-full bg-black/5 group-hover:bg-black/10 group-hover:scale-110 transition-all duration-300">
-            <Github className="w-6 h-6 text-black" />
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-[0.35em] text-gray-500">
+                Connect
+              </p>
+              <p className="text-lg font-semibold text-black mt-2">
+                找到我，聊代码、产品和游戏。
+              </p>
+            </div>
+            <div className="h-px w-24 bg-gray-200" />
           </div>
-          <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-            GitHub
-          </span>
-        </a>
 
-        <a
-          href="https://juejin.cn/user/2280829967146779"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center gap-3 group"
-        >
-          <div className="p-4 rounded-full bg-black/5 group-hover:bg-black/10 group-hover:scale-110 transition-all duration-300">
-            <BookOpen className="w-6 h-6 text-blue-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {links.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  item.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className="group flex items-center justify-between rounded-2xl border border-gray-200 bg-white/70 backdrop-blur px-5 py-4 transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black text-white transition-transform group-hover:scale-105">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-gray-500">
+                      {item.meta}
+                    </p>
+                    <p className="text-base font-semibold text-black">
+                      {item.label}
+                    </p>
+                  </div>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-black" />
+              </a>
+            ))}
           </div>
-          <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-            Blog
-          </span>
-        </a>
-
-        <a
-          href="mailto:minorcell6789@gmail.com"
-          className="flex flex-col items-center gap-3 group"
-        >
-          <div className="p-4 rounded-full bg-black/5 group-hover:bg-black/10 group-hover:scale-110 transition-all duration-300">
-            <Mail className="w-6 h-6 text-red-500" />
-          </div>
-          <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-            Email
-          </span>
-        </a>
-
-        <a
-          href="https://steamcommunity.com/profiles/76561199379749961/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center gap-3 group"
-        >
-          <div className="p-4 rounded-full bg-black/5 group-hover:bg-black/10 group-hover:scale-110 transition-all duration-300">
-            <Gamepad2 className="w-6 h-6 text-purple-600" />
-          </div>
-          <span className="text-sm text-gray-500 group-hover:text-black transition-colors">
-            Steam
-          </span>
-        </a>
-      </div>
-
-      {/* Footer Quote/Info */}
-      <div className="text-center border-t border-black/5 pt-12">
-        <p className="text-sm text-gray-500 font-mono">minorcell / mCell</p>
+        </motion.section>
       </div>
     </div>
   );
