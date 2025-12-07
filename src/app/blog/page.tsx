@@ -1,19 +1,19 @@
-import Link from "next/link";
-import { getAllPosts } from "@/lib/mdx";
-import { ArrowRight } from "lucide-react";
+import Link from 'next/link'
+import { getAllPosts } from '@/lib/mdx'
+import { ArrowRight } from 'lucide-react'
 
 const formatDate = (value: string) => {
-  const date = new Date(value);
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}${m}${d}`;
-};
+  const date = new Date(value)
+  const y = date.getFullYear()
+  const m = String(date.getMonth() + 1).padStart(2, '0')
+  const d = String(date.getDate()).padStart(2, '0')
+  return `${y}${m}${d}`
+}
 
 export default function BlogPage() {
-  const posts = getAllPosts("blog");
-  const featuredPost = posts[0];
-  const remainingPosts = posts.slice(1);
+  const posts = getAllPosts('blog')
+  const featuredPost = posts[0]
+  const remainingPosts = posts.slice(1)
 
   return (
     <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
@@ -101,5 +101,5 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

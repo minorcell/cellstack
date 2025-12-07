@@ -162,7 +162,7 @@ $ docker run -d \
 # docker-compose.yml
 
 # 版本号
-version: "3.8"
+version: '3.8'
 
 # 定义一系列服务
 services:
@@ -170,7 +170,7 @@ services:
   backend:
     build: . # 使用当前目录的 Dockerfile 来构建镜像
     ports:
-      - "8080:8080" # 端口映射
+      - '8080:8080' # 端口映射
     depends_on:
       - db # 表明 backend 服务依赖于 db 服务，Compose 会先启动 db
 

@@ -73,20 +73,20 @@ npm install -D eslint prettier eslint-config-prettier eslint-plugin-prettier
 module.exports = {
   root: true,
   extends: [
-    "eslint:recommended",
-    "plugin:prettier/recommended", // 关键集成点
+    'eslint:recommended',
+    'plugin:prettier/recommended', // 关键集成点
   ],
   rules: {
     // 自定义规则示例
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "prettier/prettier": [
-      "error",
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'prettier/prettier': [
+      'error',
       {
-        endOfLine: "auto", // 跨平台换行符适配
+        endOfLine: 'auto', // 跨平台换行符适配
       },
     ],
   },
-};
+}
 ```
 
 ## 配置深度解析

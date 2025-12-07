@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { ArrowRight } from "lucide-react";
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import { ArrowRight } from 'lucide-react'
 
 const ThreeBackground = dynamic(
   () =>
-    import("@/components/ThreeBackground").then((mod) => mod.ThreeBackground),
+    import('@/components/ThreeBackground').then((mod) => mod.ThreeBackground),
   { ssr: false },
-);
+)
 
 export default function Home() {
   return (
@@ -22,14 +22,14 @@ export default function Home() {
 
         <p
           className="text-lg sm:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto font-light tracking-wide animate-fade-in opacity-0"
-          style={{ animationDelay: "0.2s" }}
+          style={{ animationDelay: '0.2s' }}
         >
           ENGINEERING · DESIGN · INTELLIGENCE
         </p>
 
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in opacity-0"
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: '0.4s' }}
         >
           <Link
             href="/blog"
@@ -41,5 +41,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }

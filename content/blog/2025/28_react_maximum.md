@@ -46,9 +46,9 @@ keywords:
 
 ```tsx
 export default function Demo() {
-  const [count, setCount] = useState(0);
-  setCount(count + 1);
-  return <h1>Count: {count}</h1>;
+  const [count, setCount] = useState(0)
+  setCount(count + 1)
+  return <h1>Count: {count}</h1>
 }
 ```
 
@@ -56,11 +56,11 @@ export default function Demo() {
 
 ```typescript
 // 示意代码
-const source = new EventSource("/api/logs");
-source.addEventListener("log", (event) => {
+const source = new EventSource('/api/logs')
+source.addEventListener('log', (event) => {
   // 每来一条日志，就调用 set 函数
-  appendLog(event.data);
-});
+  appendLog(event.data)
+})
 ```
 
 那么，问题出在哪里呢？
@@ -117,13 +117,13 @@ React 内部有一个“嵌套更新计数器”，用来防止无限循环。
 ```typescript
 export default function LogPage() {
   // 1. 从 store 获取批量更新的方法
-  const appendLogs = useLogStore((state) => state.appendLogs);
+  const appendLogs = useLogStore((state) => state.appendLogs)
 
   // 2. 批处理缓冲区（使用 ref 不会触发渲染）
-  const batchBufferRef = useRef([]);
+  const batchBufferRef = useRef([])
 
   // 3. 定时器引用（保证只有一个定时器在运行）
-  const batchTimerRef = useRef(null);
+  const batchTimerRef = useRef(null)
 
   // ...
 }
@@ -137,13 +137,13 @@ const flushBatch = useCallback(() => {
   // 如果缓冲区有数据
   if (batchBufferRef.current.length > 0) {
     // 一次性提交给 store
-    appendLogs(batchBufferRef.current);
+    appendLogs(batchBufferRef.current)
     // 清空缓冲区
-    batchBufferRef.current = [];
+    batchBufferRef.current = []
   }
   // 重置定时器引用
-  batchTimerRef.current = null;
-}, [appendLogs]); // 依赖 appendLogs
+  batchTimerRef.current = null
+}, [appendLogs]) // 依赖 appendLogs
 ```
 
 最后，修改 SSE 的事件处理函数 `handleLogEvent`：
@@ -154,19 +154,19 @@ const handleLogEvent = useCallback(
   (event) => {
     const entry = {
       /* ...解析日志... */
-    };
+    }
 
     // 重点：不再直接调用 appendLog
     // 而是将日志加入缓冲区
-    batchBufferRef.current.push(entry);
+    batchBufferRef.current.push(entry)
 
     // 如果还没有计划批处理，则在下一个事件循环中执行
     if (batchTimerRef.current === null) {
-      batchTimerRef.current = window.setTimeout(flushBatch, 0);
+      batchTimerRef.current = window.setTimeout(flushBatch, 0)
     }
   },
   [flushBatch], // 依赖 flushBatch
-);
+)
 ```
 
 ## 为什么是 `setTimeout(..., 0)`？

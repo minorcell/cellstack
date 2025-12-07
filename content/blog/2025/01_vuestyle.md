@@ -104,10 +104,10 @@ PostCSS 为组件内每个元素添加唯一 `data-v` 属性，形成**组件级
 
 ```vue
 <script setup>
-import { useCssModule } from "vue";
+import { useCssModule } from 'vue'
 
-const light = useCssModule("light");
-const dark = useCssModule("dark");
+const light = useCssModule('light')
+const dark = useCssModule('dark')
 </script>
 
 <template>
@@ -134,15 +134,15 @@ const dark = useCssModule("dark");
 ```vue
 <script setup>
 const theme = reactive({
-  primary: "#409EFF",
-  padding: "12px",
-});
+  primary: '#409EFF',
+  padding: '12px',
+})
 </script>
 
 <style scoped>
 .button {
-  background: v-bind("theme.primary");
-  padding: v-bind("theme.padding");
+  background: v-bind('theme.primary');
+  padding: v-bind('theme.padding');
 }
 </style>
 ```
@@ -160,10 +160,10 @@ const theme = reactive({
 
 ```vue
 <script setup>
-const scale = ref(1);
+const scale = ref(1)
 
 function zoomIn() {
-  scale.value += 0.1;
+  scale.value += 0.1
 }
 </script>
 
@@ -222,7 +222,7 @@ ellipsis; white-space: nowrap; } } {/* 组件 */}
 <style scoped>
 .title {
   @apply text-ellipsis; /* Tailwind 兼容 */
-  font-size: v-bind("fontSize");
+  font-size: v-bind('fontSize');
 }
 </style>
 ```

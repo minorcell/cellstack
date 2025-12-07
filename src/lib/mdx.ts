@@ -1,49 +1,51 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
-const root = process.cwd();
-const contentDir = path.join(root, "content");
+const root = process.cwd()
+const contentDir = path.join(root, 'content')
 
-export type PostType = "blog";
+export type PostType = 'blog' | 'topics'
 
 export interface PostMetadata {
-  title: string;
-  date: string;
-  slug: string;
-  image?: string;
-  [key: string]: unknown;
+  title: string
+  date: string
+  slug: string
+  image?: string
+  description?: string
+  order?: number
+  [key: string]: unknown
 }
 
 export interface Post {
-  metadata: PostMetadata;
-  content: string;
-  slug: string;
+  metadata: PostMetadata
+  content: string
+  slug: string
 }
 
 export function getPostSlugs(type: PostType) {
-  const dir = path.join(contentDir, type);
-  if (!fs.existsSync(dir)) return [];
+  const dir = path.join(contentDir, type)
+  if (!fs.existsSync(dir)) return []
 
-  const files: string[] = [];
+  const files: string[] = []
 
   function traverse(currentDir: string) {
-    const items = fs.readdirSync(currentDir);
+    const items = fs.readdirSync(currentDir)
     for (const item of items) {
-      const fullPath = path.join(currentDir, item);
-      const stat = fs.statSync(fullPath);
+      const fullPath = path.join(currentDir, item)
+      const stat = fs.statSync(fullPath)
       if (stat.isDirectory()) {
-        traverse(fullPath);
+        traverse(fullPath)
       } else if (/\.mdx?$/.test(item)) {
         // Create relative path from type dir
-        const relativePath = path.relative(dir, fullPath);
-        files.push(relativePath);
+        const relativePath = path.relative(dir, fullPath)
+        files.push(relativePath)
       }
     }
   }
 
-  traverse(dir);
-  return files;
+  traverse(dir)
+  return files
 }
 
 export function getPostBySlug(type: PostType, slug: string): Post {
@@ -62,37 +64,39 @@ export function getPostBySlug(type: PostType, slug: string): Post {
   // For now, I will implement a simple recursive search that returns the RELATIVE path as the slug.
   // And I will update the page to use `[...slug]`.
 
-  const dir = path.join(contentDir, type);
-  const realSlug = slug.replace(/\.mdx?$/, "");
+  const dir = path.join(contentDir, type)
+  const realSlug = slug.replace(/\.mdx?$/, '')
 
   // Try to find the file. slug could be "2025/foo"
-  let fullPath = path.join(dir, `${realSlug}.md`);
+  let fullPath = path.join(dir, `${realSlug}.md`)
   if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(dir, `${realSlug}.mdx`);
+    fullPath = path.join(dir, `${realSlug}.mdx`)
   }
 
   if (!fs.existsSync(fullPath)) {
     // Fallback: maybe the slug is just the filename "foo" and it's inside some folder?
     // This is expensive to search. Let's stick to path-based slugs.
-    throw new Error(`Post not found: ${slug}`);
+    throw new Error(`Post not found: ${slug}`)
   }
 
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const parsed = matter(fileContents);
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const parsed = matter(fileContents)
   const data = parsed.data as {
-    title?: string;
-    date?: string | Date;
-    image?: string;
-    [key: string]: unknown;
-  };
-  const content = parsed.content;
+    title?: string
+    date?: string | Date
+    image?: string
+    description?: string
+    order?: number
+    [key: string]: unknown
+  }
+  const content = parsed.content
 
   // Extract first image from content if not provided in frontmatter
-  let image = data.image;
+  let image = data.image
   if (!image) {
-    const imageMatch = content.match(/!\[.*?\]\((.*?)\)/);
+    const imageMatch = content.match(/!\[.*?\]\((.*?)\)/)
     if (imageMatch) {
-      image = imageMatch[1];
+      image = imageMatch[1]
     }
   }
 
@@ -108,13 +112,50 @@ export function getPostBySlug(type: PostType, slug: string): Post {
       image,
     },
     content,
-  };
+  }
 }
 
 export function getAllPosts(type: PostType): Post[] {
-  const slugs = getPostSlugs(type);
+  const slugs = getPostSlugs(type)
   const posts = slugs
     .map((slug) => getPostBySlug(type, slug))
-    .sort((post1, post2) => (post1.slug > post2.slug ? -1 : 1));
-  return posts;
+    .sort((post1, post2) => (post1.slug > post2.slug ? -1 : 1))
+  return posts
+}
+
+export function getTopicSlugs(): string[] {
+  const dir = path.join(contentDir, 'topics')
+  if (!fs.existsSync(dir)) return []
+  return fs
+    .readdirSync(dir)
+    .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
+}
+
+export function getTopicPosts(topicSlug: string): Post[] {
+  const all = getAllPosts('topics')
+  const filtered = all.filter((post) => post.slug.startsWith(`${topicSlug}/`))
+
+  const getLeadingNumber = (slug: string) => {
+    const last = slug.split('/').pop() ?? slug
+    const match = last.match(/^(\d+)/)
+    return match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER
+  }
+
+  return filtered.sort((a, b) => {
+    const numA = getLeadingNumber(a.slug)
+    const numB = getLeadingNumber(b.slug)
+    if (numA !== numB) return numA - numB
+
+    const orderA =
+      typeof a.metadata.order === 'number'
+        ? a.metadata.order
+        : Number.MAX_SAFE_INTEGER
+    const orderB =
+      typeof b.metadata.order === 'number'
+        ? b.metadata.order
+        : Number.MAX_SAFE_INTEGER
+    if (orderA !== orderB) return orderA - orderB
+
+    return a.metadata.title.localeCompare(b.metadata.title)
+  })
 }
