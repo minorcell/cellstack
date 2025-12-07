@@ -62,9 +62,9 @@ Hash 有一个非常重要的特性：**URL 中 `#` 及其后面的内容，虽�
 ```javascript
 // 监听 Hash 变化
 window.addEventListener("hashchange", function () {
-  console.log("The hash has changed to: " + location.hash)
+  console.log("The hash has changed to: " + location.hash);
   // 在这里根据 hash 的值，动态更新页面 DOM
-})
+});
 ```
 
 ### 优缺点分析
@@ -102,10 +102,13 @@ History 模式的实现比 Hash 稍微复杂一点。我们需要处理两种情
 // 监听浏览器的前进、后退
 window.addEventListener("popstate", function (event) {
   console.log(
-    "Location: " + document.location + ", state: " + JSON.stringify(event.state)
-  )
+    "Location: " +
+      document.location +
+      ", state: " +
+      JSON.stringify(event.state),
+  );
   // 根据当前 path 更新视图
-})
+});
 ```
 
 ### 优缺点分析
@@ -126,29 +129,29 @@ window.addEventListener("popstate", function (event) {
 ```javascript
 class HashRouter {
   constructor() {
-    this.routes = {} // 存储路径与回调函数的映射
-    this.currentUrl = ""
+    this.routes = {}; // 存储路径与回调函数的映射
+    this.currentUrl = "";
 
     // 绑定 this，防止指向丢失
-    this.refresh = this.refresh.bind(this)
+    this.refresh = this.refresh.bind(this);
 
     // 监听 load 和 hashchange 事件
-    window.addEventListener("load", this.refresh)
-    window.addEventListener("hashchange", this.refresh)
+    window.addEventListener("load", this.refresh);
+    window.addEventListener("hashchange", this.refresh);
   }
 
   // 注册路由
   route(path, callback) {
-    this.routes[path] = callback || function () {}
+    this.routes[path] = callback || function () {};
   }
 
   // 刷新页面逻辑
   refresh() {
     // 获取当前 hash，去掉 # 号
-    this.currentUrl = location.hash.slice(1) || "/"
+    this.currentUrl = location.hash.slice(1) || "/";
     // 执行对应的回调函数（渲染 UI）
     if (this.routes[this.currentUrl]) {
-      this.routes[this.currentUrl]()
+      this.routes[this.currentUrl]();
     }
   }
 }
@@ -159,42 +162,42 @@ class HashRouter {
 ```javascript
 class HistoryRouter {
   constructor() {
-    this.routes = {}
+    this.routes = {};
 
-    this.bindPopState()
-    this.initLinkHijack() // 拦截 a 标签
+    this.bindPopState();
+    this.initLinkHijack(); // 拦截 a 标签
   }
 
   route(path, callback) {
-    this.routes[path] = callback || function () {}
+    this.routes[path] = callback || function () {};
   }
 
   // 监听浏览器自带的前进后退
   bindPopState() {
     window.addEventListener("popstate", (e) => {
-      const path = location.pathname
-      this.updateView(path)
-    })
+      const path = location.pathname;
+      this.updateView(path);
+    });
   }
 
   // 拦截全局点击事件，处理 link 跳转
   initLinkHijack() {
     document.addEventListener("click", (e) => {
-      const target = e.target
+      const target = e.target;
       if (target.tagName === "A") {
-        e.preventDefault() // 阻止默认跳转
-        const path = target.getAttribute("href")
+        e.preventDefault(); // 阻止默认跳转
+        const path = target.getAttribute("href");
         // 手动修改 URL
-        history.pushState(null, null, path)
+        history.pushState(null, null, path);
         // 更新视图
-        this.updateView(path)
+        this.updateView(path);
       }
-    })
+    });
   }
 
   updateView(path) {
     if (this.routes[path]) {
-      this.routes[path]()
+      this.routes[path]();
     }
   }
 }

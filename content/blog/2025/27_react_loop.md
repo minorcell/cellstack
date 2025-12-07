@@ -89,12 +89,12 @@ keywords:
 ```javascript
 class SimpleAgent {
   async chat(message) {
-    const assistantResponse = await this.callLLM(message)
+    const assistantResponse = await this.callLLM(message);
     if (assistantResponse.hasToolCall) {
-      const toolResult = await this.callTool(assistantResponse.toolCall) // 递归调用，将tool result作为新消息
-      return this.chat(toolResult)
+      const toolResult = await this.callTool(assistantResponse.toolCall); // 递归调用，将tool result作为新消息
+      return this.chat(toolResult);
     }
-    return assistantResponse.content
+    return assistantResponse.content;
   }
 }
 ```

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\"",
+    "format:check": "prettier --check \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\""
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -19,12 +21,14 @@
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.556.0",
     "maath": "^0.10.8",
+    "mermaid": "^10.9.5",
     "next": "16.0.7",
     "next-mdx-remote": "^5.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-medium-image-zoom": "^5.4.0",
     "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.0",
     "tailwind-merge": "^3.4.0",
     "three": "^0.181.2"
   },
@@ -36,6 +40,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "prettier": "^3.7.4"
   }
 }
