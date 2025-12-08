@@ -35,10 +35,10 @@ export default async function TopicIndexPage({
   const posts = getTopicPosts(topic)
   const meta =
     topicMeta[topic] ??
-    ({ title: topic, meta: 'Topic', description: '精选主题内容。' } as const)
+    ({ title: topic, meta: 'Topic', description: '专题内容' } as const)
 
   return (
-    <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col pt-24 pb-16 sm:pt-28 sm:pb-24">
+    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col pt-24 pb-16 sm:pt-28 sm:pb-24">
       <header className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white/70 backdrop-blur px-6 sm:px-10 py-10 sm:py-14 shadow-[0_30px_80px_-60px_rgba(0,0,0,0.35)]">
         <div className="absolute right-6 top-6 h-24 w-24 rounded-full bg-blue-100 blur-[90px]" />
         <div className="relative">

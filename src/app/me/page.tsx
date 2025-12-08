@@ -65,7 +65,7 @@ export default function MePage() {
         />
       </motion.div>
 
-      <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-28 sm:pb-24">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-28 sm:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             variants={{
@@ -113,7 +113,7 @@ export default function MePage() {
             }}
             className="relative"
           >
-            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl bg-gradient-to-br from-gray-50 to-white" />
+            <div className="absolute inset-0 translate-x-6 translate-y-6 rounded-3xl bg-linear-to-br from-gray-50 to-white" />
             <div className="relative rounded-3xl border border-gray-200 bg-white/70 backdrop-blur p-8 shadow-[0_30px_80px_-60px_rgba(0,0,0,0.35)]">
               <div className="flex items-center gap-6">
                 <div className="w-24 h-24 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">

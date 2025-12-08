@@ -15,7 +15,7 @@ export default function Home() {
     <div className="relative min-h-[calc(100vh-10rem)] flex flex-col justify-center items-center overflow-hidden select-none">
       <ThreeBackground />
 
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tighter mb-6 text-black animate-fade-in opacity-0">
           CELLSTACK
         </h1>
@@ -33,9 +33,9 @@ export default function Home() {
         >
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full text-white bg-black hover:bg-gray-800 transition-all hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-full text-white bg-black hover:bg-gray-800 transition-all hover:scale-105"
           >
-            Read Blog
+            博客
             <ArrowRight className="w-4 h-4 ml-2" />
           </Link>
         </div>

@@ -50,7 +50,7 @@ export default async function TopicPostPage({
   const post = getPostBySlug('topics', slugString)
 
   return (
-    <article className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
       <div className="mx-auto max-w-4xl">
         <header className="mb-10 sm:mb-14 text-center">
           <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 font-medium uppercase tracking-wider">

@@ -50,11 +50,11 @@ export default async function BlogPost({ params }: Props) {
   const post = getPostBySlug('blog', slugString)
 
   return (
-    <article className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <header className="mb-10 sm:mb-14 text-center">
           <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 font-medium uppercase tracking-wider">
-            <span>Published</span>
+            <span>发布于</span>
             <span>·</span>
             <span>{formatDate(post.metadata.date)}</span>
           </div>

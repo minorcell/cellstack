@@ -78,6 +78,22 @@ html {
   /* Firefox */
 }
 
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 /* Custom Zoom Dialog */
 .custom-zoom-dialog[data-rmiz-modal-overlay='visible'] {
   background-color: rgba(0, 0, 0, 0.8);

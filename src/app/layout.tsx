@@ -3,6 +3,7 @@ import { Source_Code_Pro, Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { SmoothScrollProvider } from '@/components/SmoothScrollProvider'
 
 const sourceSans = Source_Sans_3({
   variable: '--font-sans',
@@ -36,8 +37,9 @@ export default function RootLayout({
       <body
         className={`${sourceSans.variable} ${sourceCodePro.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
+        <SmoothScrollProvider />
         <Navbar />
-        <main className="flex-grow pt-16">{children}</main>
+        <main className="grow pt-16">{children}</main>
         <Footer />
       </body>
     </html>

@@ -16,10 +16,10 @@ export default function BlogPage() {
   const remainingPosts = posts.slice(1)
 
   return (
-    <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
+    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
       <div className="text-center mt-16 sm:mt-20 lg:mt-24 mb-16 lg:mb-24">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight text-black">
-          Blog
+          博客
         </h1>
       </div>
 
@@ -41,7 +41,7 @@ export default function BlogPage() {
               </div>
             </div>
 
-            <div className="aspect-[21/9] w-full rounded-2xl md:rounded-3xl overflow-hidden relative border border-gray-200">
+            <div className="aspect-21/9 w-full rounded-2xl md:rounded-3xl overflow-hidden relative border border-gray-200">
               {featuredPost.metadata.image ? (
                 <img
                   src={featuredPost.metadata.image}
@@ -83,7 +83,7 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              <div className="w-full md:w-48 lg:w-64 aspect-[4/3] shrink-0 rounded-xl overflow-hidden bg-gray-100 relative transition-colors">
+              <div className="w-full md:w-48 lg:w-64 aspect-4/3 shrink-0 rounded-xl overflow-hidden bg-gray-100 relative transition-colors">
                 {post.metadata.image ? (
                   <img
                     src={post.metadata.image}

@@ -21,23 +21,23 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
-  { name: 'Blog', href: '/blog' },
+  { name: '博客', href: '/blog' },
   {
-    name: 'Topics',
+    name: '专题',
     panel: {
-      title: 'Topics',
+      title: '专题',
       description: '深入一个专题',
     },
     children: [
       {
-        name: 'Bun 教学',
+        name: 'Bun 指南',
         href: '/topics/bun',
         meta: 'Runtime',
         description: '安装、脚手架、调试与部署全流程。',
       },
     ],
   },
-  { name: 'Me', href: '/me' },
+  { name: '我', href: '/me' },
 ]
 
 export function Navbar() {
@@ -81,7 +81,7 @@ export function Navbar() {
         setOpenDropdown(null)
       }}
     >
-      <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-14 sm:h-16">
           <div className="flex items-center gap-4 sm:gap-8">
             <Link href="/" className="flex items-center gap-2 group">
