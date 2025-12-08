@@ -5,17 +5,18 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "postbuild": "pagefind --site out",
+    "start": "serve out",
     "lint": "eslint",
     "format": "prettier --write \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\"",
     "format:check": "prettier --check \"{src,content,docs,public}/**/*.{ts,tsx,js,jsx,md,mdx,css,json}\""
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/three": "^0.181.0",
-    "@studio-freight/lenis": "^1.0.42",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.25",
     "gray-matter": "^4.0.3",
@@ -40,8 +41,10 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
+    "pagefind": "^1.4.0",
+    "prettier": "^3.7.4",
+    "serve": "^14.2.5",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "prettier": "^3.7.4"
+    "typescript": "^5"
   }
 }

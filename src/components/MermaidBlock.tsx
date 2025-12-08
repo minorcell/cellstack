@@ -64,7 +64,7 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
   const Shell = ({ children }: { children: React.ReactNode }) => (
     <div
       className={`my-8 overflow-hidden rounded-2xl border border-gray-200/50 bg-[#0b0d11] shadow-[0_12px_40px_rgba(0,0,0,0.18)] ${
-        zoomed ? 'fixed inset-6 sm:inset-10 z-[60]' : ''
+        zoomed ? 'fixed inset-6 sm:inset-10 z-60' : ''
       }`}
     >
       {children}

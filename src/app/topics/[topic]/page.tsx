@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, List } from 'lucide-react'
 import { getTopicPosts, getTopicSlugs } from '@/lib/mdx'
+import type { Metadata } from 'next'
 
 const topicMeta: Record<
   string,
@@ -24,6 +25,22 @@ const formatDate = (value: string) => {
 export async function generateStaticParams() {
   const topics = getTopicSlugs()
   return topics.map((topic) => ({ topic }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ topic: string }>
+}): Promise<Metadata> {
+  const { topic } = await params
+  const meta =
+    topicMeta[topic] ??
+    ({ title: topic, meta: 'Topic', description: '专题内容' } as const)
+
+  return {
+    title: meta.title,
+    description: meta.description,
+  }
 }
 
 export default async function TopicIndexPage({

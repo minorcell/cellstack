@@ -9,7 +9,7 @@ function ParticleNet() {
   // Lower particle count to reduce per-frame CPU + GPU work
   const particleCount = 80
   const totalPoints = particleCount * particleCount
-  const sep = 0.2
+  const sep = 0.25
 
   const pointsRef = useRef<THREE.Points>(null)
   const mouseRef = useRef({ x: 0, y: 0 })
@@ -158,10 +158,10 @@ export function ThreeBackground() {
       </Canvas>
 
       {/* Gradients for all 4 sides */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-      <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-      <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-32 bg-linear-to-b from-white to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-linear-to-t from-white to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-32 h-full bg-linear-to-r from-white to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-32 h-full bg-linear-to-l from-white to-transparent pointer-events-none"></div>
     </div>
   )
 }

@@ -2,10 +2,11 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Github, ChevronDown, ArrowUpRight } from 'lucide-react'
+import { Github, ChevronDown, ArrowUpRight, Search } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { PagefindSearch } from '@/components/PagefindSearch'
 
 type NavItem = {
   name: string
@@ -45,6 +46,7 @@ export function Navbar() {
   const isHome = pathname === '/'
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [navActive, setNavActive] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   useEffect(() => {
     setOpenDropdown(null)
@@ -142,6 +144,17 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSearchOpen(true)
+                setOpenDropdown(null)
+              }}
+              className="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full border border-gray-200 text-gray-700 hover:text-black hover:border-gray-300 transition-all bg-white/70 backdrop-blur"
+            >
+              <Search className="h-4 w-4 mr-2" />
+              <span>搜索</span>
+            </button>
             <a
               href="https://github.com/minorcell/cellstack"
               target="_blank"
@@ -158,7 +171,7 @@ export function Navbar() {
           {activeDropdown && (
             <motion.div
               key={activeDropdown.name}
-              className="absolute left-0 right-0 top-full mt-2 rounded-full"
+              className="absolute left-0 right-0 top-full mt-2 rounded-xl overflow-hidden"
               initial={{ opacity: 0, y: 10, scale: 0.99 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.99 }}
@@ -206,6 +219,12 @@ export function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+        <PagefindSearch
+          variant="overlay"
+          open={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          autoFocus
+        />
       </div>
     </nav>
   )

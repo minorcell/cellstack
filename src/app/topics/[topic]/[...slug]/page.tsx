@@ -3,6 +3,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ZoomImage } from '@/components/ZoomImage'
 import { MdxPre } from '@/components/MdxPre'
+import type { Metadata } from 'next'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import 'highlight.js/styles/atom-one-dark.css'
@@ -22,6 +23,24 @@ export async function generateStaticParams() {
     const [topic, ...rest] = segments
     return { topic, slug: rest }
   })
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ topic: string; slug: string[] }>
+}): Promise<Metadata> {
+  const { topic, slug } = await params
+  const slugString = [topic, ...(slug ?? [])].join('/')
+  const post = getPostBySlug('topics', slugString)
+
+  return {
+    title: post.metadata.title,
+    description:
+      (typeof post.metadata.description === 'string'
+        ? post.metadata.description
+        : undefined) ?? post.metadata.title,
+  }
 }
 
 const Paragraph = ({ children }: { children: React.ReactNode }) => {

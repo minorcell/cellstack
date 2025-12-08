@@ -3,6 +3,8 @@ import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ZoomImage } from '@/components/ZoomImage'
 import { MdxPre } from '@/components/MdxPre'
+import { GiscusComments } from '@/components/GiscusComments'
+import type { Metadata } from 'next'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
 import 'highlight.js/styles/atom-one-dark.css'
@@ -19,6 +21,20 @@ interface Props {
   params: Promise<{
     slug: string[]
   }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  const slugString = slug.join('/')
+  const post = getPostBySlug('blog', slugString)
+
+  return {
+    title: post.metadata.title,
+    description:
+      (typeof post.metadata.description === 'string'
+        ? post.metadata.description
+        : undefined) ?? post.metadata.title,
+  }
 }
 
 export async function generateStaticParams() {
@@ -48,6 +64,7 @@ export default async function BlogPost({ params }: Props) {
   const { slug } = await params
   const slugString = slug.join('/')
   const post = getPostBySlug('blog', slugString)
+  const discussionTerm = `blog/${slugString}`
 
   return (
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,6 +95,10 @@ export default async function BlogPost({ params }: Props) {
               },
             }}
           />
+        </div>
+
+        <div className="mt-12 sm:mt-16">
+          <GiscusComments term={discussionTerm} />
         </div>
       </div>
     </article>

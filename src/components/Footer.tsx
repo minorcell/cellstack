@@ -34,7 +34,7 @@ export function Footer() {
 
   return (
     <footer className="h-24 mt-auto flex items-center">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs sm:text-sm text-gray-600 font-mono">
             © {new Date().getFullYear()} CELLSTACK
@@ -54,7 +54,7 @@ export function Footer() {
                 {typedSecond || '\u00A0'}
               </a>
               <span
-                className={`inline-block w-[2px] h-4 bg-black ml-1 align-middle ${
+                className={`inline-block w-0.5 h-4 bg-black ml-1 align-middle ${
                   showCursor && cursorVisible ? 'opacity-100' : 'opacity-0'
                 }`}
                 aria-hidden="true"

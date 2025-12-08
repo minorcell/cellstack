@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/mdx'
 import { ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '博客',
+  description: 'CellStack 博客文章归档与最新内容',
+}
 
 const formatDate = (value: string) => {
   const date = new Date(value)
