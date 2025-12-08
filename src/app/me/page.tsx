@@ -3,6 +3,7 @@
 import { Github, Mail, Gamepad2, BookOpen, ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { ZoomImage } from '@/components/ZoomImage'
+import { GitHubHeatmap } from '@/components/GitHubHeatmap'
 
 const links = [
   {
@@ -158,6 +159,8 @@ export default function MePage() {
           </motion.div>
         </div>
 
+        <GitHubHeatmap username="minorcell" />
+
         <motion.section
           variants={{
             hidden: { opacity: 0, y: 16 },
@@ -178,7 +181,6 @@ export default function MePage() {
                 找到我，聊代码、产品和游戏。
               </p>
             </div>
-            <div className="h-px w-24 bg-gray-200" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
