@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, List } from 'lucide-react'
 import { getTopicPosts, getTopicSlugs } from '@/lib/mdx'
+import { GiscusComments } from '@/components/GiscusComments'
 import type { Metadata } from 'next'
 
 const topicMeta: Record<
@@ -53,6 +54,7 @@ export default async function TopicIndexPage({
   const meta =
     topicMeta[topic] ??
     ({ title: topic, meta: 'Topic', description: '专题内容' } as const)
+  const discussionTerm = `topics/${topic}`
 
   return (
     <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col pt-24 pb-16 sm:pt-28 sm:pb-24">
@@ -123,6 +125,10 @@ export default async function TopicIndexPage({
             )
           })}
         </div>
+      </section>
+
+      <section className="mt-14 sm:mt-16">
+        <GiscusComments term={discussionTerm} />
       </section>
     </div>
   )

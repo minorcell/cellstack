@@ -2,9 +2,17 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Github, ChevronDown, ArrowUpRight, Search } from 'lucide-react'
+import {
+  Github,
+  ChevronDown,
+  ArrowUpRight,
+  Search,
+  Menu,
+  X,
+} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { PagefindSearch } from '@/components/PagefindSearch'
 
@@ -47,10 +55,28 @@ export function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [navActive, setNavActive] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     setOpenDropdown(null)
+    setMobileMenuOpen(false)
   }, [pathname])
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
 
   const navBackground = isHome
     ? navActive || openDropdown
@@ -143,7 +169,7 @@ export function Navbar() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <button
               type="button"
               onClick={() => {
@@ -152,18 +178,30 @@ export function Navbar() {
               }}
               className="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full border border-gray-200 text-gray-700 hover:text-black hover:border-gray-300 transition-all bg-white/70 backdrop-blur"
             >
-              <Search className="h-4 w-4 mr-2" />
-              <span>搜索</span>
+              <Search className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">搜索</span>
             </button>
             <a
               href="https://github.com/minorcell/cellstack"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full text-white bg-black hover:bg-gray-800 transition-all"
+              className="hidden sm:inline-flex items-center justify-center px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium rounded-full text-white bg-black hover:bg-gray-800 transition-all"
             >
               <Github className="h-4 w-4 mr-2" />
               <span>GitHub</span>
             </a>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-black hover:bg-gray-100 transition-all"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
 
@@ -226,6 +264,94 @@ export function Navbar() {
           autoFocus
         />
       </div>
+
+      {/* Mobile Menu */}
+      {mounted &&
+        mobileMenuOpen &&
+        createPortal(
+          <AnimatePresence>
+            <motion.div
+              className="fixed inset-0 md:hidden bg-black/40 backdrop-blur-sm z-70 flex flex-col px-4 py-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <motion.div
+                className="mt-14 bg-white/95 backdrop-blur border border-gray-200 shadow-2xl rounded-2xl overflow-hidden flex flex-col max-h-[calc(100vh-5rem)]"
+                initial={{ scale: 0.95, y: -20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: -20 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="px-4 py-5 space-y-4 overflow-y-auto">
+                  {navItems.map((item) => {
+                    const hasChildren =
+                      Array.isArray(item.children) && item.children.length > 0
+
+                    if (hasChildren) {
+                      return (
+                        <div key={item.name} className="space-y-3">
+                          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-gray-500">
+                            {item.name}
+                          </p>
+                          <div className="space-y-2">
+                            {item.children!.map((child) => (
+                              <Link
+                                key={child.name}
+                                href={child.href ?? '#'}
+                                className="flex items-center justify-between p-3 rounded-xl border border-gray-200 bg-white/80 hover:bg-white hover:border-gray-300 transition-all"
+                              >
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-base font-semibold text-black">
+                                    {child.name}
+                                  </p>
+                                  {child.description && (
+                                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                                      {child.description}
+                                    </p>
+                                  )}
+                                </div>
+                                <ArrowUpRight className="h-4 w-4 text-gray-400 shrink-0 ml-2" />
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )
+                    }
+
+                    return (
+                      <Link
+                        key={item.name}
+                        href={item.href ?? '#'}
+                        className="block p-3 rounded-xl border border-gray-200 bg-white/80 hover:bg-white hover:border-gray-300 transition-all"
+                      >
+                        <p className="text-base font-semibold text-black">
+                          {item.name}
+                        </p>
+                      </Link>
+                    )
+                  })}
+
+                  <div className="pt-4 border-t border-gray-200">
+                    <a
+                      href="https://github.com/minorcell/cellstack"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 p-3 rounded-xl text-white bg-black hover:bg-gray-800 transition-all shadow-lg"
+                    >
+                      <Github className="h-4 w-4" />
+                      <span className="font-medium">GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>,
+          document.body,
+        )}
     </nav>
   )
 }

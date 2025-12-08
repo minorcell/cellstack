@@ -3,6 +3,7 @@ import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ZoomImage } from '@/components/ZoomImage'
 import { MdxPre } from '@/components/MdxPre'
+import { GiscusComments } from '@/components/GiscusComments'
 import type { Metadata } from 'next'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
@@ -67,6 +68,7 @@ export default async function TopicPostPage({
   const { topic, slug } = await params
   const slugString = [topic, ...slug].join('/')
   const post = getPostBySlug('topics', slugString)
+  const discussionTerm = `topics/${slugString}`
 
   return (
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
@@ -102,6 +104,10 @@ export default async function TopicPostPage({
               },
             }}
           />
+        </div>
+
+        <div className="mt-12 sm:mt-16">
+          <GiscusComments term={discussionTerm} />
         </div>
       </div>
     </article>

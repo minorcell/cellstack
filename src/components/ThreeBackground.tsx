@@ -14,17 +14,31 @@ function ParticleNet() {
   const pointsRef = useRef<THREE.Points>(null)
   const mouseRef = useRef({ x: 0, y: 0 })
 
-  // Global mouse listener to ensure interaction works over text
+  // Global mouse/touch listener to ensure interaction works over text
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
+    const updatePosition = (x: number, y: number) => {
       mouseRef.current = {
-        x: (event.clientX / window.innerWidth) * 2 - 1,
-        y: -(event.clientY / window.innerHeight) * 2 + 1,
+        x: (x / window.innerWidth) * 2 - 1,
+        y: -(y / window.innerHeight) * 2 + 1,
+      }
+    }
+
+    const handleMouseMove = (event: MouseEvent) => {
+      updatePosition(event.clientX, event.clientY)
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        updatePosition(event.touches[0].clientX, event.touches[0].clientY)
       }
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    window.addEventListener('touchmove', handleTouchMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('touchmove', handleTouchMove)
+    }
   }, [])
 
   const [positions, colors, baseCoords] = useMemo(() => {
