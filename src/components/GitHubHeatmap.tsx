@@ -40,7 +40,7 @@ export function GitHubHeatmap({ username = 'minorcell' }: GitHubHeatmapProps) {
         </div>
       </div>
 
-      <div className="rounded-2xl flex justify-center border border-gray-200 bg-white/70 backdrop-blur p-6 sm:p-8 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)] overflow-x-auto">
+      <div className="rounded-2xl flex justify-center border border-gray-200 bg-white/70 backdrop-blur p-6 sm:p-8 overflow-x-auto">
         <GitHubCalendar
           username={username}
           colorScheme="light"
