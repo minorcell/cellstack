@@ -9,6 +9,7 @@ type PagefindInstance = {
   search: (query: string) => Promise<{
     results: PagefindHit[]
   }>
+  init?: () => Promise<unknown>
   options?: (opts: Record<string, unknown>) => Promise<unknown>
 }
 
@@ -102,10 +103,11 @@ export function PagefindSearch({
       setErrorMessage(null)
 
       try {
-        // @ts-ignore Pagefind bundle is generated into /pagefind during build time.
-        const mod = await import(
-          /* webpackIgnore: true */ '/pagefind/pagefind.js'
-        )
+        const pagefindBundlePath: string = '/pagefind/pagefind.js'
+        // Pagefind bundle is generated into /pagefind during build time.
+        const mod = (await import(
+          /* webpackIgnore: true */ pagefindBundlePath
+        )) as PagefindInstance
 
         if (typeof mod.init === 'function') {
           await mod.init()
