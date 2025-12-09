@@ -27,7 +27,7 @@ keywords:
   - RAG优化
 ---
 
-![072](https://stack-mcell.tos-cn-shanghai.volces.com/072.jpg)
+![074](https://stack-mcell.tos-cn-shanghai.volces.com/074.webp)
 
 GPT 5.1 发布已经有一段时间了，LLM（大语言模型）的能力边界再一次被拓宽。对于应用开发者而言，虽然模型越来越智能，但 API 的计费逻辑和底层限制依然没有变：**Token** 始终是那个核心计量单位。
 

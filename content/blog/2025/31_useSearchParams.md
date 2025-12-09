@@ -27,7 +27,7 @@ keywords:
   - React前端路由
 ---
 
-![073](https://stack-mcell.tos-cn-shanghai.volces.com/073.png)
+![075](https://stack-mcell.tos-cn-shanghai.volces.com/075.webp)
 
 在开发 React 应用时，我们经常遇到一种场景：用户在搜索框输入关键词，筛选出一个列表，然后希望把这个结果分享给同事。
 

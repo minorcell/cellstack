@@ -6,9 +6,7 @@ import { createPortal } from 'react-dom'
 import { ArrowUpRight, Loader2, Search, X } from 'lucide-react'
 
 type PagefindInstance = {
-  search: (
-    query: string,
-  ) => Promise<{
+  search: (query: string) => Promise<{
     results: PagefindHit[]
   }>
   options?: (opts: Record<string, unknown>) => Promise<unknown>
@@ -95,41 +93,46 @@ export function PagefindSearch({
     pagefindRef.current = null
   }, [])
 
-  const ensurePagefind = useCallback(async (): Promise<PagefindInstance | null> => {
-    if (pagefindRef.current) return pagefindRef.current
-    if (bundleState === 'loading' || bundleState === 'error') return null
+  const ensurePagefind =
+    useCallback(async (): Promise<PagefindInstance | null> => {
+      if (pagefindRef.current) return pagefindRef.current
+      if (bundleState === 'loading' || bundleState === 'error') return null
 
-    setBundleState('loading')
-    setErrorMessage(null)
+      setBundleState('loading')
+      setErrorMessage(null)
 
-    try {
-      // @ts-ignore Pagefind bundle is generated into /pagefind during build time.
-      const mod = await import(/* webpackIgnore: true */ '/pagefind/pagefind.js')
+      try {
+        // @ts-ignore Pagefind bundle is generated into /pagefind during build time.
+        const mod = await import(
+          /* webpackIgnore: true */ '/pagefind/pagefind.js'
+        )
 
-      if (typeof mod.init === 'function') {
-        await mod.init()
+        if (typeof mod.init === 'function') {
+          await mod.init()
+        }
+
+        if (typeof mod.options === 'function') {
+          await mod.options({ basePath: '/pagefind/', baseUrl: '/' })
+        }
+
+        const instance = mod as PagefindInstance
+
+        if (!instance || typeof instance.search !== 'function') {
+          throw new Error('Invalid Pagefind instance')
+        }
+
+        pagefindRef.current = instance
+        setBundleState('ready')
+        return instance
+      } catch (error) {
+        console.error('Failed to load Pagefind', error)
+        setBundleState('error')
+        setErrorMessage(
+          '找不到 Pagefind 索引，请先运行构建（pnpm build）后再试。',
+        )
+        return null
       }
-
-      if (typeof mod.options === 'function') {
-        await mod.options({ basePath: '/pagefind/', baseUrl: '/' })
-      }
-
-      const instance = mod as PagefindInstance
-
-      if (!instance || typeof instance.search !== 'function') {
-        throw new Error('Invalid Pagefind instance')
-      }
-
-      pagefindRef.current = instance
-      setBundleState('ready')
-      return instance
-    } catch (error) {
-      console.error('Failed to load Pagefind', error)
-      setBundleState('error')
-      setErrorMessage('找不到 Pagefind 索引，请先运行构建（pnpm build）后再试。')
-      return null
-    }
-  }, [bundleState])
+    }, [bundleState])
 
   useEffect(() => {
     if (!isActive || bundleState !== 'idle') return
