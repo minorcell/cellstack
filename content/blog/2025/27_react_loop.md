@@ -1,6 +1,6 @@
 ---
 date: 2025-10-27
-title: Agent ReAct and Loop
+title: AI Agent ReAct 与 Loop
 description: 深入解析 AI Agent 的 ReAct 架构和工作循环原理，探讨智能体如何实现自动化任务执行，从理论到实践的完整指南。
 author: mcell
 tags:
@@ -27,7 +27,7 @@ keywords:
   - AI Agent开发
 ---
 
-![065.png](https://stack-mcell.tos-cn-shanghai.volces.com/065.png)
+![086.webp](https://stack-mcell.tos-cn-shanghai.volces.com/086.webp)
 
 我一直在使用 ChatGPT 或通义千问这样的 AI 工具，它们很强大，但多数情况下都是“一问一答”。我提一个问题，它给一个答案。
 

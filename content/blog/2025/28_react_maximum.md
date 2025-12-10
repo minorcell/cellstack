@@ -25,7 +25,7 @@ keywords:
   - React嵌套更新
 ---
 
-![069.png](https://stack-mcell.tos-cn-shanghai.volces.com/069.png)
+![081.webp](https://stack-mcell.tos-cn-shanghai.volces.com/081.webp)
 
 最近，我遇到了一个很有意思的 React 问题。
 

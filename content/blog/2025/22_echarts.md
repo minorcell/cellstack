@@ -22,7 +22,7 @@ keywords:
   - ECharts 实例
 ---
 
-![039.png](https://stack-mcell.tos-cn-shanghai.volces.com/039.png)
+![083.webp](https://stack-mcell.tos-cn-shanghai.volces.com/083.webp)
 
 > 本文将作为你的 ECharts 入门指南，带你系统性地梳理 ECharts 的核心知识体系，并通过一个贴近实际业务的“高三期末考试成绩分析”案例，手把手教你如何将数据转化为富有洞察力的图表。
 

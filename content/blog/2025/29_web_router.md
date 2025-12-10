@@ -27,7 +27,7 @@ keywords:
   - SEO路由优化
 ---
 
-![070](https://stack-mcell.tos-cn-shanghai.volces.com/070.png)
+![084.webp](https://stack-mcell.tos-cn-shanghai.volces.com/084.webp)
 
 ## 背景
 

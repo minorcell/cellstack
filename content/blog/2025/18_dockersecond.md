@@ -16,7 +16,7 @@ tags:
 author: mCell
 ---
 
-![033.jpg](https://stack-mcell.tos-cn-shanghai.volces.com/033.jpg)
+![085.webp](https://stack-mcell.tos-cn-shanghai.volces.com/085.webp)
 
 在上一篇文章里，我们用 `docker build` 和 `docker run` 命令，成功地将一个应用放进了容器里并运行起来。这感觉很棒，就像 hello world 一样。
 
