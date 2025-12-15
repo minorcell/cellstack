@@ -13,6 +13,11 @@ const topicMeta: Record<
     meta: 'Runtime',
     description: '这是一组面向 Node/JavaScript 开发者的 Bun 实战笔记：目标不是“百科全书”，而是让你能更快把 Bun 用在 CLI、脚本和小型服务里。',
   },
+  "system-prompt": {
+    title: '系统提示词收集',
+    meta: 'Prompt Engineering',
+    description: '收集和整理各类优秀的系统提示词（System Prompt），帮助你更好地与 AI 模型进行交互。',
+  },
 }
 
 const formatDate = (value: string) => {

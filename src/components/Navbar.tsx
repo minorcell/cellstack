@@ -44,6 +44,12 @@ const navItems: NavItem[] = [
         meta: 'Runtime',
         description: '安装、脚手架、调试与部署全流程。',
       },
+      {
+        name: '系统提示词',
+        href: '/topics/system-prompt',
+        meta: 'Prompt Engineering',
+        description: '收集和整理各类优秀的系统提示词（System Prompt）。',
+      },
     ],
   },
   { name: '我', href: '/me' },
