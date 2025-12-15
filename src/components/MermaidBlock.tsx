@@ -1,11 +1,15 @@
 'use client'
 
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState, useRef } from 'react'
 import { Copy, Maximize2, X } from 'lucide-react'
 
 type MermaidBlockProps = {
   code: string
 }
+
+// Cache mermaid instance to avoid re-importing
+let mermaidInstance: typeof import('mermaid').default | null = null
+let mermaidInitialized = false
 
 export function MermaidBlock({ code }: MermaidBlockProps) {
   const [svg, setSvg] = useState<string | null>(null)
@@ -16,26 +20,40 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
   )
   const [copied, setCopied] = useState(false)
   const [zoomed, setZoomed] = useState(false)
+  const isRenderingRef = useRef(false)
 
   useEffect(() => {
     let mounted = true
 
     ;(async () => {
+      // Prevent duplicate renders
+      if (isRenderingRef.current) return
+      isRenderingRef.current = true
+
       try {
-        const mermaid = (await import('mermaid')).default
-        mermaid.initialize({
-          startOnLoad: false,
-          securityLevel: 'loose',
-          theme: 'dark',
-          fontFamily: 'Source Sans 3, Inter, -apple-system, sans-serif',
-          themeVariables: {
-            background: '#0b0d11',
-            primaryColor: '#1a73e8',
-            primaryTextColor: '#e5e7eb',
-            lineColor: '#94a3b8',
-          },
-        })
-        const { svg } = await mermaid.render(renderId, code)
+        // Load and initialize mermaid only once
+        if (!mermaidInstance) {
+          const mermaid = (await import('mermaid')).default
+          mermaidInstance = mermaid
+        }
+
+        if (!mermaidInitialized) {
+          mermaidInstance.initialize({
+            startOnLoad: false,
+            securityLevel: 'loose',
+            theme: 'dark',
+            fontFamily: 'Source Sans 3, Inter, -apple-system, sans-serif',
+            themeVariables: {
+              background: '#0b0d11',
+              primaryColor: '#1a73e8',
+              primaryTextColor: '#e5e7eb',
+              lineColor: '#94a3b8',
+            },
+          })
+          mermaidInitialized = true
+        }
+
+        const { svg } = await mermaidInstance.render(renderId, code)
         if (mounted) {
           setSvg(svg)
           setError(null)
@@ -43,6 +61,8 @@ export function MermaidBlock({ code }: MermaidBlockProps) {
       } catch (err) {
         console.error('Mermaid render failed', err)
         if (mounted) setError('Mermaid 图渲染失败')
+      } finally {
+        isRenderingRef.current = false
       }
     })()
 

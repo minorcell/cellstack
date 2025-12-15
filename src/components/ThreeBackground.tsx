@@ -82,8 +82,7 @@ function ParticleNet() {
     const time = clock.getElapsedTime()
 
     if (pointsRef.current) {
-      // 1. 移除整体倾斜交互，保持网格平稳
-      // 平滑恢复到初始角度 (0,0,0)
+      // Smooth rotation recovery to initial angle (0,0,0)
       pointsRef.current.rotation.x = THREE.MathUtils.lerp(
         pointsRef.current.rotation.x,
         0,
@@ -98,12 +97,17 @@ function ParticleNet() {
       const positions = pointsRef.current.geometry.attributes.position
         .array as Float32Array
 
-      // Use global mouse ref
-      // 将归一化的鼠标坐标 (-1 到 1) 转换为世界坐标
+      // Use global mouse ref and convert to world coordinates
       const mouseX = (mouseRef.current.x * viewport.width) / 2
       const mouseY = (mouseRef.current.y * viewport.height) / 2
 
       const base = baseCoordsRef.current
+
+      // Pre-calculate values used in loop
+      const timeFactor1 = time * 0.8
+      const timeFactor2 = time * 0.6
+      const interactionRadius = 4.0
+      const interactionRadiusSq = interactionRadius * interactionRadius
 
       for (let idx = 0; idx < totalPoints; idx++) {
         const positionIndex = idx * 3
@@ -112,21 +116,21 @@ function ParticleNet() {
         const x = base[baseIndex]
         const y = base[baseIndex + 1]
 
-        // 基础波浪运动
+        // Base wave motion
         let z =
-          Math.sin(x * 0.6 + time * 0.8) * Math.cos(y * 0.6 + time * 0.6) * 0.8
+          Math.sin(x * 0.6 + timeFactor1) *
+          Math.cos(y * 0.6 + timeFactor2) *
+          0.8
 
-        // 鼠标交互：计算粒子到鼠标的距离
+        // Mouse interaction: calculate distance to mouse
         const dx = x - mouseX
         const dy = y - mouseY
-        const dist = Math.sqrt(dx * dx + dy * dy)
+        const distSq = dx * dx + dy * dy
 
-        // 交互范围和强度
-        // 范围半径约 3 单位，中心强度 2.5
-        const interactionRadius = 4.0
-        if (dist < interactionRadius) {
-          // 使用高斯衰减函数制造平滑隆起
-          const strength = 2.5 * Math.exp((-dist * dist) / (2 * 1.5)) // sigma^2 = 1.5
+        // Only apply interaction if within radius (using squared distance to avoid sqrt)
+        if (distSq < interactionRadiusSq) {
+          // Gaussian decay function for smooth bump
+          const strength = 2.5 * Math.exp(-distSq / 3.0) // sigma^2 = 1.5
           z += strength
         }
 

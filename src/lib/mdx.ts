@@ -23,9 +23,22 @@ export interface Post {
   slug: string
 }
 
+// Cache for post slugs to avoid repeated file system traversal
+const slugCache = new Map<PostType, string[]>()
+// Cache for parsed posts to avoid re-reading and re-parsing files
+const postCache = new Map<string, Post>()
+
 export function getPostSlugs(type: PostType) {
+  // Return cached result if available
+  if (slugCache.has(type)) {
+    return slugCache.get(type)!
+  }
+
   const dir = path.join(contentDir, type)
-  if (!fs.existsSync(dir)) return []
+  if (!fs.existsSync(dir)) {
+    slugCache.set(type, [])
+    return []
+  }
 
   const files: string[] = []
 
@@ -45,24 +58,16 @@ export function getPostSlugs(type: PostType) {
   }
 
   traverse(dir)
+  slugCache.set(type, files)
   return files
 }
 
 export function getPostBySlug(type: PostType, slug: string): Post {
-  // Slug might contain slashes if it was nested, but here we usually flatten or handle it.
-  // However, the current implementation of [slug] page assumes a single segment slug.
-  // If we want to support nested routes like /blog/2025/foo, we need [...slug].
-  // For now, let's assume we want to flatten them or just find the file by name?
-  // Or better, let's update [slug] to [...slug] if we want to keep the structure.
-  // BUT, the user's existing structure is `blog/2025/foo.md`.
-  // If I return `2025/foo.md` as slug, the URL will be `/blog/2025%2Ffoo`.
-  // That's ugly.
-  // If I want `/blog/foo`, I need to handle collisions.
-  // Let's assume we want to support the path as is.
-  // So I should change `[slug]` to `[...slug]`.
-
-  // For now, I will implement a simple recursive search that returns the RELATIVE path as the slug.
-  // And I will update the page to use `[...slug]`.
+  // Check cache first
+  const cacheKey = `${type}:${slug}`
+  if (postCache.has(cacheKey)) {
+    return postCache.get(cacheKey)!
+  }
 
   const dir = path.join(contentDir, type)
   const realSlug = slug.replace(/\.mdx?$/, '')
@@ -100,7 +105,7 @@ export function getPostBySlug(type: PostType, slug: string): Post {
     }
   }
 
-  return {
+  const post: Post = {
     slug: realSlug,
     metadata: {
       ...data,
@@ -113,6 +118,10 @@ export function getPostBySlug(type: PostType, slug: string): Post {
     },
     content,
   }
+
+  // Cache the post
+  postCache.set(cacheKey, post)
+  return post
 }
 
 export function getAllPosts(type: PostType): Post[] {
@@ -126,14 +135,22 @@ export function getAllPosts(type: PostType): Post[] {
 export function getTopicSlugs(): string[] {
   const dir = path.join(contentDir, 'topics')
   if (!fs.existsSync(dir)) return []
-  return fs
-    .readdirSync(dir)
-    .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
+
+  // Cache directory check with readdirSync for better performance
+  const items = fs.readdirSync(dir, { withFileTypes: true })
+  return items.filter((item) => item.isDirectory()).map((item) => item.name)
 }
 
 export function getTopicPosts(topicSlug: string): Post[] {
-  const all = getAllPosts('topics')
-  const filtered = all.filter((post) => post.slug.startsWith(`${topicSlug}/`))
+  // Get only slugs for this topic, avoiding loading all posts
+  const slugs = getPostSlugs('topics')
+  const topicPrefix = `${topicSlug}/`
+
+  // Filter slugs first before loading posts
+  const filteredSlugs = slugs.filter((slug) => slug.startsWith(topicPrefix))
+
+  // Load only the relevant posts
+  const posts = filteredSlugs.map((slug) => getPostBySlug('topics', slug))
 
   const getLeadingNumber = (slug: string) => {
     const last = slug.split('/').pop() ?? slug
@@ -141,7 +158,7 @@ export function getTopicPosts(topicSlug: string): Post[] {
     return match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER
   }
 
-  return filtered.sort((a, b) => {
+  return posts.sort((a, b) => {
     const numA = getLeadingNumber(a.slug)
     const numB = getLeadingNumber(b.slug)
     if (numA !== numB) return numA - numB
