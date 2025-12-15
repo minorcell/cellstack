@@ -1,22 +1,24 @@
 import Link from 'next/link'
-import { ArrowRight, List } from 'lucide-react'
+import { ArrowRight, BookOpen, Clock, Calendar, CheckCircle2 } from 'lucide-react'
 import { getTopicPosts, getTopicSlugs } from '@/lib/mdx'
 import { GiscusComments } from '@/components/GiscusComments'
 import type { Metadata } from 'next'
 
 const topicMeta: Record<
   string,
-  { title: string; meta: string; description: string }
+  { title: string; meta: string; description: string; level?: string }
 > = {
   bun: {
-    title: 'Bun 指南',
+    title: 'Bun 极速指南',
     meta: 'Runtime',
+    level: 'Intermediate',
     description: '这是一组面向 Node/JavaScript 开发者的 Bun 实战笔记：目标不是“百科全书”，而是让你能更快把 Bun 用在 CLI、脚本和小型服务里。',
   },
   "system-prompt": {
-    title: '系统提示词收集',
+    title: '系统提示词工程',
     meta: 'Prompt Engineering',
-    description: '收集和整理各类优秀的系统提示词（System Prompt），帮助你更好地与 AI 模型进行交互。',
+    level: 'Advanced',
+    description: '收集和整理各类优秀的系统提示词（System Prompt），帮助你更好地与 AI 模型进行交互，掌握 LLM 的“指挥艺术”。',
   },
 }
 
@@ -25,7 +27,7 @@ const formatDate = (value: string) => {
   const y = date.getFullYear()
   const m = String(date.getMonth() + 1).padStart(2, '0')
   const d = String(date.getDate()).padStart(2, '0')
-  return `${y}${m}${d}`
+  return `${y}.${m}.${d}`
 }
 
 export async function generateStaticParams() {
@@ -56,83 +58,121 @@ export default async function TopicIndexPage({
 }) {
   const { topic } = await params
   const posts = getTopicPosts(topic)
+  // Sort posts by date (ascending) to mock a "curriculum" order if needed, 
+  // currently usually they are sorted new->old, but for a guide usually old->new is better?
+  // Let's assume the order returned by getTopicPosts IS the intended order. 
+  // If getTopicPosts returns new->old, we might want to reverse it for a "Timeline" learning path.
+  // For now, let's keep the order and assume the user manages filenames or dates to sort them.
+  // Actually, for a learning path, usually "01_", "02_" prefixes in filename control simple sorting.
+  
   const meta =
     topicMeta[topic] ??
-    ({ title: topic, meta: 'Topic', description: '专题内容' } as const)
+    ({ title: topic, meta: 'Topic', description: '专题内容', level: 'General' } as const)
   const discussionTerm = `topics/${topic}`
 
   return (
-    <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col pt-24 pb-16 sm:pt-28 sm:pb-24">
-      <header className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white/70 backdrop-blur px-6 sm:px-10 py-10 sm:py-14 shadow-[0_30px_80px_-60px_rgba(0,0,0,0.35)]">
-        <div className="absolute right-6 top-6 h-24 w-24 rounded-full bg-blue-100 blur-[90px]" />
-        <div className="relative">
-          <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.35em] text-gray-500">
-            专题 · {meta.meta}
-          </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-black mt-4 leading-tight">
-            {meta.title}
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-700 mt-4 max-w-3xl leading-relaxed">
-            {meta.description}
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {['Runtime', 'TypeScript', 'Full-stack'].map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-mono uppercase tracking-[0.15em] text-gray-600"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+    <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col pt-24 pb-16 sm:pt-32 sm:pb-24">
+      {/* Header Section */}
+      <header className="relative mb-20 sm:mb-24">
+         <div className="absolute -left-10 -top-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+         <div className="absolute right-0 top-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl" />
+         
+         <div className="relative">
+            <div className="flex items-center gap-3 mb-6">
+                <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-black/5 border border-black/5 text-[11px] font-bold uppercase tracking-widest text-black/60">
+                    {meta.meta}
+                </span>
+                {meta.level && (
+                    <span className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-50 border border-blue-100/50 text-[11px] font-bold uppercase tracking-widest text-blue-600">
+                        {meta.level}
+                    </span>
+                )}
+            </div>
+            
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-black mb-6 leading-[1.1]">
+                {meta.title}
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl leading-relaxed mb-8">
+                {meta.description}
+            </p>
+
+            <div className="flex items-center gap-6 text-sm font-medium text-gray-500">
+                <div className="flex items-center gap-2">
+                    <BookOpen className="h-4 w-4" />
+                    <span>{posts.length} 章节</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span>约 {posts.length * 5} 分钟阅读</span>
+                </div>
+                {posts.length > 0 && (
+                     <div className="flex items-center gap-2">
+                        <Calendar className="h-4 w-4" />
+                        <span>最后更新 {formatDate(posts[0].metadata.date)}</span>
+                    </div>
+                )}
+            </div>
+         </div>
       </header>
 
-      <section className="mt-14 sm:mt-16">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-gray-500">
-              目录
-            </p>
-          </div>
-          <div className="flex items-center gap-2 text-gray-500">
-            <List className="h-4 w-4" />
-            <span className="text-sm">共 {posts.length} 篇</span>
-          </div>
-        </div>
+      {/* Curriculum / Timeline Section */}
+      <section className="relative">
+        <div className="absolute left-4 sm:left-6 top-4 bottom-0 w-px bg-gray-200" />
+        
+        <div className="space-y-12">
+            {posts.map((post, index) => {
+                const relativeSlug = post.slug.replace(`${topic}/`, '')
+                const indexStr = String(index + 1).padStart(2, '0')
+                
+                return (
+                    <div key={post.slug} className="relative pl-12 sm:pl-20 group">
+                        {/* Timeline Marker */}
+                        <div className="absolute left-0 sm:left-2 top-0 flex flex-col items-center">
+                            <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white border-2 border-gray-200 group-hover:border-black group-hover:scale-110 transition-all z-10 flex items-center justify-center">
+                                <span className="text-[10px] font-mono font-bold text-gray-400 group-hover:text-black transition-colors">
+                                    {indexStr}
+                                </span>
+                            </div>
+                        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post) => {
-            const relativeSlug = post.slug.replace(`${topic}/`, '')
-            return (
-              <Link
-                key={post.slug}
-                href={`/topics/${topic}/${relativeSlug}`}
-                className="group rounded-2xl border border-gray-200 bg-white/70 backdrop-blur p-5 sm:p-6 flex flex-col gap-3 transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-40px_rgba(0,0,0,0.35)]"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-gray-500">
-                      {formatDate(post.metadata.date)}
-                    </p>
-                    <p className="text-lg font-semibold text-black mt-1">
-                      {post.metadata.title}
-                    </p>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-gray-400 transition-transform group-hover:translate-x-1 group-hover:text-black" />
-                </div>
-                {post.metadata.description ? (
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    {post.metadata.description as string}
-                  </p>
-                ) : null}
-              </Link>
-            )
-          })}
+                        <Link 
+                            href={`/topics/${topic}/${relativeSlug}`}
+                            className="block group-hover:translate-x-1 transition-transform duration-300"
+                        >
+                            <article className=" rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] hover:border-black/5 transition-all">
+                                <div className="flex flex-col sm:flex-row gap-4 sm:items-start justify-between">
+                                    <div className="space-y-3 flex-1">
+                                        <div className="flex items-center gap-3 text-xs text-gray-400 font-mono">
+                                            <span>{formatDate(post.metadata.date)}</span>
+                                            <span>·</span>
+                                            <span className="uppercase tracking-wider">Chapter {index + 1}</span>
+                                        </div>
+                                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-black transition-colors">
+                                            {post.metadata.title}
+                                        </h2>
+                                        {post.metadata.description && (
+                                            <p className="text-gray-500 leading-relaxed line-clamp-2">
+                                                {post.metadata.description as string}
+                                            </p>
+                                        )}
+                                        
+                                        <div className="pt-2 flex items-center text-sm font-semibold text-blue-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                            开始阅读 <ArrowRight className="ml-1 h-3 w-3" />
+                                        </div>
+                                    </div>
+                                    
+                                    {/* Optional: Add a visual indicator or small image here if available */}
+                                </div>
+                            </article>
+                        </Link>
+                    </div>
+                )
+            })}
         </div>
       </section>
 
-      <section className="mt-14 sm:mt-16">
+      <section className="mt-20 pt-10 border-t border-gray-100">
         <GiscusComments term={discussionTerm} />
       </section>
     </div>
