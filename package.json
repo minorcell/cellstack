@@ -28,6 +28,7 @@
     "next": "16.0.7",
     "next-mdx-remote": "^5.0.0",
     "react": "19.2.0",
+    "react-activity-calendar": "^3.0.1",
     "react-dom": "19.2.0",
     "react-github-calendar": "^5.0.0",
     "react-medium-image-zoom": "^5.4.0",

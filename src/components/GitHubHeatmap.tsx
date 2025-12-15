@@ -1,20 +1,58 @@
 'use client'
 
-import { useRef } from 'react'
-import { GitHubCalendar } from 'react-github-calendar'
+import { useRef, useState, useEffect } from 'react'
+import { ActivityCalendar, Activity } from 'react-activity-calendar'
 import { motion } from 'framer-motion'
 
 interface GitHubHeatmapProps {
   username?: string
+  initialData?: Activity[]
 }
 
-export function GitHubHeatmap({ username = 'minorcell' }: GitHubHeatmapProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
+const minimalTheme = {
+  light: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'],
+  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+}
 
-  const minimalTheme = {
-    light: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'],
-    dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+// Function to fetch data (shared for consistent logic if needed, or just defined inside)
+async function fetchCalendarData(username: string): Promise<Activity[]> {
+  try {
+    const response = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${username}?y=last`
+    )
+    const json = await response.json()
+    return json.contributions ?? []
+  } catch (error) {
+    console.error('Failed to fetch GitHub contributions:', error)
+    return []
   }
+}
+
+export function GitHubHeatmap({ 
+  username = 'minorcell', 
+  initialData 
+}: GitHubHeatmapProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [data, setData] = useState<Activity[]>(initialData || [])
+
+  useEffect(() => {
+    // If no initial data, or to ensure we have the very latest (optional strategy),
+    // we can fetch on mount.
+    // If we have initialData (from build), we might skip this or do it silently.
+    // Let's fetch to ensure we have up-to-date data for "last year" relative to NOW.
+    // The build might be old.
+    
+    // Only fetch if data is empty OR we want to revalidate
+    // For "speed", we rely on initialData. Let's fetch silently to update if needed.
+    const loadData = async () => {
+        const freshData = await fetchCalendarData(username)
+        if (freshData.length > 0) {
+           setData(freshData)
+        }
+    }
+
+    loadData()
+  }, [username])
 
   return (
     <motion.div
@@ -41,20 +79,33 @@ export function GitHubHeatmap({ username = 'minorcell' }: GitHubHeatmapProps) {
       </div>
 
       <div className="rounded-2xl flex justify-center border border-gray-200 bg-white/70 backdrop-blur p-6 sm:p-8 overflow-x-auto">
-        <GitHubCalendar
-          username={username}
-          colorScheme="light"
-          theme={minimalTheme}
-          blockSize={16}
-          blockMargin={3.5}
-          fontSize={14}
-          style={{
-            color: '#000000',
-            fontFamily: 'var(--font-mono)',
-            width: '100%',
-          }}
-          showWeekdayLabels
-        />
+        {data.length > 0 ? (
+            <ActivityCalendar
+              data={data}
+              theme={minimalTheme}
+              colorScheme="light"
+              blockSize={14}
+              blockMargin={4}
+              fontSize={12}
+              showWeekdayLabels
+              style={{
+                fontFamily: 'var(--font-mono)',
+              }}
+              labels={{
+                months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                totalCount: '{{count}} contributions in last year',
+                legend: {
+                  less: 'Less',
+                  more: 'More',
+                },
+              }}
+            />
+        ) : (
+             <div className="h-[128px] w-full flex items-center justify-center text-gray-400 text-sm font-mono animate-pulse">
+                Loading activity data...
+             </div>
+        )}
       </div>
     </motion.div>
   )

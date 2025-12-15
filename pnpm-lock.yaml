@@ -56,6 +56,9 @@ importers:
       react:
         specifier: 19.2.0
         version: 19.2.0
+      react-activity-calendar:
+        specifier: ^3.0.1
+        version: 3.0.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-dom:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
