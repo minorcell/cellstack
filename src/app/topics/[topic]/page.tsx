@@ -11,7 +11,8 @@ const topicMeta: Record<
   bun: {
     title: 'Bun 指南',
     meta: 'Runtime',
-    description: '这是一组面向 Node/JavaScript 开发者的 Bun 实战笔记：目标不是“百科全书”，而是让你能更快把 Bun 用在 CLI、脚本和小型服务里。',
+    description:
+      '这是一组面向 Node/JavaScript 开发者的 Bun 实战笔记：目标不是“百科全书”，而是让你能更快把 Bun 用在 CLI、脚本和小型服务里。',
   },
 }
 

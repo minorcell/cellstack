@@ -157,19 +157,15 @@ export function PagefindSearch({
 
       try {
         const search = await pagefind.search(query)
+        // Limit to 20 results and process them efficiently
+        const topResults = search.results.slice(0, 20)
         const detailed = await Promise.all(
-          search.results.slice(0, 20).map(async (result: PagefindHit, idx) => {
+          topResults.map(async (result: PagefindHit, idx) => {
             const data = await result.data()
             return {
               url: data.url,
-              title:
-                (data.meta && typeof data.meta.title === 'string'
-                  ? data.meta.title
-                  : data.url) ?? `结果 ${idx + 1}`,
-              excerpt:
-                typeof data.excerpt === 'string'
-                  ? data.excerpt
-                  : data.content?.slice(0, 200),
+              title: data.meta?.title || data.url || `结果 ${idx + 1}`,
+              excerpt: data.excerpt || data.content?.slice(0, 200),
             }
           }),
         )
@@ -180,7 +176,7 @@ export function PagefindSearch({
       } finally {
         setIsSearching(false)
       }
-    }, 180)
+    }, 200) // Slightly longer debounce for better performance
 
     return () => clearTimeout(handle)
   }, [query, isActive, ensurePagefind])
