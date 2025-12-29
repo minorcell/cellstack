@@ -40,7 +40,7 @@ interface MeClientPageProps {
 export function MeClientPage({ githubData }: MeClientPageProps) {
   return (
     <motion.div
-      className="relative overflow-hidden select-none"
+      className="relative overflow-hidden select-none bg-white"
       initial="hidden"
       animate="visible"
       variants={{

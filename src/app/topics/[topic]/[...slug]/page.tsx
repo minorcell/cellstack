@@ -71,45 +71,47 @@ export default async function TopicPostPage({
   const discussionTerm = `topics/${slugString}`
 
   return (
-    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
-      <div className="mx-auto max-w-4xl">
-        <header className="mb-10 sm:mb-14 text-center">
-          <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 font-medium uppercase tracking-wider">
-            <span>{topic}</span>
-            <span>·</span>
-            <span>{formatDate(post.metadata.date)}</span>
+    <div className="w-full h-full bg-white">
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <div className="mx-auto max-w-4xl">
+          <header className="mb-10 sm:mb-14 text-center">
+            <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 font-medium uppercase tracking-wider">
+              <span>{topic}</span>
+              <span>·</span>
+              <span>{formatDate(post.metadata.date)}</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-black mb-6 sm:mb-8 leading-tight">
+              {post.metadata.title}
+            </h1>
+            {post.metadata.description ? (
+              <p className="text-base sm:text-lg text-gray-600">
+                {post.metadata.description as string}
+              </p>
+            ) : null}
+          </header>
+
+          <div className="prose prose-base sm:prose-lg max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none">
+            <MDXRemote
+              source={post.content}
+              components={{
+                img: ZoomImage,
+                p: Paragraph,
+                pre: MdxPre,
+              }}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [rehypeHighlight],
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-black mb-6 sm:mb-8 leading-tight">
-            {post.metadata.title}
-          </h1>
-          {post.metadata.description ? (
-            <p className="text-base sm:text-lg text-gray-600">
-              {post.metadata.description as string}
-            </p>
-          ) : null}
-        </header>
 
-        <div className="prose prose-base sm:prose-lg max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none">
-          <MDXRemote
-            source={post.content}
-            components={{
-              img: ZoomImage,
-              p: Paragraph,
-              pre: MdxPre,
-            }}
-            options={{
-              mdxOptions: {
-                rehypePlugins: [rehypeHighlight],
-                remarkPlugins: [remarkGfm],
-              },
-            }}
-          />
+          <div className="mt-12 sm:mt-16">
+            <GiscusComments term={discussionTerm} />
+          </div>
         </div>
-
-        <div className="mt-12 sm:mt-16">
-          <GiscusComments term={discussionTerm} />
-        </div>
-      </div>
-    </article>
+      </article>
+    </div>
   )
 }

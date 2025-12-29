@@ -40,7 +40,7 @@ export default function RootLayout({
         className={`${sourceSans.variable} ${sourceCodePro.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <Navbar />
-        <main className="grow pt-16" data-pagefind-body>
+        <main className="grow" data-pagefind-body>
           {children}
         </main>
         <Footer />

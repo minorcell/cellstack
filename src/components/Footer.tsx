@@ -33,7 +33,7 @@ export function Footer() {
   const showCursor = charIndex >= phrase.length
 
   return (
-    <footer className="h-24 mt-auto flex items-center">
+    <footer className="h-24 mt-auto flex items-center bg-white">
       <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs sm:text-sm text-gray-600 font-mono">
