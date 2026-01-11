@@ -30,12 +30,12 @@ export async function HomeHero() {
   return (
     <div className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.12),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(16,185,129,0.12),transparent_25%),radial-gradient(circle_at_50%_90%,rgba(59,130,246,0.08),transparent_25%)]" />
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:py-20 space-y-10 sm:space-y-14">
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16 space-y-10 sm:space-y-14">
         <div className="space-y-4 sm:space-y-5">
           <Badge variant="secondary" className="px-3 py-1 text-xs">
             mCell · 个人博客
           </Badge>
-          <h1 className="text-4xl sm:text-5xl font-semibold leading-tight text-foreground">
+          <h1 className="text-3xl sm:text-4xl font-semibold leading-tight text-foreground">
             写代码的间隙，记下能复用的经验与想法。
           </h1>
           <div className="flex flex-wrap gap-3">

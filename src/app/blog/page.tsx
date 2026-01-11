@@ -30,7 +30,7 @@ export default function BlogPage() {
   )
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-16 sm:py-20">
+    <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-12 sm:py-16">
       <div className="text-center space-y-3 sm:space-y-4">
         <Badge variant="secondary" className="px-3 py-1 text-xs">
           Blog
@@ -71,7 +71,7 @@ export default function BlogPage() {
                     <img
                       src={post.metadata.image}
                       alt={post.metadata.title}
-                      className="h-40 w-full object-cover transition-transform duration-300 hover:scale-105"
+                      className="h-32 w-full object-cover transition-transform duration-300 hover:scale-105 sm:h-40"
                       loading="lazy"
                     />
                   </div>

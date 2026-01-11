@@ -50,15 +50,15 @@ interface MeClientPageProps {
 
 export function MeClientPage({ githubData }: MeClientPageProps) {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-16 sm:py-20 space-y-8">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16 space-y-8">
       <div className="space-y-3">
         <Badge variant="secondary" className="px-3 py-1 text-xs">
           关于我
         </Badge>
-        <h1 className="text-3xl sm:text-4xl font-semibold text-foreground">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-foreground">
           mCell / minorcell
         </h1>
-        <p className="text-base sm:text-lg text-muted-foreground max-w-3xl">
+        <p className="text-sm sm:text-lg text-muted-foreground max-w-3xl">
           全栈工程师，偏爱 TypeScript + Go。比起炫技，更关注交付速度、可维护性、和现场体验。
         </p>
       </div>
@@ -164,8 +164,13 @@ export function MeClientPage({ githubData }: MeClientPageProps) {
           <CardTitle className="text-lg">GitHub 热力图</CardTitle>
           <CardDescription>最近一年的提交记录（每天自动更新）。</CardDescription>
         </CardHeader>
-        <CardContent className="p-0 sm:p-4">
-          <GitHubHeatmap username="minorcell" initialData={githubData} />
+        <CardContent className="p-3 sm:p-4">
+          <GitHubHeatmap
+            username="minorcell"
+            initialData={githubData}
+            compact
+            className="mt-0"
+          />
         </CardContent>
       </Card>
     </div>
