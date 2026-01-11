@@ -15,7 +15,7 @@ export default function SearchPage() {
         </p>
         <h1 className="text-4xl sm:text-5xl font-bold text-black mb-3">搜索</h1>
         <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-          基于 Pagefind 的静态搜索，覆盖博客、专题和其他页面。
+          基于 Pagefind 的静态搜索，覆盖博客与主要页面。
         </p>
       </div>
 

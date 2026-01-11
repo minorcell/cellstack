@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 const root = process.cwd()
 const contentDir = path.join(root, 'content')
 
-export type PostType = 'blog' | 'topics'
+export type PostType = 'blog'
 
 export interface PostMetadata {
   title: string
@@ -121,41 +121,4 @@ export function getAllPosts(type: PostType): Post[] {
     .map((slug) => getPostBySlug(type, slug))
     .sort((post1, post2) => (post1.slug > post2.slug ? -1 : 1))
   return posts
-}
-
-export function getTopicSlugs(): string[] {
-  const dir = path.join(contentDir, 'topics')
-  if (!fs.existsSync(dir)) return []
-  return fs
-    .readdirSync(dir)
-    .filter((item) => fs.statSync(path.join(dir, item)).isDirectory())
-}
-
-export function getTopicPosts(topicSlug: string): Post[] {
-  const all = getAllPosts('topics')
-  const filtered = all.filter((post) => post.slug.startsWith(`${topicSlug}/`))
-
-  const getLeadingNumber = (slug: string) => {
-    const last = slug.split('/').pop() ?? slug
-    const match = last.match(/^(\d+)/)
-    return match ? parseInt(match[1], 10) : Number.MAX_SAFE_INTEGER
-  }
-
-  return filtered.sort((a, b) => {
-    const numA = getLeadingNumber(a.slug)
-    const numB = getLeadingNumber(b.slug)
-    if (numA !== numB) return numA - numB
-
-    const orderA =
-      typeof a.metadata.order === 'number'
-        ? a.metadata.order
-        : Number.MAX_SAFE_INTEGER
-    const orderB =
-      typeof b.metadata.order === 'number'
-        ? b.metadata.order
-        : Number.MAX_SAFE_INTEGER
-    if (orderA !== orderB) return orderA - orderB
-
-    return a.metadata.title.localeCompare(b.metadata.title)
-  })
 }

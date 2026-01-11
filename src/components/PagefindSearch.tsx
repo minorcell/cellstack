@@ -266,7 +266,7 @@ export function PagefindSearch({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             className="bg-transparent w-full text-sm sm:text-base text-gray-900 placeholder:text-gray-400 focus:outline-none"
-            placeholder="搜索博客、专题与页面..."
+            placeholder="搜索博客与页面..."
             autoComplete="off"
           />
         </div>

@@ -1,66 +1,36 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-
-const phrase = 'GITHUB JUNJIN'
-const firstLength = 'GITHUB'.length
-const secondStart = firstLength + 1 // skip space
+const links = [
+  { label: 'GitHub', href: 'https://github.com/minorcell' },
+  { label: 'Email', href: 'mailto:minorcell6789@gmail.com' },
+  { label: 'RSS', href: '/feed.xml' },
+]
 
 export function Footer() {
-  const [charIndex, setCharIndex] = useState(0)
-  const [cursorVisible, setCursorVisible] = useState(true)
-
-  useEffect(() => {
-    const typing = setInterval(() => {
-      setCharIndex((idx) => Math.min(idx + 1, phrase.length))
-    }, 110)
-
-    const blink = setInterval(() => {
-      setCursorVisible((v) => !v)
-    }, 650)
-
-    return () => {
-      clearInterval(typing)
-      clearInterval(blink)
-    }
-  }, [])
-
-  const typedFirst = phrase.slice(0, Math.min(charIndex, firstLength))
-  const typedSecond =
-    charIndex > secondStart
-      ? phrase.slice(secondStart, Math.min(charIndex, phrase.length))
-      : ''
-  const showCursor = charIndex >= phrase.length
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="h-24 mt-auto flex items-center bg-white">
-      <div className="max-w-7-xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs sm:text-sm text-gray-600 font-mono">
-            © {new Date().getFullYear()} CELLSTACK
+    <footer className="mt-auto border-t border-border/70 bg-background/70">
+      <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-foreground">CellStack</p>
+          <p className="text-xs text-muted-foreground">
+            写代码，也写点生活与想法。
           </p>
-          <div className="flex space-x-6 sm:space-x-8 text-xs sm:text-sm font-mono uppercase tracking-[0.2em] sm:tracking-[0.35em] text-gray-800 whitespace-nowrap">
+        </div>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <span>© {year}</span>
+          {links.map((item) => (
             <a
-              href="https://github.com/minorcell"
-              className="hover:text-black transition-colors"
+              key={item.href}
+              href={item.href}
+              className="hover:text-foreground transition-colors"
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={
+                item.href.startsWith('http') ? 'noopener noreferrer' : undefined
+              }
             >
-              {typedFirst || '\u00A0'}
+              {item.label}
             </a>
-            <div className="flex items-center">
-              <a
-                href="https://juejin.cn/user/2280829967146779"
-                className="hover:text-black transition-colors"
-              >
-                {typedSecond || '\u00A0'}
-              </a>
-              <span
-                className={`inline-block w-0.5 h-4 bg-black ml-1 align-middle ${
-                  showCursor && cursorVisible ? 'opacity-100' : 'opacity-0'
-                }`}
-                aria-hidden="true"
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </footer>
