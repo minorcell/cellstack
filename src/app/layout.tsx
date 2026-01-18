@@ -3,6 +3,7 @@ import { Source_Code_Pro, Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { getTopicsData } from '@/lib/topics-data'
 
 const sourceSans = Source_Sans_3({
   variable: '--font-sans',
@@ -34,12 +35,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const topics = getTopicsData()
+
   return (
     <html lang="en">
       <body
         className={`${sourceSans.variable} ${sourceCodePro.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
-        <Navbar />
+        <Navbar topics={topics} />
         <main className="grow" data-pagefind-body>
           {children}
         </main>

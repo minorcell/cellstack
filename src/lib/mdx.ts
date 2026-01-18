@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 const root = process.cwd()
 const contentDir = path.join(root, 'content')
 
-export type PostType = 'blog'
+export type PostType = 'blog' | 'topics'
 
 export interface PostMetadata {
   title: string

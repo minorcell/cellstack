@@ -4,22 +4,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Github, Menu, Search, X } from 'lucide-react'
+import { Github, Menu, Search, X, ChevronDown } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import { PagefindSearch } from '@/components/PagefindSearch'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
+import type { Topic } from '@/lib/topics'
 
 const navLinks = [
   { label: '博客', href: '/blog' },
+  { label: '专题', href: '/topics', hasDropdown: true },
   { label: '关于我', href: '/me' },
 ]
 
-export function Navbar() {
+interface NavbarProps {
+  topics: Topic[]
+}
+
+export function Navbar({ topics }: NavbarProps) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [topicsDropdownOpen, setTopicsDropdownOpen] = useState(false)
   const isClient = typeof window !== 'undefined'
 
   useEffect(() => {
@@ -39,6 +46,44 @@ export function Navbar() {
           item.href === '/'
             ? pathname === '/'
             : pathname.startsWith(item.href)
+
+        if (item.hasDropdown && item.label === '专题') {
+          return (
+            <div key={item.href} className="relative group">
+              <Link
+                href={item.href}
+                onClick={onClick}
+                className={cn(
+                  'rounded-md px-3 py-2 text-sm font-medium transition-colors inline-flex items-center gap-1',
+                  'text-muted-foreground hover:text-foreground hover:bg-accent',
+                  isActive && 'text-foreground bg-accent',
+                )}
+              >
+                {item.label}
+                <ChevronDown className="h-3.5 w-3.5" />
+              </Link>
+
+              {/* Desktop dropdown */}
+              <div className="absolute left-0 top-full mt-1 hidden group-hover:block">
+                <div className="w-56 rounded-lg border border-border bg-background shadow-lg p-1 mt-1">
+                  {topics.map((topic) => (
+                    <Link
+                      key={topic.slug}
+                      href={`/topics/${topic.slug}`}
+                      onClick={onClick}
+                      className="block rounded-md px-3 py-2 text-sm hover:bg-accent transition-colors"
+                    >
+                      <div className="font-medium text-foreground">{topic.title}</div>
+                      <div className="text-xs text-muted-foreground truncate">
+                        {topic.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+        }
 
         return (
           <Link
@@ -163,7 +208,69 @@ export function Navbar() {
               <Separator />
 
               <div className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-3">
-                {renderLinks(() => setMobileOpen(false))}
+                {navLinks.map((item) => {
+                  const isActive =
+                    item.href === '/'
+                      ? pathname === '/'
+                      : pathname.startsWith(item.href)
+
+                  if (item.hasDropdown && item.label === '专题') {
+                    return (
+                      <div key={item.href} className="space-y-1">
+                        <button
+                          onClick={() => setTopicsDropdownOpen(!topicsDropdownOpen)}
+                          className={cn(
+                            'w-full rounded-md px-3 py-2 text-sm font-medium transition-colors text-left flex items-center justify-between',
+                            'text-muted-foreground hover:text-foreground hover:bg-accent',
+                            isActive && 'text-foreground bg-accent',
+                          )}
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 transition-transform',
+                              topicsDropdownOpen && 'rotate-180',
+                            )}
+                          />
+                        </button>
+                        {topicsDropdownOpen && (
+                          <div className="ml-4 space-y-1 border-l-2 border-border pl-2">
+                            {topics.map((topic) => (
+                              <Link
+                                key={topic.slug}
+                                href={`/topics/${topic.slug}`}
+                                onClick={() => setMobileOpen(false)}
+                                className="block rounded-md px-3 py-2 text-sm hover:bg-accent transition-colors"
+                              >
+                                <div className="font-medium text-foreground text-sm">
+                                  {topic.title}
+                                </div>
+                                <div className="text-xs text-muted-foreground line-clamp-1">
+                                  {topic.description}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  }
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        'rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                        'text-muted-foreground hover:text-foreground hover:bg-accent',
+                        isActive && 'text-foreground bg-accent',
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                })}
               </div>
 
               <Separator />
