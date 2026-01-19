@@ -109,7 +109,7 @@ export default async function TopicArticlePage({ params }: Props) {
 
   return (
     <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-4xl mt-4">
         <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
           <Link
             href="/topics"
