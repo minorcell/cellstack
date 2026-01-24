@@ -104,7 +104,7 @@ println!("s1 = {}, s2 = {}", s1, s2); // 编译报错，s1 失效
 ```rust
 let s1 = String::from("hello");
 let s2 = s1.clone();
-println!("s1 = {}, s2 = {}", s1, s2);
+println!("s1 = {}, s2 = {}", s1, s2); // s1 仍然可用，因为 clone 做了深拷贝，是独立的两份数据。
 ```
 
 Rust 不会自动深拷贝；你显式 `clone`，就等于显式选择了更高成本。官方也提醒：热点路径上滥用 clone 会显著拖慢性能。
@@ -125,7 +125,8 @@ fn makes_copy(some_integer: i32) { /* ... */ }
 
 fn main() {
     let s = String::from("hello");
-    takes_ownership(s); // move，s 失效
+    takes_ownership(s);
+    // println!("{}", s); // 编译报错，s 失效
 
     let x = 5;
     makes_copy(x); // copy，x 仍然可用
@@ -224,7 +225,7 @@ fn dangle() -> &String {
 ```rust
 fn no_dangle() -> String {
     let s = String::from("hello");
-    s
+    s // s 作为返回值移动出函数
 }
 ```
 
