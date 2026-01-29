@@ -1,30 +1,17 @@
 import type { Metadata } from 'next'
-import { Source_Code_Pro, Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { getTopicsData } from '@/lib/topics-data'
-
-const sourceSans = Source_Sans_3({
-  variable: '--font-sans',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
-
-const sourceCodePro = Source_Code_Pro({
-  variable: '--font-mono',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
+import { PixelCompanion } from '@/components/PixelCompanion'
+import { PixelParticles, FloatingPixels, StarField } from '@/components/PixelParticles'
 
 export const metadata: Metadata = {
   title: {
-    default: 'CellStack',
+    default: 'CellStack | Pixel Adventure',
     template: '%s | CellStack',
   },
-  description: 'Engineering, Design, and Intelligence',
+  description: '8-bit Engineering, Design, and Intelligence',
   icons: {
     icon: '/logo.svg',
   },
@@ -38,15 +25,27 @@ export default function RootLayout({
   const topics = getTopicsData()
 
   return (
-    <html lang="en">
-      <body
-        className={`${sourceSans.variable} ${sourceCodePro.variable} antialiased min-h-screen flex flex-col bg-background text-foreground`}
-      >
+    <html lang="zh-CN">
+      <body className="antialiased min-h-screen flex flex-col bg-background text-foreground relative overflow-x-hidden">
+        {/* Background Effects */}
+        <StarField />
+        <FloatingPixels />
+        
+        {/* CRT Overlay */}
+        <div className="crt-overlay" />
+        
+        {/* Pixel Grid Pattern */}
+        <div className="fixed inset-0 pixel-grid pointer-events-none z-0" />
+        
         <Navbar topics={topics} />
-        <main className="grow" data-pagefind-body>
+        <main className="grow relative z-10" data-pagefind-body>
           {children}
         </main>
         <Footer />
+        
+        {/* Interactive Elements */}
+        <PixelCompanion />
+        <PixelParticles />
       </body>
     </html>
   )

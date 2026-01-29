@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { getPostBySlug, getPostSlugs } from '@/lib/mdx'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ZoomImage } from '@/components/ZoomImage'
@@ -7,14 +8,14 @@ import { GiscusComments } from '@/components/GiscusComments'
 import type { Metadata } from 'next'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
-import 'highlight.js/styles/atom-one-dark.css'
+import 'highlight.js/styles/atom-one-light.css'
 
 const formatDate = (value: string) => {
   const date = new Date(value)
   const y = date.getFullYear()
   const m = String(date.getMonth() + 1).padStart(2, '0')
   const d = String(date.getDate()).padStart(2, '0')
-  return `${y}${m}${d}`
+  return `${y}.${m}.${d}`
 }
 
 interface Props {
@@ -67,37 +68,72 @@ export default async function BlogPost({ params }: Props) {
   const discussionTerm = `blog/${slugString}`
 
   return (
-    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="mx-auto max-w-4xl">
-        <header className="mb-10 sm:mb-14 text-center">
-          <div className="flex items-center justify-center gap-3 text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 font-medium uppercase tracking-wider">
-            <span>发布于</span>
-            <span>·</span>
+        {/* Back Link */}
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-sm text-[var(--pixel-cyan)] hover:text-[var(--pixel-dark)] transition-colors mb-8 font-pixel text-[10px] uppercase"
+        >
+          <span>&lt;</span>
+          <span>返回文章列表</span>
+        </Link>
+
+        {/* Header */}
+        <header className="mb-10 sm:mb-14">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="px-3 py-1 bg-[var(--pixel-purple)] font-pixel text-[8px] text-white uppercase">
+              文章
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3 text-xs text-[var(--muted-foreground)] mb-4 font-pixel text-[8px] uppercase">
             <span>{formatDate(post.metadata.date)}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-black mb-6 sm:mb-8 leading-tight">
+          
+          <h1 className="font-pixel text-xl sm:text-2xl lg:text-3xl text-[var(--pixel-dark)] mb-6 leading-relaxed tracking-wider">
             {post.metadata.title}
           </h1>
+          
+          {typeof post.metadata.description === 'string' && (
+            <p className="text-lg text-[var(--muted-foreground)] border-l-4 border-[var(--pixel-cyan)] pl-4">
+              {post.metadata.description}
+            </p>
+          )}
         </header>
 
-        <div className="prose prose-base sm:prose-lg max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none">
-          <MDXRemote
-            source={post.content}
-            components={{
-              img: ZoomImage,
-              p: Paragraph,
-              pre: MdxPre,
-            }}
-            options={{
-              mdxOptions: {
-                rehypePlugins: [rehypeHighlight],
-                remarkPlugins: [remarkGfm],
-              },
-            }}
-          />
+        {/* Content */}
+        <div className="pixel-border p-6 sm:p-8 bg-white">
+          <div className="prose prose-base sm:prose-lg max-w-none 
+            prose-headings:font-pixel prose-headings:text-[var(--pixel-dark)] 
+            prose-p:text-[var(--muted-foreground)] 
+            prose-a:text-[var(--pixel-cyan)] prose-a:no-underline hover:prose-a:text-[var(--pixel-yellow)]
+            prose-pre:bg-[var(--muted)] prose-pre:border-2 prose-pre:border-[var(--border)]
+            prose-code:bg-[var(--muted)] prose-code:text-[var(--pixel-cyan)] prose-code:px-1
+            prose-strong:text-[var(--pixel-dark)] prose-li:text-[var(--muted-foreground)]
+            prose-blockquote:border-l-[var(--pixel-purple)] prose-blockquote:text-[var(--muted-foreground)]">
+            <MDXRemote
+              source={post.content}
+              components={{
+                img: ZoomImage,
+                p: Paragraph,
+                pre: MdxPre,
+              }}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [rehypeHighlight],
+                  remarkPlugins: [remarkGfm],
+                },
+              }}
+            />
+          </div>
         </div>
 
+        {/* Comments */}
         <div className="mt-12 sm:mt-16">
+          <div className="flex items-center gap-3 mb-6">
+            <h2 className="font-pixel text-sm text-[var(--pixel-dark)] tracking-wider">留言讨论</h2>
+          </div>
           <GiscusComments term={discussionTerm} />
         </div>
       </div>

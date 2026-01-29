@@ -103,7 +103,7 @@ export function CodeBlock({ children }: CodeBlockProps) {
           <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
-      <pre className="overflow-auto text-[13px] leading-relaxed text-gray-100 bg-[#0b0d11] font-mono m-0 p-0">
+      <pre className="overflow-auto text-[14px] md:text-[15px] leading-relaxed text-gray-100 bg-[#0b0d11] font-mono m-0 p-0">
         <div className="p-4 sm:p-5 md:p-6 min-w-full">
           {isElement(child) ? (
             React.cloneElement(child, {

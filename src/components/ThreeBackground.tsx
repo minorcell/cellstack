@@ -160,7 +160,7 @@ function ParticleNet() {
 
 export function ThreeBackground() {
   return (
-    <div className="fixed inset-0 -z-10 bg-white overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 -z-10 bg-[var(--pixel-dark)] overflow-hidden pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         dpr={[1, 1.5]}

@@ -12,8 +12,8 @@ interface GitHubHeatmapProps {
   className?: string
 }
 
-const minimalTheme = {
-  light: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127'],
+const pixelTheme = {
+  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
   dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
 }
 
@@ -72,20 +72,20 @@ export function GitHubHeatmap({
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs font-mono uppercase tracking-[0.35em] text-gray-500">
+          <p className="font-pixel text-[8px] uppercase tracking-wider text-[var(--pixel-cyan)]">
             GitHub Activity
           </p>
-          <p className="text-lg font-semibold text-black mt-2">
+          <p className="text-lg font-semibold text-[var(--pixel-dark)] mt-2">
             持续编码，日拱一卒。
           </p>
         </div>
       </div>
 
-      <div className="rounded-xl flex justify-center border border-gray-200 bg-white/70 backdrop-blur p-4 sm:p-6 overflow-x-auto">
+      <div className="pixel-border p-4 sm:p-6 overflow-x-auto bg-white">
         {data.length > 0 ? (
           <ActivityCalendar
             data={data}
-            theme={minimalTheme}
+            theme={pixelTheme}
             colorScheme="light"
             blockSize={blockSize}
             blockMargin={blockMargin}
@@ -118,7 +118,7 @@ export function GitHubHeatmap({
             }}
           />
         ) : (
-          <div className="h-[128px] w-full flex items-center justify-center text-gray-400 text-sm font-mono animate-pulse">
+          <div className="h-[128px] w-full flex items-center justify-center text-[var(--muted-foreground)] text-sm font-mono animate-pulse">
             Loading activity data...
           </div>
         )}

@@ -9,13 +9,16 @@ export const metadata: Metadata = {
 export default function SearchPage() {
   return (
     <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <div className="text-center mb-10 sm:mb-14">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 mb-4">
-          Search
-        </p>
-        <h1 className="text-4xl sm:text-5xl font-bold text-black mb-3">搜索</h1>
-        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-          基于 Pagefind 的静态搜索，覆盖博客与主要页面。
+      {/* Header */}
+      <div className="text-center space-y-4 mb-10">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--pixel-cyan)] font-pixel text-[10px] text-white uppercase tracking-wider">
+          <span>SEARCH</span>
+        </div>
+        <h1 className="font-pixel text-2xl sm:text-3xl text-[var(--pixel-dark)] tracking-wider">
+          搜索文章
+        </h1>
+        <p className="text-base sm:text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto">
+          输入关键词查找你想看的内容
         </p>
       </div>
 

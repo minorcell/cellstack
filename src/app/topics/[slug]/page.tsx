@@ -2,13 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getTopic, getTopicWithContent, getAllTopics } from '@/lib/topics.server'
-import { ArrowLeft, FileText } from 'lucide-react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ZoomImage } from '@/components/ZoomImage'
 import { MdxPre } from '@/components/MdxPre'
 import rehypeHighlight from 'rehype-highlight'
 import remarkGfm from 'remark-gfm'
-import 'highlight.js/styles/atom-one-dark.css'
+import 'highlight.js/styles/atom-one-light.css'
 import React from 'react'
 
 interface TopicPageProps {
@@ -71,26 +70,34 @@ export default async function TopicPage({ params }: TopicPageProps) {
   )
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16">
+      {/* Back Link */}
       <Link
         href="/topics"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6"
+        className="inline-flex items-center gap-2 text-sm text-[var(--pixel-cyan)] hover:text-[var(--pixel-dark)] transition-colors mb-8 font-pixel text-[10px] uppercase"
       >
-        <ArrowLeft className="h-4 w-4" />
-        返回专题列表
+        <span>&lt;</span>
+        <span>返回专题列表</span>
       </Link>
 
+      {/* Header */}
       <div className="mb-8 sm:mb-12">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl mb-3">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="px-3 py-1 bg-[var(--pixel-blue)] font-pixel text-[8px] text-white uppercase">
+            专题
+          </div>
+        </div>
+        
+        <h1 className="font-pixel text-2xl sm:text-3xl text-[var(--pixel-dark)] mb-4 tracking-wider">
           {topicWithContent.title}
         </h1>
-        <p className="text-muted-foreground text-base sm:text-lg mb-6">
+        <p className="text-[var(--muted-foreground)] text-base sm:text-lg">
           {topicWithContent.description}
         </p>
 
         {/* 渲染 index.md 的正文内容 */}
         {topicWithContent.content && (
-          <div className="prose prose-base max-w-none prose-headings:font-semibold prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-pre:bg-transparent prose-pre:border-0 prose-pre:shadow-none prose-pre:m-0 prose-pre:p-0 prose-code:bg-transparent prose-code:p-0 prose-code:rounded-none mb-8 border-b border-border pb-8">
+          <div className="mt-8 prose prose-base max-w-none prose-headings:font-pixel prose-headings:text-[var(--pixel-dark)] prose-p:text-[var(--muted-foreground)] prose-a:text-[var(--pixel-cyan)] prose-a:no-underline hover:prose-a:text-[var(--pixel-yellow)] prose-pre:bg-[var(--muted)] prose-pre:border-2 prose-pre:border-[var(--border)] prose-code:bg-[var(--muted)] prose-code:text-[var(--pixel-cyan)] prose-code:px-1 prose-strong:text-[var(--pixel-dark)] prose-li:text-[var(--muted-foreground)] mb-8 border-b-2 border-[var(--pixel-purple)] pb-8">
             <MDXRemote
               source={topicWithContent.content}
               components={{
@@ -109,40 +116,58 @@ export default async function TopicPage({ params }: TopicPageProps) {
         )}
       </div>
 
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold text-foreground">文章列表</h2>
+      {/* Articles Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <h2 className="font-pixel text-sm text-[var(--pixel-dark)] tracking-wider">文章列表</h2>
+        <div className="flex-1 h-1 bg-gradient-to-r from-[var(--pixel-blue)] to-transparent" />
+        <span className="text-xs text-[var(--pixel-cyan)]">
+          共 {sortedArticles.length} 篇
+        </span>
       </div>
 
+      {/* Articles List */}
       <div className="space-y-4">
         {sortedArticles.map((article, index) => (
           <Link
             key={article.slug}
             href={`/topics/${slug}/${article.slug}`}
-            className="group block rounded-lg border border-border bg-card p-5 transition-all hover:border-foreground/20 hover:shadow-md"
+            className="group block pixel-border bg-white p-5 hover:border-[var(--pixel-cyan)] transition-all hover:translate-x-2 hover:-translate-y-1"
+            data-pixel
+            data-platform
           >
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent flex items-center justify-center text-sm font-medium text-muted-foreground">
-                {index + 1}
+              {/* Article Number */}
+              <div className="flex-shrink-0 w-12 h-12 bg-[var(--pixel-blue)] flex items-center justify-center font-pixel text-xs text-white group-hover:bg-[var(--pixel-cyan)] transition-colors">
+                {String(index + 1).padStart(2, '0')}
               </div>
+              
+              {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-semibold text-foreground mb-1 group-hover:text-foreground/80 transition-colors">
+                <h3 className="text-lg font-medium text-[var(--pixel-dark)] mb-1 group-hover:text-[var(--pixel-blue)] transition-colors">
                   {article.title}
                 </h3>
                 {article.description && (
-                  <p className="text-muted-foreground text-sm line-clamp-2">
+                  <p className="text-[var(--muted-foreground)] text-sm line-clamp-2">
                     {article.description}
                   </p>
                 )}
               </div>
-              <FileText className="h-5 w-5 text-muted-foreground flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              {/* Action */}
+              <div className="flex-shrink-0 flex items-center gap-2 text-[var(--pixel-cyan)] group-hover:text-[var(--pixel-yellow)] transition-colors">
+                <span className="text-xs font-pixel text-[8px] hidden sm:inline">阅读</span>
+                <span className="text-lg">&gt;</span>
+              </div>
             </div>
           </Link>
         ))}
       </div>
 
       {sortedArticles.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">该专题暂无文章</p>
+        <div className="text-center py-12 pixel-border border-[var(--pixel-yellow)] bg-white">
+          <p className="font-pixel text-[10px] text-[var(--pixel-yellow)]">
+            该专题下暂无文章
+          </p>
         </div>
       )}
     </div>
