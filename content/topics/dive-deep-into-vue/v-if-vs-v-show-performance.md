@@ -187,7 +187,7 @@ const activeTab = ref('home')
 
 ## 5. v-show 的限制
 
-### 5.1 不支持 <template>
+### 5.1 不支持 `<template>`
 
 ```vue
 <!-- ❌ 不生效 -->
