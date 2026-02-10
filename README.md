@@ -14,20 +14,6 @@
 - 邮箱：minorcell6789@gmail.com
 - 技术讨论：文章评论区
 
-## MCP 集成（Issue #67）
-
-- 构建时静态数据导出：
-  - `pnpm run mcp:build-data`
-  - 产物目录：`public/mcp/`
-  - 资源类型：`blog`、`topic`、`topic_article`、`site_page`、`profile`
-- 本地 MCP Server 包：
-  - `packages/stack-mcp`
-  - 包名：`@mcell/stack-mcp`
-  - 本地运行：`npx -y @mcell/stack-mcp`
-- 站点与作者信息统一数据源：
-  - `content/site/site.json`
-  - `content/site/me.json`
-
 ## License
 
 MIT
