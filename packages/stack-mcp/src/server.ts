@@ -91,7 +91,7 @@ export function createStackMcpServer(config: StackMcpConfig): McpServer {
   const client = new DatasetClient(config)
   const server = new McpServer({
     name: '@mcell/stack-mcp',
-    version: '0.2.0',
+    version: '0.2.1',
   })
 
   server.tool(

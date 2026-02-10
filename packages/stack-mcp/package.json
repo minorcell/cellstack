@@ -1,7 +1,7 @@
 {
   "name": "@mcell/stack-mcp",
-  "version": "0.2.0",
-  "description": "MCP server for static article datasets",
+  "version": "0.2.1",
+  "description": "MCP server for multi-resource static datasets",
   "license": "MIT",
   "type": "module",
   "main": "dist/cli.js",

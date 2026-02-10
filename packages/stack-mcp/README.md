@@ -19,14 +19,16 @@ By default it reads index data from:
   "mcpServers": {
     "cellstack": {
       "command": "npx",
-      "args": ["-y", "@mcell/stack-mcp"],
-      "env": {
-        "STACK_MCP_INDEX_URL": "https://stack.mcell.top/mcp/index.json"
-      }
+      "args": ["-y", "@mcell/stack-mcp"]
     }
   }
 }
 ```
+
+The defaults are already built in:
+
+- `STACK_MCP_INDEX_URL=https://stack.mcell.top/mcp/index.json`
+- `STACK_MCP_CACHE_DIR=~/.cache/stack-mcp`
 
 ## Tools
 
@@ -46,6 +48,7 @@ By default it reads index data from:
 - `STACK_MCP_CACHE_DIR`: Local cache directory. Default: `~/.cache/stack-mcp`.
 - `STACK_MCP_CACHE_TTL_SECONDS`: Cache TTL (seconds). Default: `1800`.
 - `STACK_MCP_REQUEST_TIMEOUT_SECONDS`: HTTP timeout (seconds). Default: `20`.
+- `STACK_MCP_DEBUG`: Optional debug log switch (`1`/`true`/`yes` to enable).
 
 ## Static Data Format
 

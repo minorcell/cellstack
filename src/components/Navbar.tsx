@@ -20,26 +20,111 @@ interface NavbarProps {
   topics: Topic[]
 }
 
+interface McpGuideItem {
+  id: string
+  title: string
+  subtitle: string
+  snippet: string
+}
+
+const MCP_GUIDES: McpGuideItem[] = [
+  {
+    id: 'codex',
+    title: 'Codex CLI',
+    subtitle: '推荐，直接通过 codex 命令行添加',
+    snippet: `codex mcp add cellstack -- npx -y @mcell/stack-mcp`,
+  },
+  {
+    id: 'claude',
+    title: 'Claude Code',
+    subtitle: 'CLI 添加示例（不同版本参数可能有差异）',
+    snippet: `claude mcp add cellstack -- npx -y @mcell/stack-mcp`,
+  },
+  {
+    id: 'memo',
+    title: 'Memo Code',
+    subtitle: 'CLI 添加示例（与 Codex 风格一致）',
+    snippet: `memo mcp add cellstack -- npx -y @mcell/stack-mcp`,
+  },
+  {
+    id: 'standard',
+    title: '标准 MCP 配置',
+    subtitle: '适用于支持 mcpServers 的通用客户端',
+    snippet: `{
+  "mcpServers": {
+    "cellstack": {
+      "command": "npx",
+      "args": ["-y", "@mcell/stack-mcp"]
+    }
+  }
+}`,
+  },
+]
+
+function McpGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="6" height="6" fill="currentColor" />
+      <rect x="16" y="2" width="6" height="6" fill="currentColor" />
+      <rect x="9" y="16" width="6" height="6" fill="currentColor" />
+      <path
+        d="M8 5H16M5 8V12H12M19 8V12H12M12 12V16"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
+    </svg>
+  )
+}
+
 export function Navbar({ topics }: NavbarProps) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [mcpGuideOpen, setMcpGuideOpen] = useState(false)
+  const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null)
   const [topicsDropdownOpen, setTopicsDropdownOpen] = useState(false)
   const isClient = typeof window !== 'undefined'
 
   useEffect(() => {
-    if (mobileOpen) {
+    if (mobileOpen || mcpGuideOpen) {
       const prev = document.body.style.overflow
       document.body.style.overflow = 'hidden'
       return () => {
         document.body.style.overflow = prev
       }
     }
-  }, [mobileOpen])
+  }, [mobileOpen, mcpGuideOpen])
+
+  useEffect(() => {
+    if (!mcpGuideOpen) return
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMcpGuideOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [mcpGuideOpen])
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
     return pathname.startsWith(href)
+  }
+
+  const handleCopySnippet = async (id: string, snippet: string) => {
+    try {
+      await navigator.clipboard.writeText(snippet)
+      setCopiedSnippet(id)
+      setTimeout(() => setCopiedSnippet((current) => (current === id ? null : current)), 1200)
+    } catch (error) {
+      console.error('Failed to copy snippet', error)
+    }
   }
 
   return (
@@ -135,6 +220,16 @@ export function Navbar({ topics }: NavbarProps) {
         {/* Right Actions */}
         <div className="flex items-center gap-2">
           <button
+            onClick={() => setMcpGuideOpen(true)}
+            className="flex items-center gap-2 px-3 py-2 text-[var(--pixel-purple)] hover:bg-[var(--pixel-purple)]/10 hover:text-[var(--pixel-dark)] transition-colors"
+            aria-label="打开 MCP 配置指南"
+            title="MCP 配置指南"
+          >
+            <McpGlyph className="w-5 h-5" />
+            <span className="hidden lg:inline font-pixel text-[10px] uppercase tracking-wider">MCP</span>
+          </button>
+
+          <button
             onClick={() => setSearchOpen(true)}
             className="hidden sm:flex items-center gap-2 px-4 py-2 font-pixel text-[12px] text-[var(--pixel-yellow)] hover:bg-[var(--pixel-yellow)]/10 transition-colors"
           >
@@ -198,6 +293,21 @@ export function Navbar({ topics }: NavbarProps) {
                 <span className="font-pixel text-[10px] text-[var(--pixel-yellow)]">搜索</span>
                 <div className="text-left">
                   <div className="text-[var(--pixel-dark)]">查找文章</div>
+                </div>
+              </button>
+
+              {/* MCP Guide */}
+              <button
+                onClick={() => {
+                  setMobileOpen(false)
+                  setMcpGuideOpen(true)
+                }}
+                className="w-full flex items-center gap-3 p-4 border-b-2 border-[var(--pixel-purple)]/20 hover:bg-[var(--pixel-purple)]/5 transition-colors"
+              >
+                <McpGlyph className="w-5 h-5 text-[var(--pixel-purple)]" />
+                <div className="text-left">
+                  <div className="font-pixel text-[10px] text-[var(--pixel-purple)] uppercase">MCP</div>
+                  <div className="text-[var(--pixel-dark)]">查看接入配置</div>
                 </div>
               </button>
 
@@ -278,6 +388,72 @@ export function Navbar({ topics }: NavbarProps) {
             </div>
           </div>,
           document.body
+        )}
+
+      {isClient &&
+        mcpGuideOpen &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[80] flex items-start justify-center bg-black/40 backdrop-blur-sm px-4 sm:px-6 py-10 sm:py-14 overflow-y-auto"
+            onClick={() => setMcpGuideOpen(false)}
+          >
+            <div
+              className="w-full max-w-4xl pixel-border bg-white max-h-[calc(100vh-4rem)] overflow-hidden flex flex-col"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b-2 border-[var(--pixel-purple)]">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 border-2 border-[var(--pixel-purple)] bg-[var(--pixel-purple)]/10 flex items-center justify-center">
+                    <McpGlyph className="w-5 h-5 text-[var(--pixel-purple)]" />
+                  </div>
+                  <div>
+                    <p className="font-pixel text-[10px] uppercase tracking-wider text-[var(--pixel-yellow)]">MCP GUIDE</p>
+                    <h2 className="text-lg sm:text-xl text-[var(--pixel-dark)] font-medium">CellStack MCP 接入方式</h2>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setMcpGuideOpen(false)}
+                  className="w-10 h-10 border-2 border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--pixel-dark)] hover:border-[var(--pixel-cyan)] transition-colors"
+                  aria-label="关闭 MCP 配置指南"
+                >
+                  X
+                </button>
+              </div>
+
+              <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
+                {MCP_GUIDES.map((guide) => (
+                  <section key={guide.id} className="pixel-border p-4 sm:p-5 bg-white">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div>
+                        <h3 className="text-[var(--pixel-dark)] text-base sm:text-lg font-medium">{guide.title}</h3>
+                        <p className="text-sm text-[var(--muted-foreground)]">{guide.subtitle}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleCopySnippet(guide.id, guide.snippet)}
+                        className={cn(
+                          'shrink-0 px-3 py-2 font-pixel text-[10px] uppercase tracking-wider border-2 transition-colors',
+                          copiedSnippet === guide.id
+                            ? 'border-[var(--pixel-green)] text-[var(--pixel-green)] bg-[var(--pixel-green)]/10'
+                            : 'border-[var(--border)] text-[var(--pixel-cyan)] hover:border-[var(--pixel-cyan)] hover:bg-[var(--pixel-cyan)]/10',
+                        )}
+                      >
+                        {copiedSnippet === guide.id ? '已复制' : '复制'}
+                      </button>
+                    </div>
+                    <pre className="bg-[var(--muted)] border-2 border-[var(--border)] p-3 text-xs sm:text-sm text-[var(--pixel-dark)] overflow-x-auto whitespace-pre-wrap break-all">
+                      <code>{guide.snippet}</code>
+                    </pre>
+                  </section>
+                ))}
+
+                <p className="text-xs text-[var(--muted-foreground)]">
+                  默认已内置数据源与缓存路径，一般无需额外环境变量。仅在私有部署或调试时再覆盖 env。
+                </p>
+              </div>
+            </div>
+          </div>,
+          document.body,
         )}
 
       <PagefindSearch
