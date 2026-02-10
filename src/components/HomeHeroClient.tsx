@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { PulsingText } from '@/components/TypewriterText'
+import { siteContent } from '@/lib/site-content'
 
 interface Post {
   slug: string
@@ -196,13 +197,12 @@ export function HomeHeroClient({ posts }: HomeHeroClientProps) {
             
             {/* Subtitle with typing effect */}
             <div className="text-lg sm:text-xl text-[var(--pixel-cyan)] mb-6 font-body">
-              <ClientTypewriter text="一个随便写写的技术博客" delay={500} />
+              <ClientTypewriter text={siteContent.subtitle} delay={500} />
             </div>
 
             {/* Description */}
             <p className="text-base text-[var(--muted-foreground)] max-w-lg mx-auto mb-8">
-              写代码的时候顺手记点东西，可能是踩过的坑，也可能是突然想明白的道理。
-              不保证都对，但保证真实。
+              {siteContent.description}
             </p>
           </motion.div>
 

@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "mcp:build-data": "node scripts/build-mcp-data.mjs",
+    "mcp:build-server": "pnpm --filter @mcell/stack-mcp build",
+    "mcp:dev-server": "pnpm --filter @mcell/stack-mcp dev",
+    "prebuild": "node scripts/build-mcp-data.mjs",
     "build": "next build",
     "postbuild": "pagefind --site out",
     "start": "serve out",

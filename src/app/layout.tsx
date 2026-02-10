@@ -5,13 +5,14 @@ import { Footer } from '@/components/Footer'
 import { getTopicsData } from '@/lib/topics-data'
 import { PixelCompanion } from '@/components/PixelCompanion'
 import { PixelParticles, FloatingPixels, StarField } from '@/components/PixelParticles'
+import { siteContent } from '@/lib/site-content'
 
 export const metadata: Metadata = {
   title: {
     default: 'CellStack | Pixel Adventure',
     template: '%s | CellStack',
   },
-  description: '8-bit Engineering, Design, and Intelligence',
+  description: siteContent.description,
   icons: {
     icon: '/logo.svg',
   },

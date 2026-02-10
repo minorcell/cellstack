@@ -1,0 +1,75 @@
+{
+  "name": "mCell",
+  "title": "关于我",
+  "avatar": "https://avatars.githubusercontent.com/u/120795714",
+  "headline": "一个写代码的，偶尔也写写字。",
+  "bio": [
+    "相信工具能改变工作方式，也相信好的代码应该像散文一样优雅。"
+  ],
+  "role": "全栈开发",
+  "location": "中国",
+  "tags": [
+    "全栈开发",
+    "开源爱好者",
+    "工具党",
+    "持续学习者"
+  ],
+  "skills": [
+    {
+      "name": "JavaScript/TypeScript",
+      "level": 95,
+      "color": "#ca8a04"
+    },
+    {
+      "name": "React/Vue",
+      "level": 90,
+      "color": "#0891b2"
+    },
+    {
+      "name": "Go",
+      "level": 50,
+      "color": "#2563eb"
+    },
+    {
+      "name": "Rust",
+      "level": 35,
+      "color": "#ea580c"
+    },
+    {
+      "name": "DevOps",
+      "level": 20,
+      "color": "#16a34a"
+    },
+    {
+      "name": "AI/Agent",
+      "level": 40,
+      "color": "#7c3aed"
+    }
+  ],
+  "socials": [
+    {
+      "href": "https://github.com/minorcell",
+      "icon": "GH",
+      "label": "GitHub",
+      "note": "代码和实验"
+    },
+    {
+      "href": "https://juejin.cn/user/2280829967146779",
+      "icon": "JJ",
+      "label": "掘金",
+      "note": "技术文章"
+    },
+    {
+      "href": "mailto:minorcell6789@gmail.com",
+      "icon": "EM",
+      "label": "Email",
+      "note": "欢迎交流"
+    },
+    {
+      "href": "https://steamcommunity.com/profiles/76561199379749961/",
+      "icon": "ST",
+      "label": "Steam",
+      "note": "偶尔玩游戏"
+    }
+  ]
+}

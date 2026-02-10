@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { siteContent } from '@/lib/site-content'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -17,7 +18,7 @@ export function Footer() {
             </div>
             <div>
               <p className="font-pixel text-xs text-[var(--pixel-dark)]">CELLSTACK</p>
-              <p className="text-sm text-[var(--muted-foreground)]">一个技术博客</p>
+              <p className="text-sm text-[var(--muted-foreground)]">{siteContent.subtitle}</p>
             </div>
           </div>
 

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { HomeHero } from '@/components/HomeHero'
+import { siteContent } from '@/lib/site-content'
 
 export const metadata: Metadata = {
   title: { absolute: 'CellStack' },
-  description: 'Engineering · Design · Intelligence',
+  description: siteContent.description,
 }
 
 export default function Home() {

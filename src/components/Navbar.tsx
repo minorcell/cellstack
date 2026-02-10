@@ -8,6 +8,7 @@ import { createPortal } from 'react-dom'
 import { PagefindSearch } from '@/components/PagefindSearch'
 import type { Topic } from '@/lib/topics'
 import { cn } from '@/lib/utils'
+import { siteContent } from '@/lib/site-content'
 
 const navLinks = [
   { label: '文章', href: '/blog' },
@@ -60,7 +61,7 @@ export function Navbar({ topics }: NavbarProps) {
             <p className="font-pixel text-sm text-[var(--pixel-dark)] tracking-wider group-hover:text-[var(--pixel-purple)] transition-colors">
               CELLSTACK
             </p>
-            <p className="text-sm text-[var(--pixel-cyan)]">随便写写的技术博客</p>
+            <p className="text-sm text-[var(--pixel-cyan)]">{siteContent.subtitle}</p>
           </div>
         </Link>
 

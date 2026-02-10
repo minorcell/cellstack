@@ -4,50 +4,8 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ZoomImage } from '@/components/ZoomImage'
 import { GitHubHeatmap } from '@/components/GitHubHeatmap'
+import { meContent } from '@/lib/site-content'
 import type { Activity } from 'react-activity-calendar'
-
-const socials = [
-  {
-    href: 'https://github.com/minorcell',
-    icon: 'GH',
-    label: 'GitHub',
-    note: '代码和实验',
-  },
-  {
-    href: 'https://juejin.cn/user/2280829967146779',
-    icon: 'JJ',
-    label: '掘金',
-    note: '技术文章',
-  },
-  {
-    href: 'mailto:minorcell6789@gmail.com',
-    icon: 'EM',
-    label: 'Email',
-    note: '欢迎交流',
-  },
-  {
-    href: 'https://steamcommunity.com/profiles/76561199379749961/',
-    icon: 'ST',
-    label: 'Steam',
-    note: '偶尔玩游戏',
-  },
-]
-
-const skills = [
-  { name: 'JavaScript/TypeScript', level: 95, color: '#ca8a04' },
-  { name: 'React/Vue', level: 90, color: '#0891b2' },
-  { name: 'Go', level: 50, color: '#2563eb' },
-  { name: 'Rust', level: 35, color: '#ea580c' },
-  { name: 'DevOps', level: 20, color: '#16a34a' },
-  { name: 'AI/Agent', level: 40, color: '#7c3aed' },
-]
-
-const tags = [
-  '全栈开发',
-  '开源爱好者',
-  '工具党',
-  '持续学习者',
-]
 
 export function MeClientPage() {
   const [githubData, setGithubData] = useState<Activity[]>([])
@@ -73,7 +31,7 @@ export function MeClientPage() {
           <span>ABOUT</span>
         </div>
         <h1 className="font-pixel text-2xl sm:text-3xl text-[var(--pixel-dark)] tracking-wider">
-          关于我
+          {meContent.title}
         </h1>
       </div>
 
@@ -85,7 +43,7 @@ export function MeClientPage() {
             <div className="flex-shrink-0 mx-auto md:mx-0">
               <div className="relative w-32 h-32 pixel-border border-[var(--pixel-cyan)] bg-white">
                 <ZoomImage
-                  src="https://avatars.githubusercontent.com/u/120795714"
+                  src={meContent.avatar}
                   alt="mCell 头像"
                   className="w-full h-full object-cover"
                 />
@@ -95,17 +53,21 @@ export function MeClientPage() {
             {/* Info */}
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-2xl font-medium text-[var(--pixel-dark)] mb-2">
-                mCell
+                {meContent.name}
               </h2>
               <p className="text-[var(--muted-foreground)] mb-4">
-                一个写代码的，偶尔也写写字。
-                <br />
-                相信工具能改变工作方式，也相信好的代码应该像散文一样优雅。
+                {meContent.headline}
+                {meContent.bio.map((line) => (
+                  <span key={line}>
+                    <br />
+                    {line}
+                  </span>
+                ))}
               </p>
 
               {/* Tags */}
               <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-                {tags.map((tag) => (
+                {meContent.tags.map((tag) => (
                   <span
                     key={tag}
                     className="px-2 py-1 text-xs border border-[var(--border)] text-[var(--muted-foreground)]"
@@ -118,10 +80,10 @@ export function MeClientPage() {
               {/* Quick Info */}
               <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm">
                 <span className="text-[var(--muted-foreground)]">
-                  主业: <span className="text-[var(--pixel-dark)]">全栈开发</span>
+                  主业: <span className="text-[var(--pixel-dark)]">{meContent.role}</span>
                 </span>
                 <span className="text-[var(--muted-foreground)]">
-                  位置: <span className="text-[var(--pixel-dark)]">中国</span>
+                  位置: <span className="text-[var(--pixel-dark)]">{meContent.location}</span>
                 </span>
               </div>
             </div>
@@ -137,7 +99,7 @@ export function MeClientPage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {skills.map((skill) => (
+          {meContent.skills.map((skill) => (
             <div key={skill.name} className="pixel-border p-4 bg-white">
               <div className="flex justify-between mb-2">
                 <span className="text-sm text-[var(--pixel-dark)]">{skill.name}</span>
@@ -168,7 +130,7 @@ export function MeClientPage() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          {socials.map((item) => (
+          {meContent.socials.map((item) => (
             <a
               key={item.href}
               href={item.href}
