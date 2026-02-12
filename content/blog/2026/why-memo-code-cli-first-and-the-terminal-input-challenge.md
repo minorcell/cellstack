@@ -2,7 +2,7 @@
 title: '为什么 Memo Code 先做 CLI：以及终端输入框到底有多难搞'
 date: 2026-02-12
 description: '做 memo code 时我在 Web UI 和 CLI 之间犹豫过，最后还是选了终端。结果真正卡住我的不是模型和工具，而是一个看起来很基础的东西：输入框。'
-order: 41
+order: 42
 ---
 
 ![](https://stack-mcell.tos-cn-shanghai.volces.com/202616.png)
