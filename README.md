@@ -1,12 +1,25 @@
 # CellStack - 工程师技术笔记
 
 <center text-align="center" width="100%">
-<img src="./public/logo.svg" width="100" height="100" alt="CellStack">
+<img src="https://avatars.githubusercontent.com/u/120795714" width="100" height="100" alt="CellStack">
 </center>
 
 网址：[stack.mcell.top](https://stack.mcell.top)
 
 计算机科学的工程实践和一些个人思考。
+
+## MCP 集成
+
+```json
+{
+  "mcpServers": {
+    "cellstack": {
+      "command": "npx",
+      "args": ["-y", "@mcell/stack-mcp"]
+    }
+  }
+}
+```
 
 ## 联系方式
 
