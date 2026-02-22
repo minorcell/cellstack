@@ -73,11 +73,32 @@ function SearchGlyph({ className }: { className?: string }) {
   )
 }
 
+function RssGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M6 11.25A6.75 6.75 0 0 1 12.75 18M6 6a12 12 0 0 1 12 12m-11.5-.146l.354-.354"
+      />
+    </svg>
+  )
+}
+
 export function Navbar() {
   const pathname = usePathname()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const iconButtonClass =
+    'inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-muted/60'
 
   useEffect(() => {
     setMounted(true)
@@ -161,7 +182,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        <nav className="flex items-center gap-4 sm:gap-6">
+        <nav className="flex items-center gap-4 sm:gap-5">
           {navLinks.map((item) => (
             <Link
               key={item.href}
@@ -176,79 +197,90 @@ export function Navbar() {
             </Link>
           ))}
 
-          <button
-            type="button"
-            onClick={() => setSearchOpen(true)}
-            className={`text-muted-foreground hover:text-foreground transition-colors ${
-              searchOpen ? 'text-foreground' : ''
-            }`}
-            aria-label="搜索（快捷键 / 或 Cmd/Ctrl+K）"
-            title="搜索（/ 或 Cmd/Ctrl+K）"
-          >
-            <SearchGlyph className="w-4 h-4" />
-          </button>
-
-          <Link
-            href="/stack-mcp"
-            className={`text-muted-foreground hover:text-foreground transition-colors ${
-              isActive('/stack-mcp') ? 'text-foreground' : ''
-            }`}
-            aria-label="Stack MCP"
-            title="Stack MCP"
-          >
-            <McpGlyph className="w-4 h-4" />
-          </Link>
-
-          {siteContent.contact.github && (
-            <a
-              href={siteContent.contact.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="GitHub"
-              title="GitHub"
-            >
-              <GitHubGlyph className="w-4 h-4" />
-            </a>
-          )}
-
-          {mounted && (
+          <div className="flex items-center gap-1 sm:gap-1.5">
             <button
-              onClick={toggleTheme}
-              className="p-1.5 rounded-md hover:bg-muted transition-colors"
-              aria-label="切换主题"
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className={`${iconButtonClass} ${
+                searchOpen ? 'text-foreground bg-muted/40' : ''
+              }`}
+              aria-label="搜索（快捷键 / 或 Cmd/Ctrl+K）"
+              title="搜索（/ 或 Cmd/Ctrl+K）"
             >
-              {theme === 'light' ? (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              )}
+              <SearchGlyph className="w-4 h-4" />
             </button>
-          )}
+
+            <Link
+              href="/stack-mcp"
+              className={`${iconButtonClass} ${
+                isActive('/stack-mcp') ? 'text-foreground bg-muted/40' : ''
+              }`}
+              aria-label="Stack MCP"
+              title="Stack MCP"
+            >
+              <McpGlyph className="w-4 h-4" />
+            </Link>
+
+            {siteContent.contact.github && (
+              <a
+                href={siteContent.contact.github}
+                target="_blank"
+                rel="noreferrer"
+                className={iconButtonClass}
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <GitHubGlyph className="w-4 h-4" />
+              </a>
+            )}
+
+            <Link
+              href="/feed.xml"
+              className={iconButtonClass}
+              aria-label="RSS 订阅"
+              title="RSS 订阅"
+            >
+              <RssGlyph className="w-4 h-4" />
+            </Link>
+
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className={iconButtonClass}
+                aria-label="切换主题"
+              >
+                {theme === 'light' ? (
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                )}
+              </button>
+            )}
+          </div>
         </nav>
       </div>
       <PagefindSearch

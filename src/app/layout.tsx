@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     template: `%s | ${siteContent.name}`,
   },
   description: siteContent.description,
+  alternates: {
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
   icons: {
     icon: '/logo.svg',
   },

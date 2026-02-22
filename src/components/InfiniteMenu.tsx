@@ -380,7 +380,6 @@ function createProgram(
 ): WebGLProgram | null {
   const program = gl.createProgram()
   if (!program) return null
-
   ;[gl.VERTEX_SHADER, gl.FRAGMENT_SHADER].forEach((type, ndx) => {
     const shader = createShader(gl, type, shaderSources[ndx])
     if (shader) {
