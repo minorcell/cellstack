@@ -43,8 +43,8 @@ export default function RootLayout({
             className="!p-0 h-full w-full opacity-35"
             dotSize={5}
             gap={15}
-            baseColor="#271E37"
-            activeColor="#FFFFFF"
+            baseColor="var(--dotgrid-base)"
+            activeColor="var(--dotgrid-active)"
             proximity={120}
             speedTrigger={100}
             shockRadius={250}

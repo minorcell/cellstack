@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import GradualBlur from '@/components/GradualBlur'
+import TextPressure from '@/components/TextPressure'
 import { siteContent } from '@/lib/site-content'
 
 const navLinks = [
@@ -77,13 +79,37 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-      <div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-[1200] bg-background/80">
+      <GradualBlur
+        position="top"
+        target="parent"
+        exponential
+        strength={2}
+        divCount={5}
+        opacity={1}
+        zIndex={0}
+        className="pointer-events-none"
+      />
+      <div className="relative z-20 flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="text-base font-medium hover:opacity-60 transition-opacity"
+          aria-label={siteContent.name}
+          className="inline-flex items-center opacity-100 hover:opacity-100"
         >
-          {siteContent.name}
+          <div className="h-8 w-36 sm:w-40">
+            <TextPressure
+              text={siteContent.name}
+              flex={false}
+              stroke={false}
+              alpha={false}
+              width={false}
+              weight={true}
+              italic={true}
+              textColor="var(--foreground)"
+              minFontSize={24}
+              className="select-none"
+            />
+          </div>
         </Link>
 
         <nav className="flex items-center gap-4 sm:gap-6">

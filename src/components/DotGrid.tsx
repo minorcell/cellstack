@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo, useState } from 'react';
 import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
@@ -24,6 +24,12 @@ interface Dot {
   _inertiaApplied: boolean;
 }
 
+interface RgbColor {
+  r: number;
+  g: number;
+  b: number;
+}
+
 export interface DotGridProps {
   dotSize?: number;
   gap?: number;
@@ -40,14 +46,77 @@ export interface DotGridProps {
   style?: React.CSSProperties;
 }
 
-function hexToRgb(hex: string) {
-  const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-  if (!m) return { r: 0, g: 0, b: 0 };
+function hexToRgb(hex: string): RgbColor | null {
+  const normalized = hex.trim();
+  const short = normalized.match(/^#?([a-f\d])([a-f\d])([a-f\d])$/i);
+  if (short) {
+    return {
+      r: parseInt(short[1] + short[1], 16),
+      g: parseInt(short[2] + short[2], 16),
+      b: parseInt(short[3] + short[3], 16)
+    };
+  }
+
+  const full = normalized.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+  if (!full) return null;
   return {
-    r: parseInt(m[1], 16),
-    g: parseInt(m[2], 16),
-    b: parseInt(m[3], 16)
+    r: parseInt(full[1], 16),
+    g: parseInt(full[2], 16),
+    b: parseInt(full[3], 16)
   };
+}
+
+function parseRgbString(input: string): RgbColor | null {
+  const numbers = input.match(/-?\d*\.?\d+/g);
+  if (!numbers || numbers.length < 3) return null;
+
+  const [r, g, b] = numbers.slice(0, 3).map(value => {
+    const parsed = Number.parseFloat(value);
+    if (Number.isNaN(parsed)) return 0;
+    return Math.max(0, Math.min(255, Math.round(parsed)));
+  });
+
+  return { r, g, b };
+}
+
+function resolveCssVariable(color: string): string {
+  const variableMatch = color.trim().match(/^var\(\s*(--[\w-]+)\s*(?:,\s*(.+))?\)$/);
+  if (!variableMatch || typeof window === 'undefined') return color;
+
+  const [, variableName, fallback] = variableMatch;
+  const resolved = getComputedStyle(document.documentElement)
+    .getPropertyValue(variableName)
+    .trim();
+
+  if (resolved) return resolved;
+  if (fallback) return fallback.trim();
+  return color;
+}
+
+function cssColorToRgb(color: string): RgbColor {
+  const fallback = { r: 0, g: 0, b: 0 };
+  const resolvedVariable = resolveCssVariable(color);
+  const hex = hexToRgb(resolvedVariable);
+  if (hex) return hex;
+
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return parseRgbString(resolvedVariable) ?? fallback;
+  }
+
+  const probe = document.createElement('span');
+  probe.style.color = resolvedVariable;
+  probe.style.position = 'absolute';
+  probe.style.visibility = 'hidden';
+  probe.style.pointerEvents = 'none';
+
+  if (document.body) {
+    document.body.appendChild(probe);
+    const computedColor = getComputedStyle(probe).color;
+    probe.remove();
+    return parseRgbString(computedColor) ?? parseRgbString(resolvedVariable) ?? fallback;
+  }
+
+  return parseRgbString(resolvedVariable) ?? fallback;
 }
 
 const DotGrid: React.FC<DotGridProps> = ({
@@ -78,9 +147,51 @@ const DotGrid: React.FC<DotGridProps> = ({
     lastX: 0,
     lastY: 0
   });
+  const [themeVersion, setThemeVersion] = useState(0);
 
-  const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
-  const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const root = document.documentElement;
+    const notifyThemeChange = () => {
+      setThemeVersion(prev => prev + 1);
+    };
+
+    const observer = new MutationObserver(mutations => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes') {
+          notifyThemeChange();
+          break;
+        }
+      }
+    });
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['class', 'style']
+    });
+
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', notifyThemeChange);
+    } else {
+      media.addListener(notifyThemeChange);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (typeof media.removeEventListener === 'function') {
+        media.removeEventListener('change', notifyThemeChange);
+      } else {
+        media.removeListener(notifyThemeChange);
+      }
+    };
+  }, []);
+
+  const baseRgb = useMemo(() => cssColorToRgb(baseColor), [baseColor, themeVersion]);
+  const activeRgb = useMemo(
+    () => cssColorToRgb(activeColor),
+    [activeColor, themeVersion]
+  );
 
   const circlePath = useMemo(() => {
     if (typeof window === 'undefined' || !window.Path2D) return null;
@@ -143,6 +254,7 @@ const DotGrid: React.FC<DotGridProps> = ({
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const { x: px, y: py } = pointerRef.current;
+      const baseStyle = `rgb(${baseRgb.r},${baseRgb.g},${baseRgb.b})`;
 
       for (const dot of dotsRef.current) {
         const ox = dot.cx + dot.xOffset;
@@ -151,7 +263,7 @@ const DotGrid: React.FC<DotGridProps> = ({
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
 
-        let style = baseColor;
+        let style = baseStyle;
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
           const t = 1 - dist / proximity;
@@ -173,7 +285,7 @@ const DotGrid: React.FC<DotGridProps> = ({
 
     draw();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [proximity, activeRgb, baseRgb, circlePath]);
 
   useEffect(() => {
     buildGrid();

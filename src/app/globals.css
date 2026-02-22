@@ -78,6 +78,10 @@
     oklch(0.922 0 0);
   --sidebar-ring:
     oklch(0.708 0 0);
+  --dotgrid-base:
+    #d3cedb;
+  --dotgrid-active:
+    #a49bb6;
 }
 
 /* Dark mode */
@@ -144,6 +148,10 @@
     oklch(1 0 0 / 10%);
   --sidebar-ring:
     oklch(0.556 0 0);
+  --dotgrid-base:
+    #271E37;
+  --dotgrid-active:
+    #ffffff;
 }
 
 @theme inline {
