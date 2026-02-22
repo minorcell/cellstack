@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import GradualBlur from '@/components/GradualBlur'
+import { PagefindSearch } from '@/components/PagefindSearch'
 import TextPressure from '@/components/TextPressure'
 import { siteContent } from '@/lib/site-content'
 
@@ -51,16 +52,64 @@ function GitHubGlyph({ className }: { className?: string }) {
   )
 }
 
+function SearchGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.8}
+      >
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="m16 16l5 5" />
+      </g>
+    </svg>
+  )
+}
+
 export function Navbar() {
   const pathname = usePathname()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [mounted, setMounted] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     const isDark = document.documentElement.classList.contains('dark')
     setTheme(isDark ? 'dark' : 'light')
   }, [])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault()
+        setSearchOpen(true)
+      }
+      if (event.key === '/') {
+        const target = event.target as HTMLElement | null
+        const isTyping =
+          target?.tagName === 'INPUT' ||
+          target?.tagName === 'TEXTAREA' ||
+          target?.isContentEditable
+        if (!isTyping) {
+          event.preventDefault()
+          setSearchOpen(true)
+        }
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  useEffect(() => {
+    setSearchOpen(false)
+  }, [pathname])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
@@ -127,6 +176,18 @@ export function Navbar() {
             </Link>
           ))}
 
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className={`text-muted-foreground hover:text-foreground transition-colors ${
+              searchOpen ? 'text-foreground' : ''
+            }`}
+            aria-label="搜索（快捷键 / 或 Cmd/Ctrl+K）"
+            title="搜索（/ 或 Cmd/Ctrl+K）"
+          >
+            <SearchGlyph className="w-4 h-4" />
+          </button>
+
           <Link
             href="/stack-mcp"
             className={`text-muted-foreground hover:text-foreground transition-colors ${
@@ -190,6 +251,12 @@ export function Navbar() {
           )}
         </nav>
       </div>
+      <PagefindSearch
+        variant="overlay"
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        autoFocus
+      />
     </header>
   )
 }

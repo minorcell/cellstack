@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import SpotlightCard from '@/components/SpotlightCard'
 import { getAllTopics } from '@/lib/topics.server'
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export default function TopicsPage() {
   const topics = getAllTopics()
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-12 sm:pt-20 sm:pb-16">
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-2xl sm:text-3xl font-medium tracking-tight mb-2">
@@ -28,19 +29,22 @@ export default function TopicsPage() {
           <Link
             key={topic.slug}
             href={`/topics/${topic.slug}`}
-            className="group block p-5 rounded-lg border border-border/50 hover:border-border hover:bg-muted/30 transition-all"
+            className="block hover:opacity-100"
           >
-            <div className="flex items-start justify-between gap-3 mb-2">
-              <h2 className="font-medium text-foreground group-hover:opacity-70 transition-opacity">
-                {topic.title}
-              </h2>
-              <span className="text-xs text-muted-foreground shrink-0">
-                {topic.articles.length} 篇
-              </span>
-            </div>
-            <p className="text-sm text-muted-foreground line-clamp-2">
-              {topic.description}
-            </p>
+            <SpotlightCard
+              spotlightColor="rgba(0, 0, 0, 0.12)"
+              className="h-full !rounded-xl !border-border/60 !bg-background/65 !p-5 transition-colors hover:!border-border hover:!bg-muted/20"
+            >
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <h2 className="font-medium text-foreground">{topic.title}</h2>
+                <span className="text-xs text-muted-foreground shrink-0">
+                  {topic.articles.length} 篇
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground line-clamp-2">
+                {topic.description}
+              </p>
+            </SpotlightCard>
           </Link>
         ))}
       </div>

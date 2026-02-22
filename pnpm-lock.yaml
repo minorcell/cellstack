@@ -35,6 +35,9 @@ importers:
       '@types/three':
         specifier: ^0.181.0
         version: 0.181.0
+      '@use-gesture/react':
+        specifier: ^10.3.1
+        version: 10.3.1(react@19.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
