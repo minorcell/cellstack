@@ -104,7 +104,6 @@ export function PagefindSearch({
 
       try {
         const pagefindBundlePath: string = '/pagefind/pagefind.js'
-        // Pagefind bundle is generated into /pagefind during build time.
         const mod = (await import(
           /* webpackIgnore: true */ pagefindBundlePath
         )) as PagefindInstance
@@ -186,13 +185,13 @@ export function PagefindSearch({
   }, [query, isActive, ensurePagefind])
 
   const resultsSection = (
-    <div className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1 max-h-[60vh] sm:max-h-[70vh]">
+    <div className="p-4 space-y-3 overflow-y-auto flex-1 max-h-[50vh]">
       {errorMessage && (
-        <div className="pixel-border border-[var(--pixel-red)] bg-white p-4 text-sm text-[var(--pixel-red)]">
+        <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-4 text-sm text-destructive">
           <span>{errorMessage}</span>
           <button
             type="button"
-            className="ml-4 underline hover:text-[var(--pixel-dark)] transition-colors"
+            className="ml-4 underline hover:opacity-70 transition-opacity"
             onClick={resetBundleState}
           >
             重试
@@ -201,57 +200,56 @@ export function PagefindSearch({
       )}
 
       {bundleState === 'loading' && (
-        <div className="flex items-center gap-2 text-sm text-[var(--pixel-cyan)]">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
           <Loader2 className="h-4 w-4 animate-spin" />
           <span>正在加载索引...</span>
         </div>
       )}
 
       {!query && (
-        <p className="text-sm text-[var(--muted-foreground)]">
+        <p className="text-sm text-muted-foreground py-4">
           输入 2 个以上字符开始全站搜索。
         </p>
       )}
 
       {query && !isSearching && hits.length === 0 && !errorMessage && (
-        <p className="text-sm text-[var(--muted-foreground)]">
+        <p className="text-sm text-muted-foreground py-4">
           没有找到匹配的结果。
         </p>
       )}
 
       {isSearching && (
-        <div className="flex items-center gap-2 text-sm text-[var(--pixel-cyan)]">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground py-4">
           <Loader2 className="h-4 w-4 animate-spin" />
           <span>搜索中...</span>
         </div>
       )}
 
       {hits.length > 0 && (
-        <div className="divide-y divide-[var(--border)]">
+        <div className="divide-y divide-border/50">
           {hits.map((hit, index) => (
             <Link
               key={`${hit.url}-${index}`}
               href={hit.url}
-              className="group block py-4 hover:bg-[var(--pixel-purple)]/5 px-2 -mx-2 transition-colors"
+              className="group block py-4 hover:bg-muted/50 -mx-4 px-4 transition-colors"
               onClick={onClose}
-              data-pixel-click
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-base font-semibold text-[var(--pixel-dark)] group-hover:text-[var(--pixel-purple)] transition-colors">
+                  <p className="text-base font-medium text-foreground group-hover:opacity-70 transition-opacity">
                     {hit.title}
                   </p>
                   {hit.excerpt && (
                     <p
-                      className="mt-1 text-sm text-[var(--muted-foreground)] line-clamp-2"
+                      className="mt-1 text-sm text-muted-foreground line-clamp-2"
                       dangerouslySetInnerHTML={{ __html: hit.excerpt }}
                     />
                   )}
-                  <p className="mt-1 text-xs text-[var(--pixel-cyan)] font-pixel text-[8px]">
+                  <p className="mt-1 text-xs text-muted-foreground font-mono">
                     {hit.url}
                   </p>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-[var(--pixel-cyan)] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--pixel-yellow)]" />
+                <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
               </div>
             </Link>
           ))}
@@ -261,16 +259,16 @@ export function PagefindSearch({
   )
 
   const content = (
-    <div className="pixel-border bg-white overflow-hidden flex flex-col max-h-[calc(100vh-4rem)]">
-      <div className="flex items-center gap-3 px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-[var(--pixel-purple)]">
-        <div className="flex items-center gap-2 px-3 py-2 flex-1 bg-[var(--muted)] border-2 border-[var(--border)] focus-within:border-[var(--pixel-cyan)] transition-colors">
-          <Search className="h-4 w-4 text-[var(--pixel-cyan)] shrink-0" />
+    <div className="bg-background border border-border rounded-lg overflow-hidden flex flex-col max-h-[calc(100vh-4rem)] shadow-lg">
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
+        <div className="flex items-center gap-2 px-3 py-2 flex-1 bg-muted rounded-md focus-within:ring-2 focus-within:ring-ring transition-all">
+          <Search className="h-4 w-4 text-muted-foreground shrink-0" />
           <input
             ref={inputRef}
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            className="bg-transparent w-full text-sm sm:text-base text-[var(--pixel-dark)] placeholder:text-[var(--muted-foreground)] focus:outline-none"
+            className="bg-transparent w-full text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
             placeholder="搜索博客与页面..."
             autoComplete="off"
           />
@@ -280,9 +278,9 @@ export function PagefindSearch({
             type="button"
             aria-label="关闭搜索"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center border-2 border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--pixel-dark)] hover:border-[var(--pixel-cyan)] transition-colors"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
         )}
       </div>
@@ -294,8 +292,8 @@ export function PagefindSearch({
     if (!open || !mounted) return null
 
     return createPortal(
-      <div className="fixed inset-0 z-[70] flex items-start justify-center bg-black/40 backdrop-blur-sm px-4 sm:px-6 py-10 sm:py-14 overflow-y-auto">
-        <div className="w-full max-w-4xl">{content}</div>
+      <div className="fixed inset-0 z-[70] flex items-start justify-center bg-background/80 backdrop-blur-sm px-4 sm:px-6 py-10 sm:py-14 overflow-y-auto">
+        <div className="w-full max-w-2xl">{content}</div>
       </div>,
       document.body,
     )

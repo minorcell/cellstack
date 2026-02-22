@@ -101,7 +101,7 @@ watch(
   () => user.age,
   (newAge) => {
     console.log('age 变化:', newAge)
-  }
+  },
 )
 </script>
 ```
@@ -116,7 +116,7 @@ watch(
   (val) => {
     console.log(val)
   },
-  { immediate: true }
+  { immediate: true },
 )
 // 组件挂载时立即执行一次,输出当前值
 ```
@@ -142,7 +142,7 @@ watch(
   () => {
     console.log('user 或其属性变化')
   },
-  { deep: true }
+  { deep: true },
 )
 user.profile.name = 'Bob' // 触发
 ```
@@ -166,7 +166,7 @@ watch(
   () => {
     // 访问更新后的 DOM
   },
-  { flush: 'post' } // 在 DOM 更新后执行
+  { flush: 'post' }, // 在 DOM 更新后执行
 )
 
 // 默认 flush: 'pre',在 DOM 更新前执行
@@ -222,7 +222,7 @@ watch(
   searchText,
   debounce(async (text) => {
     searchResults.value = await api.search(text)
-  }, 300)
+  }, 300),
 )
 
 // ❌ 不推荐:computed(不支持异步)
@@ -312,17 +312,17 @@ watch(
     double.value = count.value * 2
     console.log('count 或 double 变化')
   },
-  { immediate: true }
+  { immediate: true },
 )
 ```
 
 **区别**:
 
-| 特性       | watch                    | watchEffect           |
-| ---------- | ------------------------ | --------------------- |
-| 依赖声明   | 显式指定                 | 自动收集              |
-| 旧值       | 可以访问 oldValue        | 不可以                |
-| 立即执行   | 默认 false,需要 immediate| 默认 true             |
+| 特性     | watch                     | watchEffect |
+| -------- | ------------------------- | ----------- |
+| 依赖声明 | 显式指定                  | 自动收集    |
+| 旧值     | 可以访问 oldValue         | 不可以      |
+| 立即执行 | 默认 false,需要 immediate | 默认 true   |
 
 ### 5.2 停止监听
 
@@ -401,7 +401,7 @@ watch(bigObject, () => {}, { deep: true })
 // ✅ 性能好:只监听需要的属性
 watch(
   () => bigObject.level1.level2.level3.value,
-  () => {}
+  () => {},
 )
 ```
 
@@ -456,7 +456,7 @@ watch(
   () => [...list.value],
   (newList, oldList) => {
     console.log(newList === oldList) // false
-  }
+  },
 )
 ```
 
@@ -466,12 +466,12 @@ watch(
 
 ### Q1:computed 和 watch 的区别?
 
-| 特性     | computed                  | watch                      |
-| -------- | ------------------------- | -------------------------- |
-| 用途     | 计算派生值                | 执行副作用(异步/DOM 操作)  |
-| 缓存     | 有缓存                    | 无缓存                     |
-| 返回值   | 必须返回值                | 无返回值                   |
-| 异步     | 不支持                    | 支持                       |
+| 特性   | computed   | watch                     |
+| ------ | ---------- | ------------------------- |
+| 用途   | 计算派生值 | 执行副作用(异步/DOM 操作) |
+| 缓存   | 有缓存     | 无缓存                    |
+| 返回值 | 必须返回值 | 无返回值                  |
+| 异步   | 不支持     | 支持                      |
 
 ### Q2:computed 的缓存原理?
 

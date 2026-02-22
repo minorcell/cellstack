@@ -297,87 +297,11 @@ function siteHomeMarkdown(siteData) {
   return `${lines.join('\n')}\n`
 }
 
-function meMarkdown(meData) {
-  const lines = []
-  lines.push(`# ${meData.title || '关于我'}`)
-  lines.push('')
-  lines.push(`姓名：${meData.name || '未知'}`)
-  if (meData.headline) {
-    lines.push('')
-    lines.push(meData.headline)
-  }
-
-  if (Array.isArray(meData.bio) && meData.bio.length) {
-    lines.push('')
-    lines.push('## 简介')
-    for (const item of meData.bio) {
-      if (typeof item === 'string' && item.trim()) {
-        lines.push(`- ${item.trim()}`)
-      }
-    }
-  }
-
-  lines.push('')
-  lines.push('## 基本信息')
-  lines.push(`- 主业：${meData.role || '未知'}`)
-  lines.push(`- 位置：${meData.location || '未知'}`)
-
-  if (Array.isArray(meData.tags) && meData.tags.length) {
-    lines.push('')
-    lines.push('## 标签')
-    for (const tag of meData.tags) {
-      if (typeof tag === 'string' && tag.trim()) {
-        lines.push(`- ${tag.trim()}`)
-      }
-    }
-  }
-
-  if (Array.isArray(meData.skills) && meData.skills.length) {
-    lines.push('')
-    lines.push('## 技术栈')
-    for (const skill of meData.skills) {
-      if (!skill || typeof skill !== 'object') continue
-      const name =
-        typeof skill.name === 'string' && skill.name.trim()
-          ? skill.name.trim()
-          : '未知技能'
-      const level = safeNumber(skill.level)
-      lines.push(`- ${name}${typeof level === 'number' ? ` (${level}%)` : ''}`)
-    }
-  }
-
-  if (Array.isArray(meData.socials) && meData.socials.length) {
-    lines.push('')
-    lines.push('## 联系方式')
-    for (const item of meData.socials) {
-      if (!item || typeof item !== 'object') continue
-      const label =
-        typeof item.label === 'string' && item.label.trim()
-          ? item.label.trim()
-          : '链接'
-      const href =
-        typeof item.href === 'string' && item.href.trim()
-          ? item.href.trim()
-          : ''
-      const note =
-        typeof item.note === 'string' && item.note.trim()
-          ? item.note.trim()
-          : ''
-      if (!href) continue
-      lines.push(`- ${label}: ${href}${note ? ` (${note})` : ''}`)
-    }
-  }
-
-  return `${lines.join('\n')}\n`
-}
-
 function readSiteEntries() {
   const entries = []
 
   const sitePath = path.join(siteDir, 'site.json')
-  const mePath = path.join(siteDir, 'me.json')
   const siteData = readJsonFile(sitePath)
-  const meData = readJsonFile(mePath)
 
   if (siteData && typeof siteData === 'object') {
     entries.push(
@@ -399,32 +323,6 @@ function readSiteEntries() {
         content: siteHomeMarkdown(siteData),
         extra: {
           page: 'home',
-          contentFormat: 'markdown',
-        },
-      }),
-    )
-  }
-
-  if (meData && typeof meData === 'object') {
-    entries.push(
-      createMarkdownDocument({
-        id: 'profile:me',
-        type: 'profile',
-        slug: 'me',
-        title:
-          typeof meData.title === 'string' && meData.title.trim()
-            ? meData.title.trim()
-            : '关于我',
-        description:
-          typeof meData.headline === 'string' && meData.headline.trim()
-            ? meData.headline.trim()
-            : '作者介绍',
-        url: '/me',
-        sourcePath: toPosix(path.relative(root, mePath)),
-        metadata: meData,
-        content: meMarkdown(meData),
-        extra: {
-          page: 'me',
           contentFormat: 'markdown',
         },
       }),

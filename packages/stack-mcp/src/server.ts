@@ -5,7 +5,6 @@ import { DatasetClient } from './dataset-client.js'
 import type { DatasetDocument, DatasetEntry } from './types.js'
 
 const DEFAULT_CONTENT_TYPES = ['blog', 'topic_article']
-const DEFAULT_SITE_TYPES = ['site_page', 'profile']
 
 function toErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message
@@ -166,7 +165,7 @@ export function createStackMcpServer(config: StackMcpConfig): McpServer {
 
   server.tool(
     'list_resources',
-    'List or search resources across blogs, topics, site pages and profiles.',
+    'List or search resources across blogs, topics, and site pages.',
     {
       query: z.string().trim().min(1).optional(),
       count: z.number().int().min(1).max(50).optional(),
@@ -297,55 +296,6 @@ export function createStackMcpServer(config: StackMcpConfig): McpServer {
             {
               type: 'text',
               text: `read_resource failed: ${toErrorMessage(error)}`,
-            },
-          ],
-        }
-      }
-    },
-  )
-
-  server.tool(
-    'read_site_info',
-    'Read site intro and author profile resources.',
-    {
-      include_profile: z.boolean().optional(),
-      max_chars_per_resource: z.number().int().min(200).max(8000).optional(),
-    },
-    async ({ include_profile = true, max_chars_per_resource }) => {
-      const maxChars = max_chars_per_resource ?? 2000
-      const types = include_profile ? DEFAULT_SITE_TYPES : ['site_page']
-
-      try {
-        const entries = await client.listLatest(10, types)
-        const documents = []
-        for (const entry of entries) {
-          const document = await client.getDocumentById(entry.id)
-          documents.push(document)
-        }
-
-        const text = documents
-          .map((doc) => {
-            const formatted = formatDocumentText(doc, maxChars)
-            return `## ${doc.title}\n${formatted.text}`
-          })
-          .join('\n\n')
-
-        return {
-          structuredContent: { entries, resources: documents },
-          content: [
-            {
-              type: 'text',
-              text: text || 'No site info resources found.',
-            },
-          ],
-        }
-      } catch (error) {
-        return {
-          isError: true,
-          content: [
-            {
-              type: 'text',
-              text: `read_site_info failed: ${toErrorMessage(error)}`,
             },
           ],
         }

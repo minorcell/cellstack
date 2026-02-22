@@ -31,8 +31,7 @@ const sizeClasses: Record<Size, string> = {
   icon: 'h-10 w-10',
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant
   size?: Size
   asChild?: boolean
@@ -40,7 +39,13 @@ export interface ButtonProps
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant = 'default', size = 'default', asChild = false, ...props },
+    {
+      className,
+      variant = 'default',
+      size = 'default',
+      asChild = false,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button'

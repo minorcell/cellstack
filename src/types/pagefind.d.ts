@@ -12,6 +12,9 @@ declare module '/pagefind/pagefind.js' {
   }
 
   export function init(): Promise<void>
-  export function options(opts?: { basePath?: string; baseUrl?: string }): Promise<void>
+  export function options(opts?: {
+    basePath?: string
+    baseUrl?: string
+  }): Promise<void>
   export function search(query: string): Promise<{ results: PagefindHit[] }>
 }

@@ -342,15 +342,15 @@ export const useCounterStore = defineStore('counter', () => {
 
 ### 4.1 核心概念对比
 
-| 特性           | Vuex                    | Pinia                  |
-| -------------- | ----------------------- | ---------------------- |
-| Mutations      | 必须通过 commit         | 无需,直接修改 state    |
-| Actions        | 通过 dispatch 调用      | 直接调用方法           |
-| 模块化         | 手动配置 modules        | 自动模块化             |
-| TypeScript     | 需要手动定义类型        | 自动类型推导           |
-| 命名空间       | 需要 `namespaced: true` | 自动按 store 隔离      |
-| DevTools       | 支持                    | 支持(更强大)           |
-| 体积           | 较大(~22KB)             | 较小(~1KB)             |
+| 特性       | Vuex                    | Pinia               |
+| ---------- | ----------------------- | ------------------- |
+| Mutations  | 必须通过 commit         | 无需,直接修改 state |
+| Actions    | 通过 dispatch 调用      | 直接调用方法        |
+| 模块化     | 手动配置 modules        | 自动模块化          |
+| TypeScript | 需要手动定义类型        | 自动类型推导        |
+| 命名空间   | 需要 `namespaced: true` | 自动按 store 隔离   |
+| DevTools   | 支持                    | 支持(更强大)        |
+| 体积       | 较大(~22KB)             | 较小(~1KB)          |
 
 ### 4.2 代码对比
 
@@ -619,12 +619,12 @@ app.use(createPinia()) // Pinia
 
 ### Q1:Vuex 的 mutations 和 actions 有什么区别?
 
-| 特性     | Mutations            | Actions              |
-| -------- | -------------------- | -------------------- |
-| 同步/异步| 必须同步             | 可以异步             |
-| 职责     | 修改 state           | 业务逻辑             |
-| 调用方式 | commit               | dispatch             |
-| DevTools | 可追踪               | 不可追踪             |
+| 特性      | Mutations  | Actions  |
+| --------- | ---------- | -------- |
+| 同步/异步 | 必须同步   | 可以异步 |
+| 职责      | 修改 state | 业务逻辑 |
+| 调用方式  | commit     | dispatch |
+| DevTools  | 可追踪     | 不可追踪 |
 
 **为什么要区分?**
 
@@ -735,13 +735,13 @@ const useProductStore = defineStore('product', {
 
 **Vuex vs Pinia**:
 
-| 场景           | 推荐方案  |
-| -------------- | --------- |
-| Vue 3 新项目   | Pinia     |
-| Vue 2 项目     | Vuex      |
-| 大型项目       | Pinia     |
-| 需要 TS 支持   | Pinia     |
-| 已有 Vuex 代码 | 渐进迁移  |
+| 场景           | 推荐方案 |
+| -------------- | -------- |
+| Vue 3 新项目   | Pinia    |
+| Vue 2 项目     | Vuex     |
+| 大型项目       | Pinia    |
+| 需要 TS 支持   | Pinia    |
+| 已有 Vuex 代码 | 渐进迁移 |
 
 **面试答题框架**:
 

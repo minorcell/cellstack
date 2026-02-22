@@ -561,7 +561,7 @@ onActivated(() => {
     (newId) => {
       fetchUserData(newId)
     },
-    { immediate: true }
+    { immediate: true },
   )
 })
 </script>
@@ -659,10 +659,10 @@ function matches(name, pattern) {
 
 ### Q2:activated 和 mounted 的区别?
 
-| 钩子      | 触发时机               | 触发次数     |
-| --------- | ---------------------- | ------------ |
-| mounted   | 组件首次挂载后         | 只触发一次   |
-| activated | 每次从缓存恢复时       | 多次触发     |
+| 钩子      | 触发时机         | 触发次数   |
+| --------- | ---------------- | ---------- |
+| mounted   | 组件首次挂载后   | 只触发一次 |
+| activated | 每次从缓存恢复时 | 多次触发   |
 
 ### Q3:如何清除 keep-alive 的缓存?
 

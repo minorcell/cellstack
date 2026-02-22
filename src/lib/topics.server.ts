@@ -39,11 +39,10 @@ function scanTopicArticles(topicSlug: string): TopicArticle[] {
     return []
   }
 
-  const files = fs.readdirSync(topicPath)
-    .filter(file => {
-      // 只读取 .md 文件，排除 index.md
-      return /\.md$/.test(file) && file !== 'index.md'
-    })
+  const files = fs.readdirSync(topicPath).filter((file) => {
+    // 只读取 .md 文件，排除 index.md
+    return /\.md$/.test(file) && file !== 'index.md'
+  })
 
   const articles: TopicArticle[] = []
 
@@ -69,7 +68,10 @@ function scanTopicArticles(topicSlug: string): TopicArticle[] {
         order: metadata.order,
       })
     } catch (error) {
-      console.error(`Error reading article ${file} in topic ${topicSlug}:`, error)
+      console.error(
+        `Error reading article ${file} in topic ${topicSlug}:`,
+        error,
+      )
     }
   }
 
@@ -99,7 +101,10 @@ function scanTopicArticles(topicSlug: string): TopicArticle[] {
 /**
  * 读取专题的 index.md 文件获取专题配置
  */
-function readTopicIndex(topicSlug: string, includeContent = false): Topic | TopicWithContent | null {
+function readTopicIndex(
+  topicSlug: string,
+  includeContent = false,
+): Topic | TopicWithContent | null {
   const indexPath = path.join(topicsDir, topicSlug, 'index.md')
 
   if (!fs.existsSync(indexPath)) {
@@ -164,14 +169,18 @@ export function getAllTopics(): Topic[] {
  * 获取单个专题
  */
 export function getTopic(slug: string): Topic | undefined {
-  return readTopicIndex(slug, false) as Topic | undefined || undefined
+  return (readTopicIndex(slug, false) as Topic | undefined) || undefined
 }
 
 /**
  * 获取单个专题（包含内容）
  */
-export function getTopicWithContent(slug: string): TopicWithContent | undefined {
-  return readTopicIndex(slug, true) as TopicWithContent | undefined || undefined
+export function getTopicWithContent(
+  slug: string,
+): TopicWithContent | undefined {
+  return (
+    (readTopicIndex(slug, true) as TopicWithContent | undefined) || undefined
+  )
 }
 
 /**

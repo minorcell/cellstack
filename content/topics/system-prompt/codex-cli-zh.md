@@ -135,6 +135,7 @@ Claude Code 是 Anthropic 官方的 CLI 工具，运行在 Claude Agent SDK 之�
 引用特定函数或代码片段时，包含模式 `file_path:line_number`，方便用户导航到源代码位置。
 
 例如：
+
 ```
 客户端在 src/services/process.ts:712 的 `connectToServer` 函数中被标记为失败。
 ```
@@ -150,6 +151,7 @@ Claude Code 是 Anthropic 官方的 CLI 工具，运行在 Claude Agent SDK 之�
 ```
 
 模型信息：
+
 - 名称: Sonnet 4.5
 - 模型 ID: claude-sonnet-4-5-20250929
 - 知识截止日期: 2025年1月
@@ -161,6 +163,7 @@ Claude Code 是 Anthropic 官方的 CLI 工具，运行在 Claude Agent SDK 之�
 ### 代码引用链接
 
 使用 Markdown 链接语法使文件引用可点击：
+
 - 文件: `[filename.ts](src/filename.ts)`
 - 特定行: `[filename.ts:42](src/filename.ts#L42)`
 - 行范围: `[filename.ts:42-51](src/filename.ts#L42-L51)`

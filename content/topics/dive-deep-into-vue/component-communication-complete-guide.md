@@ -19,13 +19,13 @@ order: 3
 
 ## 0. 先给你一句总纲:通信方式的选择取决于"关系"和"复杂度"
 
-| 关系       | 简单场景              | 复杂场景              |
-| ---------- | --------------------- | --------------------- |
-| 父 → 子    | props                 | props + provide       |
-| 子 → 父    | emit                  | emit + inject         |
-| 跨层级     | provide/inject        | Vuex/Pinia            |
-| 兄弟组件   | 父组件中转/EventBus   | Vuex/Pinia            |
-| 全局共享   | Vuex/Pinia            | Vuex/Pinia            |
+| 关系     | 简单场景            | 复杂场景        |
+| -------- | ------------------- | --------------- |
+| 父 → 子  | props               | props + provide |
+| 子 → 父  | emit                | emit + inject   |
+| 跨层级   | provide/inject      | Vuex/Pinia      |
+| 兄弟组件 | 父组件中转/EventBus | Vuex/Pinia      |
+| 全局共享 | Vuex/Pinia          | Vuex/Pinia      |
 
 **核心原则**:
 
@@ -57,9 +57,7 @@ const count = ref(0)
 ```vue
 <!-- Child.vue -->
 <template>
-  <div>
-    {{ user.name }} - {{ count }}
-  </div>
+  <div>{{ user.name }} - {{ count }}</div>
 </template>
 
 <script setup>
@@ -568,13 +566,13 @@ counter.increment()
 
 **Pinia vs Vuex**:
 
-| 特性           | Vuex                     | Pinia                 |
-| -------------- | ------------------------ | --------------------- |
-| TypeScript     | 支持,但类型推断弱        | 完美支持              |
-| mutations      | 必须通过 commit          | 无需,直接修改 state   |
-| 模块化         | 需要手动配置 modules     | 自动模块化            |
-| 组合式 API     | 需要辅助函数             | 原生支持              |
-| DevTools       | 支持                     | 支持                  |
+| 特性       | Vuex                 | Pinia               |
+| ---------- | -------------------- | ------------------- |
+| TypeScript | 支持,但类型推断弱    | 完美支持            |
+| mutations  | 必须通过 commit      | 无需,直接修改 state |
+| 模块化     | 需要手动配置 modules | 自动模块化          |
+| 组合式 API | 需要辅助函数         | 原生支持            |
+| DevTools   | 支持                 | 支持                |
 
 **推荐**:新项目用 Pinia,老项目 Vuex 也够用。
 
@@ -675,12 +673,12 @@ defineExpose({
 
 ### Q2:provide/inject 和 Vuex 有什么区别?
 
-| 特性       | provide/inject       | Vuex/Pinia          |
-| ---------- | -------------------- | ------------------- |
-| 作用域     | 组件树局部           | 全局                |
-| 数据流     | 隐式(不易追踪)       | 显式(易调试)        |
-| DevTools   | 不支持               | 支持                |
-| 适用场景   | 组件库内部、主题配置 | 跨页面/模块共享状态 |
+| 特性     | provide/inject       | Vuex/Pinia          |
+| -------- | -------------------- | ------------------- |
+| 作用域   | 组件树局部           | 全局                |
+| 数据流   | 隐式(不易追踪)       | 显式(易调试)        |
+| DevTools | 不支持               | 支持                |
+| 适用场景 | 组件库内部、主题配置 | 跨页面/模块共享状态 |
 
 ### Q3:为什么 Vue 3 移除了 EventBus?
 

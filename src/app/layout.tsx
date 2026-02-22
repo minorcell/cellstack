@@ -2,15 +2,13 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { getTopicsData } from '@/lib/topics-data'
-import { PixelCompanion } from '@/components/PixelCompanion'
-import { PixelParticles, FloatingPixels, StarField } from '@/components/PixelParticles'
+import DotGrid from '@/components/DotGrid'
 import { siteContent } from '@/lib/site-content'
 
 export const metadata: Metadata = {
   title: {
-    default: 'CellStack | Pixel Adventure',
-    template: '%s | CellStack',
+    default: siteContent.name,
+    template: `%s | ${siteContent.name}`,
   },
   description: siteContent.description,
   icons: {
@@ -23,30 +21,46 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const topics = getTopicsData()
-
   return (
-    <html lang="zh-CN">
-      <body className="antialiased min-h-screen flex flex-col bg-background text-foreground relative overflow-x-hidden">
-        {/* Background Effects */}
-        <StarField />
-        <FloatingPixels />
-        
-        {/* CRT Overlay */}
-        <div className="crt-overlay" />
-        
-        {/* Pixel Grid Pattern */}
-        <div className="fixed inset-0 pixel-grid pointer-events-none z-0" />
-        
-        <Navbar topics={topics} />
-        <main className="grow relative z-10" data-pagefind-body>
-          {children}
-        </main>
-        <Footer />
-        
-        {/* Interactive Elements */}
-        <PixelCompanion />
-        <PixelParticles />
+    <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const theme = localStorage.getItem('theme') || 'light'
+                if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                }
+              })()
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-background text-foreground relative">
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+          <DotGrid
+            className="!p-0 h-full w-full opacity-35"
+            dotSize={5}
+            gap={15}
+            baseColor="#271E37"
+            activeColor="#FFFFFF"
+            proximity={120}
+            speedTrigger={100}
+            shockRadius={250}
+            shockStrength={5}
+            maxSpeed={5000}
+            resistance={750}
+            returnDuration={1.5}
+          />
+        </div>
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1 relative" data-pagefind-body>
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

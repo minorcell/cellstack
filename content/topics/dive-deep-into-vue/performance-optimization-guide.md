@@ -82,14 +82,14 @@ function render() {
 
 **patchFlag 类型**:
 
-| Flag | 含义            | 优化效果                |
-| ---- | --------------- | ----------------------- |
-| 1    | TEXT            | 只比较文本内容          |
-| 2    | CLASS           | 只比较 class            |
-| 4    | STYLE           | 只比较 style            |
-| 8    | PROPS           | 只比较动态 props        |
-| 16   | FULL_PROPS      | 比较所有 props          |
-| 32   | HYDRATE_EVENTS  | 只比较事件监听器        |
+| Flag | 含义           | 优化效果         |
+| ---- | -------------- | ---------------- |
+| 1    | TEXT           | 只比较文本内容   |
+| 2    | CLASS          | 只比较 class     |
+| 4    | STYLE          | 只比较 style     |
+| 8    | PROPS          | 只比较动态 props |
+| 16   | FULL_PROPS     | 比较所有 props   |
+| 32   | HYDRATE_EVENTS | 只比较事件监听器 |
 
 ### 1.3 Block Tree(块级作用域树)
 
@@ -248,11 +248,14 @@ const containerRef = ref(null)
 const scrollTop = ref(0)
 
 // 可见区域的起始索引
-const startIndex = computed(() => Math.floor(scrollTop.value / props.itemHeight))
+const startIndex = computed(() =>
+  Math.floor(scrollTop.value / props.itemHeight),
+)
 
 // 可见区域的结束索引
 const endIndex = computed(() => {
-  const count = Math.ceil(containerRef.value?.clientHeight / props.itemHeight) + 1
+  const count =
+    Math.ceil(containerRef.value?.clientHeight / props.itemHeight) + 1
   return startIndex.value + count
 })
 
@@ -450,18 +453,8 @@ import _ from 'lodash'
 <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 
 <!-- vite.config.js -->
-export default {
-  build: {
-    rollupOptions: {
-      external: ['vue'],
-      output: {
-        globals: {
-          vue: 'Vue',
-        },
-      },
-    },
-  },
-}
+export default { build: { rollupOptions: { external: ['vue'], output: { globals:
+{ vue: 'Vue', }, }, }, }, }
 ```
 
 ---
@@ -577,10 +570,10 @@ onMounted(() => {
 
 ### Q3:v-once 和 v-memo 的区别?
 
-| 指令    | 作用                  | 适用场景      |
-| ------- | --------------------- | ------------- |
-| v-once  | 只渲染一次,永不更新   | 纯静态内容    |
-| v-memo  | 条件缓存,依赖变化更新 | 大列表优化    |
+| 指令   | 作用                  | 适用场景   |
+| ------ | --------------------- | ---------- |
+| v-once | 只渲染一次,永不更新   | 纯静态内容 |
+| v-memo | 条件缓存,依赖变化更新 | 大列表优化 |
 
 ### Q4:首屏加载慢如何优化?
 

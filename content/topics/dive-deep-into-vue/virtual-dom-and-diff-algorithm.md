@@ -372,12 +372,12 @@ Vue 3 改用**快速 Diff 算法**,核心是找**最长递增子序列(LIS)**:
 
 **不一定!**
 
-| 场景           | 原生 DOM           | 虚拟 DOM               |
-| -------------- | ------------------ | ---------------------- |
-| 首次渲染       | 快(直接 innerHTML) | 慢(多一层 VNode 生成)  |
-| 小规模更新     | 快(直接改 DOM)     | 慢(Diff 开销)          |
-| 大规模批量更新 | 慢(频繁重排重绘)   | 快(Diff + 批量 patch)  |
-| 跨平台         | 不可能             | 可以(抽象层)           |
+| 场景           | 原生 DOM           | 虚拟 DOM              |
+| -------------- | ------------------ | --------------------- |
+| 首次渲染       | 快(直接 innerHTML) | 慢(多一层 VNode 生成) |
+| 小规模更新     | 快(直接改 DOM)     | 慢(Diff 开销)         |
+| 大规模批量更新 | 慢(频繁重排重绘)   | 快(Diff + 批量 patch) |
+| 跨平台         | 不可能             | 可以(抽象层)          |
 
 ### 4.2 虚拟 DOM 的真正价值
 
@@ -412,14 +412,24 @@ Vue 2 每次更新都要遍历所有子节点,即使第一个 `<span>` 永远不
 编译时生成:
 
 ```js
-const _hoisted_1 = /*#__PURE__*/ _createElementVNode('span', null, '静态文本', -1)
+const _hoisted_1 = /*#__PURE__*/ _createElementVNode(
+  'span',
+  null,
+  '静态文本',
+  -1,
+)
 
 export function render(_ctx) {
   return (
     _openBlock(),
     _createElementBlock('div', null, [
       _hoisted_1, // 静态节点提升
-      _createElementVNode('span', null, _toDisplayString(_ctx.dynamic), 1 /* TEXT */),
+      _createElementVNode(
+        'span',
+        null,
+        _toDisplayString(_ctx.dynamic),
+        1 /* TEXT */,
+      ),
     ])
   )
 }

@@ -130,13 +130,13 @@ export default {
 
 ### 2.1 核心差异
 
-| 特性         | ref                  | reactive            |
-| ------------ | -------------------- | ------------------- |
-| 适用类型     | 任何类型             | 只能是对象/数组     |
-| 访问方式     | 需要 .value          | 直接访问            |
-| 响应式实现   | 对象包装 + getter    | Proxy 代理          |
-| 解构         | 可以解构(用 toRefs)  | 解构后丢失响应式    |
-| 重新赋值     | 可以                 | 不可以              |
+| 特性       | ref                 | reactive         |
+| ---------- | ------------------- | ---------------- |
+| 适用类型   | 任何类型            | 只能是对象/数组  |
+| 访问方式   | 需要 .value         | 直接访问         |
+| 响应式实现 | 对象包装 + getter   | Proxy 代理       |
+| 解构       | 可以解构(用 toRefs) | 解构后丢失响应式 |
+| 重新赋值   | 可以                | 不可以           |
 
 ### 2.2 使用示例
 
@@ -257,7 +257,7 @@ export function useLocalStorage(key, initialValue) {
     (newValue) => {
       localStorage.setItem(key, JSON.stringify(newValue))
     },
-    { deep: true }
+    { deep: true },
   )
 
   return data
@@ -451,12 +451,12 @@ export default {
 
 ### Q2:ref 和 reactive 怎么选?
 
-| 场景               | 推荐          |
-| ------------------ | ------------- |
-| 基本类型           | ref           |
-| 需要整体替换       | ref           |
-| 复杂嵌套对象       | reactive      |
-| 组合式函数返回值   | ref           |
+| 场景             | 推荐     |
+| ---------------- | -------- |
+| 基本类型         | ref      |
+| 需要整体替换     | ref      |
+| 复杂嵌套对象     | reactive |
+| 组合式函数返回值 | ref      |
 
 ### Q3:为什么 reactive 解构会丢失响应式?
 

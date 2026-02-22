@@ -12,8 +12,7 @@ const badgeVariants: Record<BadgeVariant, string> = {
   outline: 'text-foreground',
 }
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant
 }
 

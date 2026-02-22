@@ -337,7 +337,7 @@ watch(
   (newId) => {
     console.log('参数变化:', newId)
     fetchUser(newId)
-  }
+  },
 )
 </script>
 ```
@@ -523,11 +523,13 @@ dist/
 const routes = [
   {
     path: '/about',
-    component: () => import(/* webpackChunkName: "group-foo" */ '@/views/About.vue'),
+    component: () =>
+      import(/* webpackChunkName: "group-foo" */ '@/views/About.vue'),
   },
   {
     path: '/contact',
-    component: () => import(/* webpackChunkName: "group-foo" */ '@/views/Contact.vue'),
+    component: () =>
+      import(/* webpackChunkName: "group-foo" */ '@/views/Contact.vue'),
   },
 ]
 // About 和 Contact 会打包到同一个 chunk (group-foo.js)
@@ -580,13 +582,13 @@ const routes = [
 
 ### Q1:Hash 模式和 History 模式的区别?
 
-| 特性         | Hash 模式                    | History 模式            |
-| ------------ | ---------------------------- | ----------------------- |
-| URL 形式     | `example.com/#/about`        | `example.com/about`     |
-| 原理         | hashchange 事件              | pushState/popstate      |
-| 兼容性       | IE 8+                        | IE 10+                  |
-| 服务器配置   | 无需                         | 需要                    |
-| SEO          | 较差                         | 较好                    |
+| 特性       | Hash 模式             | History 模式        |
+| ---------- | --------------------- | ------------------- |
+| URL 形式   | `example.com/#/about` | `example.com/about` |
+| 原理       | hashchange 事件       | pushState/popstate  |
+| 兼容性     | IE 8+                 | IE 10+              |
+| 服务器配置 | 无需                  | 需要                |
+| SEO        | 较差                  | 较好                |
 
 ### Q2:路由守卫的执行顺序?
 
@@ -614,7 +616,7 @@ watch(
   () => route.params.id,
   (newId) => {
     fetchData(newId)
-  }
+  },
 )
 ```
 
@@ -652,4 +654,3 @@ beforeRouteUpdate(to, from, next) {
 4. **注意**:History 需服务器配置,参数变化组件复用
 
 记住:**路由的本质是监听 URL 变化,渲染对应组件**。
-

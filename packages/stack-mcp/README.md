@@ -1,6 +1,6 @@
 # @mcell/stack-mcp
 
-A local MCP server that reads multi-resource static datasets (blog posts, topics, topic articles, site pages, profile).
+A local MCP server that reads multi-resource static datasets (blog posts, topics, topic articles, site pages).
 
 ## Usage
 
@@ -37,7 +37,6 @@ The defaults are already built in:
 - `list_resources`: General list/search tool across all resource types.
 - `list_topics`: Topic overview list.
 - `read_resource`: Read one resource by `id` or `slug`.
-- `read_site_info`: Read site intro and profile resources.
 - `search_articles`: Compatibility alias for content search.
 - `read_article`: Compatibility alias for `read_resource`.
 - `refresh_index`: Force refresh remote index cache.
@@ -62,8 +61,7 @@ The defaults are already built in:
     "blog": 10,
     "topic": 3,
     "topic_article": 30,
-    "site_page": 1,
-    "profile": 1
+    "site_page": 1
   },
   "entries": [
     {

@@ -31,25 +31,26 @@ order: 4
   beforeUnmount →  onBeforeUnmount  →  unmounted
 ```
 
-| Vue 2          | Vue 3           | Composition API    | 执行时机               |
-| -------------- | --------------- | ------------------ | ---------------------- |
-| beforeCreate   | beforeCreate    | setup() 开始       | 实例初始化,数据劫持前  |
-| created        | created         | setup() 中         | 数据劫持完成,DOM 未挂载|
-| beforeMount    | beforeMount     | onBeforeMount      | 挂载前,render 未调用   |
-| mounted        | mounted         | onMounted          | 挂载完成,可操作 DOM    |
-| beforeUpdate   | beforeUpdate    | onBeforeUpdate     | 数据变化,重新渲染前    |
-| updated        | updated         | onUpdated          | 重新渲染完成           |
-| beforeDestroy  | beforeUnmount   | onBeforeUnmount    | 卸载前,实例仍可用      |
-| destroyed      | unmounted       | onUnmounted        | 卸载完成,清理副作用    |
-| activated      | activated       | onActivated        | keep-alive 激活        |
-| deactivated    | deactivated     | onDeactivated      | keep-alive 停用        |
-| errorCaptured  | errorCaptured   | onErrorCaptured    | 捕获子组件错误         |
+| Vue 2         | Vue 3         | Composition API | 执行时机                |
+| ------------- | ------------- | --------------- | ----------------------- |
+| beforeCreate  | beforeCreate  | setup() 开始    | 实例初始化,数据劫持前   |
+| created       | created       | setup() 中      | 数据劫持完成,DOM 未挂载 |
+| beforeMount   | beforeMount   | onBeforeMount   | 挂载前,render 未调用    |
+| mounted       | mounted       | onMounted       | 挂载完成,可操作 DOM     |
+| beforeUpdate  | beforeUpdate  | onBeforeUpdate  | 数据变化,重新渲染前     |
+| updated       | updated       | onUpdated       | 重新渲染完成            |
+| beforeDestroy | beforeUnmount | onBeforeUnmount | 卸载前,实例仍可用       |
+| destroyed     | unmounted     | onUnmounted     | 卸载完成,清理副作用     |
+| activated     | activated     | onActivated     | keep-alive 激活         |
+| deactivated   | deactivated   | onDeactivated   | keep-alive 停用         |
+| errorCaptured | errorCaptured | onErrorCaptured | 捕获子组件错误          |
 
 ---
 
 ## 2. 各生命周期的典型用途
 
 ### beforeCreate / setup() 开始
+
 ```js
 // ❌ 不能访问 data/computed/methods
 // ❌ 不能访问 DOM
@@ -57,11 +58,12 @@ order: 4
 export default {
   beforeCreate() {
     console.log(this.message) // undefined
-  }
+  },
 }
 ```
 
 ### created / setup() 中
+
 ```js
 // ✅ 可以访问 data/computed/methods
 // ❌ 不能访问 DOM(未挂载)
@@ -72,11 +74,12 @@ export default {
   },
   created() {
     this.fetchList()
-  }
+  },
 }
 ```
 
 ### beforeMount
+
 ```js
 // ✅ render 函数首次被调用
 // ❌ 真实 DOM 还未创建
@@ -84,6 +87,7 @@ export default {
 ```
 
 ### mounted
+
 ```js
 // ✅ 真实 DOM 已挂载
 // ✅ 可以操作 DOM、初始化第三方库
@@ -93,18 +97,21 @@ onMounted(() => {
 ```
 
 ### beforeUpdate
+
 ```js
 // ✅ 数据已变化,DOM 未更新
 // ✅ 可以在此访问更新前的 DOM 状态
 ```
 
 ### updated
+
 ```js
 // ✅ DOM 已更新
 // ❌ 不要在此修改数据(会导致死循环)
 ```
 
 ### beforeUnmount / unmounted
+
 ```js
 // ✅ 清理定时器、事件监听、第三方库
 onBeforeUnmount(() => {
@@ -177,7 +184,7 @@ export default {
     })
 
     return { count }
-  }
+  },
 }
 ```
 
@@ -322,7 +329,7 @@ export default {
   deactivated() {
     console.log('组件被停用(进入缓存)')
     // 适合:暂停定时器、保存状态
-  }
+  },
 }
 ```
 
@@ -373,10 +380,10 @@ mounted() {
 
 ### Q1:created 和 mounted 的区别?
 
-| 钩子    | DOM 状态 | 适用场景               |
-| ------- | -------- | ---------------------- |
-| created | 未挂载   | 数据初始化、API 请求   |
-| mounted | 已挂载   | 操作 DOM、初始化图表   |
+| 钩子    | DOM 状态 | 适用场景             |
+| ------- | -------- | -------------------- |
+| created | 未挂载   | 数据初始化、API 请求 |
+| mounted | 已挂载   | 操作 DOM、初始化图表 |
 
 ### Q2:父子组件挂载顺序?
 
