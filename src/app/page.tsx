@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import DomeGallery, { type ImageItem } from '@/components/DomeGallery'
+import InfiniteMenu, { type InfiniteMenuItem } from '@/components/InfiniteMenu'
 import { siteContent } from '@/lib/site-content'
 import { getAllPosts } from '@/lib/mdx'
 
@@ -24,13 +24,14 @@ export default function HomePage() {
 
   const posts = allPosts.slice(0, 5)
 
-  const coverImages: ImageItem[] = allPosts
+  const menuItems: InfiniteMenuItem[] = allPosts
     .map((post) => ({
-      src: post.metadata.image ?? '',
-      alt: post.metadata.title,
-      href: `/blog/${post.slug}`,
+      image: post.metadata.image ?? '',
+      title: post.metadata.title,
+      description: post.metadata.description ?? '',
+      link: `/blog/${post.slug}`,
     }))
-    .filter((image) => image.src.trim().length > 0)
+    .filter((item) => item.image.trim().length > 0)
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
@@ -115,20 +116,10 @@ export default function HomePage() {
               </article>
             ))}
 
-            {coverImages.length > 0 && (
+            {menuItems.length > 0 && (
               <div className="relative left-1/2 mt-8 w-screen -translate-x-1/2 overflow-hidden">
-                <div className="h-[320px] px-2 sm:h-[400px] sm:px-4 md:h-[480px]">
-                  <DomeGallery
-                    images={coverImages}
-                    fit={0.42}
-                    minRadius={420}
-                    maxRadius={760}
-                    overlayBlurColor="transparent"
-                    imageBorderRadius="10px"
-                    openedImageBorderRadius="12px"
-                    openedImageWidth="min(92vw, 820px)"
-                    openedImageHeight="calc(min(92vw, 820px) * 9 / 16)"
-                  />
+                <div className="relative h-[420px] px-2 sm:h-[520px] sm:px-4 md:h-[600px]">
+                  <InfiniteMenu items={menuItems} scale={0.62} />
                 </div>
               </div>
             )}

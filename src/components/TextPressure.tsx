@@ -75,14 +75,32 @@ const TextPressure: React.FC<TextPressureProps> = ({
   const chars = text.split('')
 
   useEffect(() => {
+    const mapPointerToLocal = (clientX: number, clientY: number) => {
+      const container = containerRef.current
+      if (!container) return
+
+      const rect = container.getBoundingClientRect()
+      if (rect.width <= 0 || rect.height <= 0) return
+
+      const nx = Math.max(
+        0,
+        Math.min(1, clientX / Math.max(1, window.innerWidth)),
+      )
+      const ny = Math.max(
+        0,
+        Math.min(1, clientY / Math.max(1, window.innerHeight)),
+      )
+
+      cursorRef.current.x = rect.left + nx * rect.width
+      cursorRef.current.y = rect.top + ny * rect.height
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
-      cursorRef.current.x = e.clientX
-      cursorRef.current.y = e.clientY
+      mapPointerToLocal(e.clientX, e.clientY)
     }
     const handleTouchMove = (e: TouchEvent) => {
       const t = e.touches[0]
-      cursorRef.current.x = t.clientX
-      cursorRef.current.y = t.clientY
+      mapPointerToLocal(t.clientX, t.clientY)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -93,8 +111,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
         containerRef.current.getBoundingClientRect()
       mouseRef.current.x = left + width / 2
       mouseRef.current.y = top + height / 2
-      cursorRef.current.x = mouseRef.current.x
-      cursorRef.current.y = mouseRef.current.y
+      // Start in an active-looking state before the first pointer move.
+      cursorRef.current.x = window.innerWidth / 2
+      cursorRef.current.y = window.innerHeight / 2
     }
 
     return () => {

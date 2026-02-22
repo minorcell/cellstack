@@ -30,6 +30,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.25",
     "github-calendar": "^2.3.4",
+    "gl-matrix": "^3.4.4",
     "gray-matter": "^4.0.3",
     "gsap": "^3.13.0",
     "lucide-react": "^0.556.0",
