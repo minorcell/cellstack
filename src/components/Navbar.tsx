@@ -5,6 +5,10 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import GradualBlur from '@/components/GradualBlur'
 import { PagefindSearch } from '@/components/PagefindSearch'
+import StaggeredMenu, {
+  type StaggeredMenuItem,
+  type StaggeredMenuSocialItem,
+} from '@/components/StaggeredMenu'
 import TextPressure from '@/components/TextPressure'
 import { siteContent } from '@/lib/site-content'
 
@@ -148,6 +152,47 @@ export function Navbar() {
     return pathname.startsWith(href)
   }
 
+  const mobileMenuItems: StaggeredMenuItem[] = [
+    {
+      label: '搜索',
+      ariaLabel: '打开搜索',
+      link: '#search',
+      onClick: (event) => {
+        event.preventDefault()
+        setSearchOpen(true)
+      },
+    },
+    ...navLinks.map((item) => ({
+      label: item.label,
+      ariaLabel: `前往${item.label}`,
+      link: item.href,
+    })),
+    {
+      label: 'Stack MCP',
+      ariaLabel: '前往 Stack MCP 页面',
+      link: '/stack-mcp',
+    },
+    {
+      label: 'RSS',
+      ariaLabel: '前往 RSS 订阅',
+      link: '/feed.xml',
+    },
+    {
+      label: theme === 'light' ? '夜间模式' : '日间模式',
+      ariaLabel: '切换主题',
+      link: '#theme',
+      onClick: (event) => {
+        event.preventDefault()
+        toggleTheme()
+      },
+    },
+  ]
+
+  const mobileSocialItems: StaggeredMenuSocialItem[] = siteContent.contact
+    .github
+    ? [{ label: 'GitHub', link: siteContent.contact.github }]
+    : []
+
   return (
     <header className="sticky top-0 z-[1200] bg-background/80">
       <GradualBlur
@@ -182,7 +227,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        <nav className="flex items-center gap-4 sm:gap-5">
+        <nav className="hidden md:flex items-center gap-4 sm:gap-5">
           {navLinks.map((item) => (
             <Link
               key={item.href}
@@ -282,6 +327,24 @@ export function Navbar() {
             )}
           </div>
         </nav>
+
+        <div className="md:hidden flex items-center">
+          <StaggeredMenu
+            isFixed
+            showLogo={false}
+            position="right"
+            items={mobileMenuItems}
+            socialItems={mobileSocialItems}
+            displaySocials={mobileSocialItems.length > 0}
+            displayItemNumbering={false}
+            menuButtonColor="var(--muted-foreground)"
+            openMenuButtonColor="#111111"
+            changeMenuColorOnOpen={true}
+            colors={['#e9eaee', '#ffffff']}
+            accentColor="#0f172a"
+            logoUrl="/logo.svg"
+          />
+        </div>
       </div>
       <PagefindSearch
         variant="overlay"
