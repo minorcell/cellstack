@@ -5,9 +5,7 @@ date: 2026-02-23
 order: 44
 ---
 
-![](https://stack-mcell.tos-cn-shanghai.volces.com/202623.png)
-
-# Memo Code 系统提示词架构解析：从模板到上下文组装
+![](https://stack-mcell.tos-cn-shanghai.volces.com/202623.webp)
 
 做 Agent 开发时，系统提示词（System Prompt）是影响模型行为的第一优先级。一个好的提示词架构不仅要清晰可维护，还要能动态适配不同场景。这篇来聊聊 Memo Code 的提示词组装方案。
 
