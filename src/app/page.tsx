@@ -37,7 +37,7 @@ export default function HomePage() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
       {/* Header Section */}
       <section className="mb-12">
-        <h1 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">
+        <h1 className="home-brand-title text-3xl sm:text-4xl tracking-tight mb-4">
           {siteContent.name}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed">

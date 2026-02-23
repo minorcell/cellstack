@@ -213,12 +213,13 @@
 
 /* Year watermark */
 .year-watermark {
-  font-size: 6rem;
-  font-weight: 600;
-  color: color-mix(in oklab, var(--foreground) 4%, transparent);
+  font-family: var(--font-orbitron), var(--font-sans);
+  font-size: 6.5rem;
+  font-weight: 700;
+  color: color-mix(in oklab, var(--foreground) 14%, transparent);
   position: absolute;
   left: -1rem;
-  top: -1rem;
+  top: -2.8rem;
   pointer-events: none;
   user-select: none;
   z-index: -1;
@@ -227,10 +228,16 @@
 
 @media (min-width: 640px) {
   .year-watermark {
-    font-size: 8rem;
+    font-size: 8.8rem;
     left: -2rem;
-    top: -2rem;
+    top: -4.8rem;
   }
+}
+
+/* Home page brand title */
+.home-brand-title {
+  font-family: var(--font-orbitron), var(--font-sans);
+  font-weight: 700;
 }
 
 /* Article list item */

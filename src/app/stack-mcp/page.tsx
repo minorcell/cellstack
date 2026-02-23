@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Stack MCP',
-  description: 'CellStack MCP 接入方式与快速配置示例',
+  title: 'MCP Server Page',
+  description: 'CellStack MCP Server 接入方式与快速配置示例',
 }
 
 const guides = [
@@ -48,11 +48,21 @@ export default function StackMcpPage() {
 
       <header className="mb-10">
         <h1 className="text-2xl sm:text-3xl font-medium tracking-tight mb-3">
-          Stack MCP
+          MCP Server
         </h1>
         <p className="text-muted-foreground">
-          一句命令把 CellStack 内容接入你的 MCP
-          客户端。默认已内置数据源与缓存路径，通常无需额外环境变量。
+          CellStack MCP Server 是一个标准的 MCP 服务器，可被支持 MCP
+          的客户端接入。可以让客户端通过 MCP 协议调用 CellStack 的功能，快速集成
+          CellStack 到现有的 Agent 系统中。关于 MCP 协议的详细介绍和规范，请参考
+          <a
+            href="https://modelcontextprotocol.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline ml-1"
+          >
+            What is the Model Context Protocol (MCP)?
+          </a>
+          。
         </p>
       </header>
 
