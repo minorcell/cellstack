@@ -16,8 +16,34 @@ export const metadata: Metadata = {
       'application/rss+xml': '/feed.xml',
     },
   },
+  manifest: '/manifest.json',
   icons: {
-    icon: '/logo.svg',
+    icon: [
+      {
+        url: '/logo-light.svg',
+        media: '(prefers-color-scheme: light)',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/logo-dark.svg',
+        media: '(prefers-color-scheme: dark)',
+        type: 'image/svg+xml',
+      },
+      { url: '/logo.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: [
+      {
+        url: '/logo-light.svg',
+        media: '(prefers-color-scheme: light)',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/logo-dark.svg',
+        media: '(prefers-color-scheme: dark)',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: [{ url: '/logo-light.svg', type: 'image/svg+xml' }],
   },
 }
 

@@ -4,8 +4,8 @@
   "description": "计算机科学的工程实践和一些个人思考",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#faf9f7",
-  "theme_color": "#8b7355",
+  "background_color": "#f6f1e6",
+  "theme_color": "#1c2330",
   "orientation": "portrait-primary",
   "lang": "zh-CN",
   "dir": "ltr",
@@ -37,6 +37,18 @@
       "purpose": "any maskable"
     },
     {
+      "src": "/logo-light.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
       "src": "/logo.svg",
       "sizes": "16x16",
       "type": "image/svg+xml"
@@ -57,21 +69,6 @@
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "32x32",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
     }
   ],
   "shortcuts": [

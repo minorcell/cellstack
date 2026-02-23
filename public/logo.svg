@@ -1,41 +1,81 @@
-<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg
+  width="256"
+  height="256"
+  viewBox="0 0 256 256"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <style>
+    :root {
+      --bg-0: #f6f1e6;
+      --bg-1: #e8ddc7;
+      --frame: rgba(46, 34, 23, 0.16);
+      --ring-0: #2b2116;
+      --ring-1: #4c3b28;
+      --stack-0: #2f2418;
+      --stack-1: #14100a;
+      --halo: rgba(255, 255, 255, 0.44);
+      --connector: #9b7d56;
+      --connector-opacity: 0.72;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-0: #11141c;
+        --bg-1: #1c2330;
+        --frame: rgba(255, 255, 255, 0.14);
+        --ring-0: #eef3ff;
+        --ring-1: #9db7ff;
+        --stack-0: #f4f7ff;
+        --stack-1: #ccdbff;
+        --halo: rgba(126, 168, 255, 0.38);
+        --connector: #7ea8ff;
+        --connector-opacity: 0.8;
+      }
+    }
+  </style>
   <defs>
-    <linearGradient id="fillGrad" x1="36" y1="32" x2="228" y2="232" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#000"/>
-      <stop offset="0.5" stop-color="#fff"/>
-      <stop offset="1" stop-color="#fff"/>
+    <linearGradient id="bgAuto" x1="36" y1="22" x2="220" y2="236" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--bg-0)" />
+      <stop offset="1" stop-color="var(--bg-1)" />
     </linearGradient>
-    <linearGradient id="strokeGrad" x1="60" y1="48" x2="214" y2="220" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#000" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.9"/>
+    <linearGradient id="ringAuto" x1="52" y1="46" x2="206" y2="206" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--ring-0)" />
+      <stop offset="1" stop-color="var(--ring-1)" />
     </linearGradient>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(136 128) rotate(90) scale(140)">
-      <stop stop-color="#fff" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    <linearGradient id="stackAuto" x1="112" y1="88" x2="206" y2="176" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="var(--stack-0)" />
+      <stop offset="1" stop-color="var(--stack-1)" />
+    </linearGradient>
+    <radialGradient id="haloAuto" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(126 126) rotate(90) scale(112)">
+      <stop stop-color="var(--halo)" />
+      <stop offset="1" stop-color="transparent" />
     </radialGradient>
   </defs>
 
-  <!-- subtle glow -->
-  <circle cx="128" cy="128" r="120" fill="url(#glow)"/>
-
-  <!-- primary C shape -->
-  <path
-    d="M210 70c-24-32-72-48-116-30C48 56 22 110 34 166c10 48 54 82 106 80 30-2 58-14 78-36l-22-20c-12 14-34 24-58 24-44 0-76-30-82-70-8-48 22-94 66-106 28-8 58 0 76 20l-16 12 64-18-16-64-10 22Z"
-    fill="url(#fillGrad)"
-    stroke="url(#strokeGrad)"
-    stroke-width="14"
+  <rect x="20" y="20" width="216" height="216" rx="56" fill="url(#bgAuto)" />
+  <rect x="20" y="20" width="216" height="216" rx="56" stroke="var(--frame)" stroke-width="2" />
+  <circle cx="128" cy="128" r="92" fill="url(#haloAuto)" />
+  <circle
+    cx="128"
+    cy="128"
+    r="74"
+    stroke="url(#ringAuto)"
+    stroke-width="16"
     stroke-linecap="round"
-    stroke-linejoin="round"
+    stroke-dasharray="418 165"
+    transform="rotate(24 128 128)"
   />
 
-  <!-- inner highlight stroke to accentuate the curve -->
-  <path
-    d="M198 96c-18-20-50-26-74-18-30 10-52 44-46 80 4 30 28 52 64 52 16 0 32-6 44-16l-16-16c-8 8-18 12-30 12-22 0-38-14-40-34-4-26 14-48 40-52 14-2 28 2 38 10l-12 10 46-12-12-48-8 16Z"
-    fill="none"
-    stroke="url(#strokeGrad)"
-    stroke-width="8"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    opacity="0.8"
-  />
+  <g fill="url(#stackAuto)">
+    <rect x="126" y="88" width="76" height="24" rx="12" />
+    <rect x="110" y="118" width="92" height="24" rx="12" />
+    <rect x="126" y="148" width="76" height="24" rx="12" />
+  </g>
+
+  <g stroke="var(--connector)" stroke-width="4" stroke-linecap="round" opacity="var(--connector-opacity)">
+    <path d="M106 100h18" />
+    <path d="M98 130h10" />
+    <path d="M106 160h18" />
+  </g>
 </svg>
