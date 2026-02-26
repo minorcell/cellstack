@@ -10,12 +10,15 @@
 
 ## MCP 集成
 
+> `@mcell/stack-mcp` 已废弃（仅保留，不再维护）。
+> 请使用 `@mcell/mcell-mcp-server`。
+
 ```json
 {
   "mcpServers": {
     "cellstack": {
       "command": "npx",
-      "args": ["-y", "@mcell/stack-mcp"]
+      "args": ["-y", "@mcell/mcell-mcp-server"]
     }
   }
 }

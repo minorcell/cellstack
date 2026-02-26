@@ -1,5 +1,8 @@
 # @mcell/stack-mcp
 
+> Deprecated: please use `@mcell/mcell-mcp-server`.
+> This package is kept for compatibility only and is no longer actively maintained.
+
 A local MCP server that reads multi-resource static datasets (blog posts, topics, topic articles, site pages).
 
 ## Usage
